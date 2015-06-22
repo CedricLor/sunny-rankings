@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # For Heroku
 ruby '2.2.0'
 gem 'rails_12factor', group: :production
+gem 'pg',             group: :production
 gem 'puma',           group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
