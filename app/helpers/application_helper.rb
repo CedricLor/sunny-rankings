@@ -8,13 +8,4 @@ module ApplicationHelper
       default
     end
   end
-
-  # Idem: comes from Le Wagon
-  # Display flash messages in bootstrap classed divs
-  def bootstrap_class_for(flash_type)
-    case flash_type
-    when :alert   then "alert-error"
-    when :notice  then "alert-success"
-    end
-  end
 end

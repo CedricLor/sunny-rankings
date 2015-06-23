@@ -1,2 +1,96 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<% content_for(:title, "MyMicroInvest") %>
+<!-- "MyMicroInvest" to be replaced by a variable with the company name -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <div class="company-container">
+        <div class="row">
+          <div class="col-xs-4" data-my-content="company-icon">
+            <div class="icon-wrapper card-block shadowed-box">
+              <%= image_tag("logo-mymicroinvest.svg", class: "company-icon") %>
+              <!-- TO BE REPLACED BY A VARIABLE -->
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <div class="text-wrapper card-block shadowed-box">
+              <div class="row">
+                <div class="col-xs-3">
+                  <h4>
+                    <span class="badge"><%#= "#{firm.ranking}" %>4.5/5</span>
+                  </h4>
+                </div>
+                <div class="col-xs-9 text-right">
+                  <%#= "#{firm.number_of_reviews}" %>(34 reviews)
+                </div>
+              </div>
+              <div id="companyNameBox">
+                <h4 id="companyName"><%= link_to "MyMicroInvest", "https://www.mymicroinvest.com" %></h4>
+                <br>
+                <p>Headcount: 48<%#= "#{firm.headcount}" %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="text-wrapper card-block shadowed-box">
+              <h4>Official Labels, Awards and Charters</h4>
+              <ul class="list-unstyled">
+                <li>U.S. Diversity Firm of the Year</li>
+                <li>3rd Price Belgian Business Women</li>
+                <li>Belgium Label Egalité Diversité</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="text-wrapper card-block shadowed-box community-ranking-details">
+              <h4>Community Ranking Details<span class="badge"><%#= "#{firm.ranking}" %>4.5/5</span></h4>
+              <ul class="list-unstyled">
+                <li>Sexists comments <span class="badge"><%#= "#{firm.ranking.sexists_comments}" %>/5</span></li>
+                <li>Promotion discrimination feeling <span class="badge"><%#= "#{firm.ranking.sexists_comments}" %>/5</span></li>
+                <li>Remuneration discrimination feeling <span class="badge"><%#= "#{firm.ranking.sexists_comments}" %>/5</span></li>
+                <li>Pregnancy related discrimination feeling <span class="badge"><%#= "#{firm.ranking.sexists_comments}" %>/5</span></li>
+                <li>Sexual harassment feeling <span class="badge"><%#= "#{firm.ranking.sexists_comments}" %>/5</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="text-wrapper card-block shadowed-box">
+              <h4>Community Ranking History</h4>
+              <ul class="list-unstyled">
+                <li>Sexists comments </li>
+                <li>Promotion discrimination feeling </li>
+                <li>Remuneration discrimination feeling </li>
+                <li>Pregnancy related discrimination feeling </li>
+                <li>Sexual harassment feeling </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+.white-bg {
+  background-color: white;
+}
+.card-box {
+
+}
+.company-container {
+
+}
+.shadowed-box {
+
+}
+.img-wrapper {
+
+}
+.txt-wrapper {
+
+}
+</style>

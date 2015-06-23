@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #F9FEFB;
+  font-family: roboto;
+  font-weight: 300;
+  letter-spacing: 0.7pt;
+  color: rgba(90, 100, 125, 0.8);
+  line-height: 1.2em;
+  font-size: 14px;
+}
+
+/* HEADER FORMATTINGS */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Open Sans;
+  font-weight: 400;
+  margin-top: 0px;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 1.8em;
+  color: #D55;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 1.5em;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 1.3em;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+/* LINK FORMATTING */
+
+a {
+  color: rgba(60, 2, 2, 0.5);
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgba(60, 2, 20, 0.5);
+}
+
+a:hover {
+  text-decoration: none;
+  color: rgba(60, 2, 2, 0.5);
+}
+
+/* TOOLS */
+
+a.icon-wrapper:hover {
+  color: rgba(60, 2, 2, 0.8);;
+}
+
+/* GENERAL BOX FORMATTING */
+
+.shadowed-box {
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.card-block {
+  margin: 5px;
+  /*width: 100%;*/ /* TO BE DISCUSSED WITH TEDDY */
+  background-color: white;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+/* PRESENTATION BOX FORMATTING */
+
+.main-title {
+  margin-bottom: 0px;
+}
+
+.main-subtitle {
+  margin-top: 0px;
+}
+
+.top-img {
+  height: 100px;
+  width: 100px;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+/* COMPANY SHOW VIEW */
+/* Compagny Icon */
+.company-icon {
+  width: 100%;
+}
+.icon-wrapper {
+  height: 150px;
+}
+.card-block span.badge:hover {
+  color: #4A4747;
+}
+.community-ranking-details .badge {
+  float: right;
+  /* TO BE DISCUSSED WITH TEDDY */
+}
+/* Company Top Rating Box */
+/* WHOLE SECTION AND METHODS TO BE DISCUSSED WITH TEDDY */
+#companyName {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#companyNameBox {
+
+}
+/* Company lists height */
+.company-container li {
+  line-height: 1.4em;
+}
