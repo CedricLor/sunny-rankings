@@ -15,16 +15,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= yield(:facebook_js) %>
 
-<%= render 'shared/navbar' %>
+  <%= render 'shared/navbar' %>
 
-<%= render 'shared/flash' %>
-<%= yield %>
+  <%= render 'shared/flash' %>
+  <%= yield %>
 
-<%= render 'shared/footer' %>
+  <%= render 'shared/footer' %>
 
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<%= yield(:after_js) %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= yield(:after_js) %>
 
 </body>
 </html>

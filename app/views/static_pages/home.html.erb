@@ -24,9 +24,32 @@
                   <%#= "#{firm.number_of_reviews}" %>(34 reviews)
                 </div>
               </div>
-              <div id="companyNameBox">
-                <h4 id="companyName"><%= link_to "MyMicroInvest", "https://www.mymicroinvest.com" %></h4>
-                <p>Headcount: 48<%#= "#{firm.headcount}" %></p>
+              <div class="row">
+                <div class="col-xs-12">
+                  <h4 id="companyName"><%= link_to "MyMicroInvest", "https://www.mymicroinvest.com" %></h4>
+                  <p>Headcount: 48<%#= "#{firm.headcount}" %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-3">
+                  <div class="fb-share-button" data-href="https://sunny-rankings.herokuapp.com/" data-layout="button">
+                  </div>
+                </div>
+                <div class="col-xs-3">
+                  <%= link_to("Tweet", "https://twitter.com/share", class: "twitter-share-button", "data-via" => "sunnyrankings", "data-count" => "none") %>
+                </div>
+                <div class="col-xs-3">
+                  <%= javascript_include_tag '//platform.linkedin.com/in.js', 'data-turbolinks-track' => true do %>
+                    lang: en_US
+                  <% end %>
+                  <%#= javascript_tag, type: "IN/Share", "data-url" => "https://sunny-rankings.herokuapp.com/" do %>
+                  <%# end %>
+                  <!-- TO BE DISCUSSED WITH LIEN -->
+                  <script type="IN/Share" data-url="https://sunny-rankings.herokuapp.com/"></script>
+                </div>
+                <div class="col-xs-3">
+                  <%= link_to("Rate me!", "#", class: "btn btn-default btn-xs rate-me", role: "button") %>
+                </div>
               </div>
             </div>
           </div>
@@ -44,14 +67,27 @@
           </div>
           <div class="col-xs-12">
             <div class="text-wrapper card-block shadowed-box community-ranking-details">
-              <h4>Community Ranking Details<span class="badge"><%#= "#{firm.ranking}" %>4.5/5</span></h4>
-              <ul class="list-unstyled">
-                <li>Sexists comments <span class="badge"><%#= "#{firm.ranking.sexists_comments}" %>/5</span></li>
-                <li>Promotion discrimination feeling <span class="badge"><%#= "#{firm.ranking.sexists_comments}" %>/5</span></li>
-                <li>Remuneration discrimination feeling <span class="badge"><%#= "#{firm.ranking.sexists_comments}" %>/5</span></li>
-                <li>Pregnancy related discrimination feeling <span class="badge"><%#= "#{firm.ranking.sexists_comments}" %>/5</span></li>
-                <li>Sexual harassment feeling <span class="badge"><%#= "#{firm.ranking.sexists_comments}" %>/5</span></li>
-              </ul>
+              <h4>Community Ranking Details<span class="badge"><%#= "#{firm.ranking}" %>4.5</span></h4>
+              <div class="row">
+                <div class="col-xs-10">Sexists comments</div>
+                <div class="col-xs-2"><span class="badge">2<%#= "#{firm.ranking.sexists_comments}" %></span></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-10">Promotion discrimination feeling</div>
+                <div class="col-xs-2"><span class="badge">5<%#= "#{firm.ranking.promotion}" %></span></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-10">Remuneration discrimination feeling</div>
+                <div class="col-xs-2"><span class="badge">5<%#= "#{firm.ranking.remuneration}" %></span></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-10">Pregnancy related discrimination feeling</div>
+                <div class="col-xs-2"><span class="badge">3<%#= "#{firm.ranking.pregnancy}" %></span></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-10">Sexual harassment feeling</div>
+                <div class="col-xs-2"><span class="badge">5<%#= "#{firm.ranking.sexual_harassment}" %></span></div>
+              </div>
             </div>
           </div>
           <div class="col-xs-12">
@@ -73,17 +109,37 @@
 </div>
 
 
+
+
+<% content_for(:facebook_js) do %>
+  <%= javascript_tag do %>
+    // Facebook block
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '703613196451829',
+        xfbml      : true,
+        version    : 'v2.3'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
+     // Twitter block
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+  <% end %>
+<% end %>
+
 <style>
-.white-bg {
-  background-color: white;
-}
 .card-box {
 
 }
 .company-container {
-
-}
-.shadowed-box {
 
 }
 .img-wrapper {
