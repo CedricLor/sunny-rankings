@@ -72,6 +72,8 @@ a.icon-wrapper:hover {
 .card-block {
   margin: 5px;
   /*width: 100%;*/ /* TO BE DISCUSSED WITH TEDDY */
+  margin-top: 10px;
+  margin-bottom: 10px;
   background-color: white;
   border-radius: 5px;
   padding: 15px;
@@ -119,12 +121,11 @@ span.badge:not(.top-row-badge) {
 }
 /* Competitor partial index formating */
 #competitorsCommunityRankings {
-  .row {
-    padding-top: 10px;
-    padding-bottom: 10px;
+  tr {
+    height: 52px;
   }
-  hr {
-    margin: 5px;
-    padding-bottom: 10px;
+  td {
+    display: table-cell;
+    vertical-align: middle;
   }
 }

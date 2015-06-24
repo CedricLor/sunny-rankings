@@ -26,7 +26,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12">
-                  <h4 id="companyName"><%= link_to @firm.name, @firm.url %> is #<%# @firm.industry_rank %> in <%= @firm.country %></h4>
+                  <h3 id="companyName">Gender equality on the workplace: <%= link_to @firm.name, @firm.url %> is ranked #<%# @firm.industry_rank %> in <%= @firm.country %></h3>
                   <p>Headcount: <%= "#{@firm.headcount}" %></p>
                 </div>
               </div>
@@ -34,33 +34,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div id="competitorsCommunityRankings" class="text-wrapper card-block shadowed-box">
-              <h4>Community Rankings in the <%= @firm.industry %> industry in <%= @firm.country %></h4>
-              <% @firms.each do | firm | %>
-                <div class="row">
-                  <hr>
-                  <div class="col-xs-10 col-sm-4">
-                    <%= link_to(firm_path(firm)) do %>
-                      <%= image_tag(firm.icon_name, class: "company-index-icon") %>
-                    <% end %>
-                  </div>
-                  <div class="hidden-xs col-sm-6">
-                    <div class="my-padded-card">
-                      <%= link_to firm.name, firm.url %>
-                    </div>
-                  </div>
-                  <div class="col-xs-2 col-sm-2">
-                    <div class="my-padded-card">
-                      <span class="badge">3.5<%#= "#{@firm.ranking.competitor[1]}" %></span>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
+        <%= render "competitors_community_rankings" %>
         <div class="row">
           <div class="col-xs-12">
             <div class="text-wrapper card-block shadowed-box">
