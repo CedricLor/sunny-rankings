@@ -1,3 +1,11 @@
 /* -------------------------------------
  * You killer button SASS module
  * ------------------------------------- */
+
+.red-hover-btn {
+  background-color: rgba(122, 53, 53, 0);
+}
+.red-hover-btn:hover {
+  color: white;
+  background-color: rgba(245, 55, 55, 0.83);
+}

@@ -101,23 +101,33 @@ a.icon-wrapper:hover {
 .company-icon {
   width: 100%;
 }
-.icon-wrapper {
-  height: 150px;
+.company-index-icon {
+  width: 100px;
+  height: 35px;
 }
+/* Goody */
 .card-block span.badge:hover {
   color: #4A4747;
 }
-.community-ranking-details .badge {
-  float: right;
-  /* TO BE DISCUSSED WITH TEDDY */
-}
-/* Company Top Rating Box */
-/* WHOLE SECTION AND METHODS TO BE DISCUSSED WITH TEDDY */
-
-/* Company lists height */
-.company-container li {
-  line-height: 1.4em;
-}
+/* Button */
 .rate-me {
   font-size: 12px;
+}
+/* Align badges to the right */
+span.badge:not(.top-row-badge) {
+  float: right;
+}
+/* Competitor partial index formating */
+#competitorsCommunityRankings {
+  .row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  hr {
+    margin: 5px;
+  }
+}
+/* */
+.my-padded-card {
+  padding-top: 10px;
 }

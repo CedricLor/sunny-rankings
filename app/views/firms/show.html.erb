@@ -1,0 +1,205 @@
+<% content_for(:title, "#{@firm.name}") %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <div class="company-container">
+        <div class="row" data-my-content="company-top-row">
+          <div class="col-xs-4" data-my-content="company-icon">
+            <div class="icon-wrapper card-block shadowed-box">
+              <%= image_tag(@firm.icon_name, class: "company-icon") %>
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <div class="text-wrapper card-block shadowed-box">
+              <div class="row">
+                <div class="col-xs-3">
+                  <h4>
+                    <span class="badge top-row-badge"><%#= "#{firm.ranking}" %>4.5/5</span>
+                    <!-- to be completed once the review table has been created -->
+                  </h4>
+                </div>
+                <div class="col-xs-9 text-right">
+                  <%#= "#{firm.number_of_reviews}" %>(34 reviews)
+                  <!-- to be completed once the review table has been created -->
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <h4 id="companyName"><%= link_to @firm.name, @firm.url %></h4>
+                  <p>Headcount: <%= "#{@firm.headcount}" %></p>
+                </div>
+              </div>
+              <div class="row hidden">
+                <div class="col-xs-3">
+                  <div class="fb-share-button" data-href="https://sunny-rankings.herokuapp.com/" data-layout="button">
+                  </div>
+                </div>
+                <div class="col-xs-3">
+                  <%= link_to("Tweet", "https://twitter.com/share", class: "twitter-share-button", "data-via" => "sunnyrankings", "data-count" => "none") %>
+                </div>
+                <div class="col-xs-3">
+                  <%= javascript_include_tag '//platform.linkedin.com/in.js', 'data-turbolinks-track' => true do %>
+                    lang: en_US
+                  <% end %>
+                  <%#= javascript_tag, type: "IN/Share", "data-url" => "https://sunny-rankings.herokuapp.com/" do %>
+                  <%# end %>
+                  <!-- TO BE DISCUSSED WITH LIEN -->
+                  <script type="IN/Share" data-url="https://sunny-rankings.herokuapp.com/"></script>
+                </div>
+                <div class="col-xs-3">
+                  <%= link_to("Rate me!", "#", class: "btn btn-default btn-xs rate-me red-hover-btn", role: "button") %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div id="competitorsCommunityRankings" class="text-wrapper card-block shadowed-box">
+              <h4>Community Rankings in the <%= @firm.industry %> industry in <%= @firm.country %></h4>
+              <% @firms.each do | firm | %>
+                <div class="row">
+                  <hr>
+                  <div class="col-xs-10 col-sm-3">
+                    <%= link_to(firm_path(firm)) do %>
+                      <%= image_tag(firm.icon_name, class: "company-index-icon") %>
+                    <% end %>
+                  </div>
+                  <div class="hidden-xs col-sm-7">
+                    <div class="my-padded-card">
+                      <%= link_to firm.name, firm.url %>
+                    </div>
+                  </div>
+                  <div class="col-xs-2 col-sm-2">
+                    <div class="my-padded-card">
+                      <span class="badge">3.5<%#= "#{@firm.ranking.competitor[1]}" %></span>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="text-wrapper card-block shadowed-box">
+              <h4>Official Labels, Awards and Charters</h4>
+              <ul class="list-unstyled">
+                <li>U.S. Diversity Firm of the Year</li>
+                <li>3rd Price Belgian Business Women</li>
+                <li>Belgium Label Egalité Diversité</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div id="communityRankingDetails" class="text-wrapper card-block shadowed-box">
+              <h4>Community Ranking Details<span class="badge"><%#= "#{@firm.ranking}" %>4.5</span></h4>
+              <div class="row">
+                <div class="col-xs-10">Sexists comments</div>
+                <div class="col-xs-2"><span class="badge">2<%#= "#{@firm.ranking.sexists_comments}" %></span></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-10">Promotion discrimination feeling</div>
+                <div class="col-xs-2"><span class="badge">5<%#= "#{@firm.ranking.promotion}" %></span></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-10">Remuneration discrimination feeling</div>
+                <div class="col-xs-2"><span class="badge">5<%#= "#{@firm.ranking.remuneration}" %></span></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-10">Pregnancy related discrimination feeling</div>
+                <div class="col-xs-2"><span class="badge">3<%#= "#{@firm.ranking.pregnancy}" %></span></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-10">Sexual harassment feeling</div>
+                <div class="col-xs-2"><span class="badge">5<%#= "#{@firm.ranking.sexual_harassment}" %></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div id="communityRankingHistory" class="text-wrapper card-block shadowed-box">
+              <h4>Community Ranking History</h4>
+              <div class="row">
+                <div class="col-xs-10">
+
+                </div>
+              </div>
+              <ul class="list-unstyled">
+                <li>Sexists comments </li>
+                <li>Promotion discrimination feeling </li>
+                <li>Remuneration discrimination feeling </li>
+                <li>Pregnancy related discrimination feeling </li>
+                <li>Sexual harassment feeling </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<% content_for(:facebook_js) do %>
+  <%= javascript_tag do %>
+  var isMobile = true;
+  function detectmob() {
+    if(window.innerWidth <= 800 && window.innerHeight <= 600) {
+      return isMobile = true;
+    } else {
+      return isMobile = false;
+    }
+  }
+  console.log(isMobile);
+  if (isMobile == false) {
+    console.log("hello");
+    var elems = document.querySelectorAll(".hidden");
+    [].forEach.call(elems, function(el) {
+      el.className = el.className.replace(/\bhidden\b/, "");
+      console.log("hello in loop");
+    });
+
+    // Facebook block
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '703613196451829',
+        xfbml      : true,
+        version    : 'v2.3'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
+     // Twitter block
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+  }
+  <% end %>
+<% end %>
+
+<style>
+.card-box {
+
+}
+.company-container {
+
+}
+.img-wrapper {
+
+}
+.txt-wrapper {
+
+}
+</style>

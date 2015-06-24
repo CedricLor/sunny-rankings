@@ -1,19 +1,18 @@
 Rails.application.routes.draw do
-  # get 'static_pages/home'
 
-  # get 'static_pages/help'
-
-  # get 'static_pages/about'
-
-  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   scope '(:locale)', locale: /fr|en/ do
-    resources :static_pages
+    get 'static_pages/about'
+    get 'static_pages/help'
+    get 'static_pages/home'
+    devise_for :users
+    resources :firms, only: [ :index, :show ]
+    root 'static_pages#home'
   end
 
-  root 'static_pages#home'
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

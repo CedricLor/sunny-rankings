@@ -5,4 +5,21 @@
   /* bottom: 0px; */
   width: 100%;
   margin-top: 10px;
+  color: red;
+}
+
+#footer a {
+  font-size: 25px;
+  letter-spacing: 20px;
+  transition: color 0.5s ease; }
+
+#footer a:hover {
+  color: red; }
+
+#footer .list-inline {
+  margin: 20px;
+}
+
+#footer p {
+  font-size: 10px;
 }
