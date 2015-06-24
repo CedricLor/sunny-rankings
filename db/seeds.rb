@@ -14,3 +14,12 @@ Firm.create(name: "KBC", url: "https://www.kbc.com/", country: "Belgium", headco
 Firm.create(name: "BK CP", url: "https://www.bkcpbanque.be/", country: "Belgium", headcount: "380", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-bkcp.png")
 Firm.create(name: "BNP Paribas Fortis", url: "https://www.bnpparibasfortis.be/", country: "Belgium", headcount: "200000", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-bnp-paribas.svg")
 Firm.create(name: "bpost", url: "https://www.bpost.be/", country: "Belgium", headcount: "25683", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-bpost.svg")
+
+10.times do
+  user = User.new({
+    email: Faker::Internet.email,
+    password: 'azazazazaz',
+    password_confirmation: 'azazazazaz'
+  })
+  user.save
+end

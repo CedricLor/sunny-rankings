@@ -42,7 +42,10 @@ gem 'paperclip'
 gem 'devise'
 
 # Geocoding
-gem 'geocoder'
+gem 'geocoder', '~> 1.2.9'
+
+# Faker
+gem 'faker', '~> 1.4.3'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
