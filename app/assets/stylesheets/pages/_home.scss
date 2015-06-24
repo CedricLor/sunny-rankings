@@ -102,8 +102,8 @@ a.icon-wrapper:hover {
   width: 100%;
 }
 .company-index-icon {
-  width: 100px;
-  height: 35px;
+  max-width: 100px;
+  max-height: 35px;
 }
 /* Goody */
 .card-block span.badge:hover {
@@ -125,9 +125,6 @@ span.badge:not(.top-row-badge) {
   }
   hr {
     margin: 5px;
+    padding-bottom: 10px;
   }
-}
-/* */
-.my-padded-card {
-  padding-top: 10px;
 }
