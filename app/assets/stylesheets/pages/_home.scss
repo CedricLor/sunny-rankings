@@ -115,8 +115,11 @@ a.icon-wrapper:hover {
 .rate-me {
   font-size: 12px;
 }
+.add-me-after-search {
+  font-size: 16px;
+}
 /* Align badges to the right */
-span.badge:not(.top-row-badge) {
+span.badge:not(.top-row-badge):not(.trend-badge) {
   float: right;
 }
 /* Competitor partial index formating */
