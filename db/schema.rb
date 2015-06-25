@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20150624175237) do
     t.integer  "user_id"
     t.integer  "firm_id"
     t.string   "user_firm_relationship"
+    t.boolean  "validated"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

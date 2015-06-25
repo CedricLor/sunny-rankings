@@ -15,18 +15,17 @@
               <div class="row">
                 <div class="col-xs-3">
                   <h4>
-                    <span class="badge top-row-badge"><%#= "#{firm.ranking}" %>4.5/5</span>
-                    <!-- to be completed once the review table has been created -->
+                    <span class="badge top-row-badge"><%= @firm.avg_rating.round(1) %>/5</span>
                   </h4>
                 </div>
                 <div class="col-xs-9 text-right">
-                  (34<%#= "#{firm.number_of_reviews}" %> reviews)
-                  <!-- to be completed once the review table has been created -->
+                  (<%= "#{@firm.reviews.count}" %> reviews)
                 </div>
               </div>
               <div class="row">
                 <div class="col-xs-12">
-                  <h3 id="companyName">Gender equality on the workplace: <%= link_to @firm.name, @firm.url %> is ranked #<%# @firm.industry_rank %> in <%= @firm.country %></h3>
+                  <h3 id="companyName">Gender equality on the workplace:</h3>
+                  <h3><%= link_to @firm.name, @firm.url %> is ranked #<%= @firm.ranking %> in <%= @firm.country %></h3>
                   <p>Headcount: <%= "#{@firm.headcount}" %></p>
                 </div>
               </div>
@@ -34,65 +33,10 @@
             </div>
           </div>
         </div>
+        <%= render "community_ranking_details" %>
         <%= render "competitors_community_rankings" %>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="text-wrapper card-block shadowed-box">
-              <h4>Official Labels, Awards and Charters</h4>
-              <ul class="list-unstyled">
-                <li>U.S. Diversity Firm of the Year</li>
-                <li>3rd Price Belgian Business Women</li>
-                <li>Belgium Label Egalité Diversité</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div id="communityRankingDetails" class="text-wrapper card-block shadowed-box">
-              <h4>Community Ranking Details<span class="badge"><%#= "#{@firm.ranking}" %>4.5</span></h4>
-              <div class="row">
-                <div class="col-xs-10">Sexists comments</div>
-                <div class="col-xs-2"><span class="badge">2<%#= "#{@firm.ranking.sexists_comments}" %></span></div>
-              </div>
-              <div class="row">
-                <div class="col-xs-10">Promotion discrimination feeling</div>
-                <div class="col-xs-2"><span class="badge">5<%#= "#{@firm.ranking.promotion}" %></span></div>
-              </div>
-              <div class="row">
-                <div class="col-xs-10">Remuneration discrimination feeling</div>
-                <div class="col-xs-2"><span class="badge">5<%#= "#{@firm.ranking.remuneration}" %></span></div>
-              </div>
-              <div class="row">
-                <div class="col-xs-10">Pregnancy related discrimination feeling</div>
-                <div class="col-xs-2"><span class="badge">3<%#= "#{@firm.ranking.pregnancy}" %></span></div>
-              </div>
-              <div class="row">
-                <div class="col-xs-10">Sexual harassment feeling</div>
-                <div class="col-xs-2"><span class="badge">5<%#= "#{@firm.ranking.sexual_harassment}" %></span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <div id="communityRankingHistory" class="text-wrapper card-block shadowed-box">
-              <h4>Community Ranking History</h4>
-              <div class="row">
-                <div class="col-xs-10">
-
-                </div>
-              </div>
-              <ul class="list-unstyled">
-                <li>Sexists comments </li>
-                <li>Promotion discrimination feeling </li>
-                <li>Remuneration discrimination feeling </li>
-                <li>Pregnancy related discrimination feeling </li>
-                <li>Sexual harassment feeling </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <%= render "official_labels" %>
+        <%= render "community_ranking_history" %>
       </div>
     </div>
   </div>

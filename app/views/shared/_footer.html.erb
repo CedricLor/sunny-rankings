@@ -4,24 +4,24 @@
       <div class="col-xs-12">
         <ul class="list-inline">
           <li>
-            <%= link_to '/' do %>
+            <%= link_to '/', html_options = { class: "social-icons" } do %>
               <i class="fa fa-facebook pulse"></i>
             <% end %>
           </li>
           <li>
-            <%= link_to '/' do %>
+            <%= link_to '/', html_options = { class: "social-icons" } do %>
               <i class="fa fa-twitter pulse"></i>
             <% end %>
           </li>
           <li>
-            <%= link_to '/' do %>
+            <%= link_to '/', html_options = { class: "social-icons" } do %>
               <i class="fa fa-linkedin pulse"></i>
             <% end %>
           </li>
         </ul>
       </div>
       <div class="col-xs-12 text-right">
-        <p>Sunny Rankings is a real-life proposal by The Choice!</p>
+        <p>Sunny Rankings is a proposal by <%= link_to("The Choice! LLP", "#", html_options = { class: "clear" }) %></p>
       </div>
     </div>
   </div>

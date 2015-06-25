@@ -153,3 +153,23 @@ $navbar-profile-border-width: 2px;
     }
   }
 }
+
+
+/* -------------------------------------
+ * Navbar form
+ * ------------------------------------- */
+.my-navbar-form {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  padding-right: 25px;
+  position: relative;
+  .my-navbar-form-control {
+    width: 100%;
+  }
+  @media screen and (min-width: 768px) {
+    left: -30px;
+    .my-navbar-form-control {
+      width: 500px;
+    }
+  }
+}

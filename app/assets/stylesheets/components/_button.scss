@@ -2,10 +2,13 @@
  * You killer button SASS module
  * ------------------------------------- */
 
-.red-hover-btn {
+.red-hover-btn, .navbar .nav li > a.red-hover-btn {
+  border: 1px solid #d4d4d4;
+  color: rgba(60, 2, 20, 0.5);
   background-color: rgba(122, 53, 53, 0);
 }
-.red-hover-btn:hover {
+
+.red-hover-btn:hover, .navbar .nav li > a.red-hover-btn:hover {
   color: white;
   background-color: rgba(245, 55, 55, 0.83);
 }

@@ -1,0 +1,17 @@
+.rotate-right-up {
+  -ms-transform: rotate(45deg) !important; /* IE 9 */
+  -webkit-transform: rotate(45deg) !important; /* Safari */
+  transform: rotate(45deg) !important;
+  color: rgb(32, 252, 32);;
+}
+.rotate-right-down {
+  -ms-transform: rotate(135deg) !important; /* IE 9 */
+  -webkit-transform: rotate(135deg) !important; /* Safari */
+  transform: rotate(135deg) !important;
+  color: red;
+}
+.rotate-neutral {
+  -ms-transform: rotate(90deg) !important; /* IE 9 */
+  -webkit-transform: rotate(90deg) !important; /* Safari */
+  transform: rotate(90deg) !important;
+}

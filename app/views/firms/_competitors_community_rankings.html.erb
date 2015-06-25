@@ -3,7 +3,7 @@
     <div id="competitorsCommunityRankings" class="text-wrapper card-block shadowed-box">
       <h4>Community Rankings in the <%= @firm.industry %> industry in <%= @firm.country %></h4>
       <table class="table table-striped table-responsive">
-      <% @firms.each do | firm | %>
+      <% @firms.ranking.each do | firm | %>
         <tr>
           <td>
             <%= link_to(firm_path(firm)) do %>
@@ -14,7 +14,7 @@
             <%= link_to firm.name, firm_path(firm) %>
           </td>
           <td>
-            <span class="badge">3.5<%#= "#{@firm.ranking.competitor[1]}" %></span>
+            <span class="badge"><%= "#{firm.avg_rating.round(1)}" %></span>
           </td>
         </tr>
       <% end %>

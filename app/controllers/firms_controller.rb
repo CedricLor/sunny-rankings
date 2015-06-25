@@ -2,10 +2,20 @@ class FirmsController < ApplicationController
   before_action :set_firm, only: [:show]
 
   def index
+    if params[:search]
+      @firms = Firm.where("name LIKE ?", "%#{params[:search]}%")
+      if @firms.empty?
+        @no_search_results = true
+        @firms = Firm.all
+      end
+    else
+      @firms = Firm.all
+    end
   end
 
   def show
     @firms = Firm.all
+    @tests = Test.all
   end
 
   def new
