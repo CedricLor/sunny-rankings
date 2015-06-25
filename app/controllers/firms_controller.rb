@@ -3,7 +3,7 @@ class FirmsController < ApplicationController
 
   def index
     if params[:search]
-      @firms = Firm.where("name LIKE ?", "%#{params[:search]}%")
+      @firms = Firm.where("LOWER(name) LIKE ?", "%#{params[:search].downcase}%")
       if @firms.empty?
         @no_search_results = true
         @firms = Firm.all
