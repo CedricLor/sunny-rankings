@@ -9,6 +9,10 @@ class Firm < ActiveRecord::Base
     # Firm.ranking.map(&:avg_rating)
   end
 
+  def self.ranking_by_industry(industry)
+    all.where(industry: industry).sort_by{ |f| f.avg_rating * -1 }
+  end
+
   def ranking
     Firm.ranking.index { |f| f.id == id } + 1
   end

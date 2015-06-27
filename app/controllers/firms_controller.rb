@@ -1,5 +1,5 @@
 class FirmsController < ApplicationController
-  before_action :set_firm, only: [:show]
+  before_action :set_firm, only: [:show, :add_review]
 
   def index
     if params[:search]
@@ -7,6 +7,8 @@ class FirmsController < ApplicationController
       if @firms.empty?
         @no_search_results = true
         @firms = Firm.all
+      else
+        @no_search_results = false
       end
     else
       @firms = Firm.all
@@ -16,6 +18,12 @@ class FirmsController < ApplicationController
   def show
     @firms = Firm.all
     @tests = Test.all
+  end
+
+  def add_review
+    @review = Review.new
+    @tests = Test.all
+    @answer = @review.answers.build
   end
 
   def new

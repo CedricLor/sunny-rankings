@@ -9,6 +9,14 @@ Rails.application.routes.draw do
     get 'static_pages/home'
     devise_for :users
     resources :firms, only: [ :index, :show ]
+    resources :firms, only: [ :edit] do
+      member do
+        get 'add_review', to: "firms#add_review"
+      end
+    end
+    resources :reviews, only: [ :new, :create, :show ] do
+      resources :user, only: [:edit, :update]
+    end
     root 'static_pages#home'
   end
 

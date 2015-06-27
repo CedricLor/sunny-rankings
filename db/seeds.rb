@@ -3,15 +3,15 @@
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#   cities = City.create([{ name: Chicago }, { name: Copenhagen }])
+#   Mayor.create(name: Emanuel, city: cities.first)
 
 Award.create(name: "Diversity Charter in Sweden")
 Award.create(name: "Charta der Vielfalt, Österreich")
 Award.create(name: "Charte de la Diversité en Entreprise, France")
 Award.create(name: "Label Egalité Diversité, Belgium")
 Award.create(name: "Charter de la Diversidad, España")
-Award.create(name: "Carta per le pari opportunità e l'uguaglianza sul lavoro, Italia")
+Award.create(name: "Carta per le pari opportunità e luguaglianza sul lavoro, Italia")
 Award.create(name: "Economics Dividend for Gender Equality, U.S.A")
 
 Firm.create(name: "MyMicroInvest", url: "https://www.mymicroinvest.com/", country: "Belgium", headcount: "48", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-mymicroinvest.svg")
@@ -31,17 +31,18 @@ Firm.create(name: "bpost", url: "https://www.bpost.be/", country: "Belgium", hea
   award.save
 end
 
-Test.create(test_question: "Absence of sexists comments")
-Test.create(test_question: "Equal pay")
-Test.create(test_question: "Equal promotion opportunities")
-Test.create(test_question: "Absence of pregnancy related issues")
-Test.create(test_question: "Absence of harrasment")
+Test.create(test_question: "Absence of sexists comments", test_long_question: "Sexist comments on my workplace are frequent", select_options: "Very frequent; Fairly frequent; No more than anywhere else; Quite rare; Extremly rare")
+Test.create(test_question: "Equal pay", test_long_question: "Male and female workers in the same position are offered the same wage", select_options: "In the same position, women are usually paid less than men; There are some discrepancies in the favor of men; Same position, same wage is the rule; There are some discrepancies in the favor of men; In the same position, women are usually better paid than men")
+Test.create(test_question: "Equal promotion opportunities", test_long_question: "Male and female employees in the same position are offered the same promotion opportunities", select_options: "In the same position, women are offerd less opportunities; There are some discrepancies in the favor of men; Same position, same promotion opportunities is the rule; There are some discrepancies in the favor of men; In the same position, women are usually offered better promotion opportunities than men")
+Test.create(test_question: "Absence of pregnancy related issues", test_long_question: "Pregnancy of an employee is resented as cumbersome", select_options: "Pregnancies are always resented as cumbersome; Pregnancies are generally resented as cumbersome; Pregnancies are sometime resented as cumbersome; Pregnancies are occasionnaly resented as cumbersome; Pregnancies are never resented as cumbersome")
+Test.create(test_question: "Absence of harassment", test_long_question: "I have already been subject, been witness or heard of sexual harassment related issues on my workplace", select_options: "Women feel very frequently harassed; Women feel frequently harassed; Women feel sometimes harassed; Women feel very rarely harassed; Women never feel sexually harassed")
 
 50.times do
   user = User.new({
     email: Faker::Internet.email,
-    password: 'azazazazaz',
-    password_confirmation: 'azazazazaz'
+    password: "azazazazaz",
+    password_confirmation: "azazazazaz",
+    validated: true
   })
   user.save
   review = Review.new({
@@ -64,8 +65,9 @@ end
 5.times do
   user = User.new({
     email: Faker::Internet.email,
-    password: 'azazazazaz',
-    password_confirmation: 'azazazazaz'
+    password: "azazazazaz",
+    password_confirmation: "azazazazaz",
+    validated: true
   })
   user.save
   review = Review.new({

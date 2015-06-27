@@ -19,8 +19,10 @@
 
   <%= render 'shared/navbar' %>
 
-  <%= render 'shared/flash' %>
-  <%= yield %>
+  <div id="main-container">
+    <%= render 'shared/flash' %>
+    <%= yield %>
+  </div>
 
   <%= render 'shared/footer' %>
 

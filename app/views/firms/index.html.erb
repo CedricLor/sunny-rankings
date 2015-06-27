@@ -2,13 +2,26 @@
 
 <div class="container">
   <div class="row">
+
+  </div>
+
+  <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
       <div class="company-container">
+
+        <!-- Search Form -->
+        <div class="row">
+          <div div="class-xs-12">
+            <%= render "shared/search_form" %>
+          </div>
+        </div>
+        <!-- If the user has searched something -->
         <h1>
           <% if params[:search] %>
             <%= "Search results for \"#{params[:search]}\"" %>
           <% end %>
         </h1>
+        <!-- If the search has not given any result -->
         <% if @no_search_results == true %>
         <div class="row">
           <div class="col-xs-12">
@@ -20,6 +33,13 @@
                 <%= link_to("Please add \"#{params[:search]}\" to our rankings!", "#", class: "btn btn-default btn-lg add-me-after-search red-hover-btn", role: "button") %>
               </h4>
             </div>
+          </div>
+        </div>
+        <% end %>
+        <!-- if the search has not given any results or if the user has not searched anything -->
+        <% if (@no_search_results == true || params[:search].nil? ) %>
+        <div class="row">
+          <div class="col-xs-12">
             <div class="text-wrapper card-block shadowed-box text-center">
               <p>
                 <%= "Here are all the firms currently ranked by our community in Belgium" %>
@@ -28,6 +48,7 @@
           </div>
         </div>
         <% end %>
+        <!-- listing of all firms or search result -->
         <div class="row">
           <div class="col-xs-12">
             <div id="competitorsCommunityRankings" class="text-wrapper card-block shadowed-box">
@@ -52,8 +73,8 @@
           </div>
         </div>
       </div>
-
-    <%#= render "competitors_community_rankings" %>
-
+    <% if (params[:search] && @no_search_results == false ) %>
+      <%= render "competitors_community_rankings", selected_firm: @firms.first %>
+    <% end %>
   </div>
 </div>

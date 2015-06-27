@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-xs-12">
     <div id="competitorsCommunityRankings" class="text-wrapper card-block shadowed-box">
-      <h4>Community Rankings in the <%= @firm.industry %> industry in <%= @firm.country %></h4>
+      <h4>Community Rankings in the <%= selected_firm.industry %> industry in <%= selected_firm.country %></h4>
       <table class="table table-striped table-responsive">
-      <% @firms.ranking.each do | firm | %>
+      <% Firm.all.ranking_by_industry(selected_firm.industry).each do | firm | %>
         <tr>
           <td>
             <%= link_to(firm_path(firm)) do %>
