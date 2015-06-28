@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require bootstrap-rating.min
+//= require bootstrap-slider
 //= require_tree .

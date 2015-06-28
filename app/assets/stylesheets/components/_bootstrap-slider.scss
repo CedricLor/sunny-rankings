@@ -1,0 +1,45 @@
+.slider-handle.min-slider-handle {
+  margin-top: -7px !important;
+  border-radius: 6px;
+  width: 25px;
+  height: 25px;
+  background-color: rgb(227, 230, 233);
+  background-image: -webkit-linear-gradient(rgb(47, 51, 53) 0%, rgb(150, 202, 231) 100%);
+  background-image: -o-linear-gradient(rgb(47, 51, 53) 0%, rgb(150, 202, 231) 100%);
+  background-image: linear-gradient(rgb(47, 51, 53) 0%, rgb(150, 202, 231) 100%);
+}
+.red-slider-handle,
+  div[data-question-type="positive"] .slider-handle.min-slider-handle[style="left: 100%;"],
+  div[data-question-type="negative"] .slider-handle.min-slider-handle[style="left: 0%;"] {
+  background-image: linear-gradient(rgb(242, 38, 30) 0%, rgb(233, 222, 222) 100%) !important;
+  background-image: -o-linear-gradient(rgb(242, 38, 30) 0%, rgb(233, 222, 222) 100%) !important;
+  background-image: linear-gradient(rgb(242, 38, 30) 0%, rgb(233, 222, 222) 100%) !important;
+}
+.green-slider-handle,
+  div[data-question-type="negative"] .slider-handle.min-slider-handle[style="left: 100%;"],
+  div[data-question-type="positive"] .slider-handle.min-slider-handle[style="left: 0%;"] {
+  background-image: -webkit-linear-gradient(rgb(26, 194, 1) 0%, rgb(85, 123, 73) 100%) !important;
+  background-image: -o-linear-gradient(rgb(26, 194, 1) 0%, rgb(85, 123, 73) 100%) !important;
+  background-image: linear-gradient(rgb(26, 194, 1) 0%, rgb(85, 123, 73) 100%) !important;
+}
+
+div.slider.slider-horizontal {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.containerForTrueFalse {
+  width: 100%;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 50px;
+  .subcontainers-for-true-false {
+    display: inline-block;
+  }
+  .containerForTrue {
+    float: left;
+  }
+  .containerForFalse {
+    float: right;
+  }
+}

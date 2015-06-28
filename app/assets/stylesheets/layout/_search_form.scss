@@ -1,12 +1,87 @@
 #navbarSearchForm {
   width: 100%;
   margin: auto;
+  position: relative;
+  margin-left: 5px;
 }
 #navbarSearchInput {
-  width: 90%;
+  width: 83%;
+  @media screen and (min-width: 360px) {
+    width: 86%;
+  }
+  @media screen and (min-width: 375px) {
+    width: 86%;
+  }
+  @media screen and (min-width: 414px) {
+    width: 87%;
+  }
+  @media screen and (min-width: 414px) {
+    width: 87%;
+  }
+  @media screen and (min-width: 768px) {
+    width: 89%;
+  }
+  @media screen and (min-width: 1123px) {
+    width: 90%;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 91%;
+  }
   display: block;
   float: left;
 }
 #navbarSearchButton {
   float: left;
+}
+
+/* -------------------------------------
+ * Navbar form
+ * ------------------------------------- */
+#search-form-wrapper {
+  padding-top: 10px;
+  padding-bottom: 15px;
+  padding-right: 25px;
+  position: relative;
+  display: inline;
+  // .my-navbar-form-control {
+  //   width: 100%;
+  // }
+  #navbarSearchInput {
+    width: 210px;
+  }
+  @media screen and (min-width: 1138px) {
+    display: block;
+    width: 800px;
+    #navbarSearchForm {
+      width: 700px;
+    }
+    #navbarSearchInput {
+      width: 500px;
+    }
+  }
+  // @media screen and (min-width: 938px) {
+  //   .my-navbar-form-control {
+  //     width: 400px;
+  //   }
+  // }
+  // @media screen and (min-width: 840px) {
+  //   .my-navbar-form-control {
+  //     width: 300px;
+  //   }
+  // }
+  // @media screen and (min-with: 770px) {
+  //   margin-left: 70px;
+  //   display: block !important;
+  // }
+  // @media screen and (min-width: 487px) {
+  //   display: inline-block !important;
+  //   .my-navbar-form-control {
+  //     width: auto;
+  //     display: inline-block;
+  //   }
+  // }
+  // @media screen
+  //   and (min-width: 487px)
+  //   and (max-width: 769px) {
+  //   }
 }

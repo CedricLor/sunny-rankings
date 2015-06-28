@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [ :new, :create, :show ] do
       resources :user, only: [:edit, :update]
     end
-    root 'static_pages#home'
+    root 'firms#index'
   end
 
 

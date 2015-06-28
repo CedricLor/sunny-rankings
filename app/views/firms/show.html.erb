@@ -38,6 +38,11 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <%= button_to "Rate MyMicroInvest!", add_review_firm_path, method: :get, class: "btn btn-danger btn-lg btn-block", type: "button" %>
+          </div>
+        </div>
         <%= render "community_ranking_details" %>
         <%= render "competitors_community_rankings", selected_firm: @firm %>
         <%= render "official_labels" %>

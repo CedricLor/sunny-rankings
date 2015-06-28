@@ -13,6 +13,10 @@ class Firm < ActiveRecord::Base
     all.where(industry: industry).sort_by{ |f| f.avg_rating * -1 }
   end
 
+  def self.top10_by_country(country)
+    all.where(country: country).sort_by{ |f| f.avg_rating * -1 }
+  end
+
   def ranking
     Firm.ranking.index { |f| f.id == id } + 1
   end
@@ -22,11 +26,18 @@ class Firm < ActiveRecord::Base
   end
 
   def avg_ratings_by_test
-    # former avg_answer_ratings
     answers.group(:test_id).average(:user_rating)
   end
 
   def number_of_reviews
     reviews.count
+  end
+
+  def number_of_valid_reviews
+    reviews.where(validated: true).count
+  end
+
+  def number_of_pending_reviews
+    reviews.where(validated: true).count
   end
 end

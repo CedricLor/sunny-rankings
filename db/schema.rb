@@ -74,9 +74,10 @@ ActiveRecord::Schema.define(version: 20150626152123) do
     t.integer  "user_id"
     t.integer  "firm_id"
     t.string   "user_firm_relationship"
-    t.boolean  "validated"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.boolean  "confirmed_t_and_c",      default: false
+    t.boolean  "validated",              default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "reviews", ["firm_id"], name: "index_reviews_on_firm_id"
@@ -86,8 +87,9 @@ ActiveRecord::Schema.define(version: 20150626152123) do
     t.string   "test_question"
     t.string   "test_long_question"
     t.string   "select_options"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.string   "positive_negative_switch"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "users", force: :cascade do |t|

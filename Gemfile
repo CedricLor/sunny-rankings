@@ -67,6 +67,9 @@ gem 'minispec', '~> 0.0.5'
 # pundit
 gem 'pundit'
 
+# bootstrap rating system
+gem 'bootstrap-slider-rails', '~> 4.8.1'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
