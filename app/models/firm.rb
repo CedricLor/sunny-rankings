@@ -14,7 +14,8 @@ class Firm < ActiveRecord::Base
   end
 
   def self.top10_by_country(country)
-    all.where(country: country).sort_by{ |f| f.avg_rating * -1 }
+    top_by_country = all.where(country: country).sort_by{ |f| f.avg_rating * -1 }
+    top_by_country = top_by_country[0..9]
   end
 
   def ranking

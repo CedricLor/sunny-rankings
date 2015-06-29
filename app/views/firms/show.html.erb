@@ -10,12 +10,12 @@
           </div>
         </div>
         <div class="row" data-my-content="company-top-row">
-          <div class="col-xs-4" data-my-content="company-icon">
+          <div class="col-xs-12 col-sm-4" data-my-content="company-icon">
             <div class="icon-wrapper card-block shadowed-box">
               <%= image_tag(@firm.icon_name, class: "company-icon") %>
             </div>
           </div>
-          <div class="col-xs-8">
+          <div class="col-xs-12 col-sm-8">
             <div class="text-wrapper card-block shadowed-box">
               <div class="row">
                 <div class="col-xs-3">
@@ -40,7 +40,9 @@
         </div>
         <div class="row">
           <div class="col-xs-12">
-            <%= button_to "Rate MyMicroInvest!", add_review_firm_path, method: :get, class: "btn btn-danger btn-lg btn-block", type: "button" %>
+            <div class="text-wrapper card-block shadowed-box">
+              <%= button_to "Rate #{@firm.name}!", add_review_firm_path, method: :get, class: "btn btn-default btn-lg btn-block red-hover-btn", type: "button" %>
+            </div>
           </div>
         </div>
         <%= render "community_ranking_details" %>
@@ -51,9 +53,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 <% content_for(:facebook_js) do %>
   <%= javascript_tag do %>
@@ -98,18 +97,3 @@
     }
   <% end %>
 <% end %>
-
-<style>
-.card-box {
-
-}
-.company-container {
-
-}
-.img-wrapper {
-
-}
-.txt-wrapper {
-
-}
-</style>

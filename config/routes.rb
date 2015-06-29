@@ -7,16 +7,32 @@ Rails.application.routes.draw do
     get 'static_pages/about'
     get 'static_pages/help'
     get 'static_pages/home'
+
+    get 'reconcile', to: "users#reconcile"
+    get 'pendinguservalidation', to: "users#pendinguservalidation"
+
+    get 'pendingreviews', to: "reviews#pendingreviews"
+
     devise_for :users
+
+    resources :users, only: [ :show]
+
     resources :firms, only: [ :index, :show ]
     resources :firms, only: [ :edit] do
       member do
         get 'add_review', to: "firms#add_review"
       end
     end
+
     resources :reviews, only: [ :new, :create, :show ] do
-      resources :user, only: [:edit, :update]
+      resources :users, only: [ :edit, :update ]
     end
+    resources :reviews, only: [ :new, :create ] do
+      member do
+        get 'confirm', to: "reviews#confirm"
+      end
+    end
+
     root 'firms#index'
   end
 

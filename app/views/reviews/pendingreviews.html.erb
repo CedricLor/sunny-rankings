@@ -1,4 +1,4 @@
-<% content_for(:title, "Your Vote") %>
+<% content_for(:title, "Your Pending Reviews") %>
 
 <div class="container">
   <div class="row">
@@ -6,40 +6,8 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="card-block shadowed-box">
-            <h1 class="text-center">Thank you for your vote!</h1>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="card-block shadowed-box">
-            <h3 class="text-center">A temporary account has been created for you. To validate your vote, please complete your profile.</h3>
-            <p>These temporary credentials will remain valid for three days! After this delay, if you have not updated your profile, your vote will be discarded.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="card-block shadowed-box">
-            <%= simple_form_for([@review, @user], url: review_user_path(@review, @user), html: { method: :patch }) do |f| %>
-              <%= f.input :email, label: "Your username for this test." %>
-              <%= f.error :email, id: 'user_name_error' %>
-              <%= f.input :password, label: "Your password for this test." %>
-              <%= f.full_error :token %>
-              <%= f.button :submit, 'Update' %>
-            <% end %>
-            <div class="hidden">
-              <div id="fakeUsername"><%= @user.email %></div>
-              <div id="fakePassword"><%= @user.password %></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="card-block shadowed-box">
-            <h3 class="text-center">Here are your votes for <%= "#{@firm.name}" %>.</h3>
-            <p>Please review them carefully and update them, as the case may be.</p>
+            <h3 class="text-center">Here is your latest pending review for <%= "#{@firm.name}" %>.</h3>
+            <p>Please review your votes carefully and update them, as the case may be.</p>
             <% if @review.contains_sensitive_answers[:sensitive] %>
               <p class="review-warning"><%= "Beware! You have granted #{@review.contains_sensitive_answers[:count]} very bad #{"ranking".pluralize(@review.contains_sensitive_answers[:count])} to #{@firm.name}!" %></p>
               <p class="review-warning"><%= "At Sunny Rankings, we consider this kind of reviews as a serious case, both for you and for #{@firm.name}!" %></p>

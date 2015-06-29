@@ -32,6 +32,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.boolean :validated, null: false, default: false
       t.references :user, index: true, foreign_key: true
+      # TODO: Quick fix; in reality, should rely on the emails in the profiles
+      t.string :real_email
 
       t.timestamps null: false
     end

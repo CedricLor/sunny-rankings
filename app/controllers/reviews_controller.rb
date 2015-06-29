@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, only: [:pendingreviews]
+
   def new
     @review = Review.new
     @tests = Test.all
@@ -17,12 +19,34 @@ class ReviewsController < ApplicationController
       @answers[i].save
     end
     sign_in(@user)
+    redirect_to confirm_review_path(@review)
+    # if @review.save
+    #   redirect_to blablabla
+    # else
+    #   render :new
+    # end
   end
 
   def show
   end
 
   def index
+  end
+
+  def pendingreviews
+    @user = current_user
+    @reviews = @user.reviews
+    # TODO correct @ review
+    @review = @reviews.last
+    # TODO @firm to be refactored together with the view
+    @firm = @review.firm
+  end
+
+  def confirm
+    set_user
+    # TODO correct @review
+    @review = @user.reviews.last
+    @firm = @review.firm
   end
 
   def edit
@@ -37,7 +61,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:firm_id)
+    params.require(:review).permit(:firm_id, :review_id)
   end
 
   def answer_params

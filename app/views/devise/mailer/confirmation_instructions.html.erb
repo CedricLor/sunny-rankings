@@ -1,5 +1,23 @@
-<p>Welcome <%= @email %>!</p>
+<% content_for(:title, "Account email confirmation") %>
 
-<p>You can confirm your account email through the link below:</p>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
+      <div class="card-block shadowed-box text-center">
+        <div class="main-title-block">
+          <h1 class="main-title">Account email confirmation</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <div class="card-block shadowed-box text-center">
+      <p>Welcome <%= @email %>!</p>
+      <p>You can confirm your account email through the link below:</p>
+      <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>

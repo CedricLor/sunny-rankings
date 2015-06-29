@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20150626152123) do
     t.string   "last_sign_in_ip"
     t.boolean  "validated",              default: false, null: false
     t.integer  "user_id"
+    t.string   "real_email"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end

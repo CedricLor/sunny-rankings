@@ -6,12 +6,12 @@ class FirmsController < ApplicationController
       @firms = Firm.where("LOWER(name) LIKE ?", "%#{params[:search].downcase}%")
       if @firms.empty?
         @no_search_results = true
-        @firms = Firm.all
+        @firms = Firm.top10_by_country("Belgium")
       else
         @no_search_results = false
       end
     else
-      @firms = Firm.all
+      @firms = Firm.top10_by_country("Belgium")
     end
   end
 
