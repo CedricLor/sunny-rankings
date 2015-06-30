@@ -1,5 +1,6 @@
 class FirmsController < ApplicationController
-  before_action :set_firm, only: [:show, :add_review]
+  # before_action :set_firm, only: [:show, :add_review]
+  before_action :set_firm, only: [:show ]
 
   def index
     if params[:search]
@@ -18,11 +19,7 @@ class FirmsController < ApplicationController
   def show
     @firms = Firm.all
     @tests = Test.all
-  end
-
-  def add_review
     @review = Review.new
-    @tests = Test.all
     @answer = @review.answers.build
   end
 

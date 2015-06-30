@@ -7,7 +7,7 @@
     <%= link_to("Tweet", "https://twitter.com/share", class: "twitter-share-button", "data-via" => "sunnyrankings", "data-count" => "none") %>
   </div>
   <div class="col-xs-3">
-    <%= javascript_include_tag '//platform.linkedin.com/in.js', 'data-turbolinks-track' => true do %>
+    <%= javascript_include_tag '//platform.linkedin.com/in.js' do %>
       lang: en_US
     <% end %>
     <%#= javascript_tag, type: "IN/Share", "data-url" => "https://sunny-rankings.herokuapp.com/" do %>
@@ -16,6 +16,6 @@
     <script type="IN/Share" data-url="https://sunny-rankings.herokuapp.com/"></script>
   </div>
   <div class="col-xs-3">
-    <%= link_to("Rate me!", add_review_firm_path, class: "btn btn-default btn-xs rate-me red-hover-btn", role: "button") %>
+    <%= link_to("Rate me!", "#review_form", class: "btn btn-default btn-xs rate-me red-hover-btn", role: "button") %>
   </div>
 </div>

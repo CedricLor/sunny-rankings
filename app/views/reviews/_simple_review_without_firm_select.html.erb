@@ -1,0 +1,20 @@
+<%= simple_form_for @review, method: :post, url: :firm_reviews do |r| %>
+  <% @tests.each do |test| %>
+    <%= simple_fields_for :answer do |a| %>
+      <%= a.input :user_rating,
+          label: "#{test.test_long_question}",
+          wrapper_html: {
+            class: "text-center my-rating-wrapper"
+          },
+          input_html: {
+            name: "user_rating[#{test.id}]",
+            id: "user_rating[#{test.id}]",
+            type: "hidden",
+            class: "rating",
+            "data-filled" => "fa fa-circle fa-4x",
+            "data-empty" => "fa fa-circle-o fa-4x"
+        } %>
+    <% end %>
+  <% end %>
+  <%= r.button :submit, "Vote", class: "btn-center" %>
+<% end %>

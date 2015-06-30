@@ -4,26 +4,31 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @tests = Test.all
-    @firms = Firm.all
+    if params[:firm_id].nil?
+      @firms = Firm.all
+    else
+      @firm = Firm.find(params[:firm_id])
+    end
     @answer = @review.answers.build
   end
 
   def create
-    set_user
-    set_firm
-    @review = @user.reviews.build(validated: false, user_id: @user.id, firm_id: @firm_id, user_firm_relationship: "Undefined")
-    @review.save
-    @answers = []
-    answer_params.each_with_index do | question_user_rating, i |
-      @answers[i] = @review.answers.build(:test_id => question_user_rating[0], :user_rating => question_user_rating[1])
-      @answers[i].save
-    end
-    sign_in(@user)
-    redirect_to confirm_review_path(@review)
-    # if @review.save
-    #   redirect_to blablabla
+    # if params[:review][:temporary_email].nil?
+      # redirect_to
     # else
-    #   render :new
+      set_user
+      set_firm
+      create_and_save_review
+      create_and_save_answers
+      if @is_new_user
+        sign_in(@user)
+        flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved. To validate your vote, please update your account credentials!"
+        redirect_to edit_user_registration_path
+        # redirect_to confirm_review_path(@review)
+      else
+        flash[:notice] = "Dear #{params[:review][:temporary_email]}, your review of #{@review.firm.name} has been successfully saved. Please login to your account #{params[:review][:temporary_email]} at Sunny Rankings to validate it!"
+        redirect_to firms_path
+      end
     # end
   end
 
@@ -69,33 +74,73 @@ class ReviewsController < ApplicationController
   end
 
   def set_firm
-    if @firm = Firm.find_by_id(params[:review][:firm_id])
-      @firm_id = @firm.id
+    if params[:firm_id].present?
+      @firm = Firm.find(params[:firm_id])
+      @firm_id = params[:firm_id]
     else
-      @firm_id = 1000000
+      if params[:review][:firm_id].present?
+        @firm = Firm.find(params[:review][:firm_id])
+        @firm_id = @firm.id
+      else
+        @firm_id = 1000000
+      end
     end
   end
 
   def set_user
+    # TODO = Retrieve the email of the user and look for it in the database
     if current_user.nil?
-      @user = create_user
+      if User.find_by_email(params[:review][:temporary_email]).nil?
+        @user = create_user_on_vote
+        @is_new_user = true
+      else
+        @user = User.find_by_email(params[:review][:temporary_email])
+        @is_new_user = false
+      end
     else
       @user = current_user
+      @is_new_user = false
     end
   end
 
-  def create_user
+  def create_user_on_vote
     username = Faker::Internet.email
     password = Faker::Internet.password
     # creation of a user to be validated by user
     user = User.create({
       email: username,
+      real_email: params[:review][:temporary_email],
       password: password,
       password_confirmation: password,
       validated: false
     })
+    UserMailer.new_user_on_vote(user.email).deliver_now
+    user
+  end
+
+  def create_and_save_review
+    @review = @user.reviews.build(
+      validated: false,
+      user_id: @user.id,
+      firm_id: @firm_id,
+      user_firm_relationship: "Undefined"
+      )
+    puts "*" * 40
+    puts @review.firm.name
+    puts "*" * 40
+    byebug
+    @review.save
+  end
+
+  def create_and_save_answers
+    @answers = []
+    answer_params.each_with_index do | question_user_rating, i |
+      @answers[i] = @review.answers.build(:test_id => question_user_rating[0], :user_rating => question_user_rating[1])
+      @answers[i].save
+    end
   end
 end
+
 
 
   # t.integer :user_rating

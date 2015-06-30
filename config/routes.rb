@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     # resources :users, only: [ :show]
 
     resources :firms, only: [ :index, :show ] do
-      resources :reviews, only: [ :create]
+      resources :reviews, only: [ :new, :create]
     end
     # resources :firms, only: [ :edit] do
     #   member do

@@ -3,10 +3,18 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-      <h3 class="text-center">How is gender equality doing on your workplace?</h3>
-      <div class="card-block shadowed-box">
-        <%= render "simple_review_with_firm_select" %>
-      </div>
+
+      <% if @firm.nil? %>
+        <h3 class="text-center">How is gender equality doing on your workplace?</h3>
+        <div class="card-block shadowed-box">
+          <%= render "simple_review_with_firm_select" %>
+        </div>
+      <% else %>
+        <h3 class="text-center">How is gender equality doing at <%= "#{@firm.name}?" %></h3>
+        <div class="card-block shadowed-box">
+          <%= render "simple_review_without_firm_select" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
