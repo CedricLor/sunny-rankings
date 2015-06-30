@@ -24,7 +24,10 @@ class ReviewsController < ApplicationController
         sign_in(@user)
         flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved. To validate your vote, please update your account credentials!"
         redirect_to edit_user_registration_path
-        # redirect_to confirm_review_path(@review)
+      elsif current_user
+        flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved."
+        # TODO: Correct path and the whole logic of logged in users
+        redirect_to pendingreviews_path
       else
         flash[:notice] = "Dear #{params[:review][:temporary_email]}, your review of #{@review.firm.name} has been successfully saved. Please login to your account #{params[:review][:temporary_email]} at Sunny Rankings to validate it!"
         redirect_to firms_path
@@ -74,21 +77,22 @@ class ReviewsController < ApplicationController
   end
 
   def set_firm
+    # If the request comes from a firm's page
     if params[:firm_id].present?
       @firm = Firm.find(params[:firm_id])
       @firm_id = params[:firm_id]
+    # If the request comes from the Rate a firm's page
+    elsif params[:review][:firm_id].present?
+      @firm = Firm.find(params[:review][:firm_id])
+      @firm_id = @firm.id
+    # Else catch
+    # TODO: Not satisfactory because triggers an error later + saves a fake record into the database
     else
-      if params[:review][:firm_id].present?
-        @firm = Firm.find(params[:review][:firm_id])
-        @firm_id = @firm.id
-      else
-        @firm_id = 1000000
-      end
+      @firm_id = 1000000
     end
   end
 
   def set_user
-    # TODO = Retrieve the email of the user and look for it in the database
     if current_user.nil?
       if User.find_by_email(params[:review][:temporary_email]).nil?
         @user = create_user_on_vote
@@ -125,10 +129,6 @@ class ReviewsController < ApplicationController
       firm_id: @firm_id,
       user_firm_relationship: "Undefined"
       )
-    puts "*" * 40
-    puts @review.firm.name
-    puts "*" * 40
-    byebug
     @review.save
   end
 
