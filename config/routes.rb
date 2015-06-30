@@ -9,20 +9,22 @@ Rails.application.routes.draw do
     get 'static_pages/home'
 
     get 'reconcile', to: "users#reconcile"
-    get 'pendinguservalidation', to: "users#pendinguservalidation"
-
-    get 'pendingreviews', to: "reviews#pendingreviews"
 
     devise_for :users
 
-    resources :users, only: [ :show]
+    # Do not remove the following route.
+    # It is used from the confirm review view to search
+    # if the email provided by the user is indeed a user mail
+    # resources :users, only: [ :show]
 
-    resources :firms, only: [ :index, :show ]
-    resources :firms, only: [ :edit] do
-      member do
-        get 'add_review', to: "firms#add_review"
-      end
+    resources :firms, only: [ :index, :show ] do
+      resources :reviews, only: [ :create]
     end
+    # resources :firms, only: [ :edit] do
+    #   member do
+    #     get 'add_review', to: "firms#add_review"
+    #   end
+    # end
 
     resources :reviews, only: [ :new, :create, :show ] do
       resources :users, only: [ :edit, :update ]
@@ -32,6 +34,8 @@ Rails.application.routes.draw do
         get 'confirm', to: "reviews#confirm"
       end
     end
+
+    get 'pendingreviews', to: "reviews#pendingreviews"
 
     root 'firms#index'
   end

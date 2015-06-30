@@ -1,0 +1,62 @@
+<h3 class="text-center">Here are your votes for <%= "#{@firm.name}" %>.</h3>
+<p>Please review them carefully and update them, as the case may be.</p>
+<% if @review.contains_sensitive_answers[:sensitive] %>
+  <p class="review-warning"><%= "Beware! You have granted #{@review.contains_sensitive_answers[:count]} very bad #{"ranking".pluralize(@review.contains_sensitive_answers[:count])} to #{@firm.name}!" %></p>
+  <p class="review-warning"><%= "At Sunny Rankings, we consider this kind of reviews as a serious case, both for you and for #{@firm.name}!" %></p>
+  <p class="review-warning"><%= "Please read carefully our terms of service before validating your answers." %></p>
+<% end %>
+<p>Once your are done, press the Validate button below.</p>
+<hr>
+
+<%= simple_form_for @review do |r| %>
+  <% @review.answers.each_with_index do |answer,i| %>
+    <% i += 1 %>
+    <%= simple_fields_for :answer[i] do |a| %>
+      <!-- actual input for each question. Default type is select in case javascript would not work -->
+      <%= a.input :user_rating,
+          label: "#{answer.test.test_long_question}",
+          wrapper_html: {
+            class: "text-center my-rating-wrapper",
+            "data-question-type" => "#{answer.test.positive_negative_switch}"
+          },
+          input_html: {
+            name: "user_rating[#{i}]",
+            id: "user_rating[#{i}]",
+            value: "#{answer.user_rating}",
+            "data-slider-min" => "1",
+            "data-slider-max" => "5",
+            "data-slider-step" => "1",
+            "data-slider-id" => "user_rating#{i}Slider",
+            "data-slider-value" => "#{answer.user_rating}",
+            "data-id" => "user_rating#{answer.test.id}"
+        } %>
+      <!-- javascript that creates the slider element on the input -->
+      <% content_for(:last_js) do %>
+        <%= javascript_tag do %>
+        $('[data-id=user_rating<%="#{i}"%>]').slider({
+            tooltip: 'hide',
+            handle: 'square'
+        });
+        <% end %>
+      <% end %>
+      <!-- True/False legend -->
+      <div class="containerForTrueFalse hidden">
+        <div class="containerForTrue subcontainers-for-true-false">True</div>
+        <div class="containerForFalse subcontainers-for-true-false">False</div>
+      </div>
+    <% end %>
+  <% end %>
+  <!-- TO DO: Not very satisfactory way to select set the id of the firm; to be reviewed with a coach -->
+  <p>By clicking the following button, you confirm that you are aware of the terms of Art. L. 323-2 of the French Criminal Code, pursuant to which any person introducing fraudulent data into a database is liable of a fine up to 75.000 euros and 5 years of custody.</p>
+  <%= r.input :confirmed_t_and_c, label: "I hereby confirm that I have read and agreed to the conditions of use of the services of Sunny Rankings." %>
+  <%= r.input :firm_id, as: :hidden, input_html: { value: "#{@firm.id}" } %>
+  <%= r.button :submit, "Validate", class: "btn-center" %>
+<% end %>
+
+<% content_for(:last_js) do %>
+  <%= javascript_tag do %>
+    <!-- This line displays the True/False stuff -->
+    $('.containerForTrueFalse').removeClass('hidden');
+  <% end %>
+<% end %>
+

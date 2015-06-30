@@ -9,7 +9,7 @@
     <%= yield_with_default(:title, "*") %>
     <%= " | Sunny Rankings" %>
   </title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false %>
   <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css", media: 'all' %>
   <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Roboto:400,500,300", media: 'all' %>
   <%= csrf_meta_tags %>
@@ -26,7 +26,7 @@
 
   <%= render 'shared/footer' %>
 
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= yield(:after_js) %>
   <%= yield(:last_js) %>
 

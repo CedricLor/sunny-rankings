@@ -35,11 +35,11 @@ Firm.create(name: "AXA Banque", url: "https://www.axa.be/", country: "Belgium", 
   award.save
 end
 
-Test.create(test_question: "Absence of sexists comments", test_long_question: "Sexist comments on my workplace are frequent", positive_negative_switch: "negative", select_options: "Very frequent; Fairly frequent; No more than anywhere else; Quite rare; Extremely rare")
-Test.create(test_question: "Absence of pregnancy related issues", test_long_question: "Pregnancy of an employee is resented as cumbersome", positive_negative_switch: "negative", select_options: "Never; Sometimes; No more than anywhere else; Frequently; Always")
-Test.create(test_question: "Equal promotion opportunities", test_long_question: "Female and male employees in the same position are offered the same promotion opportunities", positive_negative_switch: "positive", select_options: "Never; Sometimes; No more than anywhere else; Frequently; Always")
-Test.create(test_question: "Equal pay", test_long_question: "Male and female workers in the same position are offered the same wage", positive_negative_switch: "positive", select_options: "Never; Sometimes; No more than anywhere else; Frequently; Always")
-Test.create(test_question: "Absence of harassment", test_long_question: "I have already been subject, been witness or heard of sexual harassment related issues on my workplace", positive_negative_switch: "negative", select_options: "Never; Sometimes; No more than anywhere else; Frequently; Always")
+Test.create(test_question: "Absence of sexists comments", test_long_question: "How frequent are sexists comments at this firm?", positive_negative_switch: "positive", select_options: "Very frequent; Fairly frequent; No more than anywhere else; Quite rare; Extremely rare")
+Test.create(test_question: "Absence of pregnancy related issues", test_long_question: "How is resented the pregnancy of an employee in this firm?", positive_negative_switch: "positive", select_options: "Very cumbersome; Cumbersome; Not worse than anywhere else; Quite easy; Really easy")
+Test.create(test_question: "Equal promotion opportunities", test_long_question: "Are female and male employees in the same position offered the same promotion opportunities in this firm?", positive_negative_switch: "positive", select_options: "Never; Sometimes; Quite often; Frequently; Always")
+Test.create(test_question: "Equal pay", test_long_question: "Are female and male employees in the same position offered the same wage at this firm?", positive_negative_switch: "positive", select_options: "Never; Sometimes; Quite often; Frequently; Always")
+Test.create(test_question: "Absence of harassment", test_long_question: "Are there any sexual harassment related issues at this firm?", positive_negative_switch: "positive", select_options: "Very frequently; Frequently; Now and then; Almost never; Never")
 
 80.times do
   user = User.new({
