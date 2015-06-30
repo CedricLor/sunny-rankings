@@ -12,28 +12,18 @@ Rails.application.routes.draw do
 
     devise_for :users
 
-    # Do not remove the following route.
-    # It is used from the confirm review view to search
-    # if the email provided by the user is indeed a user mail
-    # resources :users, only: [ :show]
-
     resources :firms, only: [ :index, :show ] do
       resources :reviews, only: [ :new, :create]
     end
-    # resources :firms, only: [ :edit] do
-    #   member do
-    #     get 'add_review', to: "firms#add_review"
-    #   end
-    # end
 
     resources :reviews, only: [ :new, :create, :show ] do
       resources :users, only: [ :edit, :update ]
     end
-    resources :reviews, only: [ :new, :create ] do
-      member do
-        get 'confirm', to: "reviews#confirm"
-      end
-    end
+    # resources :reviews, only: [ :new, :create ] do
+    #   member do
+    #     get 'confirm', to: "reviews#confirm"
+    #   end
+    # end
 
     get 'pendingreviews', to: "reviews#pendingreviews"
 

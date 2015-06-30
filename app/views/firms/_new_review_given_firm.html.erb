@@ -1,33 +1,7 @@
 <div id="review_form" class="row">
   <div class="col-xs-12">
     <div class="text-wrapper card-block shadowed-box">
-      <h3 class="text-center">How is gender equality doing at <%= "#{@firm.name}?" %></h3>
-      <hr/>
-      <%= simple_form_for [@firm, @review] do |r| %>
-        <% @tests.each do |test| %>
-          <%= simple_fields_for :answer do |a| %>
-            <%= a.input :user_rating,
-                label: "#{test.test_long_question}",
-                wrapper_html: {
-                  class: "text-center my-rating-wrapper"
-                },
-                input_html: {
-                  name: "user_rating[#{test.id}]",
-                  id: "user_rating[#{test.id}]",
-                  type: "hidden",
-                  class: "rating",
-                  "data-filled" => "fa fa-circle fa-4x",
-                  "data-empty" => "fa fa-circle-o fa-4x"
-              } %>
-          <% end %>
-        <hr/>
-        <% end %>
-        <p>By clicking the following button, you confirm that you are aware of the terms of Art. L. 323-2 of the French Criminal Code, pursuant to which any person introducing fraudulent data into a database is liable of a fine up to 75.000 euros and 5 years of custody.</p>
-        <%= r.input :confirmed_t_and_c, label: "I hereby confirm that I have read and agreed to the conditions of rating services of Sunny Rankings." %>
-        <hr/>
-        <%= r.input :temporary_email, label: "Please enter your email" %>
-        <%= r.button :submit, "Vote", class: "btn-center" %>
-      <% end %>
+      <%= render "reviews/simple_review_without_firm_select" %>
     </div>
   </div>
 </div>

@@ -26,6 +26,7 @@
           <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
           <%= f.input :password_confirmation, required: false %>
           <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+          <%= f.input :real_email, label: "This is the real email you provided us.", hint: "This email has not been validated. Please check your emails and click on the link." %>
         </div>
 
         <div class="form-actions">

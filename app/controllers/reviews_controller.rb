@@ -13,9 +13,23 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    # if params[:review][:temporary_email].nil?
-      # redirect_to
-    # else
+    # Error handling
+    if params[:review][:temporary_email].nil?
+      if params[:firm_id]
+        flash[:alert] = "Please indicate your email!"
+        redirect_to firm_path(params[:firm_id])
+      elsif params[:review][:firm_id]
+          flash[:alert] = "Please indicate your email!"
+          # @review = Review.new(firm_id: params[:review][:firm])
+          # create_and_save_answers
+          # @tests = Test.all
+          # @firms = Firm.all
+          # raise Exception @review.inspect
+          # render :new
+          redirect_to firm_path(params[:review][:firm_id])
+      end
+    # If no errors
+    else
       set_user
       set_firm
       create_and_save_review
@@ -30,9 +44,9 @@ class ReviewsController < ApplicationController
         redirect_to pendingreviews_path
       else
         flash[:notice] = "Dear #{params[:review][:temporary_email]}, your review of #{@review.firm.name} has been successfully saved. Please login to your account #{params[:review][:temporary_email]} at Sunny Rankings to validate it!"
-        redirect_to firms_path
+        redirect_to new_user_session_path
       end
-    # end
+    end
   end
 
   def show
@@ -44,7 +58,7 @@ class ReviewsController < ApplicationController
   def pendingreviews
     @user = current_user
     @reviews = @user.reviews
-    # TODO correct @ review
+    # TODO correct @ review to loop over @reviews
     @review = @reviews.last
     # TODO @firm to be refactored together with the view
     @firm = @review.firm
