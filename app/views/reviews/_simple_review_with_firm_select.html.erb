@@ -1,5 +1,6 @@
 <h3 class="text-center">How is gender equality in your firm?</h3>
 <hr/>
 <%= simple_form_for @review do |r| %>
+  <%= r.input :firm_id, collection: ( @firms ), prompt: "Please pick your firm in the list", label: "Please pick your firm" %>
   <%= render "reviews/review_form_master_content", r: r %>
 <% end %>

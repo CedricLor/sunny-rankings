@@ -27,7 +27,7 @@
                 <%= "No firm with a name containing \"#{params[:search]}\" is currently ranked in our database." %>
                 <br><br>
                 <!-- TO DO: Replace br with nice css -->
-                <%= link_to("Please add \"#{params[:search]}\" to our rankings!", "#", class: "btn btn-default btn-lg add-me-after-search red-hover-btn", role: "button") %>
+                <%= link_to("Please add \"#{params[:search]}\" to our rankings!", "#", class: "btn btn-default btn-lg add-me-after-search red-hover-btn main-call-to-action-btn", role: "button") %>
               </h4>
             </div>
           </div>
@@ -71,7 +71,7 @@
         </div>
       </div>
     <% if (params[:search] && @no_search_results == false ) %>
-      <%= render "competitors_community_rankings", selected_firm: @firms.first %>
+      <%= render "competitors_community_rankings", selected_firm: @firms.first, competitors: @competitors %>
     <% end %>
   </div>
 </div>

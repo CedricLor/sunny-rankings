@@ -13,6 +13,12 @@ class Firm < ActiveRecord::Base
     all.where(industry: industry).sort_by{ |f| f.avg_rating * -1 }
   end
 
+  # The following two methods provide the @competitors variable to the competitors partial
+  def self.top10_by_industry_by_country(industry, country)
+    top_by_industry_by_country = all.where(industry: industry, country: country).sort_by{ |f| f.avg_rating * -1 }
+    top_by_industry_by_country = top_by_industry_by_country[0..9]
+  end
+
   def self.top10_by_country(country)
     top_by_country = all.where(country: country).sort_by{ |f| f.avg_rating * -1 }
     top_by_country = top_by_country[0..9]

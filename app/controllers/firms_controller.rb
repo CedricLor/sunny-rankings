@@ -10,6 +10,7 @@ class FirmsController < ApplicationController
         @firms = Firm.top10_by_country("Belgium")
       else
         @no_search_results = false
+        @competitors = Firm.top10_by_industry_by_country(@firms.first.industry, @firms.first.country)
       end
     else
       @firms = Firm.top10_by_country("Belgium")
@@ -17,7 +18,7 @@ class FirmsController < ApplicationController
   end
 
   def show
-    @firms = Firm.all
+    @competitors = Firm.top10_by_industry_by_country(@firm.industry, @firm.country)
     @tests = Test.all
     @review = Review.new
     @answer = @review.answers.build

@@ -8,8 +8,6 @@ Rails.application.routes.draw do
     get 'static_pages/help'
     get 'static_pages/home'
 
-    get 'reconcile', to: "users#reconcile"
-
     devise_for :users
 
     resources :firms, only: [ :index, :show ] do
@@ -19,11 +17,6 @@ Rails.application.routes.draw do
     resources :reviews, only: [ :new, :create, :show ] do
       resources :users, only: [ :edit, :update ]
     end
-    # resources :reviews, only: [ :new, :create ] do
-    #   member do
-    #     get 'confirm', to: "reviews#confirm"
-    #   end
-    # end
 
     get 'pendingreviews', to: "reviews#pendingreviews"
 

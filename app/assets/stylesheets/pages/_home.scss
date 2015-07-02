@@ -102,6 +102,9 @@ a.icon-wrapper:hover {
 /* Compagny Icon */
 .company-icon {
   width: 100%;
+  max-width: 130px;
+  margin: 0 auto;
+  display: block;
 }
 .company-index-icon {
   max-width: 100px;

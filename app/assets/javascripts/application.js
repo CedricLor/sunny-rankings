@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require bootstrap-rating.min
 //= require bootstrap-slider
+//= require my_goodies
 //= require_tree .

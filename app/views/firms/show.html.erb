@@ -38,16 +38,16 @@
             </div>
           </div>
         </div>
+        <!-- Main call to action -->
         <div class="row">
           <div class="col-xs-12">
             <div class="text-wrapper card-block shadowed-box">
-              <%= button_to "Rate #{@firm.name}!", "#review_form", method: :get, class: "btn btn-default btn-lg btn-block red-hover-btn", type: "button" %>
-              <%#= button_to "Rate #{@firm.name}!", add_review_firm_path, method: :get, class: "btn btn-default btn-lg btn-block red-hover-btn", type: "button" %>
+              <%= link_to "Rate #{@firm.name}!", "#review_form", class: "btn btn-default btn-lg btn-block red-hover-btn main-call-to-action-btn", type: "button" %>
             </div>
           </div>
         </div>
         <%= render "community_ranking_details" %>
-        <%= render "competitors_community_rankings", selected_firm: @firm %>
+        <%= render "competitors_community_rankings", selected_firm: @firm, competitors: @competitors %>
         <%= render "official_labels" %>
         <%= render "community_ranking_history" %>
         <%= render "new_review_given_firm" %>
@@ -88,7 +88,7 @@
       // Twitter block
       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
-      // Show the divs
+      // Show the divs containing the social buttons
       document.addEventListener('DOMContentLoaded', function(){
         var elems = document.querySelectorAll(".hidden");
         console.log(elems);

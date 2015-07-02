@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:pendingreviews]
+  before_action :authenticate_user!, only: [:pendingreviews, :show, :edit, :update, :destroy]
 
   def new
     @review = Review.new
@@ -12,41 +12,16 @@ class ReviewsController < ApplicationController
     @answer = @review.answers.build
   end
 
+
   def create
     # Error handling
-    if params[:review][:temporary_email].nil?
-      if params[:firm_id]
-        flash[:alert] = "Please indicate your email!"
-        redirect_to firm_path(params[:firm_id])
-      elsif params[:review][:firm_id]
-          flash[:alert] = "Please indicate your email!"
-          # @review = Review.new(firm_id: params[:review][:firm])
-          # create_and_save_answers
-          # @tests = Test.all
-          # @firms = Firm.all
-          # raise Exception @review.inspect
-          # render :new
-          redirect_to firm_path(params[:review][:firm_id])
-      end
+    form_has_errors?
     # If no errors
-    else
-      set_user
-      set_firm
-      create_and_save_review
-      create_and_save_answers
-      if @is_new_user
-        sign_in(@user)
-        flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved. To validate your vote, please update your account credentials!"
-        redirect_to edit_user_registration_path
-      elsif current_user
-        flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved."
-        # TODO: Correct path and the whole logic of logged in users
-        redirect_to pendingreviews_path
-      else
-        flash[:notice] = "Dear #{params[:review][:temporary_email]}, your review of #{@review.firm.name} has been successfully saved. Please login to your account #{params[:review][:temporary_email]} at Sunny Rankings to validate it!"
-        redirect_to new_user_session_path
-      end
-    end
+    set_user
+    set_firm
+    create_and_save_review
+    create_and_save_answers
+    redirect_user
   end
 
   def show
@@ -64,13 +39,6 @@ class ReviewsController < ApplicationController
     @firm = @review.firm
   end
 
-  def confirm
-    set_user
-    # TODO correct @review
-    @review = @user.reviews.last
-    @firm = @review.firm
-  end
-
   def edit
   end
 
@@ -83,7 +51,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:firm_id, :review_id)
+    params.require(:review).permit(:firm_id, :temporary_email)
   end
 
   def answer_params
@@ -96,8 +64,8 @@ class ReviewsController < ApplicationController
       @firm = Firm.find(params[:firm_id])
       @firm_id = params[:firm_id]
     # If the request comes from the Rate a firm's page
-    elsif params[:review][:firm_id].present?
-      @firm = Firm.find(params[:review][:firm_id])
+    elsif review_params[:firm_id].present?
+      @firm = Firm.find(review_params[:firm_id])
       @firm_id = @firm.id
     # Else catch
     # TODO: Not satisfactory because triggers an error later + saves a fake record into the database
@@ -107,17 +75,34 @@ class ReviewsController < ApplicationController
   end
 
   def set_user
+    # is the user logged in
     if current_user.nil?
-      if User.find_by_email(params[:review][:temporary_email]).nil?
+      # if no, is the user already in the database
+      if is_user_already_registered?
+        @is_new_user = false
+      # if the user is not in the database, create a new user
+      else
         @user = create_user_on_vote
         @is_new_user = true
-      else
-        @user = User.find_by_email(params[:review][:temporary_email])
-        @is_new_user = false
       end
+    # if the user is logged in, affect it to @user
     else
       @user = current_user
       @is_new_user = false
+    end
+  end
+
+  def is_user_already_registered?
+    if User.find_by_real_email(review_params[:temporary_email]).nil? && User.find_by_email(review_params[:temporary_email]).nil?
+      return false
+    else
+      if User.find_by_real_email(review_params[:temporary_email]).nil?
+        @user = User.find_by_email(review_params[:temporary_email])
+        return true
+      else
+        @user = User.find_by_real_email(review_params[:temporary_email])
+        return true
+      end
     end
   end
 
@@ -127,7 +112,7 @@ class ReviewsController < ApplicationController
     # creation of a user to be validated by user
     user = User.create({
       email: username,
-      real_email: params[:review][:temporary_email],
+      real_email: review_params[:temporary_email],
       password: password,
       password_confirmation: password,
       validated: false
@@ -151,6 +136,47 @@ class ReviewsController < ApplicationController
     answer_params.each_with_index do | question_user_rating, i |
       @answers[i] = @review.answers.build(:test_id => question_user_rating[0], :user_rating => question_user_rating[1])
       @answers[i].save
+    end
+  end
+
+  def form_has_errors?
+    if review_params[:temporary_email].nil? || "" == review_params[:temporary_email]
+      alert_message = "Please indicate your email!"
+      firm_id = params[:firm_id] || review_params[:firm_id]
+      if Firm.find_by_id(firm_id).nil?
+        flash[:alert] = alert_message + " Please choose the firm you want to vote for!"
+        redirect_to new_review_path and return
+      else
+        flash[:alert] = alert_message
+        redirect_to firm_path(firm_id) and return
+      end
+    end
+    # if params[:firm_id]
+    #   flash[:alert] = "Please indicate your email!"
+    #   redirect_to firm_path(params[:firm_id])
+    # elsif params[:review][:firm_id]
+    #     flash[:alert] = "Please indicate your email!"
+    #     redirect_to firm_path(params[:review][:firm_id])
+    #     # @review = Review.new(firm_id: params[:review][:firm])
+    #     # create_and_save_answers
+    #     # @tests = Test.all
+    #     # @firms = Firm.all
+    #     # raise Exception @review.inspect
+    #     # render :new
+    # end
+  end
+
+  def redirect_user
+    if @is_new_user
+      sign_in(@user)
+      flash[:notice] = "Dear #{review_params[:temporary_email]}, an account has been created for you with username #{current_user.email}. A validation email for this account has been sent to #{current_user.real_email}. Your review of #{current_user.reviews.last.firm.name} has been successfully saved. To validate your vote, please update your profile and validate your account by opening your email!"
+      redirect_to edit_user_registration_path and return
+    elsif current_user
+      flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved."
+      redirect_to pendingreviews_path and return
+    else
+      flash[:notice] = "Dear #{review_params[:temporary_email]}, your review of #{@review.firm.name} has been successfully saved. Please login to your account #{@user.email} at Sunny Rankings to validate it!"
+      redirect_to new_user_session_path and return
     end
   end
 end
