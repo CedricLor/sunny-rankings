@@ -14,12 +14,11 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
       <div class="card-block shadowed-box text-center">
         <% unless @user.reviews.length == 0 || @profile.validated == true %>
-          <p>Your review of <%= "#{@user.reviews.last.firm.name}" %> has been saved.
           <p>An account with Sunny Ranking has been created for you!</p>
         <% end %>
-        <p>Your username is <%= "#{@user.email}" %></p>
+        <p class="red-paragraph">Your username is <%= "#{@user.email}" %></p>
         <% unless @user.reviews.length == 0 || @profile.validated == true %>
-          <p>To validate your review of <%= "#{@user.reviews.last.firm.name}" %>, we need you to fill in your profile.</p>
+          <p class="red-paragraph">To validate your review of <%= "#{@user.reviews.last.firm.name}" %>, please fill in your profile.</p>
         <% end %>
       </div>
     </div>

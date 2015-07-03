@@ -37,6 +37,7 @@ class ReviewsController < ApplicationController
     @review = @reviews.last
     # TODO @firm to be refactored together with the view
     @firm = @review.firm
+    @test = Test.all
   end
 
   def edit

@@ -15,6 +15,7 @@ class ProfilesController < ApplicationController
       a.user_rating = user_rating_params.fetch("#{i + 1}").to_i
       a.save
     end
+    flash[:notice] = "Dear #{current_user.real_email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved."
     redirect_to firm_path(review.firm)
   end
 

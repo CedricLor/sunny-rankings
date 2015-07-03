@@ -27,6 +27,9 @@ Firm.create(name: "ageas", url: "http://www.ageas.be/", country: "Belgium", head
 Firm.create(name: "AXA Banque", url: "https://www.axa.be/", country: "Belgium", headcount: "N.A.", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-axa.png")
 Firm.create(name: "AB InBev", url: "http://www.ab-inbev.com/", country: "Belgium", headcount: "154029", business_description: "Lorem ipsum", industry: "agroalimentaire", icon_name: "logo-abinbev.png")
 Firm.create(name: "Ackermans & van Haaren", url: "http://en.avh.be/home.aspx", country: "Belgium", headcount: "N.A.", business_description: "Lorem ipsum", industry: "conglomerat", icon_name: "logo-ackermansvanhaaren.png")
+Firm.create(name: "idweaver", url: "http://www.idweaver.com/", country: "Belgium", headcount: "N.A.", business_description: "Lorem ipsum", industry: "professional services", icon_name: "logo-idweaver.svg")
+Firm.create(name: "Belgacom", url: "http://www.proximus.com/", country: "Belgium", headcount: "15728", business_description: "Lorem ipsum", industry: "telecommunications", icon_name: "logo-belgacom.png")
+
 
 10.times do
   award = GrantedAward.new({
