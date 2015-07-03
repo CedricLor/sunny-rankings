@@ -13,14 +13,14 @@
         <% if user_signed_in? %>
           <div class="row">
             <div col="col-xs-12">
-              <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-default btn-lg btn-block", type: "button" do %>
+              <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-default btn-lg btn-block regular-btn", type: "button" do %>
                 <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Sign out" %>
               <% end %>
             </div>
           </div>
           <div class="row">
             <div col="col-xs-12">
-              <%= button_to edit_user_registration_path, method: :get, class: "btn btn-default btn-lg btn-block", type: "button" do %>
+              <%= button_to edit_user_registration_path, method: :get, class: "btn btn-default btn-lg btn-block regular-btn", type: "button" do %>
                 <!-- TO DO update t parameter -->
                 <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Update your credentials" %>
               <% end %>
@@ -28,7 +28,7 @@
           </div>
           <div class="row">
             <div col="col-xs-12">
-              <%= button_to pendingreviews_path, method: :get, class: "btn btn-default btn-lg btn-block", type: "button" do %>
+              <%= button_to pendingreviews_path, method: :get, class: "btn btn-default btn-lg btn-block regular-btn", type: "button" do %>
                 <!-- TO DO update t parameter -->
                 <i class="fa fa-exclamation-triangle"></i>  <%= t ".sign_out", default: "View pending reviews" %>
               <% end %>

@@ -135,3 +135,61 @@ span.badge:not(.top-row-badge):not(.trend-badge) {
     vertical-align: middle;
   }
 }
+
+.competitor-rank {
+  transition: all 0.3s ease;
+  &:hover {
+    border-right: 2px solid $green !important;
+    td:nth-child(3) {
+      left: 1px;
+    }
+  }
+  td {
+    position: relative;
+  }
+  .cover-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+.cgu {
+  color: $gray;
+  &-checkbox {
+    visibility: hidden;
+    display: none;
+  }
+  a {
+    color: $gray;
+  }
+  .fa {
+    transition: all 0.3s ease;
+    background: $gray-lighter;
+    padding: 15px;
+    color: white;
+    border-radius: 50%;
+  }
+  &-checked {
+    cursor: pointer;
+    color: $gray !important;
+    .fa {
+      background: $green !important;
+      padding: 18px;
+    }
+    a {
+      color: $blue !important;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    color: $gray-dark;
+    .fa {
+      background: $gray-dark;
+    }
+    a {
+      color: $gray-dark;
+    }
+  }
+}

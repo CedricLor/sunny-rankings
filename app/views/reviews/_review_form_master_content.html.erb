@@ -19,8 +19,36 @@
   <% end %>
 <hr/>
 <% end %>
-<p id="legalWarning"></p>
-<%= r.input :confirmed_t_and_c, label: "I hereby confirm that I have read and agreed to the conditions of rating services of Sunny Rankings.", id: "confirmed_t_and_c" %>
+<p id="legalWarning" class="bottom-text"></p>
+<p class="bottom-text"></p>
+
+<label for="review_confirmed_t_and_c" class="cgu">
+  <div class="row">
+    <div class="col-xs-3 text-center">
+      <i class="fa fa-check"></i>
+    </div>
+    <div class="col-xs-9">
+      <p>
+        I hereby confirm that I have read and agreed to the conditions of rating services of Sunny Rankings.
+      </p>
+    </div>
+  </div>
+</label>
+
+<div class="cgu-checkbox">
+  <%= r.input :confirmed_t_and_c, label: false, id: "confirmed_t_and_c" %>
+</div>
+<div>
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-9">
+      <p>
+        <%= link_to('Read the Conditions of Rating Services', static_pages_terms_and_conditions_path)%>
+      </p>
+    </div>
+  </div>
+</div>
 <hr/>
 <%= r.input :temporary_email, label: "Please enter your email" %>
 <%= r.button :submit, "Vote", class: "btn-center", id: "voteButton" %>

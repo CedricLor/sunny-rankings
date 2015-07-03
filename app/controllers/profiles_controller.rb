@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
       a.user_rating = user_rating_params.fetch("#{i + 1}").to_i
       a.save
     end
-    redirect_to profile_path
+    redirect_to firm_path(review.firm)
   end
 
   def show

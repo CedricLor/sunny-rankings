@@ -23,6 +23,7 @@ $(document).ready( function() {
   });
 });
 
+
 /* change the icon background color on click */
 $(window).load( function() {
   $('.rating-icons').on( "click", function() {
@@ -43,6 +44,10 @@ $(window).load( function() {
   });
   $('.rating-icons:last-child').on( "click", function() {
     $( this ).addClass("green-background-icon");
+  });
+
+  $(".cgu").on("click", function(){
+    $(this).toggleClass("cgu-checked");
   });
 })
 
@@ -184,14 +189,19 @@ $(window).load( function() {
   };
 
   function enable_button() {
-    ($('#review_confirmed_t_and_c').is(':checked')) && myChecker.are_all_valid ?
-      $('#voteButton').prop("disabled",false) :
-      $('#voteButton').prop("disabled",true);
+    (($('#review_confirmed_t_and_c').is(':checked')) && myChecker.are_all_valid) ?
+      $('#voteButton').prop("disabled",false).removeClass('vote-btn-deactivated').addClass('main-call-to-action-btn') :
+      $('#voteButton').prop("disabled",true).addClass('vote-btn-deactivated').removeClass('main-call-to-action-btn');
   };
 
+  // Applying deactivated class to vote button on load
+  $('#voteButton').addClass('vote-btn-deactivated');
+
   // Attach a handler triggered when the check-box is clicked
-  $('#review_confirmed_t_and_c').click(function() {
-    if (!( $('#review_confirmed_t_and_c').is(':checked') )) { alert("Please agree to the terms of services!"); }
+  $('.cgu').click(function() {
+    if ($('#review_confirmed_t_and_c').is(':checked')) {
+      alert("Please agree to the terms of services!");
+    }
     enable_button();
   });
   // Attach a handler triggered when the focus goes out of a form field
