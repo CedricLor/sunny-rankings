@@ -16,7 +16,7 @@
         <% unless @user.reviews.length == 0 || @profile.validated == true %>
           <p>An account with Sunny Ranking has been created for you!</p>
         <% end %>
-        <p class="red-paragraph">Your username is <%= "#{@user.email}" %></p>
+        <p class="red-paragraph">For confidentiality reasons, we have granted you the following username <%= "#{@user.email}" %></p>
         <% unless @user.reviews.length == 0 || @profile.validated == true %>
           <p class="red-paragraph">To validate your review of <%= "#{@user.reviews.last.firm.name}" %>, please fill in your profile.</p>
         <% end %>
