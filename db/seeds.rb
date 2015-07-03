@@ -25,12 +25,13 @@ Firm.create(name: "bpost", url: "https://www.bpost.be/", country: "Belgium", hea
 Firm.create(name: "Belfius", url: "https://www.belfius.com/", country: "Belgium", headcount: "5742", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-belfius.svg.png")
 Firm.create(name: "ageas", url: "http://www.ageas.be/", country: "Belgium", headcount: "13071", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-ageas.png")
 Firm.create(name: "AXA Banque", url: "https://www.axa.be/", country: "Belgium", headcount: "N.A.", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-axa.png")
+Firm.create(name: "AB InBev", url: "http://www.ab-inbev.com/", country: "Belgium", headcount: "154029", business_description: "Lorem ipsum", industry: "agroalimentaire", icon_name: "logo-abinbev.png")
+Firm.create(name: "Ackermans & van Haaren", url: "http://en.avh.be/home.aspx", country: "Belgium", headcount: "N.A.", business_description: "Lorem ipsum", industry: "conglomerat", icon_name: "logo-ackermansvanhaaren.png")
 
-
-8.times do
+10.times do
   award = GrantedAward.new({
     award_id: Random.rand(7) + 1,
-    firm_id: Random.rand(11) + 1
+    firm_id: Random.rand(13) + 1
   })
   award.save
 end
@@ -41,20 +42,22 @@ Test.create(test_question: "Equal promotion opportunities", test_long_question: 
 Test.create(test_question: "Equal pay", test_long_question: "Are female and male employees in the same position offered the same wage at this firm?", positive_negative_switch: "positive", select_options: "Never; Sometimes; Quite often; Frequently; Always")
 Test.create(test_question: "Absence of harassment", test_long_question: "Are there any sexual harassment related issues at this firm?", positive_negative_switch: "positive", select_options: "Very frequently; Frequently; Now and then; Almost never; Never")
 
-80.times do
+120.times do
   user = User.new({
     email: Faker::Internet.email,
-    password: "azazazazaz",
-    password_confirmation: "azazazazaz",
+    password: "1234567890",
+    password_confirmation: "1234567890",
     validated: true
   })
   user.save
+  review_date = [Time.new(2015, 06, 01),Time.now].sample
   review = Review.new({
-    firm_id: Random.rand(11) + 1,
+    firm_id: Random.rand(13) + 1,
     user_id: user.id,
     user_firm_relationship: "employee",
     confirmed_t_and_c: true,
-    validated: true
+    validated: true,
+    created_at: review_date
   })
   review.save
   tests = Test.all
@@ -62,16 +65,17 @@ Test.create(test_question: "Absence of harassment", test_long_question: "Are the
     Answer.create({
       user_rating: Random.rand(5) + 1,
       review_id: review.id,
-      test_id: test.id
+      test_id: test.id,
+      created_at: review_date
     })
   end
 end
 
-5.times do
+10.times do
   user = User.new({
     email: Faker::Internet.email,
-    password: "azazazazaz",
-    password_confirmation: "azazazazaz",
+    password: "1234567890",
+    password_confirmation: "1234567890",
     validated: true
   })
   user.save
@@ -91,3 +95,56 @@ end
     })
   end
 end
+
+5.times do
+  user = User.new({
+    email: Faker::Internet.email,
+    password: "1234567890",
+    password_confirmation: "1234567890",
+    validated: true
+  })
+  user.save
+  review = Review.new({
+    firm_id: 5,
+    user_id: user.id,
+    user_firm_relationship: "employee",
+    validated: true
+  })
+  review.save
+  tests = Test.all
+  tests.each do | test |
+    Answer.create({
+      user_rating: 5,
+      review_id: review.id,
+      test_id: test.id
+    })
+  end
+end
+
+5.times do
+  user = User.new({
+    email: Faker::Internet.email,
+    password: "1234567890",
+    password_confirmation: "1234567890",
+    validated: true
+  })
+  user.save
+  review = Review.new({
+    firm_id: 7,
+    user_id: user.id,
+    user_firm_relationship: "employee",
+    validated: true
+  })
+  review.save
+  tests = Test.all
+  tests.each do | test |
+    Answer.create({
+      user_rating: 5,
+      review_id: review.id,
+      test_id: test.id
+    })
+  end
+end
+
+# Review.limit(Review.count / 2).update_all(created_at: Time.new(2015, 06, 01))
+# Answer.limit(Answer.count / 2).update_all(created_at: Time.new(2015, 06, 01))

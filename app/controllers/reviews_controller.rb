@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:firm_id, :temporary_email)
+    params.require(:review).permit(:firm_id, :temporary_email, :confirmed_t_and_c)
   end
 
   def answer_params
@@ -108,7 +108,8 @@ class ReviewsController < ApplicationController
 
   def create_user_on_vote
     username = Faker::Internet.email
-    password = Faker::Internet.password
+    # password = Faker::Internet.password
+    password = "1234567890"
     # creation of a user to be validated by user
     user = User.create({
       email: username,
@@ -117,6 +118,7 @@ class ReviewsController < ApplicationController
       password_confirmation: password,
       validated: false
     })
+    @profile = user.create_profile(real_email: review_params[:temporary_email])
     UserMailer.new_user_on_vote(user.email).deliver_now
     user
   end
@@ -126,7 +128,8 @@ class ReviewsController < ApplicationController
       validated: false,
       user_id: @user.id,
       firm_id: @firm_id,
-      user_firm_relationship: "Undefined"
+      user_firm_relationship: "Undefined",
+      confirmed_t_and_c: review_params[:confirmed_t_and_c]
       )
     @review.save
   end
@@ -169,8 +172,7 @@ class ReviewsController < ApplicationController
   def redirect_user
     if @is_new_user
       sign_in(@user)
-      flash[:notice] = "Dear #{review_params[:temporary_email]}, an account has been created for you with username #{current_user.email}. A validation email for this account has been sent to #{current_user.real_email}. Your review of #{current_user.reviews.last.firm.name} has been successfully saved. To validate your vote, please update your profile and validate your account by opening your email!"
-      redirect_to edit_user_registration_path and return
+      redirect_to edit_profile_path(@profile) and return
     elsif current_user
       flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved."
       redirect_to pendingreviews_path and return

@@ -5,8 +5,6 @@
       <% user_rating_option_hash[answer] = i %>
     <% end %>
     <%= a.input :user_rating,
-        # collection: (test.select_options.split(";")),
-        # myhash = { 1 => "blabla", 2 => "bloblo"}
         collection: (user_rating_option_hash),
         label: "#{test.test_long_question}",
         wrapper_html: {
@@ -27,52 +25,6 @@
 <%= r.input :temporary_email, label: "Please enter your email" %>
 <%= r.button :submit, "Vote", class: "btn-center", id: "voteButton" %>
 
-<!-- TODO: Complete with relevant JS CODE to:
-- hide the legal warnings;
-- hide the inputs;
-- display the rating icon;
-- set the value of the input onclick on an icon. -->
 <% content_for(:after_js) do %>
-    <%= render 'reviews/review_form_js' %>
-  <%#= javascript_include_tag 'review_form' %>
+  <%= render 'reviews/review_form_js' %>
 <% end %>
-
-<style>
-  .grey-background-icon {
-    background-color: grey;
-  }
-  .red-background-icon {
-    background-color: red;
-  }
-  .green-background-icon {
-    background-color: green;
-  }
-  .yellow-background-icon {
-    background-color: yellow;
-  }
-  .rating-icons {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    background-size: cover;
-    cursor: pointer;
-    margin: 10px 3px 0px 3px;
-    border-radius: 50%;
-    opacity: 0.5;
-  }
-  .mad {
-    background-image: url(/assets/mad.svg);
-  }
-  .bad {
-    background-image: url(/assets/bad.svg);
-  }
-  .happy {
-    background-image: url(/assets/happy.svg);
-  }
-  .veryhappy {
-    background-image: url(/assets/veryhappy.svg);
-  }
-  .fine {
-    background-image: url(/assets/fine.svg);
-  }
-</style>

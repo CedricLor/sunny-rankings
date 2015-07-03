@@ -11,6 +11,8 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :current_position
       t.integer :age
       t.string :gender
+      t.string :real_email
+      t.boolean :validated
 
       t.timestamps null: false
     end

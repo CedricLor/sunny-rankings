@@ -49,7 +49,12 @@ $(window).load( function() {
 /* set value of select when clicking on a smiley */
 $(window).load( function() {
   $('.rating-icons').on( "click", function() {
-    $(this).parents('.form-group').find('select').val($(this).index() + 1);
+    var value = $(this).index();
+    $(this).parents('.form-group')
+      .find('select option')
+      .prop('selected', false)
+      .filter('[value="'+ value +'"]')
+      .prop('selected', true);
   });
 });
 

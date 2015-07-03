@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
     get 'pendingreviews', to: "reviews#pendingreviews"
 
+    resources :profiles, only: [ :edit, :update, :show ]
+
     root 'firms#index'
   end
 

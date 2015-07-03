@@ -1,0 +1,124 @@
+<% content_for(:title, "New Profile") %>
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
+      <div class="card-block shadowed-box text-center">
+        <div class="main-title-block">
+          <h1 class="main-title">Fill-in your Profile</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
+      <div class="card-block shadowed-box text-center">
+        <% unless @user.reviews.length == 0 || @profile.validated == true %>
+          <p>Your review of <%= "#{@user.reviews.last.firm.name}" %> has been saved.
+          <p>An account with Sunny Ranking has been created for you!</p>
+        <% end %>
+        <p>Your username is <%= "#{@user.email}" %></p>
+        <% unless @user.reviews.length == 0 || @profile.validated == true %>
+          <p>To validate your review of <%= "#{@user.reviews.last.firm.name}" %>, we need you to fill in your profile.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= simple_form_for @profile, url: profile_path, method: :patch do |f| %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
+        <div class="card-block shadowed-box text-center">
+          <div>
+            <%= f.error_notification %>
+            <div class="form-inputs">
+              <%= f.input :real_email, required: true, autofocus: true, label: "Your email" %>
+              <%= f.input :first_name, required: true %>
+              <%= f.input :last_name, required: true %>
+              <%= f.input :country, required: true %>
+              <%= f.input :phone_number, required: true %>
+              <%= f.input :age %>
+              <%= f.input :gender %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
+        <div class="card-block shadowed-box text-center">
+          <div>
+            <div>
+              <div class="text-center">
+                <h1>Now please review your answers and validate</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
+        <div class="card-block shadowed-box text-center">
+          <div>
+            <div>
+              <div class="form-inputs">
+              <%= simple_fields_for @review do |r| %>
+                <% @review.answers.each_with_index do |answer,i| %>
+                  <% i += 1 %>
+                  <% user_rating_option_hash = {} %>
+                  <% @test.fetch(i - 1).select_options.split(";").each_with_index do |answer, j| %>
+                    <% user_rating_option_hash[answer] = j + 1 %>
+                  <% end %>
+                  <%= simple_fields_for :answer[i] do |a| %>
+                    <!-- actual input for each question. Default type is select in case javascript would not work -->
+                    <%= a.input :user_rating,
+                        label: "#{answer.test.test_long_question}",
+                        collection: (user_rating_option_hash),
+                        wrapper_html: {
+                          class: "text-center my-rating-wrapper",
+                          "data-question-type" => "#{answer.test.positive_negative_switch}"
+                        },
+                        input_html: {
+                          name: "user_rating[#{i}]",
+                          id: "user_rating[#{i}]",
+                          value: "#{answer.user_rating}",
+                          class: "rating-input",
+                          "data-icon" => "rating-icon[#{i}]"
+                        } %>
+                  <% end %>
+                <% end %>
+              <% end %>
+
+
+              </div>
+              <hr/>
+              <div class="form-actions">
+                <%= f.button :submit, "Validate" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= render 'reviews/review_form_js' %>
+  <%= render 'profiles/edit_review_form_js' %>
+<% end %>
+
+
+<!--
+# t.string :first_name
+# t.string :last_name
+# t.string :mother_maiden_name
+# t.string :address
+# t.string :phone_number
+# t.string :country
+# t.string :employer_name
+# t.string :current_position
+# t.integer :age
+# t.string :gender
+# t.string :real_email
+-->

@@ -1,0 +1,37 @@
+.grey-background-icon {
+  background-color: grey;
+}
+.red-background-icon {
+  background-color: red;
+}
+.green-background-icon {
+  background-color: green;
+}
+.yellow-background-icon {
+  background-color: yellow;
+}
+.rating-icons {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  cursor: pointer;
+  margin: 10px 3px 0px 3px;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.mad {
+  background-image: url(/assets/mad.svg);
+}
+.bad {
+  background-image: url(/assets/bad.svg);
+}
+.happy {
+  background-image: url(/assets/happy.svg);
+}
+.veryhappy {
+  background-image: url(/assets/veryhappy.svg);
+}
+.fine {
+  background-image: url(/assets/fine.svg);
+}

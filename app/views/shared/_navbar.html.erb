@@ -39,7 +39,13 @@
               <li>
                 <%= link_to edit_user_registration_path, method: :get do %>
                   <!-- TO DO update t parameter -->
-                  <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Update your credentials" %>
+                  <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Update your connexion credentials" %>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_profile_path(current_user.profile), method: :get do %>
+                  <!-- TO DO update t parameter -->
+                  <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Update your user profile" %>
                 <% end %>
               </li>
               <li>

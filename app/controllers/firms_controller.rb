@@ -22,6 +22,8 @@ class FirmsController < ApplicationController
     @tests = Test.all
     @review = Review.new
     @answer = @review.answers.build
+    @current_averages = @firm.current_reporting_period_averages
+    @previous_averages = @firm.previous_reporting_period_averages
   end
 
   def new
