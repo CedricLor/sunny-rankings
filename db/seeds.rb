@@ -34,7 +34,7 @@ Firm.create(name: "Belgacom", url: "http://www.proximus.com/", country: "Belgium
 10.times do
   award = GrantedAward.new({
     award_id: Random.rand(7) + 1,
-    firm_id: Random.rand(13) + 1
+    firm_id: Random.rand(15) + 1
   })
   award.save
 end
@@ -55,7 +55,7 @@ Test.create(test_question: "Absence of harassment", test_long_question: "Are the
   user.save
   review_date = [Time.new(2015, 06, 01),Time.now].sample
   review = Review.new({
-    firm_id: Random.rand(13) + 1,
+    firm_id: Random.rand(15) + 1,
     user_id: user.id,
     user_firm_relationship: "employee",
     confirmed_t_and_c: true,
@@ -98,6 +98,30 @@ end
     })
   end
 end
+
+2.times do
+  user = User.new({
+    email: Faker::Internet.email,
+    password: "1234567890",
+    password_confirmation: "1234567890",
+    validated: true
+  })
+  user.save
+  review = Review.new({
+    firm_id: 1,
+    user_id: user.id,
+    user_firm_relationship: "employee",
+    validated: true
+  })
+  review.save
+  test = Test.all.fetch(4)
+  Answer.create({
+    user_rating: 5,
+    review_id: review.id,
+    test_id: test.id
+  })
+end
+
 
 5.times do
   user = User.new({
