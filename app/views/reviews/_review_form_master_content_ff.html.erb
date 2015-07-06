@@ -1,0 +1,74 @@
+<%# @tests.each do |test| %>
+  <%#= simple_fields_for :answer do |a| %>
+  <%= r.fields_for :answers do |a| %>
+
+    <%# user_rating_option_array = [] %>
+    <%# test.select_options.split(";").each_with_index do |answer, i| %>
+      <%# user_rating_option_array << [answer, i+1] %>
+    <%# end %>
+
+    <%# user_rating_option_hash = {} %>
+    <%# test.select_options.split(";").each_with_index do |answer, i| %>
+      <%# user_rating_option_hash[answer] = i %>
+    <%# end %>
+    <%#= a.input :user_rating,
+        collection: (user_rating_option_hash),
+        label: "#{test.test_long_question}",
+        as: :radio_buttons,
+        wrapper_html: {
+          class: "text-center my-rating-wrapper"
+        },
+        input_html: {
+          name: "user_rating[#{test.id}]",
+          id: "user_rating[#{test.id}]",
+          class: "rating-input"
+      } %>
+      <div class="form-group select required answer_user_rating text-center my-rating-wrapper">
+      <%#= a.select(:user_rating, user_rating_option_array) %>
+      <%= a.select(:user_rating, [['Always', 1], ['Frequently', 2], ['Average', 3], ['Rarely', 4], ['Never', 5]]) %>
+      </div>
+
+  <% end %>
+<hr/>
+<%# end %>
+<p id="legalWarning" class="bottom-text"></p>
+<p class="bottom-text"></p>
+
+<label for="review_confirmed_t_and_c" class="cgu">
+  <div class="row">
+    <div class="col-xs-3 text-center">
+      <i class="fa fa-check"></i>
+    </div>
+    <div class="col-xs-9">
+      <p>
+        I hereby confirm that I have read and agreed to the conditions of rating services of Sunny Rankings.
+      </p>
+    </div>
+  </div>
+</label>
+
+<div class="cgu-checkbox">
+  <%#= r.input :confirmed_t_and_c, label: false, id: "confirmed_t_and_c" %>
+  <%= r.check_box :confirmed_t_and_c %>
+</div>
+<div>
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+    <div class="col-xs-9">
+      <p>
+        <%= link_to('Read the Conditions of Rating Services', static_pages_terms_and_conditions_path)%>
+      </p>
+    </div>
+  </div>
+</div>
+<hr/>
+<%#= r.input :temporary_email, label: "Please enter your email" %>
+<%= r.text_field :temporary_email %>
+<%#= r.button :submit, "Vote", class: "btn-center", id: "voteButton" %>
+<%= r.submit "Vote" %>
+
+<% content_for(:after_js) do %>
+  <!-- ATTENTION: REACTIVATE IF NOT ALREADY INCLUDED IN ANOTHER PARTIAL -->
+  <%#= render 'reviews/review_form_js' %>
+<% end %>

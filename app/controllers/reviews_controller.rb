@@ -10,6 +10,8 @@ class ReviewsController < ApplicationController
       @firm = Firm.find(params[:firm_id])
     end
     @answer = @review.answers.build
+    # TDNV Add following line and comment out preceeding line
+    # 5.times { @review.answers.build }
   end
 
 

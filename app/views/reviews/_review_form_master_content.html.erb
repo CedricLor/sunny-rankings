@@ -1,5 +1,13 @@
 <% @tests.each do |test| %>
   <%= simple_fields_for :answer do |a| %>
+  <!-- TDNV Add -->
+  <%#= r.simple_fields_for :answers do |a| %>
+
+    <% user_rating_option_array = [] %>
+    <% test.select_options.split(";").each_with_index do |answer, i| %>
+      <% user_rating_option_array << [answer, i] %>
+    <% end %>
+
     <% user_rating_option_hash = {} %>
     <% test.select_options.split(";").each_with_index do |answer, i| %>
       <% user_rating_option_hash[answer] = i %>
@@ -10,12 +18,14 @@
         wrapper_html: {
           class: "text-center my-rating-wrapper"
         },
+        # TDNV Comment name and id (autofilled via controller)
         input_html: {
           name: "user_rating[#{test.id}]",
           id: "user_rating[#{test.id}]",
-          class: "rating-input",
-          "data-icon" => "rating-icon[#{test.id}]"
+          class: "rating-input"
       } %>
+
+
   <% end %>
 <hr/>
 <% end %>

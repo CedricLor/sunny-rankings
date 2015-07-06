@@ -13,6 +13,9 @@ Rails.application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
+  # TDNV This is the comment that was added by Lien to handle email sending error in production
+  # TDNV Set the mailer to work properly
+  # TDNV To be managed with the purchase of a domain name
   config.action_mailer.raise_delivery_errors = false
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
