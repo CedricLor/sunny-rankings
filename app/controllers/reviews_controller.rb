@@ -52,7 +52,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    # params.require(:review).permit!
     params.require(:review).permit(:firm_id, :temporary_email, :confirmed_t_and_c, answers_attributes: [:user_rating])
   end
 

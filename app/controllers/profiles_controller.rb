@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
     @profile.update(profile_params)
     review = @profile.reviews.last
     review.answers.each_with_index do | a, i |
-      a.user_rating = user_rating_params.fetch("#{i + 1}").to_i
+      a.user_rating = user_rating_params[:answers_attributes]["#{i}"][:user_rating].to_i
       a.save
     end
     flash[:notice] = "Dear #{current_user.real_email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved."
@@ -26,11 +26,11 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:real_email, :first_name, :last_name, :country, :phone_number, :age, :gender)
+    params.require(:profile).permit(:real_email, :first_name, :last_name, :country, :phone_number, :age, :gender, answers_attributes: [:user_rating])
   end
 
   def user_rating_params
-    params.require(:user_rating).permit(:"1", :"2", :"3", :"4", :"5")
+    params.require(:review).permit(answers_attributes: [:user_rating])
   end
 end
 
