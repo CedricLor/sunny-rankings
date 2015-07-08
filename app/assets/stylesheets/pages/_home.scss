@@ -171,7 +171,7 @@ span.badge:not(.top-row-badge):not(.trend-badge) {
     color: white;
     border-radius: 50%;
   }
-  &-checked {
+  &-checkbox:checked ~ label.cgu {
     cursor: pointer;
     color: $gray !important;
     .fa {

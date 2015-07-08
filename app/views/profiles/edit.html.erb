@@ -62,30 +62,33 @@
             <div>
               <div class="form-inputs">
               <%= simple_fields_for @review do |r| %>
-                <% @review.answers.each_with_index do |answer,i| %>
-                  <% i += 1 %>
-                  <% user_rating_option_hash = {} %>
-                  <% @test.fetch(i - 1).select_options.split(";").each_with_index do |answer, j| %>
-                    <% user_rating_option_hash[answer] = j + 1 %>
+                <%= r.simple_fields_for :answers do |a| %>
+
+                  <% user_rating_option_array = [] %>
+                  <% @tests[a.index].select_options.split(";").each_with_index do |answer, i| %>
+                    <% user_rating_option_array << ["x", i + 1] %>
+                    <!-- + 1 is here to fix minimum grade to 1 and maximum to 5 instead of 0 and 4 respect. -->
                   <% end %>
-                  <%= simple_fields_for :answer[i] do |a| %>
-                    <!-- actual input for each question. Default type is select in case javascript would not work -->
-                    <%= a.input :user_rating,
-                        label: "#{answer.test.test_long_question}",
-                        collection: (user_rating_option_hash),
-                        wrapper_html: {
-                          class: "text-center my-rating-wrapper",
-                          "data-question-type" => "#{answer.test.positive_negative_switch}"
+
+                  <%= a.input :user_rating,
+                      as: :radio_buttons,
+                      boolean_style: :inline,
+                      collection: (user_rating_option_array),
+                      label: "#{@tests[a.index].test_long_question}",
+                      label_html: {
+                        class: "block"
                         },
-                        input_html: {
-                          name: "user_rating[#{i}]",
-                          id: "user_rating[#{i}]",
-                          value: "#{answer.user_rating}",
-                          class: "rating-input",
-                          "data-icon" => "rating-icon[#{i}]"
-                        } %>
-                  <% end %>
+                      wrapper_html: {
+                        class: "text-center my-rating-wrapper"
+                      },
+                      item_wrapper_class: "inline-block",
+                      item_label_class: "rating-icons",
+                      input_html: {
+                        class: "rating-input my-hidden-input"
+                      }
+                  %>
                 <% end %>
+
               <% end %>
 
 

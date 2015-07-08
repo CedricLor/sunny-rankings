@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
     @user = current_user
     @profile = @user.profile
     @review = @profile.reviews.last
-    @test = Test.all
+    @tests = Test.all
   end
 
   def update

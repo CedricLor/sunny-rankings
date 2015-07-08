@@ -21,9 +21,9 @@ class FirmsController < ApplicationController
     @competitors = Firm.top10_by_industry_by_country(@firm.industry, @firm.country)
     @tests = Test.all
     @review = Review.new
-    @answer = @review.answers.build
-    # TDNV Add following line and comment out preceeding line
-    # 5.times { @review.answers.build }
+    @tests.each do |test|
+      @review.answers.build(:test_id => test.id)
+    end
     @current_averages = @firm.current_reporting_period_averages
     @previous_averages = @firm.previous_reporting_period_averages
   end

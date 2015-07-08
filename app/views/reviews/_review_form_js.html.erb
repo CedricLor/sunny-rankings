@@ -4,65 +4,9 @@
 $(document).ready( function() {
   /* hide the legal warning on load */
   $("#legalWarning").addClass( "hidden" );
-  /* hide the inputs */
-  $(".rating-input").addClass( "hidden" );
-  /* create the visual handles */
-  $(".rating-input").parent().each( function () {
-    var steps = ["mad","bad","fine","happy","veryhappy"];
-    var line_of_icons = $("<div class='rating-icons-line'></div>").css({
-          display: 'block'
-        });
-    var i = 0;
-    $(steps).each( function () {
-      var icon = $("<div class='rating-icons'></div>");
-      icon.addClass(steps[i]);
-      line_of_icons.append(icon);
-      i++;
-    });
-    $(this).append(line_of_icons);
-  });
 });
 
-/* change the icon background color on click */
-$(window).load( function() {
-  $('.rating-icons').on( "click", function() {
-    /* remove all background classes */
-    $( this ).parent().find( '.rating-icons').removeClass("grey-background-icon").removeClass("green-background-icon").removeClass("red-background-icon").removeClass("yellow-background-icon");
-  });
-  $('.rating-icons:first-child').on( "click", function() {
-    $( this ).addClass("red-background-icon");
-  });
-  $('.rating-icons:nth-child(2)').on( "click", function() {
-    $( this ).addClass("yellow-background-icon");
-  });
-  $('.rating-icons:nth-child(3)').on( "click", function() {
-    $( this ).addClass("grey-background-icon");
-  });
-  $('.rating-icons:nth-child(4)').on( "click", function() {
-    $( this ).addClass("yellow-background-icon");
-  });
-  $('.rating-icons:last-child').on( "click", function() {
-    $( this ).addClass("green-background-icon");
-  });
-
-  $(".cgu").on("click", function(){
-    $(this).toggleClass("cgu-checked");
-  });
-})
-
-/* set value of select when clicking on a smiley */
-$(window).load( function() {
-  $('.rating-icons').on( "click", function() {
-    var value = $(this).index();
-    $(this).parents('.form-group')
-      .find('select option')
-      .prop('selected', false)
-      .filter('[value="'+ value +'"]')
-      .prop('selected', true);
-  });
-});
-
-/* This displays the legal warning if rating is very low or if rating is very low on wage discrimination
+/* This displays the legal warning if rating is very low on wage discrimination
 or harassment */
 $(window).load( function() {
   const num_of_issues = {
@@ -87,26 +31,28 @@ $(window).load( function() {
   var i = 0,
       x = 0;
 
-  $('.rating-icons').on( "click", function() {
-    serious_harassment = $(".rating-icons-line").eq(4).find('.rating-icons.mad');
-    serious_discrimination = $(".rating-icons-line").eq(3).find('.rating-icons.mad');
+  $('#review_form .collection_radio_buttons').on( "click", function() {
+    setTimeout(function(){
+    serious_harassment = "#review_answers_attributes_4_user_rating_0";
+    serious_discrimination = $("#review_answers_attributes_3_user_rating_0");
 
-    if ( $(serious_harassment).hasClass('red-background-icon') &&
-         $(serious_discrimination).hasClass('red-background-icon') ) {
+    if ( $(serious_harassment).prop("checked") &&
+         $(serious_discrimination).prop("checked") ) {
       i = 2;
       x = 7;
       $( "#legalWarning" ).text(legal_warning_builder(i, x)).removeClass("hidden");
-    } else if ( $(serious_harassment).hasClass('red-background-icon') ) {
+    } else if ( $(serious_harassment).prop("checked") ) {
       i = 1;
       x = 4;
       $( "#legalWarning" ).text(legal_warning_builder(i, x)).removeClass("hidden");
-    } else if ( $(serious_discrimination).hasClass('red-background-icon') ) {
+    } else if ( $(serious_discrimination).prop("checked") ) {
       i = 1;
       x = 3;
       $( "#legalWarning" ).text(legal_warning_builder(i, x)).removeClass("hidden");
     } else {
       $( "#legalWarning" ).text("").addClass("hidden");
     }
+    }, 1);
   });
 });
 
@@ -188,7 +134,7 @@ $(window).load( function() {
   };
 
   function enable_button() {
-    (($('#review_confirmed_t_and_c').is(':checked')) && myChecker.are_all_valid) ?
+    (($('#confirmed_t_and_c').is(':checked')) && myChecker.are_all_valid) ?
       $('#voteButton').prop("disabled",false).removeClass('vote-btn-deactivated').addClass('main-call-to-action-btn') :
       $('#voteButton').prop("disabled",true).addClass('vote-btn-deactivated').removeClass('main-call-to-action-btn');
   };
@@ -198,7 +144,7 @@ $(window).load( function() {
 
   // Attach a handler triggered when the check-box is clicked
   $('.cgu').click(function() {
-    if ($('#review_confirmed_t_and_c').is(':checked')) {
+    if ($('#confirmed_t_and_c').is(':checked')) {
       alert("Please agree to the terms of services!");
     }
     enable_button();

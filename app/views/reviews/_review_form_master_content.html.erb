@@ -1,38 +1,36 @@
-<% @tests.each do |test| %>
-  <%= simple_fields_for :answer do |a| %>
-  <!-- TDNV Add -->
-  <%#= r.simple_fields_for :answers do |a| %>
+<%= r.simple_fields_for :answers do |a| %>
 
-    <% user_rating_option_array = [] %>
-    <% test.select_options.split(";").each_with_index do |answer, i| %>
-      <% user_rating_option_array << [answer, i] %>
-    <% end %>
-
-    <% user_rating_option_hash = {} %>
-    <% test.select_options.split(";").each_with_index do |answer, i| %>
-      <% user_rating_option_hash[answer] = i %>
-    <% end %>
-    <%= a.input :user_rating,
-        collection: (user_rating_option_hash),
-        label: "#{test.test_long_question}",
-        wrapper_html: {
-          class: "text-center my-rating-wrapper"
-        },
-        # TDNV Comment name and id (autofilled via controller)
-        input_html: {
-          name: "user_rating[#{test.id}]",
-          id: "user_rating[#{test.id}]",
-          class: "rating-input"
-      } %>
-
-
+  <% user_rating_option_array = [] %>
+  <% @tests[a.index].select_options.split(";").each_with_index do |answer, i| %>
+    <% user_rating_option_array << ["x", i + 1] %>
+    <!-- + 1 is here to fix minimum grade to 1 and maximum to 5 instead of 0 and 4 respect. -->
   <% end %>
-<hr/>
+
+  <%= a.input :user_rating,
+      as: :radio_buttons,
+      boolean_style: :inline,
+      collection: (user_rating_option_array),
+      label: "#{@tests[a.index].test_long_question}",
+      label_html: {
+        class: "block"
+        },
+      wrapper_html: {
+        class: "text-center my-rating-wrapper"
+      },
+      item_wrapper_class: "inline-block",
+      input_html: {
+        class: "rating-input my-hidden-input"
+      }
+    %>
 <% end %>
+
+<hr/>
+
 <p id="legalWarning" class="bottom-text"></p>
 <p class="bottom-text"></p>
 
-<label for="review_confirmed_t_and_c" class="cgu">
+<%= r.input_field :confirmed_t_and_c, boolean_style: :inline, id: "confirmed_t_and_c", class: "cgu-checkbox" %>
+<label for="confirmed_t_and_c" class="cgu">
   <div class="row">
     <div class="col-xs-3 text-center">
       <i class="fa fa-check"></i>
@@ -45,9 +43,6 @@
   </div>
 </label>
 
-<div class="cgu-checkbox">
-  <%= r.input :confirmed_t_and_c, label: false, id: "confirmed_t_and_c" %>
-</div>
 <div>
   <div class="row">
     <div class="col-xs-3">

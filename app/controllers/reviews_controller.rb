@@ -9,9 +9,7 @@ class ReviewsController < ApplicationController
     else
       @firm = Firm.find(params[:firm_id])
     end
-    @answer = @review.answers.build
-    # TDNV Add following line and comment out preceeding line
-    # 5.times { @review.answers.build }
+    Test.all.length.times { @review.answers.build }
   end
 
 
@@ -54,11 +52,12 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:firm_id, :temporary_email, :confirmed_t_and_c)
+    # params.require(:review).permit!
+    params.require(:review).permit(:firm_id, :temporary_email, :confirmed_t_and_c, answers_attributes: [:user_rating])
   end
 
   def answer_params
-    params.require(:user_rating).permit(:"1", :"2", :"3", :"4", :"5")
+    params.require(params[:review][:answers_attributes]).permit(:"1", :"2", :"3", :"4", :"5")
   end
 
   def set_firm
@@ -139,8 +138,9 @@ class ReviewsController < ApplicationController
 
   def create_and_save_answers
     @answers = []
-    answer_params.each_with_index do | question_user_rating, i |
-      @answers[i] = @review.answers.build(:test_id => question_user_rating[0], :user_rating => question_user_rating[1])
+    review_params[:answers_attributes].each_with_index do | question_user_rating, i |
+      @answers[i] = @review.answers.build(:test_id => question_user_rating[0].to_i + 1, :user_rating => question_user_rating[1][:user_rating].to_i)
+      # + 1 is here to correct the 0 index (there is no test with index 0 in the database)
       @answers[i].save
     end
   end

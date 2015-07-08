@@ -1,17 +1,26 @@
-.grey-background-icon {
-  background-color: grey;
+.block {
+  display: block;
 }
-.red-background-icon {
-  background-color: red;
+.inline-block {
+  display: inline-block;
 }
-.green-background-icon {
-  background-color: green;
-}
-.yellow-background-icon {
-  background-color: yellow;
+.my-hidden-input {
+  display: none;
+  visibility: hidden;
 }
 
-.rating-icons {
+label.collection_radio_buttons {
+  visibility: hidden;
+  padding-left: 0;
+  width: 45px;
+  height: 45px;
+  margin-top: -25px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+label.collection_radio_buttons::after {
+  visibility: visible;
+  content: " ";
   display: inline-block;
   width: 45px;
   height: 45px;
@@ -21,21 +30,37 @@
   border-radius: 50%;
   opacity: 0.5;
 }
-.mad {
+div.my-rating-wrapper span:nth-child(2) label.collection_radio_buttons::after {
   background-image: image-url(image-path("mad.svg"));
 }
-.bad {
+div.my-rating-wrapper span:nth-child(2) input:checked ~ label.collection_radio_buttons::after {
+  background-color: red;
+}
+div.my-rating-wrapper span:nth-child(3) label.collection_radio_buttons::after {
   background-image: image-url(image-path("bad.svg"));
 }
-.happy {
-  background-image: image-url(image-path("happy.svg"));
+div.my-rating-wrapper span:nth-child(3) input:checked ~ label.collection_radio_buttons::after {
+  background-color: yellow;
 }
-.veryhappy {
-  background-image: image-url(image-path("veryhappy.svg"));
-}
-.fine {
+div.my-rating-wrapper span:nth-child(4) label.collection_radio_buttons::after {
   background-image: image-url(image-path("fine.svg"));
 }
+div.my-rating-wrapper span:nth-child(4) input:checked ~ label.collection_radio_buttons::after {
+  background-color: grey;
+}
+div.my-rating-wrapper span:nth-child(5) label.collection_radio_buttons::after {
+  background-image: image-url(image-path("happy.svg"));
+}
+div.my-rating-wrapper span:nth-child(5) input:checked ~ label.collection_radio_buttons::after {
+  background-color: yellow;
+}
+div.my-rating-wrapper span:nth-child(6) label.collection_radio_buttons::after {
+  background-image: image-url(image-path("veryhappy.svg"));
+}
+div.my-rating-wrapper span:nth-child(6) input:checked ~ label.collection_radio_buttons::after {
+  background-color: green;
+}
+
 #legalWarning {
   border-width: thin;
   border-style: solid;
