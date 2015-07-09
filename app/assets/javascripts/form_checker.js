@@ -12,34 +12,4 @@ $(window).load( function() {
     "other": /\w+/
   };
 
-  function myField(DOMSelectedObject) {
-    this.textValue = DOMSelectedObject.val();
-    this.attrId = DOMSelectedObject.attr("id");
-    /* Quick fix to make it work when the email field is not tagged with id="email" */
-    if ( this.attrId == "review_temporary_email" ) { this.attrId = "email" }
-    this.validity = false;
-    this.updateCSS = function() {
-      ( this.validity == false ) ?
-      DOMSelectedObject.closest('.form-group').addClass("has-error") :
-      DOMSelectedObject.closest('.form-group').removeClass("has-error");
-    };
-    this.regexSelector = function(id) {
-      var regex;
-      const ids = {
-        zip_code() { isNotName() },
-        email() { isNotName()  },
-        mobile_phone() { isNotName() },
-        first_name() { isName() },
-        last_name() { isName() },
-        city() { isName() },
-        other() { regex = regexes['other'] }
-      };
-      function isNotName() { regex = regexes[id] };
-      function isName() { regex = regexes.person_or_city_name };
-      (ids[id] || ids['other'] )();
-      return regex;
-    };
-    this.regex = this.regexSelector(this.attrId);
-  };
-
 });
