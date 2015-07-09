@@ -42,10 +42,6 @@ $(window).load( function() {
     this.regex = this.regexSelector(this.attrId);
   };
 
-  myField.prototype.updateValidity = function() {
-    ( this.textValue.match(this.regex) ) ? this.validity = true : this.validity = false;
-  };
-
   myChecker = new function() {
     function myFieldsLoader() {
       var myFields = {};
