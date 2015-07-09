@@ -36,7 +36,7 @@ $(window).load( function() {
       };
       function isNotName() { regex = regexes[id] };
       function isName() { regex = regexes.person_or_city_name };
-      (ids[id] || ids['other'] )()
+      (ids[id] || ids['other'] )();
       return regex;
     };
     this.regex = this.regexSelector(this.attrId);
