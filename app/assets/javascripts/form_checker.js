@@ -28,7 +28,13 @@ $(window).load( function() {
     this.regexSelector = function(id) {
       var regex;
       const ids = {
-        zip_code() { isNotName(); }
+        'zip_code': isNotName(),
+        'email': isNotName(),
+        'mobile_phone': isNotName(),
+        'first_name': isName(),
+        'last_name': isName(),
+        'city': isName(),
+        'other': function() { regex = regexes['other'] }
       };
       function isNotName() { regex = regexes[id] };
       function isName() { regex = regexes.person_or_city_name };
@@ -37,5 +43,61 @@ $(window).load( function() {
     };
     this.regex = this.regexSelector(this.attrId);
   };
+
+  myField.prototype.updateValidity = function() {
+    ( this.textValue.match(this.regex) ) ? this.validity = true : this.validity = false;
+  };
+
+  myChecker = new function() {
+    function myFieldsLoader() {
+      var myFields = {};
+      /* Quick fix to avoid that the form control controls other form fields than the field of
+      the review form (such as the search form, for instance) */
+      // This selector should select all the fields that need to be validated
+      $('#review_temporary_email').each(function() {
+        myFields[$(this).attr("id")] = new myField($(this));
+        $(this).val("");
+      });
+      return myFields;
+    };
+    this.myFields = myFieldsLoader();
+    this.are_all_valid = false;
+    this.switch_are_all_valid = function() {
+      var none_are_invalid = true;
+      $.each(this.myFields, function( key, value ) {
+        if (value.validity == false) { none_are_invalid = false };
+      });
+      this.are_all_valid = none_are_invalid;
+    };
+    this.validityControl = function(id, newValue) {
+      this.myFields[id].textValue = newValue;
+      this.myFields[id].updateValidity();
+      this.myFields[id].updateCSS();
+      this.switch_are_all_valid();
+    };
+  };
+
+  function enable_button() {
+    (($('#confirmed_t_and_c').is(':checked')) && myChecker.are_all_valid) ?
+      $('#voteButton').prop("disabled",false).removeClass('vote-btn-deactivated').addClass('main-call-to-action-btn') :
+      $('#voteButton').prop("disabled",true).addClass('vote-btn-deactivated').removeClass('main-call-to-action-btn');
+  };
+
+  // Applying deactivated class to vote button on load
+  $('#voteButton').addClass('vote-btn-deactivated');
+
+  // Attach a handler triggered when the check-box is clicked
+  $('.cgu').click(function() {
+    if ($('#confirmed_t_and_c').is(':checked')) {
+      alert("Please agree to the terms of services!");
+    }
+    enable_button();
+  });
+  // Attach a handler triggered when the focus goes out of a form field
+  // This selector should select all the fields that need to be validated
+  $('#review_temporary_email').focusout(function() {
+    myChecker.validityControl($(this).attr("id"), $(this).val());
+    enable_button();
+  });
 
 });
