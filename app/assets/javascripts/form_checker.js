@@ -42,33 +42,4 @@ $(window).load( function() {
     this.regex = this.regexSelector(this.attrId);
   };
 
-  myChecker = new function() {
-    function myFieldsLoader() {
-      var myFields = {};
-      /* Quick fix to avoid that the form control controls other form fields than the field of
-      the review form (such as the search form, for instance) */
-      // This selector should select all the fields that need to be validated
-      $('#review_temporary_email').each(function() {
-        myFields[$(this).attr("id")] = new myField($(this));
-        $(this).val("");
-      });
-      return myFields;
-    };
-    this.myFields = myFieldsLoader();
-    this.are_all_valid = false;
-    this.switch_are_all_valid = function() {
-      var none_are_invalid = true;
-      $.each(this.myFields, function( key, value ) {
-        if (value.validity == false) { none_are_invalid = false };
-      });
-      this.are_all_valid = none_are_invalid;
-    };
-    this.validityControl = function(id, newValue) {
-      this.myFields[id].textValue = newValue;
-      this.myFields[id].updateValidity();
-      this.myFields[id].updateCSS();
-      this.switch_are_all_valid();
-    };
-  };
-
 });
