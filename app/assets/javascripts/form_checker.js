@@ -12,4 +12,17 @@ $(window).load( function() {
     "other": /\w+/
   };
 
+  function myField(DOMSelectedObject) {
+    this.textValue = DOMSelectedObject.val();
+    this.attrId = DOMSelectedObject.attr("id");
+    /* Quick fix to make it work when the email field is not tagged with id="email" */
+    if ( this.attrId == "review_temporary_email" ) { this.attrId = "email" }
+    this.validity = false;
+    this.updateCSS = function() {
+      ( this.validity == false ) ?
+      DOMSelectedObject.closest('.form-group').addClass("has-error") :
+      DOMSelectedObject.closest('.form-group').removeClass("has-error");
+    };
+  };
+
 });
