@@ -1,54 +1,37 @@
-<% content_for(:title, "Your Pending Reviews") %>
+<% content_for(:title, "Your Pending Review") %>
 
-<!-- TO DO -->
-<!-- This is used when loggin back in after having made a review -->
-<!-- This is accessible from the toolbar and should be made accessible -->
-<!-- as a link from the flash -->
-<!-- In addition, it should also be turned into a partial to enable the user -->
-<!-- to review several pending reviews -->
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
       <div class="row">
         <div class="col-xs-12">
           <div class="card-block shadowed-box">
-            <h3 class="text-center">Here is your latest pending review for <%= "#{@firm.name}" %>.</h3>
-            <p>Please review your votes carefully and update them, as the case may be.</p>
-            <p>Once your are done, press the Validate button below.</p>
-            <hr>
 
+            <% if @user.reviews.last.validated == false %>
+
+              <h3 class="text-center">Here is your latest pending review for <%= "#{@firm.name}" %>.</h3>
+              <p>Please review your votes carefully and update them, as the case may be.</p>
+              <p>Once your are done, press the Validate button below.</p>
+              <hr>
 
               <%= simple_form_for @review do |r| %>
-                <% @review.answers.each_with_index do |answer,i| %>
-                  <% i += 1 %>
-                  <% user_rating_option_hash = {} %>
-                  <% @test.fetch(i - 1).select_options.split(";").each_with_index do |answer, j| %>
-                    <% user_rating_option_hash[answer] = j + 1 %>
-                  <% end %>
-                  <%= simple_fields_for :answer[i] do |a| %>
-                    <!-- actual input for each question. Default type is select in case javascript would not work -->
-                    <%= a.input :user_rating,
-                        label: "#{answer.test.test_long_question}",
-                        collection: (user_rating_option_hash),
-                        wrapper_html: {
-                          class: "text-center my-rating-wrapper",
-                          "data-question-type" => "#{answer.test.positive_negative_switch}"
-                        },
-                        input_html: {
-                          name: "user_rating[#{i}]",
-                          id: "user_rating[#{i}]",
-                          value: "#{answer.user_rating}",
-                          class: "rating-input"
-                        } %>
-                  <% end %>
-                <% end %>
-                <hr/>
+                <%= render "reviews/review_form_master_content", r: r %>
                 <%= r.button :submit, "Validate", class: "btn-center" %>
               <% end %>
 
+            <% else %>
 
+              <h3 class="text-center">You do not have any pending reviews.</h3>
+              <p>Please see below you latest review, which was made for <%= "#{@firm.name}" %>.</p>
+              <p>This review has already been validated and can no longer be amemended.</p>
+              <p>Thank you for helping our users know more about gender equality on the workplace at <%= "#{@firm.name}" %>.</p>
+              <hr>
 
+              <%= simple_form_for @review do |r| %>
+                <%= render "reviews/review_form_master_content", r: r %>
+              <% end %>
 
+            <% end %>
 
           </div>
         </div>
@@ -56,8 +39,3 @@
     </div>
   </div>
 </div>
-
-<% content_for(:after_js) do %>
-  <%= render 'reviews/review_form_js' %>
-  <%= render 'profiles/edit_review_form_js' %>
-<% end %>

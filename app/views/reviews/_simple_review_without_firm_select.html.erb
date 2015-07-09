@@ -2,4 +2,7 @@
 <hr/>
 <%= simple_form_for [@firm, @review] do |r| %>
   <%= render "reviews/review_form_master_content", r: r %>
+  <%= render "reviews/review_form_legal_warning", r: r %>
+  <%= render "reviews/review_form_accept_t_and_c", r: r %>
+  <%= render "reviews/review_form_email_and_voting_button", r: r %>
 <% end %>

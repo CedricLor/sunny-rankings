@@ -13,12 +13,27 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
       <div class="card-block shadowed-box text-center">
-        <% unless @user.reviews.length == 0 || @profile.validated == true %>
+        <!--
+        TODO Review message depending on whether
+        1. First time review after first time vote (@profile not validated)
+        2. Review upon regular login if @profile not validated
+        3. Review upon regular login if @profile already validated
+        Probably need to create additional field in the profile table
+        - first_time_review
+        - validated already exist
+        -->
+        <% if @profile.first_time_login_upon_firm_review %>
           <p>An account with Sunny Ranking has been created for you!</p>
-        <% end %>
-        <p class="red-paragraph">For confidentiality reasons, we have granted you the following username <%= "#{@user.email}" %></p>
-        <% unless @user.reviews.length == 0 || @profile.validated == true %>
+          <p class="red-paragraph">For confidentiality reasons, we have granted you the following username <%= "#{@user.email}" %></p>
           <p class="red-paragraph">To validate your review of <%= "#{@user.reviews.last.firm.name}" %>, please fill in your profile.</p>
+        <% else %>
+          <p>Please review your profile details below</p>
+          <p class="red-paragraph">Your username is <%= "#{@user.email}" %></p>
+          <% if @review.validated == false %>
+            <p>You have one pending review for <%= "#{@user.reviews.last.firm.name}" %>. Please validate your review below.</p>
+          <% else %>
+            <p>You do not currently have any pending review.</p>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -42,6 +57,25 @@
         </div>
       </div>
     </div>
+
+    <% if @review.validated == true %>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
+        <div class="card-block shadowed-box text-center">
+          <div>
+            <div>
+              <div class="form-actions">
+                <%= f.button :submit, "Validate" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% else %>
+
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
         <div class="card-block shadowed-box text-center">
@@ -61,36 +95,10 @@
           <div>
             <div>
               <div class="form-inputs">
+
               <%= simple_fields_for @review do |r| %>
-                <%= r.simple_fields_for :answers do |a| %>
-
-                  <% user_rating_option_array = [] %>
-                  <% @tests[a.index].select_options.split(";").each_with_index do |answer, i| %>
-                    <% user_rating_option_array << ["x", i + 1] %>
-                    <!-- + 1 is here to fix minimum grade to 1 and maximum to 5 instead of 0 and 4 respect. -->
-                  <% end %>
-
-                  <%= a.input :user_rating,
-                      as: :radio_buttons,
-                      boolean_style: :inline,
-                      collection: (user_rating_option_array),
-                      label: "#{@tests[a.index].test_long_question}",
-                      label_html: {
-                        class: "block"
-                        },
-                      wrapper_html: {
-                        class: "text-center my-rating-wrapper"
-                      },
-                      item_wrapper_class: "inline-block",
-                      item_label_class: "rating-icons",
-                      input_html: {
-                        class: "rating-input my-hidden-input"
-                      }
-                  %>
-                <% end %>
-
+                <%= render "reviews/review_form_master_content", r: r %>
               <% end %>
-
 
               </div>
               <hr/>
@@ -102,13 +110,9 @@
         </div>
       </div>
     </div>
+    <% end %> <!-- end of the if condition (if review is validated else...) -->
   <% end %>
 </div>
-
-<% content_for(:after_js) do %>
-  <%= render 'reviews/review_form_js' %>
-  <%= render 'profiles/edit_review_form_js' %>
-<% end %>
 
 
 <!--

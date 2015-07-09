@@ -15,10 +15,11 @@ ActiveRecord::Schema.define(version: 20150624175237) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "user_rating"
+    t.boolean  "reviewed_by_user", default: false
     t.integer  "review_id"
     t.integer  "test_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "answers", ["review_id"], name: "index_answers_on_review_id"
@@ -68,8 +69,9 @@ ActiveRecord::Schema.define(version: 20150624175237) do
     t.string   "gender"
     t.string   "real_email"
     t.boolean  "validated"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.boolean  "first_time_login_upon_firm_review"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "reviews", force: :cascade do |t|

@@ -3,4 +3,7 @@
 <%= simple_form_for @review do |r| %>
   <%= r.input :firm_id, collection: ( @firms ), prompt: "Please pick your firm in the list", label: "Please pick your firm" %>
   <%= render "reviews/review_form_master_content", r: r %>
+  <%= render "reviews/review_form_legal_warning", r: r %>
+  <%= render "reviews/review_form_accept_t_and_c", r: r %>
+  <%= render "reviews/review_form_email_and_voting_button", r: r %>
 <% end %>

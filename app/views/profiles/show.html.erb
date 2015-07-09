@@ -12,7 +12,67 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
-      <div class="card-block shadowed-box text-center">
+      <div class="card-block shadowed-box text-left">
+      <table class="table table-striped table-responsive">
+      <%# Firm.all.ranking_by_industry(selected_firm.industry).each do | firm | %>
+        <tr>
+          <td>
+            Your real email:
+          </td>
+          <td>
+            <%= @profile.real_email %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Your first name:
+          </td>
+          <td>
+            <%= @profile.first_name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Your last name:
+          </td>
+          <td>
+            <%= @profile.last_name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Your country of residence:
+          </td>
+          <td>
+            <%= @profile.country %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Your phone number:
+          </td>
+          <td>
+            <%= @profile.phone_number %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Your age:
+          </td>
+          <td>
+            <%= @profile.age %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Your gender:
+          </td>
+          <td>
+            <%= @profile.gender %>
+          </td>
+        </tr>
+      </table>
+
       </div>
     </div>
   </div>

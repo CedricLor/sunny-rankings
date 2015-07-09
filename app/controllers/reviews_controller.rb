@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     else
       @firm = Firm.find(params[:firm_id])
     end
-    Test.all.length.times { @review.answers.build }
+    @tests.length.times { @review.answers.build }
   end
 
 
@@ -32,12 +32,9 @@ class ReviewsController < ApplicationController
 
   def pendingreviews
     @user = current_user
-    @reviews = @user.reviews
-    # TODO correct @ review to loop over @reviews
-    @review = @reviews.last
-    # TODO @firm to be refactored together with the view
+    @review = @user.reviews.last
     @firm = @review.firm
-    @test = Test.all
+    @tests = Test.all
   end
 
   def edit
@@ -119,7 +116,7 @@ class ReviewsController < ApplicationController
       password_confirmation: password,
       validated: false
     })
-    @profile = user.create_profile(real_email: review_params[:temporary_email])
+    @profile = user.create_profile(real_email: review_params[:temporary_email], first_time_login_upon_firm_review: true)
     UserMailer.new_user_on_vote(user.email).deliver_now
     user
   end
@@ -137,11 +134,19 @@ class ReviewsController < ApplicationController
 
   def create_and_save_answers
     @answers = []
-    review_params[:answers_attributes].each_with_index do | question_user_rating, i |
-      @answers[i] = @review.answers.build(:test_id => question_user_rating[0].to_i + 1, :user_rating => question_user_rating[1][:user_rating].to_i)
-      # + 1 is here to correct the 0 index (there is no test with index 0 in the database)
+    Test.all.each_with_index do |test, i|
+      unless review_params[:answers_attributes]["#{i}"].nil?
+        @answers[i] = @review.answers.build(:test_id => i + 1, :user_rating => review_params[:answers_attributes]["#{i}"][:user_rating].to_i)
+      else
+        @answers[i] = @review.answers.build(:test_id => i + 1)
+      end
       @answers[i].save
     end
+    # review_params[:answers_attributes].each_with_index do |question_user_rating, i|
+    #   @answers[i] = @review.answers.build(:test_id => question_user_rating[0].to_i + 1, :user_rating => question_user_rating[1][:user_rating].to_i)
+    #   # + 1 is here to correct the 0 index (there is no test with index 0 in the database)
+    #   @answers[i].save
+    # end
   end
 
   def form_has_errors?
@@ -176,7 +181,7 @@ class ReviewsController < ApplicationController
       sign_in(@user)
       redirect_to edit_profile_path(@profile) and return
     elsif current_user
-      flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved."
+      flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved. It is currently pending. It still needs to be validated."
       redirect_to pendingreviews_path and return
     else
       flash[:notice] = "Dear #{review_params[:temporary_email]}, your review of #{@review.firm.name} has been successfully saved. Please login to your account #{@user.email} at Sunny Rankings to validate it!"

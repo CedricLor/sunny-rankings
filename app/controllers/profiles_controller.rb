@@ -10,13 +10,24 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find_by_id(params[:id])
     @profile.update(profile_params)
+    @profile.update(first_time_login_upon_firm_review: false)
     review = @profile.reviews.last
-    review.answers.each_with_index do | a, i |
-      a.user_rating = user_rating_params[:answers_attributes]["#{i}"][:user_rating].to_i
-      a.save
+    if review.validated == false
+      review.answers.each_with_index do |answer, i|
+        if user_rating_params[:answers_attributes]["#{i}"][:user_rating].nil?
+          answer.destroy
+        else
+          answer.user_rating = user_rating_params[:answers_attributes]["#{i}"][:user_rating].to_i
+          answer.reviewed_by_user = true
+          answer.save
+        end
+      end
+      review.update(validated: true)
+      flash[:notice] = "Dear #{current_user.real_email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved."
+      redirect_to firm_path(review.firm)
+    else
+      redirect_to profile_path(@profile)
     end
-    flash[:notice] = "Dear #{current_user.real_email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved."
-    redirect_to firm_path(review.firm)
   end
 
   def show
@@ -30,18 +41,6 @@ class ProfilesController < ApplicationController
   end
 
   def user_rating_params
-    params.require(:review).permit(answers_attributes: [:user_rating])
+    params.require(:review).permit(answers_attributes: [:user_rating, :id])
   end
 end
-
-# t.string :first_name
-# t.string :last_name
-# t.string :mother_maiden_name
-# t.string :address
-# t.string :phone_number
-# t.string :country
-# t.string :employer_name
-# t.string :current_position
-# t.integer :age
-# t.string :gender
-# t.string :real_email
