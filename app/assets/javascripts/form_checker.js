@@ -28,7 +28,7 @@ $(window).load( function() {
     this.regexSelector = function(id) {
       var regex;
       const ids = {
-        zip_code() { isNotName() }
+        zip_code() { isNotName(); }
       };
       function isNotName() { regex = regexes[id] };
       function isName() { regex = regexes.person_or_city_name };
