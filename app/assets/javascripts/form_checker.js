@@ -2,7 +2,7 @@
 // On Document Fully Ready
 $(window).load( function() {
   /* Start by disabling the vote button on load*/
-  $('#voteButton').prop("disabled",true)
+  $('#voteButton').prop("disabled",true);
 
   const regexes = {
     "zip_code": /^(F-)?((2[A|B])|[0-9]{2})[0-9]{3}$/,
