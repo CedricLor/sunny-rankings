@@ -67,7 +67,7 @@ class FirmsController < ApplicationController
         @user_ip_country = "France"
         session[:geoloc_by_ip_has_failed] = true
       else
-        @user_ip_country = request.location.country_name
+        @user_ip_country = request.location.country
         session[:geoloc_by_ip_has_failed] = false
       end
       session[:user_ip_country] = @user_ip_country
