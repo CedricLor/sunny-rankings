@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       resources :reviews, only: [ :new, :create]
     end
 
+    post 'firms/geosearch', to: "firms#geosearch"
+
     resources :reviews, only: [ :new, :create, :show ] do
       resources :users, only: [ :edit, :update ]
     end

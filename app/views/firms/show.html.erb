@@ -30,7 +30,7 @@
               <div class="row">
                 <div class="col-xs-12">
                   <h3 id="companyName">Gender equality on the workplace:</h3>
-                  <h3><%= link_to @firm.name, @firm.url %> is ranked #<%= @firm.ranking %> in <%= @firm.country %></h3>
+                  <h3><%= link_to @firm.name, @firm.url %> is ranked #<%= @firm.ranking_by_country(@firm.country) %> in <%= @firm.country %></h3>
                   <p>Headcount: <%= "#{@firm.headcount}" %></p>
                 </div>
               </div>

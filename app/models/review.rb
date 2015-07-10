@@ -2,9 +2,9 @@ class Review < ActiveRecord::Base
   CURRENT_PERIOD = 30.days
   PREVIOUS_PERIOD = 60.days
 
-  belongs_to :user
-  belongs_to :firm
-  has_many :answers
+  belongs_to :user, inverse_of: :reviews
+  belongs_to :firm, inverse_of: :reviews
+  has_many :answers, inverse_of: :review
   accepts_nested_attributes_for :answers
 
   def self.answers

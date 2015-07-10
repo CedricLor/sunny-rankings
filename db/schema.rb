@@ -11,7 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624175237) do
+ActiveRecord::Schema.define(version: 20150709192700) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "city"
+    t.string   "street"
+    t.string   "number"
+    t.string   "zip_code"
+    t.string   "country"
+    t.string   "addr_complement"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.float    "latitude"
+    t.float    "longitude"
+  end
+
+  create_table "addresses_firms", id: false, force: :cascade do |t|
+    t.integer "firm_id",    null: false
+    t.integer "address_id", null: false
+  end
+
+  add_index "addresses_firms", ["address_id", "firm_id"], name: "index_addresses_firms_on_address_id_and_firm_id"
+  add_index "addresses_firms", ["firm_id", "address_id"], name: "index_addresses_firms_on_firm_id_and_address_id"
+
+  create_table "addresses_profiles", id: false, force: :cascade do |t|
+    t.integer "profile_id", null: false
+    t.integer "address_id", null: false
+  end
+
+  add_index "addresses_profiles", ["address_id", "profile_id"], name: "index_addresses_profiles_on_address_id_and_profile_id"
+  add_index "addresses_profiles", ["profile_id", "address_id"], name: "index_addresses_profiles_on_profile_id_and_address_id"
 
   create_table "answers", force: :cascade do |t|
     t.integer  "user_rating"
@@ -35,7 +64,6 @@ ActiveRecord::Schema.define(version: 20150624175237) do
   create_table "firms", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
-    t.string   "address"
     t.string   "country"
     t.integer  "headcount"
     t.text     "business_description"
@@ -60,9 +88,7 @@ ActiveRecord::Schema.define(version: 20150624175237) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "mother_maiden_name"
-    t.string   "address"
     t.string   "phone_number"
-    t.string   "country"
     t.string   "employer_name"
     t.string   "current_position"
     t.integer  "age"

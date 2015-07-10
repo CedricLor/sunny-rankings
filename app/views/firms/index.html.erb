@@ -39,7 +39,7 @@
           <div class="col-xs-12">
             <div class="text-wrapper card-block shadowed-box text-center">
               <p>
-                <%= "Here are the top 10 firms ranked by our community in Belgium" %>
+                <%= "Here are the top 10 firms ranked by our community in #{@user_ip_country}" %>
               </p>
             </div>
           </div>
@@ -70,8 +70,17 @@
           </div>
         </div>
       </div>
+    <!-- if the search by name has returned something, display top 10 competitors
+    ordered by ranking -->
     <% if (params[:search] && @no_search_results == false ) %>
       <%= render "competitors_community_rankings", selected_firm: @firms.first, competitors: @competitors %>
     <% end %>
   </div>
 </div>
+
+<% if session[:first_hit] == true %>
+  <%= render "shared/geo_search_form" %>
+  <% content_for(:after_js) do %>
+    <%= render "firms/geolocator_js" %>
+  <% end %>
+<% end %>

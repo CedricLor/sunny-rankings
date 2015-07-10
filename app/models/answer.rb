@@ -2,8 +2,8 @@ class Answer < ActiveRecord::Base
   CURRENT_PERIOD = 20.days
   PREVIOUS_PERIOD = 60.days
 
-  belongs_to :review
-  belongs_to :test
+  belongs_to :review, inverse_of: :answers
+  belongs_to :test, inverse_of: :answers
 
   def sensitive
     (user_rating == 1 && test.positive_negative_switch == "negative") || (user_rating == 5 && test.positive_negative_switch == "positive")

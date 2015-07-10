@@ -3,7 +3,6 @@ class CreateFirms < ActiveRecord::Migration
     create_table :firms do |t|
       t.string :name
       t.string :url
-      t.string :address
       t.string :country
       t.integer :headcount
       t.text :business_description

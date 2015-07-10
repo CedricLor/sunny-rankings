@@ -1,8 +1,9 @@
 class Firm < ActiveRecord::Base
-  has_many :reviews
+  has_many :reviews, inverse_of: :firm
   has_many :answers, through: :reviews
-  has_many :granted_awards
+  has_many :granted_awards, inverse_of: :firm
   has_many :awards, through: :granted_awards
+  has_and_belongs_to_many :addresses
 
   def self.ranking
     all.sort_by{ |f| f.avg_rating * -1 }
@@ -12,6 +13,10 @@ class Firm < ActiveRecord::Base
 
   def self.ranking_by_industry(industry)
     all.where(industry: industry).sort_by{ |f| f.avg_rating * -1 }
+  end
+
+  def self.ranking_by_country(country)
+    all.where(country: country).sort_by{ |f| f.avg_rating * -1 }
   end
 
   # The following two methods provide the @competitors variable to the competitors partial
@@ -63,6 +68,10 @@ class Firm < ActiveRecord::Base
     Firm.ranking.index { |f| f.id == id } + 1
   end
 
+  def ranking_by_country(country)
+    Firm.ranking_by_country(country).index { |f| f.id == id } + 1
+  end
+
   def avg_rating
     answers.average(:user_rating).to_f
   end
@@ -80,6 +89,6 @@ class Firm < ActiveRecord::Base
   end
 
   def number_of_pending_reviews
-    reviews.where(validated: true).count
+    reviews.where(validated: false).count
   end
 end
