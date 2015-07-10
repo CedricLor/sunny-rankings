@@ -1,6 +1,5 @@
 class Address < ActiveRecord::Base
   has_and_belongs_to_many :firms
-  has_and_belongs_to_many :profiles
 
   geocoded_by :whole_address
   after_validation :geocode
