@@ -2,7 +2,7 @@
 <p>Please review them carefully and update them, as the case may be.</p>
 <% if @review.contains_sensitive_answers[:sensitive] %>
   <p class="review-warning"><%= "Beware! You have granted #{@review.contains_sensitive_answers[:count]} very bad #{"ranking".pluralize(@review.contains_sensitive_answers[:count])} to #{@firm.name}!" %></p>
-  <p class="review-warning"><%= "At Sunny Rankings, we consider this kind of reviews as a serious case, both for you and for #{@firm.name}!" %></p>
+  <p class="review-warning"><%= "At Skanher, we consider this kind of reviews as a serious case, both for you and for #{@firm.name}!" %></p>
   <p class="review-warning"><%= "Please read carefully our terms of service before validating your answers." %></p>
 <% end %>
 <p>Once your are done, press the Validate button below.</p>
@@ -48,7 +48,7 @@
   <% end %>
   <!-- TO DO: Not very satisfactory way to select set the id of the firm; to be reviewed with a coach -->
   <p>By clicking the following button, you confirm that you are aware of the terms of Art. L. 323-2 of the French Criminal Code, pursuant to which any person introducing fraudulent data into a database is liable of a fine up to 75.000 euros and 5 years of custody.</p>
-  <%= r.input :confirmed_t_and_c, label: "I hereby confirm that I have read and agreed to the conditions of use of the services of Sunny Rankings." %>
+  <%= r.input :confirmed_t_and_c, label: "I hereby confirm that I have read and agreed to the conditions of use of the services of Skanher." %>
   <%= r.input :firm_id, as: :hidden, input_html: { value: "#{@firm.id}" } %>
   <%= r.button :submit, "Validate", class: "btn-center" %>
 <% end %>

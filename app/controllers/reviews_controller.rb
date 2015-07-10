@@ -184,7 +184,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved. It is currently pending. It still needs to be validated."
       redirect_to pendingreviews_path and return
     else
-      flash[:notice] = "Dear #{review_params[:temporary_email]}, your review of #{@review.firm.name} has been successfully saved. Please login to your account #{@user.email} at Sunny Rankings to validate it!"
+      flash[:notice] = "Dear #{review_params[:temporary_email]}, your review of #{@review.firm.name} has been successfully saved. Please login to your account #{@user.email} on our systems to validate it!"
       redirect_to new_user_session_path and return
     end
   end

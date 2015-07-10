@@ -1,19 +1,19 @@
-<div class="row hidden text-center">
+<div class="row xs-hidden text-center">
   <div class="col-xs-3">
-    <div class="fb-share-button" data-href="https://sunny-rankings.herokuapp.com/" data-layout="button">
+    <div class="fb-share-button" data-href="http://www.skanher.se/" data-layout="button">
     </div>
   </div>
   <div class="col-xs-3">
-    <%= link_to("Tweet", "https://twitter.com/share", class: "twitter-share-button", "data-via" => "sunnyrankings", "data-count" => "none") %>
+    <%= link_to("Tweet", "https://twitter.com/share", class: "twitter-share-button", "data-via" => "skanher", "data-count" => "none") %>
   </div>
   <div class="col-xs-3">
     <%= javascript_include_tag '//platform.linkedin.com/in.js' do %>
       lang: en_US
     <% end %>
-    <%#= javascript_tag, type: "IN/Share", "data-url" => "https://sunny-rankings.herokuapp.com/" do %>
+    <%#= javascript_tag, type: "IN/Share", "data-url" => "http://www.skanher.se/" do %>
     <%# end %>
     <!-- TO BE DISCUSSED WITH LIEN -->
-    <script type="IN/Share" data-url="https://sunny-rankings.herokuapp.com/"></script>
+    <script type="IN/Share" data-url="http://www.skanher.se/"></script>
   </div>
   <div class="col-xs-3">
     <%= link_to("Rate me!", "#review_form", class: "btn btn-default btn-xs rate-me red-hover-btn", role: "button") %>

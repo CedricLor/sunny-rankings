@@ -50,7 +50,7 @@ div.my-rating-wrapper {
     label.collection_radio_buttons::after {
       background-image: image-url(image-path("fine.svg"));
     }
-    span:nth-child(4) input:checked ~ label.collection_radio_buttons::after {
+    input:checked ~ label.collection_radio_buttons::after {
       background-color: grey;
     }
   }

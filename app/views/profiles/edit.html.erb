@@ -23,7 +23,7 @@
         - validated already exist
         -->
         <% if @profile.first_time_login_upon_firm_review %>
-          <p>An account with Sunny Ranking has been created for you!</p>
+          <p>An account with Skanher has been created for you!</p>
           <p class="red-paragraph">For confidentiality reasons, we have granted you the following username <%= "#{@user.email}" %></p>
           <p class="red-paragraph">To validate your review of <%= "#{@user.reviews.last.firm.name}" %>, please fill in your profile.</p>
         <% else %>

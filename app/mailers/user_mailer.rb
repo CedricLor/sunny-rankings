@@ -9,11 +9,11 @@ class UserMailer < ApplicationMailer
     @user = user
     @greeting = "Hi"
 
-    mail(to: @user.email, subject: 'Welcome to Sunny Rankings')
+    mail(to: @user.email, subject: 'Welcome to Skanher')
     # TO DO: Replace @user.email by correct email
   end
 
   def new_user_on_vote(email)
-    mail(to: email, subject: "Please confirm your account on Sunny Rankings")
+    mail(to: email, subject: "Please confirm your account on Skanher")
   end
 end
