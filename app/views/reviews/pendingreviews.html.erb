@@ -15,7 +15,7 @@
               <hr>
 
               <%= simple_form_for @review do |r| %>
-                <%= render "reviews/review_form_master_content", r: r %>
+                <%= render "reviews/review_form_master_content_validate", r: r %>
                 <%= r.button :submit, "Validate", class: "btn-center" %>
               <% end %>
 
@@ -28,7 +28,7 @@
               <hr>
 
               <%= simple_form_for @review do |r| %>
-                <%= render "reviews/review_form_master_content", r: r %>
+                <%= render "reviews/review_form_master_content_validate", r: r %>
               <% end %>
 
             <% end %>

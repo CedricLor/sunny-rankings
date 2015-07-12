@@ -1,0 +1,23 @@
+<% user_rating_option_array = [] %>
+<% @tests[a.index].select_options.split(";").each_with_index do |answer, i| %>
+  <% user_rating_option_array << ["x", i + 1] %>
+  <!-- + 1 is here to fix minimum grade to 1 and maximum to 5 instead of 0 and 4 respect. -->
+<% end %>
+
+<%= a.input :user_rating,
+    as: :radio_buttons,
+    boolean_style: :inline,
+    collection: (user_rating_option_array),
+    label: "#{@tests[a.index].test_long_question}",
+    label_html: {
+      class: "block"
+      },
+    wrapper_html: {
+      class: "text-center my-rating-wrapper"
+    },
+    item_wrapper_class: "inline-block",
+    input_html: {
+      class: "rating-input my-hidden-input"
+    }
+  %>
+  <hr/>

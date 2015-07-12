@@ -3,7 +3,6 @@ class Answer < ActiveRecord::Base
   PREVIOUS_PERIOD = 60.days
 
   belongs_to :review, inverse_of: :answers
-  default_scope { order(:id) }
   belongs_to :test, inverse_of: :answers
 
   def sensitive
