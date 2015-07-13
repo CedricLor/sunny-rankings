@@ -1,0 +1,34 @@
+<%  background_color = [
+      "rgba(3, 190, 7, 0.7)",
+      "rgba(44, 195, 4, 0.7)",
+      "rgba(89, 201, 5, 0.7)",
+      "rgba(136, 207, 6, 0.7)",
+      "rgba(185, 212, 7, 0.7)",
+      "rgba(218, 199, 9, 0.7)",
+      "rgba(224, 157, 10, 0.7)",
+      "rgba(229, 113, 11, 0.7)",
+      "rgba(235, 67, 12, 0.7)",
+      "rgba(240, 19, 14,  0.7)"
+    ]
+%>
+
+<table class="table table-striped table-responsive">
+<% competitors.each do | firm | %>
+  <tr class="competitor-rank">
+    <td>
+      <%= link_to("", firm_path(firm), class: "cover-link")%>
+      <%= link_to(firm_path(firm)) do %>
+        <%= image_tag(firm.icon_name, class: "company-index-icon") %>
+      <% end %>
+    </td>
+    <td class="hidden-xs">
+      <%= link_to("", firm_path(firm), class: "cover-link")%>
+      <%= link_to firm.name, firm_path(firm) %>
+    </td>
+    <td>
+      <%= link_to("", firm_path(firm), class: "cover-link")%>
+      <span class="badge" style="background-color:<%= background_color[competitors.index(firm)]%>"><%= "#{firm.avg_rating.round(1)}" %></span>
+    </td>
+  </tr>
+<% end %>
+</table>

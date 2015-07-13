@@ -31,7 +31,7 @@
                 <div class="col-xs-12">
                   <h3 id="companyName">Gender equality on the workplace:</h3>
                   <h3><%= link_to @firm.name, @firm.url %> is ranked #<%= @firm.ranking_by_country(@firm.country) %> in <%= @firm.country %></h3>
-                  <p>Headcount: <%= "#{@firm.headcount}" %></p>
+                  <p>Headcount: <%= number_with_delimiter(@firm.headcount, delimiter: ",") %></p>
                 </div>
               </div>
               <%#= render "social_buttons" %>

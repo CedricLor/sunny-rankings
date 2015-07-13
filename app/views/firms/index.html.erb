@@ -50,23 +50,7 @@
         <div class="row">
           <div class="col-xs-12">
             <div id="competitorsCommunityRankings" class="text-wrapper card-block shadowed-box">
-                <table class="table table-striped table-responsive">
-                <% @firms.each do | firm | %>
-                  <tr>
-                    <td>
-                      <%= link_to(firm_path(firm)) do %>
-                        <%= image_tag(firm.icon_name, class: "company-index-icon") %>
-                      <% end %>
-                    </td>
-                    <td class="hidden-xs">
-                      <%= link_to firm.name, firm_path(firm) %>
-                    </td>
-                    <td>
-                      <span class="badge"><%= "#{firm.avg_rating.round(1)}" %></span>
-                    </td>
-                  </tr>
-                <% end %>
-                </table>
+              <%= render "competitors_community_rankings_table", competitors: @firms %>
             </div>
           </div>
         </div>
