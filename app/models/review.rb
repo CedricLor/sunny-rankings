@@ -4,7 +4,7 @@ class Review < ActiveRecord::Base
 
   belongs_to :user, inverse_of: :reviews
   belongs_to :firm, inverse_of: :reviews
-  has_many :answers, inverse_of: :review
+  has_many :answers, inverse_of: :review, autosave: :true
   accepts_nested_attributes_for :answers
 
   def self.answers

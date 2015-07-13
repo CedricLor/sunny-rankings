@@ -12,15 +12,15 @@ Rails.application.routes.draw do
     devise_for :users
 
     resources :firms, only: [ :index, :show ] do
-      resources :reviews, only: [ :new, :create]
+      resources :reviews, only: [ :create]
     end
 
     post 'firms/geosearch', to: "firms#geosearch"
 
-    resources :reviews, only: [ :new, :create, :show ] do
+    resources :reviews, only: [ :create, :show ] do
       resources :users, only: [ :edit, :update ]
     end
-
+    resources :reviews, only: [ :update]
     get 'pendingreviews', to: "reviews#pendingreviews"
 
     resources :profiles, only: [ :edit, :update, :show ]

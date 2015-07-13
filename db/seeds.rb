@@ -259,8 +259,7 @@ Test.create(test_question: "Absence of harassment", test_long_question: "Are the
       user_rating: Random.rand(5) + 1,
       review_id: review.id,
       test_id: test.id,
-      created_at: review_date,
-      reviewed_by_user: true
+      created_at: review_date
     })
   end
 end
@@ -285,8 +284,7 @@ end
     Answer.create({
       user_rating: 5,
       review_id: review.id,
-      test_id: test.id,
-      reviewed_by_user: true
+      test_id: test.id
     })
   end
 end
@@ -310,8 +308,7 @@ end
   Answer.create({
     user_rating: 5,
     review_id: review.id,
-    test_id: test.id,
-    reviewed_by_user: true
+    test_id: test.id
   })
 end
 
@@ -336,8 +333,7 @@ end
     Answer.create({
       user_rating: 5,
       review_id: review.id,
-      test_id: test.id,
-      reviewed_by_user: true
+      test_id: test.id
     })
   end
 end
@@ -362,8 +358,7 @@ end
     Answer.create({
       user_rating: 5,
       review_id: review.id,
-      test_id: test.id,
-      reviewed_by_user: true
+      test_id: test.id
     })
   end
 end

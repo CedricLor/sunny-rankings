@@ -4,6 +4,8 @@ class Firm < ActiveRecord::Base
   has_many :granted_awards, inverse_of: :firm
   has_many :awards, through: :granted_awards
   has_and_belongs_to_many :addresses
+  accepts_nested_attributes_for :reviews
+  accepts_nested_attributes_for :answers
 
   def self.ranking
     all.sort_by{ |f| f.avg_rating * -1 }
@@ -31,27 +33,27 @@ class Firm < ActiveRecord::Base
   end
 
   def current_reporting_period_average_for_test(test_id)
-    answers.current_reporting_period.where(test_id: test_id).average(:user_rating).to_f
+    answers.validated.current_reporting_period.where(test_id: test_id).average(:user_rating).to_f
   end
 
   def overall_current_reporting_period_average
-      answers.current_reporting_period.average(:user_rating).to_f
+      answers.validated.current_reporting_period.average(:user_rating).to_f
   end
   # This is the method
   def current_reporting_period_averages
-    answers.current_reporting_period.group(:test_id).average(:user_rating)
+    answers.validated.current_reporting_period.group(:test_id).average(:user_rating)
   end
 
   def previous_reporting_period_average_for_test(test_id)
-    answers.previous_reporting_period.where(test_id: test_id).average(:user_rating).to_f
+    answers.validated.previous_reporting_period.where(test_id: test_id).average(:user_rating).to_f
   end
 
   def overall_previous_reporting_period_average
-      answers.previous_reporting_period.average(:user_rating).to_f
+      answers.validated.previous_reporting_period.average(:user_rating).to_f
   end
 
   def previous_reporting_period_averages
-    answers.previous_reporting_period.group(:test_id).average(:user_rating)
+    answers.validated.previous_reporting_period.group(:test_id).average(:user_rating)
   end
 
   def current_trend
@@ -73,11 +75,19 @@ class Firm < ActiveRecord::Base
   end
 
   def avg_rating
-    answers.average(:user_rating).to_f
+    answers.validated.average(:user_rating).to_f
   end
 
   def avg_ratings_by_test
-    answers.group(:test_id).average(:user_rating)
+    answers.validated.group(:test_id).average(:user_rating)
+  end
+
+  def total_by_test
+    answers.validated.group(:test_id).sum(:user_rating)
+  end
+
+  def answers_count_by_test
+    answers.validated.group(:test_id).count
   end
 
   def number_of_reviews

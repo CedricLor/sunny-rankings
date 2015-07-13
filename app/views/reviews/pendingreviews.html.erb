@@ -7,7 +7,7 @@
         <div class="col-xs-12">
           <div class="card-block shadowed-box">
 
-            <% if @user.reviews.last.validated == false %>
+            <% if current_user.reviews.last.validated == false %>
 
               <h3 class="text-center">Here is your latest pending review for <%= "#{@firm.name}" %>.</h3>
               <p>Please review your votes carefully and update them, as the case may be.</p>

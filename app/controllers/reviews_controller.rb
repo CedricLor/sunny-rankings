@@ -1,18 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:pendingreviews, :show, :edit, :update, :destroy]
 
-  def new
-    @review = Review.new
-    @tests = Test.all
-    if params[:firm_id].nil?
-      @firms = Firm.all
-    else
-      @firm = Firm.find(params[:firm_id])
-    end
-    @tests.length.times { @review.answers.build }
-  end
-
-
   def create
     # Error handling
     form_has_errors?
@@ -31,16 +19,29 @@ class ReviewsController < ApplicationController
   end
 
   def pendingreviews
-    @user = current_user
-    @review = @user.reviews.last
+    @review = current_user.reviews.last
     @firm = @review.firm
     @tests = Test.all
+
+    # providing variable to build ratings and trends
+    @avg_ratings_by_test = @firm.avg_ratings_by_test
+    @current_averages = @firm.current_reporting_period_averages
+    @previous_averages = @firm.previous_reporting_period_averages
+    # providing variable for javascript immediate display
+    @total_by_test = @firm.total_by_test
+    @answer_count_by_test = @firm.answers_count_by_test
   end
 
   def edit
   end
 
   def update
+    review = Review.find(params[:id])
+    updated_review_params = { answers_attributes: review_params[:answers_attributes].values }
+    updated_review_params[:validated] = true
+    review.update(updated_review_params)
+    flash[:notice] = "Dear #{current_user.real_email}, your review of #{current_user.reviews.last.firm.name} has been successfully validated."
+    redirect_to firm_path(review.firm)
   end
 
   def destroy
@@ -49,11 +50,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:firm_id, :temporary_email, :confirmed_t_and_c, answers_attributes: [:user_rating])
-  end
-
-  def answer_params
-    params.require(params[:review][:answers_attributes]).permit(:"1", :"2", :"3", :"4", :"5")
+    params.require(:review).permit(:id, :firm_id, :temporary_email, :confirmed_t_and_c, answers_attributes: [:user_rating, :id])
   end
 
   def set_firm

@@ -5,12 +5,22 @@ class Answer < ActiveRecord::Base
   belongs_to :review, inverse_of: :answers
   belongs_to :test, inverse_of: :answers
 
+  after_update :destroy_if_user_rating_is_nil
+
   def sensitive
     (user_rating == 1 && test.positive_negative_switch == "negative") || (user_rating == 5 && test.positive_negative_switch == "positive")
   end
 
   def firm
     review.firm
+  end
+
+  def validated
+    review.validated == true ? true : false
+  end
+
+  def self.validated
+    joins(:review).where("reviews.validated = ?", true)
   end
 
   def self.for_firm(firm_id)
@@ -23,5 +33,11 @@ class Answer < ActiveRecord::Base
 
   def self.previous_reporting_period
     where(created_at: (Time.now - PREVIOUS_PERIOD)..Time.now - CURRENT_PERIOD)
+  end
+
+  protected
+
+  def destroy_if_user_rating_is_nil
+    destroy if user_rating.nil?
   end
 end
