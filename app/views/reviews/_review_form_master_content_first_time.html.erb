@@ -1,3 +1,10 @@
 <%= r.simple_fields_for :answers do |a| %>
   <%= render "reviews/review_form_answers", a: a %>
 <% end %>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    window.load = setSensorsForRatings();
+  <% end %>
+<% end %>
+

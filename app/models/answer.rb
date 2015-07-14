@@ -15,7 +15,7 @@ class Answer < ActiveRecord::Base
     review.firm
   end
 
-  def validated
+  def validated_answer
     review.validated == true ? true : false
   end
 

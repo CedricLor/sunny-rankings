@@ -33,9 +33,10 @@ class FirmsController < ApplicationController
       @review.answers.build(:test_id => test.id)
     end
     # providing variable to build ratings and trends
+    @current_stage = :first_time_vote
     @avg_ratings_by_test = @firm.avg_ratings_by_test
-    @current_averages = @firm.current_reporting_period_averages
-    @previous_averages = @firm.previous_reporting_period_averages
+    @current_period_averages = @firm.current_reporting_period_averages
+    @previous_period_averages = @firm.previous_reporting_period_averages
     # providing variable for javascript immediate display
     @total_by_test = @firm.total_by_test
     @answer_count_by_test = @firm.answers_count_by_test

@@ -3,12 +3,11 @@ class ReviewsController < ApplicationController
 
   def create
     # Error handling
-    form_has_errors?
+    redirect_to firm_path(params[:firm_id]) and return if form_has_errors?
     # If no errors
     set_user
     set_firm
     create_and_save_review
-    create_and_save_answers
     redirect_user
   end
 
@@ -24,9 +23,10 @@ class ReviewsController < ApplicationController
     @tests = Test.all
 
     # providing variable to build ratings and trends
+    @current_stage = :review_vote
     @avg_ratings_by_test = @firm.avg_ratings_by_test
-    @current_averages = @firm.current_reporting_period_averages
-    @previous_averages = @firm.previous_reporting_period_averages
+    @current_period_averages = @firm.current_reporting_period_averages
+    @previous_period_averages = @firm.previous_reporting_period_averages
     # providing variable for javascript immediate display
     @total_by_test = @firm.total_by_test
     @answer_count_by_test = @firm.answers_count_by_test
@@ -73,31 +73,17 @@ class ReviewsController < ApplicationController
     # is the user logged in
     if current_user.nil?
       # if no, is the user already in the database
-      if is_user_already_registered?
-        @is_new_user = false
-      # if the user is not in the database, create a new user
-      else
+      if User.find_by_real_email(params[:email]).nil?
         @user = create_user_on_vote
         @is_new_user = true
+      else
+        @user = User.find_by_real_email(params[:email])
+        @is_new_user = false
       end
     # if the user is logged in, affect it to @user
     else
       @user = current_user
       @is_new_user = false
-    end
-  end
-
-  def is_user_already_registered?
-    if User.find_by_real_email(review_params[:temporary_email]).nil? && User.find_by_email(review_params[:temporary_email]).nil?
-      return false
-    else
-      if User.find_by_real_email(review_params[:temporary_email]).nil?
-        @user = User.find_by_email(review_params[:temporary_email])
-        return true
-      else
-        @user = User.find_by_real_email(review_params[:temporary_email])
-        return true
-      end
     end
   end
 
@@ -108,69 +94,44 @@ class ReviewsController < ApplicationController
     # creation of a user to be validated by user
     user = User.create({
       email: username,
-      real_email: review_params[:temporary_email],
+      real_email: params[:email],
       password: password,
       password_confirmation: password,
       validated: false
     })
-    @profile = user.create_profile(real_email: review_params[:temporary_email], first_time_login_upon_firm_review: true)
+    @profile = user.create_profile(real_email: params[:email], first_time_login_upon_firm_review: true)
     UserMailer.new_user_on_vote(user.email).deliver_now
     user
   end
 
   def create_and_save_review
+    processed_answers_attributes = []
+    for i in 1..5 do
+      answer_hash = review_params[:answers_attributes].fetch("#{i - 1}")
+      answer_hash["test_id"] = "#{i}"
+      processed_answers_attributes << answer_hash
+    end
     @review = @user.reviews.build(
       validated: false,
       user_id: @user.id,
       firm_id: @firm_id,
       user_firm_relationship: "Undefined",
-      confirmed_t_and_c: review_params[:confirmed_t_and_c]
+      confirmed_t_and_c: review_params[:confirmed_t_and_c],
+      answers_attributes: processed_answers_attributes
       )
     @review.save
   end
 
-  def create_and_save_answers
-    @answers = []
-    Test.all.each_with_index do |test, i|
-      unless review_params[:answers_attributes]["#{i}"].nil?
-        @answers[i] = @review.answers.build(:test_id => i + 1, :user_rating => review_params[:answers_attributes]["#{i}"][:user_rating].to_i)
-      else
-        @answers[i] = @review.answers.build(:test_id => i + 1)
-      end
-      @answers[i].save
-    end
-    # review_params[:answers_attributes].each_with_index do |question_user_rating, i|
-    #   @answers[i] = @review.answers.build(:test_id => question_user_rating[0].to_i + 1, :user_rating => question_user_rating[1][:user_rating].to_i)
-    #   # + 1 is here to correct the 0 index (there is no test with index 0 in the database)
-    #   @answers[i].save
-    # end
-  end
-
   def form_has_errors?
-    if review_params[:temporary_email].nil? || "" == review_params[:temporary_email]
-      alert_message = "Please indicate your email!"
-      firm_id = params[:firm_id] || review_params[:firm_id]
-      if Firm.find_by_id(firm_id).nil?
-        flash[:alert] = alert_message + " Please choose the firm you want to vote for!"
-        redirect_to new_review_path and return
-      else
-        flash[:alert] = alert_message
-        redirect_to firm_path(firm_id) and return
-      end
+    status = false
+    if params[:email].nil? || params[:email] == ""
+      flash[:alert] = "Please indicate your email! "
+      status = true
     end
-    # if params[:firm_id]
-    #   flash[:alert] = "Please indicate your email!"
-    #   redirect_to firm_path(params[:firm_id])
-    # elsif params[:review][:firm_id]
-    #     flash[:alert] = "Please indicate your email!"
-    #     redirect_to firm_path(params[:review][:firm_id])
-    #     # @review = Review.new(firm_id: params[:review][:firm])
-    #     # create_and_save_answers
-    #     # @tests = Test.all
-    #     # @firms = Firm.all
-    #     # raise Exception @review.inspect
-    #     # render :new
-    # end
+    if review_params[:answers_attributes] == {}
+      flash[:alert] = "Please vote on at least one criteria!"
+      status = true
+    end
   end
 
   def redirect_user

@@ -1,2 +1,10 @@
-<%= r.input :temporary_email, label: "Please enter your PERSONAL email", hint: "Your email will remain confidential and as per our conditions of rating services, will not be shared with your employer.", hint_html: {class: "voting-email-hint-class"} %>
+<%
+  if current_user
+    email = current_user.profile.real_email
+  else
+    email = ""
+  end
+%>
+
+<%= r.input :email, as: :fake, input_html: { :value => "#{email}" }, label: "Please enter your PERSONAL email", hint: "Your email will remain confidential and as per our conditions of rating services, will not be shared with your employer.", hint_html: {class: "voting-email-hint-class"} %>
 <%= r.button :submit, "Vote", class: "btn-center", id: "voteButton" %>

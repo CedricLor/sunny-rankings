@@ -15,10 +15,6 @@ $(window).load( function() {
   function myField(DOMSelectedObject) {
     this.textValue = DOMSelectedObject.val();
     this.attrId = DOMSelectedObject.attr("id");
-    /* Quick fix to make it work when the email field is not tagged with id="email" */
-    if ( this.attrId == "review_temporary_email" ) {
-      this.attrId = "email";
-    }
     this.validity = false;
     this.updateCSS = function() {
       ( this.validity == false ) ?
@@ -54,7 +50,7 @@ $(window).load( function() {
       /* Quick fix to avoid that the form control controls other form fields than the field of
       the review form (such as the search form, for instance) */
       // This selector should select all the fields that need to be validated
-      $('#review_temporary_email').each(function() {
+      $('#email').each(function() {
         myFields[$(this).attr("id")] = new myField($(this));
         $(this).val("");
       });
@@ -95,7 +91,7 @@ $(window).load( function() {
   });
   // Attach a handler triggered when the focus goes out of a form field
   // This selector should select all the fields that need to be validated
-  $('#review_temporary_email').focusout(function() {
+  $('#email').focusout(function() {
     myChecker.validityControl($(this).attr("id"), $(this).val());
     enable_button();
   });
