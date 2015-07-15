@@ -36,6 +36,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    # This action is called from the view pendingreviews
     review = Review.find(params[:id])
     updated_review_params = { answers_attributes: review_params[:answers_attributes].values }
     updated_review_params[:validated] = true
@@ -50,23 +51,14 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:id, :firm_id, :temporary_email, :confirmed_t_and_c, answers_attributes: [:user_rating, :id])
+    params.require(:review).permit(:id, :firm_id, :confirmed_t_and_c, answers_attributes: [:user_rating, :id])
   end
 
   def set_firm
     # If the request comes from a firm's page
-    if params[:firm_id].present?
-      @firm = Firm.find(params[:firm_id])
-      @firm_id = params[:firm_id]
-    # If the request comes from the Rate a firm's page
-    elsif review_params[:firm_id].present?
-      @firm = Firm.find(review_params[:firm_id])
-      @firm_id = @firm.id
-    # Else catch
-    # TODO: Not satisfactory because triggers an error later + saves a fake record into the database
-    else
-      @firm_id = 1000000
-    end
+    params[:firm_id].present?
+    @firm = Firm.find(params[:firm_id])
+    @firm_id = params[:firm_id]
   end
 
   def set_user
@@ -107,7 +99,7 @@ class ReviewsController < ApplicationController
   def create_and_save_review
     processed_answers_attributes = []
     for i in 1..5 do
-      answer_hash = review_params[:answers_attributes].fetch("#{i - 1}")
+      answer_hash = review_params[:answers_attributes].fetch("#{i - 1}") { |el| {"user_rating"=>"0"} }
       answer_hash["test_id"] = "#{i}"
       processed_answers_attributes << answer_hash
     end
@@ -129,9 +121,14 @@ class ReviewsController < ApplicationController
       status = true
     end
     if review_params[:answers_attributes] == {}
-      flash[:alert] = "Please vote on at least one criteria!"
+      flash[:alert] = "Please vote on at least one criteria! "
       status = true
     end
+    if review_params[:confirmed_t_and_c] != "1"
+      flash[:alert] = "Please accept the conditions of use of rating services!"
+      status = true
+    end
+    status
   end
 
   def redirect_user
@@ -142,7 +139,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved. It is currently pending. It still needs to be validated."
       redirect_to pendingreviews_path and return
     else
-      flash[:notice] = "Dear #{review_params[:temporary_email]}, your review of #{@review.firm.name} has been successfully saved. Please login to your account #{@user.email} on our systems to validate it!"
+      flash[:notice] = "Dear #{params[:email]}, your review of #{@review.firm.name} has been successfully saved. Please login to your account #{@user.email} on our systems to validate it!"
       redirect_to new_user_session_path and return
     end
   end

@@ -7,6 +7,17 @@ class Review < ActiveRecord::Base
   has_many :answers, inverse_of: :review, autosave: :true
   accepts_nested_attributes_for :answers
 
+  validates :firm, presence: true
+  validates :user, presence: true
+  validates :confirmed_t_and_c, inclusion: { in: [true, false] }
+  validates :confirmed_t_and_c, exclusion: { in: [nil] }
+  validates :confirmed_t_and_c, :acceptance => {:accept => true}
+  validates :validated, inclusion: { in: [true, false] }, on: :create
+  validates :validated, exclusion: { in: [nil] }
+  validates :validated, :acceptance => {:accept => true}, on: :update
+  validates_associated :answers
+
+
   def self.answers
     joins(:answers)
   end

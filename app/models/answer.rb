@@ -1,11 +1,17 @@
 class Answer < ActiveRecord::Base
-  CURRENT_PERIOD = 20.days
+  CURRENT_PERIOD = 30.days
   PREVIOUS_PERIOD = 60.days
 
   belongs_to :review, inverse_of: :answers
   belongs_to :test, inverse_of: :answers
 
-  after_update :destroy_if_user_rating_is_nil
+  validates :user_rating, presence: true
+  validates :user_rating, numericality: { only_integer: true }
+  validates :user_rating, inclusion: { in: (0..5) }
+  validates :review, presence: true
+  validates :test, presence: true
+
+  after_update :destroy_if_user_rating_is_0
 
   def sensitive
     (user_rating == 1 && test.positive_negative_switch == "negative") || (user_rating == 5 && test.positive_negative_switch == "positive")
@@ -37,7 +43,8 @@ class Answer < ActiveRecord::Base
 
   protected
 
-  def destroy_if_user_rating_is_nil
-    destroy if user_rating.nil?
+  def destroy_if_user_rating_is_0
+    destroy if user_rating == 0
+    destroy if user_rating == "0"
   end
 end

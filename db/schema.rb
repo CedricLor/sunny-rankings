@@ -105,7 +105,6 @@ ActiveRecord::Schema.define(version: 20150709192700) do
     t.integer  "user_id"
     t.integer  "firm_id"
     t.string   "user_firm_relationship"
-    t.string   "temporary_email"
     t.boolean  "confirmed_t_and_c",      default: false
     t.boolean  "validated",              default: false
     t.datetime "created_at",                             null: false

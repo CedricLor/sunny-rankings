@@ -18,7 +18,8 @@
     item_wrapper_class: "inline-block",
     input_html: {
       class: "rating-input my-hidden-input"
-    }
+    },
+    checked: params[:action] == 'show' && params[:controller] == 'firms' ? 3 : nil
   %>
 <div class="vote-impact-wrapper" data-prior-answers-count='<%= @answer_count_by_test.fetch(a.index + 1) %>' data-prior-answers-total='<%= @total_by_test.fetch(a.index + 1) %>'>
 

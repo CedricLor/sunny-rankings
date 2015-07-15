@@ -21,18 +21,18 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find_by_id(params[:id])
     updated_params = profile_params
+    # first_time_login_upon_firm_review is checked by the profile edit view
+    # to display a specific message to the user that logs in for the first time
     updated_params[:first_time_login_upon_firm_review] = false
     @profile.update(updated_params)
-    review = @profile.reviews.last
-    if review.validated == false
+    if params[:review]
+      review = @profile.reviews.last
       updated_review_params = { answers_attributes: review_params[:answers_attributes].values }
       updated_review_params[:validated] = true
       review.update(updated_review_params)
       flash[:notice] = "Dear #{current_user.real_email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved."
-      redirect_to firm_path(review.firm)
-    else
-      redirect_to profile_path(@profile)
     end
+    params[:review] ? (redirect_to firm_path(review.firm)) : (redirect_to profile_path(@profile))
   end
 
   def show
@@ -42,10 +42,23 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:real_email, :first_name, :last_name, :country, :phone_number, :age, :gender)
+    params.require(:profile).permit(
+      :real_email,
+      :first_name,
+      :last_name,
+      :country,
+      :phone_number,
+      :age,
+      :gender,
+      reviews_attributes:
+        [ :id,
+          :validated,
+          answers_attributes: [:user_rating, :id]
+        ]
+      )
   end
 
   def review_params
-    params.require(:review).permit(answers_attributes: [:user_rating, :id])
+    params.require(:review).permit(:id, :validated, answers_attributes: [:user_rating, :id])
   end
 end
