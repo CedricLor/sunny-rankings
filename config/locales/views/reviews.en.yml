@@ -1,0 +1,24 @@
+en:
+  reviews:
+    edit_review:
+      title: "Here are your votes pending validation for "
+      header_instruction: "Please review them carefully and update them, as the case may be."
+      press_button_instruction: "Once your are done, press the Validate button below."
+    review_form_accept_t_and_c:
+      t_and_c_confirmation_text: "I hereby confirm that I have read and agreed to the conditions of rating services of Skanher."
+      read_t_and_c_link: "Read the Conditions of Rating Services"
+    review_form_answers:
+      current_rating: "Current rating"
+      potential_impact: "Your potential impact"
+      real_impact: "Your impact"
+    review_form_email_and_voting_button:
+      email_label: "Please enter your PERSONAL email"
+      email_hint: "Your email will remain confidential and as per our conditions of rating services, will not be shared with your employer."
+      voting_button_label: "Vote"
+    simple_review_without_firm_select:
+      tell_us_about: "Tell us about "
+    pendingreviews:
+      page_title: "Your Pending Review"
+      heading_sentence_if_has_pending_review: "Here is your latest pending review for "
+      instructions_html: "<p>Please review your votes carefully and update them, as the case may be.</p><p>Once your are done, press the Validate button below.</p>"
+      heading_sentence_if_has_no_pending_review: "You do not have any pending reviews."

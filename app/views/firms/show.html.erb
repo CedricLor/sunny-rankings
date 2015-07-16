@@ -24,17 +24,24 @@
                   </h4>
                 </div>
                 <div class="col-xs-9 text-right">
-                  (<%= "#{@firm.reviews.count}" %> reviews)
+                  (<%= t('.review', count: @firm.reviews.count, default: "#{@firm.reviews.count} review(s)")  %>)
                 </div>
               </div>
               <div class="row">
                 <div class="col-xs-12">
-                  <h3 id="companyName">Gender equality on the workplace:</h3>
-                  <h3><%= link_to @firm.name, @firm.url %> is ranked #<%= @firm.ranking_by_country(@firm.country) %> in <%= @firm.country %></h3>
-                  <p>Headcount: <%= number_with_delimiter(@firm.headcount, delimiter: ",") %></p>
+                  <h3 id="companyName"><%= t(:gender_equality_on_the_workplace, default: "Gender equality on the workplace") %>:</h3>
+                  <h3>
+                    <%= link_to @firm.name, @firm.url %>
+                    <%= t('.is_ranked', default: " is ranked ") %>
+                    #
+                    <%= @firm.ranking_by_country(@firm.country) %>
+                    <%= t('.in', default: " in ") %>
+                    <%= @firm.country %>
+                  </h3>
+                  <p><%= t('.headcount', default: "Headcount") %>: <%= @firm.headcount =! 0 ? number_with_delimiter(@firm.headcount, delimiter: ",") : t('.not_available',default: "N.A.") %></p>
                 </div>
               </div>
-              <%#= render "social_buttons" %>
+              <%= render "social_buttons" %>
             </div>
           </div>
         </div>
@@ -42,7 +49,7 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="text-wrapper card-block shadowed-box">
-              <%= link_to "Rate #{@firm.name}!", "#review_form", class: "btn btn-default btn-lg btn-block red-hover-btn main-call-to-action-btn", type: "button" %>
+              <%= link_to t('.big_call_to_rate', firm_name: @firm.name, default: "Rate #{@firm.name}!"), "#review_form", class: "btn btn-default btn-lg btn-block red-hover-btn main-call-to-action-btn", type: "button" %>
             </div>
           </div>
         </div>

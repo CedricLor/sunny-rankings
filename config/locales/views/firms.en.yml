@@ -1,0 +1,26 @@
+en:
+  firms:
+    community_ranking_details:
+      what_our_users_say: "What our users say about %{firm_name}:"
+    competitors_community_rankings:
+      competitors_header: "Top 10 in the %{industry_name} in %{country_name}"
+    official_labels:
+      heading: "Labels, Awards and Charters for %{firm_name}"
+    social_buttons:
+      rate_me: "Rate me!"
+    index:
+      page_title_search: "Search results for %{search_string}"
+      page_title_no_search: "Look up a firm's ranking"
+      search_result_header_html: "Search results for '%{search_string}'"
+      no_search_result_header_html: "No firm with a name containing '%{search_string}' is currently ranked in our database."
+      please_add_firm: "Please add '%{search_string}' to our rankings!"
+      top_10_in_country: "Here are the top 10 firms ranked by our community in %{user_ip_country}"
+      is_ranked: " is ranked "
+      in: " in "
+    show:
+      headcount: "Headcount"
+      review:
+        one: "one review"
+        other: "%{count} reviews"
+      not_available: "N.A."
+      big_call_to_rate: "Rate %{firm_name}"

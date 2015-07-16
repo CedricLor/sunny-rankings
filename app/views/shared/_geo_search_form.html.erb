@@ -3,7 +3,7 @@
     <%= text_field_tag :longitude, params[:search_longitude], class: "form-control my-navbar-form-control hidden", id: "longitudeSearch" %>
     <%= text_field_tag :latitude, params[:search_latitude], class: "form-control my-navbar-form-control hidden", id: "latitudeSearch" %>
     <button type="submit" class="btn btn-default hidden" id="navbarGeoSearchButton">
-      <i class="fa fa-search">Or get lucky and check out the closest firm around you</i>
+      <i class="fa fa-search"><%=t :geosearch_button_call_to_action %></i>
     </button>
   <% end %>
 </div>

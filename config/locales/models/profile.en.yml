@@ -1,0 +1,15 @@
+en:
+  activerecord:
+    models:
+      profile: "Profile"
+    attributes:
+      profile:
+        first_name: "First name"
+        last_name: "Last name"
+        country: "Country"
+        phone_number: "Phone number"
+        age: "Age"
+        gender: "Gender"
+        employer_name: "Employer name"
+        current_position: "Current position"
+        address: "Address"

@@ -101,4 +101,8 @@ class Firm < ActiveRecord::Base
   def number_of_pending_reviews
     reviews.where(validated: false).count
   end
+
+  def awards_names
+    awards.map(&:name)
+  end
 end

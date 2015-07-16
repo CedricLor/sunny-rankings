@@ -1,4 +1,4 @@
-<% content_for(:title, "Searching for #{params[:search]}") %>
+<% content_for(:title,  params[:search] ? t(".page_title_search", search_string: params[:search], default: "Searching for #{params[:search]}") : t(".page_title_no_search", default: raw("Look up a firm's ranking") ) ) %>
 
 <div class="container">
 
@@ -15,7 +15,7 @@
         <!-- If the user has searched something -->
         <h1>
           <% if params[:search] %>
-            <%= "Search results for \"#{params[:search]}\"" %>
+            <%= t('.search_result_header_html', search_string: params[:search], default: "Search results for '#{params[:search]}'") %>
           <% end %>
         </h1>
         <!-- If the search has not given any result -->
@@ -24,10 +24,10 @@
           <div class="col-xs-12">
             <div class="text-wrapper card-block shadowed-box text-center">
               <h4>
-                <%= "No firm with a name containing \"#{params[:search]}\" is currently ranked in our database." %>
+                <%= t( ".no_search_result_header_html", search_string: params[:search], default: "No firm with a name containing \"#{params[:search]}\" is currently ranked in our database.") %>
                 <br><br>
                 <!-- TO DO: Replace br with nice css -->
-                <%= link_to("Please add \"#{params[:search]}\" to our rankings!", "#", class: "btn btn-default btn-lg add-me-after-search red-hover-btn main-call-to-action-btn", role: "button") %>
+                <%= link_to( t(".please_add_firm", search_string: params[:search], default: "Please add \"#{params[:search]}\" to our rankings!"), "#", class: "btn btn-default btn-lg add-me-after-search red-hover-btn main-call-to-action-btn", role: "button") %>
               </h4>
             </div>
           </div>
@@ -38,9 +38,9 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="text-wrapper card-block shadowed-box text-center">
-              <h1>Gender equality on the workplace</h1>
+              <h1><%= t(:gender_equality_on_the_workplace, default: "Gender equality on the workplace") %></h1>
               <p>
-                <%= "Here are the top 10 firms ranked by our community in #{@user_ip_country}" %>
+                <%= t('.top_10_in_country', user_ip_country: @user_ip_country, default: "Here are the top 10 firms ranked by our community in #{@user_ip_country}") %>
               </p>
             </div>
           </div>

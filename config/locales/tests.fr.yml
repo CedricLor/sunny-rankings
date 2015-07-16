@@ -1,0 +1,17 @@
+fr:
+  tests_questions:
+    question_1:
+      long_question: "Les commentaires sexistes sont-ils fréquents dans cette entreprise ?"
+      short_question: "Absence de commentaires sexistes"
+    question_2:
+      long_question: "Comment est resssentie la grossesse d'un employé dans cette entreprise ?"
+      short_question: "Absence de problèmes liés à la grossesse"
+    question_3:
+      long_question: "Les femmes et les hommes occupant un poste équivalent se voient-ils offrir les mêmes opportunités de promotion dans cette entreprise ?"
+      short_question: "Egalité en terme de promotion"
+    question_4:
+      long_question: "Les femmes et les hommes occupant un poste équivalent se voient-ils offrir un même niveau de rémunérations dans cette entreprise ?"
+      short_question: "Egalité de rémunérations"
+    question_5:
+      long_question: "Y a-t-il des problèmes de harcélement sexuel dans cette entreprise ?"
+      short_question: "Absence de harcélement"

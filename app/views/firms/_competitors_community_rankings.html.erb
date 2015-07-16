@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div id="competitorsCommunityRankings" class="text-wrapper card-block shadowed-box">
-      <h4>Top 10 in the <%= selected_firm.industry %> industry in <%= selected_firm.country %></h4>
+      <h4><%= t(".competitors_header", industry_name: selected_firm.industry, country_name: selected_firm.country , default: "Top 10 in the #{selected_firm.industry} in #{selected_firm.country}") %></h4>
       <%= render "competitors_community_rankings_table", competitors: competitors %>
     </div>
   </div>

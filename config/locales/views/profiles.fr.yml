@@ -1,0 +1,28 @@
+fr:
+  profiles:
+    edit:
+      page_title: "Nouveau Profil"
+      main_heading: "Merci de compléter votre profil"
+      welcome_parag_if_first_time_login_upon_review_html:
+        "<p>Un compte chez Skanher a été créé pour vous !</p>
+        <p class='red-paragraph'>Pour des raisons de confidentialités, nous vous avons attribué le nom d'utilisateur suivant:</p>
+        <p class='red-paragraph'> %{username}</p>
+        <p class='red-paragraph'>Pour valider votre revue de %{reviewed_firm_name}, merci de compléter votre profil.</p>"
+      welcome_parag_if_simple_profile_review_html:
+        "<p>Le détail de votre profil figure ci-dessous.</p>
+        <p>Votre nom d'utilisateur est :</p>
+        <p class='red-paragraph'>%{username}</p>"
+      sentence_if_last_review_not_validated: "Vous avez un vote en attente pour %{firm_name}. Merci de valider votre vote ci-dessous."
+      sentence_if_last_review_validated: "Vous n'avez actuellement aucune revue en attente de validation."
+      instruction_to_review_answers_and_validate: "A présent, revoyez vos réponses et validez"
+      form_label_your_email: "Votre adresse email"
+      validate_button_label: "Validez"
+    show:
+      page_title: "Votre profil"
+      your_real_email: "Votre addresse email"
+      your_first_name: "Votre prénom"
+      your_last_name: "Votre nom de famille"
+      your_country_of_residence: "Votre pays de résidence"
+      your_phone_number: "Votre numéro de téléphone"
+      your_age: "Votre âge"
+      your_gender: "Votre sexe"

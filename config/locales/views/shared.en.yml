@@ -1,0 +1,17 @@
+en:
+  geosearch_button_call_to_action: "Or get lucky and check out the closest firm around you"
+  top_call_to_action: "Rate A Firm"
+  sign_out: "Sign out"
+  update_connection_credentials: "Update your connexion credentials"
+  view_pending_review: "View your pending review"
+  sign_up: "Sign up"
+  sign_in: "Sign in"
+  profile: "Profile"
+  shared:
+    navbar:
+      toggle_navigation: "Toggle navigation"
+      messages: "Messages"
+      view_profile: "View your user profile"
+      update_profile: "Update your user profile"
+    search_form:
+      placeholder: "Look up for a firm"

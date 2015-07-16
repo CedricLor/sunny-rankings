@@ -52,7 +52,6 @@ $(window).load( function() {
       // This selector should select all the fields that need to be validated
       $('#email').each(function() {
         myFields[$(this).attr("id")] = new myField($(this));
-        $(this).val("");
       });
       return myFields;
     };

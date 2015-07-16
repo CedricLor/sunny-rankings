@@ -1,0 +1,12 @@
+fr:
+  industries:
+    financial_services: "industrie des services financiers"
+    legal_services: "industrie des services juridiques"
+    public_administration: "administration publique"
+    media_industry: "industrie des médias"
+    chemical_industry: "industrie chimique"
+    cosmetic_industry: "industrie des cosmétiques"
+    parmaceutical_industry: "industrie pharmaceutique"
+    luxury_good_industry: "industrie du luxe"
+    retail_distribution_industry: "industrie de la distribution de biens de consommation"
+    oil_industry: "industrie pétrolière"

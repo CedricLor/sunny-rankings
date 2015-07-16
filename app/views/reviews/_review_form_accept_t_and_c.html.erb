@@ -6,7 +6,7 @@
     </div>
     <div class="col-xs-9">
       <p>
-        I hereby confirm that I have read and agreed to the conditions of rating services of Skanher.
+        <%= t ".t_and_c_confirmation_text", default: "I hereby confirm that I have read and agreed to the conditions of rating services of Skanher." %>
       </p>
     </div>
   </div>
@@ -18,7 +18,7 @@
     </div>
     <div class="col-xs-9">
       <p>
-        <%= link_to('Read the Conditions of Rating Services', static_pages_terms_and_conditions_path)%>
+        <%= link_to t(".read_t_and_c_link", default: "Read the Conditions of Rating Services"), static_pages_terms_and_conditions_path %>
       </p>
     </div>
   </div>

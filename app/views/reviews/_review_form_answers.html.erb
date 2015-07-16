@@ -1,6 +1,6 @@
 <% user_rating_option_array = [] %>
 <% @tests.fetch(a.index).select_options.split(";").each_with_index do |answer, i| %>
-  <% user_rating_option_array << ["x", i + 1] %>
+  <% user_rating_option_array << ["_", i + 1] %>
   <%# + 1 is here to fix minimum grade to 1 and maximum to 5 instead of 0 and 4 respect. %>
 <% end %>
 
@@ -8,7 +8,7 @@
     as: :radio_buttons,
     boolean_style: :inline,
     collection: (user_rating_option_array),
-    label: "#{@tests.fetch(a.index).test_long_question}",
+    label: t( :long_question, scope: [:tests_questions, :"question_#{a.index + 1}"], default: "#{@tests.fetch(a.index).test_long_question}"),
     label_html: {
       class: "block"
       },
@@ -26,7 +26,7 @@
     <table class="table table-striped table-responsive">
       <tr>
         <td>
-          Current rating
+          <%= t(".current_rating", default: "Current rating") %>
         </td>
         <td>
           <span class="badge"><%= @avg_ratings_by_test.fetch(a.index + 1).to_f.round(1) %></span>
@@ -51,17 +51,17 @@
           end
           voting_stages = {
             first_time_vote: {
-              text: "potential",
+              text: t('.potential_impact', default: "Your potential impact"),
               css_hidden_switch: "my-hidden-class",
               new_average_including_voter: "",
               arrow_direction_including_voter: :neutral},
             review_vote: {
-              text: "potential",
+              text: t('.potential_impact', default: "Your potential impact"),
               css_hidden_switch: "",
               new_average_including_voter: new_average_including_voter_rounded,
               arrow_direction_including_voter: arrow_direction_including_voter},
             archived_vote: {
-              text: "real",
+              text: t('.real_impact', default: "Your impact"),
               css_hidden_switch: "",
               new_average_including_voter: new_average_including_voter_rounded,
               arrow_direction_including_voter: arrow_direction_including_voter}
@@ -69,7 +69,7 @@
       %>
       <tr class="your-impact <%= voting_stages[@current_stage][:css_hidden_switch] %>">
         <td>
-          Your <%= voting_stages[@current_stage][:text] %> impact
+          <%= voting_stages[@current_stage][:text] %>
         </td>
         <td>
           <span class="badge average"><%= voting_stages[@current_stage][:new_average_including_voter] %></span>

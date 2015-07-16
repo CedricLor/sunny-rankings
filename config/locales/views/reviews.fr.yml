@@ -1,0 +1,27 @@
+fr:
+  reviews:
+    edit_review:
+      title: "Votre vote en attente de validation pour "
+      header_instruction: "Merci de revoir vos réponses avec attention et de les mettre à jour, si nécessaire."
+      press_button_instruction: "Une fois prêt, appuyer sur le bouton Valider ci-dessous."
+    review_form_accept_t_and_c:
+      t_and_c_confirmation_text: "Je confirme avoir lu et accepter les conditions d'utilisation des services de notation de Skanher."
+      read_t_and_c_link: "Lire les conditions d'utilisation des services de notation"
+    review_form_answers:
+      current_rating: "Note actuelle"
+      potential_impact: "Votre impact potentiel"
+      real_impact: "Votre impact"
+    review_form_email_and_voting_button:
+      email_label: "Merci d'indiquer votre email PERSONNEL"
+      email_hint: "Votre email restera confidentiel et conformément à nos conditions de services de notation, ne sera pas communiqué à votre employeur."
+      voting_button_label: "Voter !"
+    simple_review_without_firm_select:
+      tell_us_about: "Parlez-nous de "
+    pendingreviews:
+      page_title: "Votre vote en attente de validation"
+      heading_sentence_if_has_pending_review: "Voici votre dernier vote en attente de validation pour "
+      instructions_html: "<p>Merci de revoir vos réponses avec soin et de les mettre à jour en cas de besoin.</p><p>Une fois prêt, appuyez sur le bouton Valider ci-dessous.</p>"
+      heading_sentence_if_has_no_pending_review: "Vous n'avez pas de vote en attente de validation."
+      latest_review_intro_html: "<p>Vous trouverez ci-dessous votre dernière revue pour %{firm_name}.</p>
+              <p>Cette revue a déjà été validée et ne peux plus être modifiée.</p>
+              <p>Merci d'aider nos membres à en savoir plus sur l'égalité entre les sexes chez %{firm_name}."

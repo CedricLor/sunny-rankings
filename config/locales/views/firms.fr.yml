@@ -1,0 +1,27 @@
+fr:
+  firms:
+    community_ranking_details:
+      what_our_users_say: "Ce que nos membres disent à propos de %{firm_name} :"
+    competitors_community_rankings:
+      competitors_header: "Top 10 dans %{industry_name} en %{country_name}"
+    official_labels:
+      heading: "Labels, Prix et Chartes pour %{firm_name}"
+    social_buttons:
+      rate_me: "Notez-moi !"
+    index:
+      page_title_search: "Résultat pour %{search_string}"
+      page_title_no_search: "Cherchez une entreprise !"
+      search_result_header_html: "Résultats de la recherche pour '%{search_string}'"
+      no_search_result_header_html: "Search results for '%{search_string}'"
+      no_search_result_header_html: "Il n'y a pas d'entreprise dont le nom contienne '%{search_string}' actuellement classé dans notre base de données."
+      please_add_firm: "Ajoutez '%{search_string}' à nos classements !"
+      top_10_in_country: "Voici les 10 premières entreprises d'après notre communauté en %{user_ip_country}"
+    show:
+      is_ranked: " est classée "
+      in: " en "
+      headcount: "Nombre d'employés "
+      review:
+        one: "une revue"
+        other: "%{count} revues"
+      not_available: "N.D."
+      big_call_to_rate: "Notez %{firm_name}"

@@ -1,11 +1,11 @@
-<% content_for(:title, "Your Profile") %>
+<% content_for(:title,  t(".page_title", default: "Your Profile") ) %>
 
 <div class="container text-center">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
       <div class="card-block shadowed-box text-center">
         <div class="main-title-block">
-          <h1 class="main-title">Your Profile</h1>
+          <h1 class="main-title"><%= t(".page_title", default: "Your Profile") %></h1>
         </div>
       </div>
     </div>
@@ -17,7 +17,7 @@
       <%# Firm.all.ranking_by_industry(selected_firm.industry).each do | firm | %>
         <tr>
           <td>
-            Your real email:
+            <%= t(".your_real_email", default: "Your real email") + ":" %>
           </td>
           <td>
             <%= @profile.real_email %>
@@ -25,7 +25,7 @@
         </tr>
         <tr>
           <td>
-            Your first name:
+            <%= t(".your_first_name", default: "Your first name") + ":" %>
           </td>
           <td>
             <%= @profile.first_name %>
@@ -33,7 +33,7 @@
         </tr>
         <tr>
           <td>
-            Your last name:
+            <%= t(".your_last_name", default: "Your last name") + ":" %>
           </td>
           <td>
             <%= @profile.last_name %>
@@ -41,7 +41,7 @@
         </tr>
         <tr>
           <td>
-            Your country of residence:
+            <%= t(".your_country_of_residence", default: "Your country of residence") + ":" %>
           </td>
           <td>
             <%= @profile.country %>
@@ -49,7 +49,7 @@
         </tr>
         <tr>
           <td>
-            Your phone number:
+            <%= t(".your_phone_number", default: "Your phone number") + ":" %>
           </td>
           <td>
             <%= @profile.phone_number %>
@@ -57,7 +57,7 @@
         </tr>
         <tr>
           <td>
-            Your age:
+            <%= t(".your_age", default: "Your age") + ":" %>
           </td>
           <td>
             <%= @profile.age %>
@@ -65,7 +65,7 @@
         </tr>
         <tr>
           <td>
-            Your gender:
+            <%= t(".your_gender", default: "Your gender") + ":" %>
           </td>
           <td>
             <%= @profile.gender %>

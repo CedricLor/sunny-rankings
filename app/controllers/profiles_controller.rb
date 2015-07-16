@@ -1,42 +1,32 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!, only: [:show, :edit, :update]
+  before_action :set_profile, only: [:show, :edit, :update]
 
   def edit
-    @user = current_user
-    @profile = @user.profile
-    @review = @profile.reviews.last
-    @tests = Test.all
-
-    @firm = @review.firm
-    # providing variable to build ratings and trends
-    @current_stage = :review_vote
-    @avg_ratings_by_test = @firm.avg_ratings_by_test
-    @current_period_averages = @firm.current_reporting_period_averages
-    @previous_period_averages = @firm.previous_reporting_period_averages
-    # providing variable for javascript immediate display
-    @total_by_test = @firm.total_by_test
-    @answer_count_by_test = @firm.answers_count_by_test
+    @review = current_user.reviews.last
+    if @review.validated == false
+      variables_for_pending_review
+    end
   end
 
   def update
-    @profile = Profile.find_by_id(params[:id])
-    updated_params = profile_params
-    # first_time_login_upon_firm_review is checked by the profile edit view
-    # to display a specific message to the user that logs in for the first time
-    updated_params[:first_time_login_upon_firm_review] = false
-    @profile.update(updated_params)
     if params[:review]
-      review = @profile.reviews.last
+      @review = @profile.reviews.last
       updated_review_params = { answers_attributes: review_params[:answers_attributes].values }
       updated_review_params[:validated] = true
-      review.update(updated_review_params)
-      flash[:notice] = "Dear #{current_user.real_email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved."
+      updated_review_params[:id] = @review.id
+      params[:profile][:reviews_attributes] = [updated_review_params]
     end
-    params[:review] ? (redirect_to firm_path(review.firm)) : (redirect_to profile_path(@profile))
+    params[:profile][:first_time_login_upon_firm_review] = false
+    if @profile.update(profile_params)
+      params[:review] ? (redirect_to firm_path(@review.firm_id)) : (redirect_to profile_path(@profile.id))
+    else
+      variables_for_pending_review
+      render :edit
+    end
   end
 
   def show
-    @profile = current_user.profile
   end
 
   private
@@ -50,6 +40,7 @@ class ProfilesController < ApplicationController
       :phone_number,
       :age,
       :gender,
+      :first_time_login_upon_firm_review,
       reviews_attributes:
         [ :id,
           :validated,
@@ -59,6 +50,23 @@ class ProfilesController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:id, :validated, answers_attributes: [:user_rating, :id])
+    params.require(:review).permit(answers_attributes: [:user_rating, :id])
+  end
+
+  def set_profile
+    @profile = current_user.profile
+  end
+
+  def variables_for_pending_review
+    @tests = Test.all
+    @firm = @review.firm
+    # providing variable to build ratings and trends
+    @current_stage = :review_vote
+    @avg_ratings_by_test = @firm.avg_ratings_by_test
+    @current_period_averages = @firm.current_reporting_period_averages
+    @previous_period_averages = @firm.previous_reporting_period_averages
+    # providing variable for javascript immediate display
+    @total_by_test = @firm.total_by_test
+    @answer_count_by_test = @firm.answers_count_by_test
   end
 end

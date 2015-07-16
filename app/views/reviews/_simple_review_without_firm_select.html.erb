@@ -1,6 +1,7 @@
-<h3 class="text-center">Tell us about <%= "#{@firm.name}" %>!!!</h3>
+<h3 class="text-center"><%= t( ".tell_us_about", default: "Tell us about ") %><%= "#{@firm.name}" %>!!!</h3>
 <hr/>
 <%= simple_form_for [@firm, @review] do |r| %>
+  <%= r.error_notification %>
   <%= render "reviews/review_form_master_content_first_time", r: r %>
   <%= render "reviews/review_form_legal_warning", r: r %>
   <%= render "reviews/review_form_accept_t_and_c", r: r %>

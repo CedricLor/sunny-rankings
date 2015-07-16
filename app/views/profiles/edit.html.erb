@@ -1,11 +1,11 @@
-<% content_for(:title, "New Profile") %>
+<% content_for(:title,  t(".page_title", default: "New Profile") ) %>
 
 <div class="container text-center">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
       <div class="card-block shadowed-box text-center">
         <div class="main-title-block">
-          <h1 class="main-title">Fill-in your Profile</h1>
+          <h1 class="main-title"><%= t(".main_heading", default: "Fill-in your Profile") %></h1>
         </div>
       </div>
     </div>
@@ -13,27 +13,29 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
       <div class="card-block shadowed-box text-center">
-        <!--
-        TODO Review message depending on whether
-        1. First time review after first time vote (@profile not validated)
-        2. Review upon regular login if @profile not validated
-        3. Review upon regular login if @profile already validated
-        Probably need to create additional field in the profile table
-        - first_time_review
-        - validated already exist
-        -->
+
         <% if @profile.first_time_login_upon_firm_review %>
-          <p>An account with Skanher has been created for you!</p>
-          <p class="red-paragraph">For confidentiality reasons, we have granted you the following username <%= "#{@user.email}" %></p>
-          <p class="red-paragraph">To validate your review of <%= "#{@user.reviews.last.firm.name}" %>, please fill in your profile.</p>
+          <% default_for_welcome_parag_if_first_time_login_upon_review_html =
+            "<p>An account with Skanher has been created for you!</p>
+            <p class='red-paragraph'>For confidentiality reasons, we have granted you the following username #{current_user.email}</p>
+            <p class='red-paragraph'>To validate your review of #{current_user.reviews.last.firm.name}, please fill in your profile.</p>"
+          %>
+          <%= t(".welcome_parag_if_first_time_login_upon_review_html", username: current_user.email, reviewed_firm_name: @firm.name, default: default_for_welcome_parag_if_first_time_login_upon_review_html) %>
+
         <% else %>
-          <p>Please review your profile details below</p>
-          <p class="red-paragraph">Your username is <%= "#{@user.email}" %></p>
-          <% if @review.validated == false %>
-            <p>You have one pending review for <%= "#{@user.reviews.last.firm.name}" %>. Please validate your review below.</p>
-          <% else %>
-            <p>You do not currently have any pending review.</p>
-          <% end %>
+          <% default_for_welcome_parag_if_simple_profile_review_html =
+            "<p>Please review your profile details below.</p>
+            <p class='red-paragraph'>Your username is #{current_user.email}</p>"
+          %>
+          <%= t(".welcome_parag_if_simple_profile_review_html", username: current_user.email, default: "Please review your profile details below") %>
+
+          <p>
+            <% if @review.validated == false %>
+              <%= t(".sentence_if_last_review_not_validated", firm_name: @firm.name, default: "You have one pending review for #{@firm.name}. Please validate your review below.") %>
+            <% else %>
+              <%= t(".sentence_if_last_review_validated", default: "You do not currently have any pending review.") %>
+            <% end %>
+          </p>
         <% end %>
       </div>
     </div>
@@ -45,13 +47,13 @@
           <div>
             <%= f.error_notification %>
             <div class="form-inputs">
-              <%= f.input :real_email, required: true, autofocus: true, label: "Your email" %>
+              <%= f.input :real_email, required: true, autofocus: true, label: t(".form_label_your_email", default: "Your email") %>
               <%= f.input :first_name, required: true %>
               <%= f.input :last_name, required: true %>
               <%= f.input :country, required: true %>
               <%= f.input :phone_number, required: true %>
-              <%= f.input :age %>
-              <%= f.input :gender %>
+              <%= f.input :age, required: true %>
+              <%= f.input :gender, required: true %>
             </div>
           </div>
         </div>
@@ -82,7 +84,7 @@
           <div>
             <div>
               <div class="text-center">
-                <h1>Now please review your answers and validate</h1>
+                <h1><%= t(".instruction_to_review_answers_and_validate", default: "Now please review your answers and validate") %></h1>
               </div>
             </div>
           </div>
@@ -103,7 +105,7 @@
               </div>
               <hr/>
               <div class="form-actions">
-                <%= f.button :submit, "Validate" %>
+                <%= f.button :submit, t(".validate_button_label", default: "Validate") %>
               </div>
             </div>
           </div>
