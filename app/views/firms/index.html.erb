@@ -1,4 +1,4 @@
-<% content_for(:title,  params[:search] ? t(".page_title_search", search_string: params[:search], default: "Searching for #{params[:search]}") : t(".page_title_no_search", default: raw("Look up a firm's ranking") ) ) %>
+<% content_for(:title,  params[:search] ? t(".page_title_search", search_string: params[:search], default: "Searching for #{params[:search]}") : raw( t(".page_title_no_search", default: "Look up a firm's ranking" ) ) ) %>
 
 <div class="container">
 
