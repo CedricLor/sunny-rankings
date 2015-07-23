@@ -7,6 +7,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :zip_code
       t.string :country
       t.string :addr_complement
+      t.string :fuzzy_address
 
       t.timestamps null: false
     end

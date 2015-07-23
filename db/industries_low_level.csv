@@ -1,0 +1,734 @@
+naf_code$naf_title_fr$naf_title_en
+01.11Z$Culture de céréales (à l'exception du riz), de légumineuses et de graines oléagineuses$Growing of cereals (except rice), leguminous crops and oil seeds
+01.12Z$Culture du riz$Growing of rice
+01.13Z$Culture de légumes, de melons, de racines et de tubercules$Growing of vegetables and melons, roots and tubers
+01.14Z$Culture de la canne à sucre$Growing of sugar cane
+01.15Z$Culture du tabac$Growing of tobacco
+01.16Z$Culture de plantes à fibres$Growing of fibre crops
+01.19Z$Autres cultures non permanentes$Growing of other non-perennial crops
+01.21Z$Culture de la vigne$Growing of grapes
+01.22Z$Culture de fruits tropicaux et subtropicaux$Growing of tropical and subtropical fruits
+01.23Z$Culture d'agrumes$Growing of citrus fruits
+01.24Z$Culture de fruits à pépins et à noyau$Growing of pome fruits and stone fruits
+01.25Z$Culture d'autres fruits d'arbres ou d'arbustes et de fruits à coque$Growing of other tree and bush fruits and nuts
+01.26Z$Culture de fruits oléagineux$Growing of oleaginous fruits
+01.27Z$Culture de plantes à boissons$Growing of beverage crops
+01.28Z$Culture de plantes à épices, aromatiques, médicinales et pharmaceutiques$Growing of spices, aromatic, drug and pharmaceutical crops
+01.29Z$Autres cultures permanentes$Growing of other perennial crops
+01.30Z$Reproduction de plantes$Plant propagation
+01.41Z$Élevage de vaches laitières$Raising of dairy cattle
+01.42Z$Élevage d'autres bovins et de buffles$Raising of other cattle and buffaloes
+01.43Z$Élevage de chevaux et d'autres équidés$Raising of horses and other equines
+01.44Z$Élevage de chameaux et d'autres camélidés$Raising of camels and camelids
+01.45Z$Élevage d'ovins et de caprins$Raising of sheep and goats
+01.46Z$Élevage de porcins$Raising of swine/pigs
+01.47Z$Élevage de volailles$Raising of poultry
+01.49Z$Élevage d'autres animaux$Raising of other animals
+01.50Z$Culture et élevage associés$Mixed farming
+01.61Z$Activités de soutien aux cultures$Support activities for crop production
+01.62Z$Activités de soutien à la production animale$Support activities for animal production
+01.63Z$Traitement primaire des récoltes$Post-harvest crop activities
+01.64Z$Traitement des semences$Seed processing for propagation
+01.70Z$Chasse, piégeage et services annexes$Hunting, trapping and related service activities
+02.10Z$Sylviculture et autres activités forestières$Silviculture and other forestry activities
+02.20Z$Exploitation forestière$Logging
+02.30Z$Récolte de produits forestiers non ligneux poussant à l'état sauvage$Gathering of wild growing non-wood products
+02.40Z$Services de soutien à l'exploitation forestière$Support services to forestry
+03.11Z$Pêche en mer$Marine fishing
+03.12Z$Pêche en eau douce$Freshwater fishing
+03.21Z$Aquaculture en mer$Marine aquaculture
+03.22Z$Aquaculture en eau douce$Freshwater aquaculture
+05.10Z$Extraction de houille$Mining of hard coal
+05.20Z$Extraction de lignite$Mining of lignite
+06.10Z$Extraction de pétrole brut$Extraction of crude petroleum
+06.20Z$Extraction de gaz naturel$Extraction of natural gas
+07.10Z$Extraction de minerais de fer$Mining of iron ores
+07.21Z$Extraction de minerais d'uranium et de thorium$Mining of uranium and thorium ores
+07.29Z$Extraction d'autres minerais de métaux non ferreux$Mining of other non-ferrous metal ores
+08.11Z$Extraction de pierres ornementales et de construction, de calcaire industriel, de gypse, de craie et d'ardoise$Quarrying of ornamental and building stone, limestone, gypsum, chalk and slate
+08.12Z$Exploitation de gravières et sablières, extraction d'argiles et de kaolin$Operation of gravel and sand pits; mining of clays and kaolin
+08.91Z$Extraction des minéraux chimiques et d'engrais minéraux$Mining of chemical and fertiliser minerals
+08.92Z$Extraction de tourbe$Extraction of peat
+08.93Z$Production de sel$Extraction of salt
+08.99Z$Autres activités extractives n.c.a.$Other mining and quarrying n.e.c.
+09.10Z$Activités de soutien à l'extraction d'hydrocarbures$Support activities for petroleum and natural gas extraction
+09.90Z$Activités de soutien aux autres industries extractives$Support activities for other mining and quarrying
+10.11Z$Transformation et conservation de la viande de boucherie$Processing and preserving of meat
+10.12Z$Transformation et conservation de la viande de volaille$Processing and preserving of poultry meat
+10.13A$Préparation industrielle de produits à base de viande$Industrial production of meat products
+10.13B$Charcuterie$Cooked meats production and trade
+10.20Z$Transformation et conservation de poisson, de crustacés et de mollusques$Processing and preserving of fish, crustaceans and molluscs
+10.31Z$Transformation et conservation de pommes de terre$Processing and preserving of potatoes
+10.32Z$Préparation de jus de fruits et légumes$Manufacture of fruit and vegetable juice
+10.39A$Autre transformation et conservation de légumes$Other processing and preserving of vegetables
+10.39B$Transformation et conservation de fruits$Processing and preserving of fruit
+10.41A$Fabrication d'huiles et graisses brutes$Manufacture of crude oils and fats
+10.41B$Fabrication d'huiles et graisses raffinées$Manufacture of refined oils and fats
+10.42Z$Fabrication de margarine et graisses comestibles similaires$Manufacture of margarine and similar edible fats
+10.51A$Fabrication de lait liquide et de produits frais$Manufacture of liquid milk and of fresh dairy products
+10.51B$Fabrication de beurre$Manufacture of butter
+10.51C$Fabrication de fromage$Manufacture of cheese
+10.51D$Fabrication d'autres produits laitiers$Manufacture of other dairy products
+10.52Z$Fabrication de glaces et sorbets$Manufacture of ice cream
+10.61A$Meunerie$Flour milling
+10.61B$Autres activités du travail des grains$Other manufacture of grain mill products
+10.62Z$Fabrication de produits amylacés$Manufacture of starches and starch products
+10.71A$Fabrication industrielle de pain et de pâtisserie fraîche$Industrial manufacture of bread and fresh pastry
+10.71B$Cuisson de produits de boulangerie$Baking of bakery products
+10.71C$Boulangerie et boulangerie-pâtisserie$Bakery and bakery confectionery
+10.71D$Pâtisserie$Confectionery
+10.72Z$Fabrication de biscuits, biscottes et pâtisseries de conservation$Manufacture of rusks and biscuits; manufacture of preserved pastry goods and cakes
+10.73Z$Fabrication de pâtes alimentaires$Manufacture of macaroni, noodles, couscous and similar farinaceous products
+10.81Z$Fabrication de sucre$Manufacture of sugar
+10.82Z$Fabrication de cacao, chocolat et de produits de confiserie$Manufacture of cocoa, chocolate and sugar confectionery
+10.83Z$Transformation du thé et du café$Processing of tea and coffee
+10.84Z$Fabrication de condiments et assaisonnements$Manufacture of condiments and seasonings
+10.85Z$Fabrication de plats préparés$Manufacture of prepared meals and dishes
+10.86Z$Fabrication d'aliments homogénéisés et diététiques$Manufacture of homogenised food preparations and dietetic food
+10.89Z$Fabrication d'autres produits alimentaires n.c.a.$Manufacture of other food products n.e.c.
+10.91Z$Fabrication d'aliments pour animaux de ferme$Manufacture of prepared feeds for farm animals
+10.92Z$Fabrication d'aliments pour animaux de compagnie$Manufacture of prepared pet foods
+11.01Z$Production de boissons alcooliques distillées$Distilling, rectifying and blending of spirits
+11.02A$Fabrication de vins effervescents$Manufacture of sparkling wines
+11.02B$Vinification$Wine-making
+11.03Z$Fabrication de cidre et de vins de fruits$Manufacture of cider and other fruit wines
+11.04Z$Production d'autres boissons fermentées non distillées$Manufacture of other non-distilled fermented beverages
+11.05Z$Fabrication de bière$Manufacture of beer
+11.06Z$Fabrication de malt$Manufacture of malt
+11.07A$Industrie des eaux de table$Production of mineral water
+11.07B$Production de boissons rafraîchissantes$Production of soft drinks
+12.00Z$Fabrication de produits à base de tabac$Manufacture of tobacco products
+13.10Z$Préparation de fibres textiles et filature$Preparation and spinning of textile fibres
+13.20Z$Tissage$Weaving of textiles
+13.30Z$Ennoblissement textile$Finishing of textiles
+13.91Z$Fabrication d'étoffes à mailles$Manufacture of knitted and crocheted fabrics
+13.92Z$Fabrication d'articles textiles, sauf habillement$Manufacture of made-up textile articles, except apparel
+13.93Z$Fabrication de tapis et moquettes$Manufacture of carpets and rugs
+13.94Z$Fabrication de ficelles, cordes et filets$Manufacture of cordage, rope, twine and netting
+13.95Z$Fabrication de non-tissés, sauf habillement$Manufacture of non-wovens and articles made from non-wovens, except apparel
+13.96Z$Fabrication d'autres textiles techniques et industriels$Manufacture of other technical and industrial textiles
+13.99Z$Fabrication d'autres textiles n.c.a.$Manufacture of other textiles n.e.c.
+14.11Z$Fabrication de vêtements en cuir$Manufacture of leather clothes
+14.12Z$Fabrication de vêtements de travail$Manufacture of workwear
+14.13Z$Fabrication de vêtements de dessus$Manufacture of other outerwear
+14.14Z$Fabrication de vêtements de dessous$Manufacture of underwear
+14.19Z$Fabrication d'autres vêtements et accessoires$Manufacture of other wearing apparel and accessories
+14.20Z$Fabrication d'articles en fourrure$Manufacture of articles of fur
+14.31Z$Fabrication d'articles chaussants à mailles$Manufacture of knitted and crocheted hosiery
+14.39Z$Fabrication d'autres articles à mailles$Manufacture of other knitted and crocheted apparel
+15.11Z$Apprêt et tannage des cuirs ; préparation et teinture des fourrures$Tanning and dressing of leather; dressing and dyeing of fur
+15.12Z$Fabrication d'articles de voyage, de maroquinerie et de sellerie$Manufacture of luggage, handbags and the like, saddlery and harness
+15.20Z$Fabrication de chaussures$Manufacture of footwear
+16.10A$Sciage et rabotage du bois, hors imprégnation$Sawmilling and planing of wood, excluding impregnation
+16.10B$Imprégnation du bois$Impregnation of wood
+16.21Z$Fabrication de placage et de panneaux de bois$Manufacture of veneer sheets and wood-based panels
+16.22Z$Fabrication de parquets assemblés$Manufacture of assembled parquet floors
+16.23Z$Fabrication de charpentes et d'autres menuiseries$Manufacture of other builders' carpentry and joinery
+16.24Z$Fabrication d'emballages en bois$Manufacture of wooden containers
+16.29Z$Fabrication d'objets divers en bois ; fabrication d'objets en liège, vannerie et sparterie$Manufacture of other products of wood; manufacture of articles of cork, straw and plaiting materials
+17.11Z$Fabrication de pâte à papier$Manufacture of pulp
+17.12Z$Fabrication de papier et de carton$Manufacture of paper and paperboard
+17.21A$Fabrication de carton ondulé$Manufacture of corrugated paperboard
+17.21B$Fabrication de cartonnages$Manufacture of paperboard and containers of paperboard
+17.21C$Fabrication d'emballages en papier$Manufacture of containers of paper
+17.22Z$Fabrication d'articles en papier à usage sanitaire ou domestique$Manufacture of household and sanitary goods and of toilet requisites
+17.23Z$Fabrication d'articles de papeterie$Manufacture of paper stationery
+17.24Z$Fabrication de papiers peints$Manufacture of wallpaper
+17.29Z$Fabrication d'autres articles en papier ou en carton$Manufacture of other articles of paper and paperboard
+18.11Z$Imprimerie de journaux$Printing of newspapers
+18.12Z$Autre imprimerie (labeur)$Other printing
+18.13Z$Activités de pré-presse$Pre-press and pre-media services
+18.14Z$Reliure et activités connexes$Binding and related services
+18.20Z$Reproduction d'enregistrements$Reproduction of recorded media
+19.10Z$Cokéfaction$Manufacture of coke oven products
+19.20Z$Raffinage du pétrole$Manufacture of refined petroleum products
+20.11Z$Fabrication de gaz industriels$Manufacture of industrial gases
+20.12Z$Fabrication de colorants et de pigments$Manufacture of dyes and pigments
+20.13A$Enrichissement et retraitement de matières nucléaires$Enrichment and reprocessing of nuclear fuel
+20.13B$Fabrication d'autres produits chimiques inorganiques de base n.c.a.$Manufacture of other inorganic basic chemicals n.e.c.
+20.14Z$Fabrication d'autres produits chimiques organiques de base$Manufacture of other organic basic chemicals
+20.15Z$Fabrication de produits azotés et d'engrais$Manufacture of fertilisers and nitrogen compounds
+20.16Z$Fabrication de matières plastiques de base$Manufacture of plastics in primary forms
+20.17Z$Fabrication de caoutchouc synthétique$Manufacture of synthetic rubber in primary forms
+20.20Z$Fabrication de pesticides et d’autres produits agrochimiques$Manufacture of pesticides and other agrochemical products
+20.30Z$Fabrication de peintures, vernis, encres et mastics$Manufacture of paints, varnishes and similar coatings, printing ink and mastics
+20.41Z$Fabrication de savons, détergents et produits d'entretien$Manufacture of soap and detergents, cleaning and polishing preparations
+20.42Z$Fabrication de parfums et de produits pour la toilette$Manufacture of perfumes and toilet preparations
+20.51Z$Fabrication de produits explosifs$Manufacture of explosives
+20.52Z$Fabrication de colles$Manufacture of glues
+20.53Z$Fabrication d'huiles essentielles$Manufacture of essential oils
+20.59Z$Fabrication d'autres produits chimiques n.c.a.$Manufacture of other chemical products n.e.c.
+20.60Z$Fabrication de fibres artificielles ou synthétiques$Manufacture of man-made fibres
+21.10Z$Fabrication de produits pharmaceutiques de base$Manufacture of basic pharmaceutical products
+21.20Z$Fabrication de préparations pharmaceutiques$Manufacture of pharmaceutical preparations
+22.11Z$Fabrication et rechapage de pneumatiques$Manufacture of rubber tyres and tubes; retreading and rebuilding of rubber tyres
+22.19Z$Fabrication d'autres articles en caoutchouc$Manufacture of other rubber products
+22.21Z$Fabrication de plaques, feuilles, tubes et profilés en matières plastiques$Manufacture of plastic plates, sheets, tubes and profiles
+22.22Z$Fabrication d'emballages en matières plastiques$Manufacture of plastic packing goods
+22.23Z$Fabrication d'éléments en matières plastiques pour la construction$Manufacture of builders’ ware of plastic
+22.29A$Fabrication de pièces techniques à base de matières plastiques$Manufacture of plastic-based technical parts
+22.29B$Fabrication de produits de consommation courante en matières plastiques$Manufacture of common consumer goods of plastic products
+23.11Z$Fabrication de verre plat$Manufacture of flat glass
+23.12Z$Façonnage et transformation du verre plat$Shaping and processing of flat glass
+23.13Z$Fabrication de verre creux$Manufacture of hollow glass
+23.14Z$Fabrication de fibres de verre$Manufacture of glass fibres
+23.19Z$Fabrication et façonnage d'autres articles en verre, y compris verre technique$Manufacture and processing of other glass, including technical glassware
+23.20Z$Fabrication de produits réfractaires$Manufacture of refractory products
+23.31Z$Fabrication de carreaux en céramique$Manufacture of ceramic tiles and flags
+23.32Z$Fabrication de briques, tuiles et produits de construction, en terre cuite$Manufacture of bricks, tiles and construction products, in baked clay
+23.41Z$Fabrication d'articles céramiques à usage domestique ou ornemental$Manufacture of ceramic household and ornamental articles
+23.42Z$Fabrication d'appareils sanitaires en céramique$Manufacture of ceramic sanitary fixtures
+23.43Z$Fabrication d'isolateurs et pièces isolantes en céramique$Manufacture of ceramic insulators and insulating fittings
+23.44Z$Fabrication d'autres produits céramiques à usage technique$Manufacture of other technical ceramic products
+23.49Z$Fabrication d'autres produits céramiques$Manufacture of other ceramic products
+23.51Z$Fabrication de ciment$Manufacture of cement
+23.52Z$Fabrication de chaux et plâtre$Manufacture of lime and plaster
+23.61Z$Fabrication d'éléments en béton pour la construction$Manufacture of concrete products for construction purposes
+23.62Z$Fabrication d'éléments en plâtre pour la construction$Manufacture of plaster products for construction purposes
+23.63Z$Fabrication de béton prêt à l'emploi$Manufacture of ready-mixed concrete
+23.64Z$Fabrication de mortiers et bétons secs$Manufacture of mortars
+23.65Z$Fabrication d'ouvrages en fibre-ciment$Manufacture of fibre cement
+23.69Z$Fabrication d'autres ouvrages en béton, en ciment ou en plâtre$Manufacture of other articles of concrete, plaster and cement
+23.70Z$Taille, façonnage et finissage de pierres$Cutting, shaping and finishing of stone
+23.91Z$Fabrication de produits abrasifs$Production of abrasive products
+23.99Z$Fabrication d'autres produits minéraux non métalliques n.c.a.$Manufacture of other non-metallic mineral products n.e.c.
+24.10Z$Sidérurgie$Manufacture of basic iron and steel and of ferro-alloys
+24.20Z$Fabrication de tubes, tuyaux, profilés creux et accessoires correspondants en acier$Manufacture of tubes, pipes, hollow profiles and related fittings, of steel
+24.31Z$Étirage à froid de barres$Cold drawing of bars
+24.32Z$Laminage à froid de feuillards$Cold rolling of narrow strip
+24.33Z$Profilage à froid par formage ou pliage$Cold forming or folding
+24.34Z$Tréfilage à froid$Cold drawing of wire
+24.41Z$Production de métaux précieux$Precious metals production
+24.42Z$Métallurgie de l'aluminium$Aluminium production
+24.43Z$Métallurgie du plomb, du zinc ou de l'étain$Lead, zinc and tin production
+24.44Z$Métallurgie du cuivre$Copper production
+24.45Z$Métallurgie des autres métaux non ferreux$Other non-ferrous metal production
+24.46Z$Élaboration et transformation de matières nucléaires$Processing of nuclear fuel
+24.51Z$Fonderie de fonte$Casting of iron
+24.52Z$Fonderie d'acier$Casting of steel
+24.53Z$Fonderie de métaux légers$Casting of light metals
+24.54Z$Fonderie d'autres métaux non ferreux$Casting of other non-ferrous metals
+25.11Z$Fabrication de structures métalliques et de parties de structures$Manufacture of metal structures and parts of structures
+25.12Z$Fabrication de portes et fenêtres en métal$Manufacture of doors and windows of metal
+25.21Z$Fabrication de radiateurs et de chaudières pour le chauffage central$Manufacture of central heating radiators and boilers
+25.29Z$Fabrication d'autres réservoirs, citernes et conteneurs métalliques$Manufacture of other tanks, reservoirs and containers of metal
+25.30Z$Fabrication de générateurs de vapeur, à l'exception des chaudières pour le chauffage central$Manufacture of steam generators, except central heating hot water boilers
+25.40Z$Fabrication d'armes et de munitions$Manufacture of weapons and ammunition
+25.50A$Forge, estampage, matriçage; métallurgie des poudres$Forging, pressing, stamping; powder metallurgy
+25.50B$Découpage, emboutissage$Cutting out, pressing
+25.61Z$Traitement et revêtement des métaux$Treatment and coating of metals
+25.62A$Décolletage$Cutting-off
+25.62B$Mécanique industrielle$Industrial mechanical engineering
+25.71Z$Fabrication de coutellerie$Manufacture of cutlery
+25.72Z$Fabrication de serrures et de ferrures$Manufacture of locks and hinges
+25.73A$Fabrication de moules et modèles$Manufacture of moulds and models
+25.73B$Fabrication d'autres outillages$Manufacture of other tools
+25.91Z$Fabrication de fûts et emballages métalliques similaires$Manufacture of steel drums and similar containers
+25.92Z$Fabrication d'emballages métalliques légers$Manufacture of light metal packaging
+25.93Z$Fabrication d'articles en fils métalliques, de chaînes et de ressorts$Manufacture of wire products, chain and springs
+25.94Z$Fabrication de vis et de boulons$Manufacture of fasteners and screw machine products
+25.99A$Fabrication d'articles métalliques ménagers$Manufacture of household fabricated metal articles
+25.99B$Fabrication d'autres articles métalliques$Manufacture of other fabricated metal articles
+26.11Z$Fabrication de composants électroniques$Manufacture of electronic components
+26.12Z$Fabrication de cartes électroniques assemblées$Manufacture of loaded electronic boards
+26.20Z$Fabrication d'ordinateurs et d'équipements périphériques$Manufacture of computers and peripheral equipment
+26.30Z$Fabrication d'équipements de communication$Manufacture of communication equipment
+26.40Z$Fabrication de produits électroniques grand public$Manufacture of consumer electronics
+26.51A$Fabrication d'équipements d'aide à la navigation$Manufacture of aid to navigation equipment
+26.51B$Fabrication d'instrumentation scientifique et technique$Manufacture of scientific and technical instruments
+26.52Z$Horlogerie$Manufacture of watches and clocks
+26.60Z$Fabrication d'équipements d'irradiation médicale, d'équipements électromédicaux et électrothérapeutiques$Manufacture of irradiation, electromedical and electrotherapeutic equipment
+26.70Z$Fabrication de matériels optique et photographique$Manufacture of optical instruments and photographic equipment
+26.80Z$Fabrication de supports magnétiques et optiques$Manufacture of magnetic and optical media
+27.11Z$Fabrication de moteurs, génératrices et transformateurs électriques$Manufacture of electric motors, generators and transformers
+27.12Z$Fabrication de matériel de distribution et de commande électrique$Manufacture of electricity distribution and control apparatus
+27.20Z$Fabrication de piles et d'accumulateurs électriques$Manufacture of batteries and accumulators
+27.31Z$Fabrication de câbles de fibres optiques$Manufacture of fibre optic cables
+27.32Z$Fabrication d'autres fils et câbles électroniques ou électriques$Manufacture of other electronic and electric wires and cables
+27.33Z$Fabrication de matériel d'installation électrique$Manufacture of wiring devices
+27.40Z$Fabrication d'appareils d'éclairage électrique$Manufacture of electric lighting equipment
+27.51Z$Fabrication d'appareils électroménagers$Manufacture of electric domestic appliances
+27.52Z$Fabrication d'appareils ménagers non électriques$Manufacture of non-electric domestic appliances
+27.90Z$Fabrication d'autres matériels électriques$Manufacture of other electrical equipment
+28.11Z$Fabrication de moteurs et turbines, à l'exception des moteurs d’avions et de véhicules$Manufacture of engines and turbines, except aircraft, vehicle and cycle engines
+28.12Z$Fabrication d'équipements hydrauliques et pneumatiques$Manufacture of fluid power equipment
+28.13Z$Fabrication d'autres pompes et compresseurs$Manufacture of other pumps and compressors
+28.14Z$Fabrication d'autres articles de robinetterie$Manufacture of other taps and valves
+28.15Z$Fabrication d'engrenages et d'organes mécaniques de transmission$Manufacture of bearings, gears, gearing and driving elements
+28.21Z$Fabrication de fours et brûleurs$Manufacture of ovens, furnaces and furnace burners
+28.22Z$Fabrication de matériel de levage et de manutention$Manufacture of lifting and handling equipment
+28.23Z$Fabrication de machines et d'équipements de bureau (à l'exception des ordinateurs et équipements périphériques)$Manufacture of office machinery and equipment (except computers and peripheral equipment)
+28.24Z$Fabrication d'outillage portatif à moteur incorporé$Manufacture of power-driven hand tools
+28.25Z$Fabrication d'équipements aérauliques et frigorifiques industriels$Manufacture of non-domestic cooling and ventilation equipment
+28.29A$Fabrication d'équipements d'emballage, de conditionnement et de pesage$Manufacture of packing, packaging and weighing equipment
+28.29B$Fabrication d'autres machines d'usage général$Manufacture of other general purpose machinery
+28.30Z$Fabrication de machines agricoles et forestières$Manufacture of agricultural and forestry machinery
+28.41Z$Fabrication de machines-outils pour le travail des métaux$Manufacture of machine-tools for metal work
+28.49Z$Fabrication d'autres machines-outils$Manufacture of other machine tools
+28.91Z$Fabrication de machines pour la métallurgie$Manufacture of machinery for metallurgy
+28.92Z$Fabrication de machines pour l'extraction ou la construction$Manufacture of machinery for mining, quarrying and construction
+28.93Z$Fabrication de machines pour l'industrie agro-alimentaire$Manufacture of machinery for food, beverage and tobacco processing
+28.94Z$Fabrication de machines pour les industries textiles$Manufacture of machinery for textile, apparel and leather production
+28.95Z$Fabrication de machines pour les industries du papier et du carton$Manufacture of machinery for paper and paperboard production
+28.96Z$Fabrication de machines pour le travail du caoutchouc ou des plastiques$Manufacture of plastics and rubber machinery
+28.99A$Fabrication de machines d'imprimerie$Manufacture of printing machinery
+28.99B$Fabrication d'autres machines spécialisées$Manufacture of other special purpose machinery
+29.10Z$Construction de véhicules automobiles$Manufacture of motor vehicles
+29.20Z$Fabrication de carrosseries et remorques$Manufacture of bodies (coachwork) for motor vehicles; manufacture of trailers and semi-trailers
+29.31Z$Fabrication d'équipements électriques et électroniques automobiles$Manufacture of electrical and electronic equipment for motor vehicles
+29.32Z$Fabrication d'autres équipements automobiles$Manufacture of other parts and accessories for motor vehicles
+30.11Z$Construction de navires et de structures flottantes$Building of ships and floating structures
+30.12Z$Construction de bateaux de plaisance$Building of pleasure and sporting boats
+30.20Z$Construction de locomotives et d'autre matériel ferroviaire roulant$Manufacture of railway locomotives and rolling stock
+30.30Z$Construction aéronautique et spatiale$Manufacture of air and spacecraft and related machinery
+30.40Z$Construction de véhicules militaires de combat$Manufacture of military fighting vehicles
+30.91Z$Fabrication de motocycles$Manufacture of motorcycles
+30.92Z$Fabrication de bicyclettes et de véhicules pour invalides$Manufacture of bicycles and invalid carriages
+30.99Z$Fabrication d’autres équipements de transport n.c.a.$Manufacture of other transport equipment n.e.c.
+31.01Z$Fabrication de meubles de bureau et de magasin$Manufacture of office and shop furniture
+31.02Z$Fabrication de meubles de cuisine$Manufacture of kitchen furniture
+31.03Z$Fabrication de matelas$Manufacture of mattresses
+31.09A$Fabrication de sièges d'ameublement d'intérieur$Manufacture of home furnishing chairs and seats
+31.09B$Fabrication d'autres meubles et industries connexes de l'ameublement$Manufacture of other furniture and industry closely related to furnishing
+32.11Z$Frappe de monnaie$Striking of coins
+32.12Z$Fabrication d’articles de joaillerie et bijouterie$Manufacture of jewellery and related articles
+32.13Z$Fabrication d’articles de bijouterie fantaisie et articles similaires$Manufacture of imitation jewellery and related articles
+32.20Z$Fabrication d'instruments de musique$Manufacture of musical instruments
+32.30Z$Fabrication d'articles de sport$Manufacture of sports goods
+32.40Z$Fabrication de jeux et jouets$Manufacture of games and toys
+32.50A$Fabrication de matériel médico-chirurgical et dentaire$Manufacture of medical, surgical and dental equipment
+32.50B$Fabrication de lunettes$Manufacture of glasses
+32.91Z$Fabrication d’articles de brosserie$Manufacture of brooms and brushes
+32.99Z$Autres activités manufacturières n.c.a.$Other manufacturing n.e.c.
+33.11Z$Réparation d'ouvrages en métaux$Repair of fabricated metal products
+33.12Z$Réparation de machines et équipements mécaniques$Repair of machinery
+33.13Z$Réparation de matériels électroniques et optiques$Repair of electronic and optical equipment
+33.14Z$Réparation d'équipements électriques$Repair of electrical equipment
+33.15Z$Réparation et maintenance navale$Repair and maintenance of ships and boats
+33.16Z$Réparation et maintenance d'aéronefs et d'engins spatiaux$Repair and maintenance of aircraft and spacecraft
+33.17Z$Réparation et maintenance d'autres équipements de transport$Repair and maintenance of other transport equipment
+33.19Z$Réparation d'autres équipements$Repair of other equipment
+33.20A$Installation de structures métalliques, chaudronnées et de tuyauterie$Installation of metallic, boiler structures and pipes
+33.20B$Installation de machines et équipements mécaniques$Installation of machinery and mechanical equipment
+33.20C$Conception d'ensemble et assemblage sur site industriel d'équipements de contrôle des processus industriels$Overall conception and assembly of industrial process control equipment in industrial plant
+33.20D$Installation d'équipements électriques, de matériels électroniques et optiques ou d'autres matériels$Installation of electrical equipment, electronic and optical equipment or other equipment
+35.11Z$Production d'électricité$Production of electricity
+35.12Z$Transport d'électricité$Transmission of electricity
+35.13Z$Distribution d'électricité$Distribution of electricity
+35.14Z$Commerce d'électricité$Trade of electricity
+35.21Z$Production de combustibles gazeux$Manufacture of gas
+35.22Z$Distribution de combustibles gazeux par conduites$Distribution of gaseous fuels through mains
+35.23Z$Commerce de combustibles gazeux par conduites$Trade of gas through mains
+35.30Z$Production et distribution de vapeur et d'air conditionné$Steam and air conditioning supply
+36.00Z$Captage, traitement et distribution d'eau$Water collection, treatment and supply
+37.00Z$Collecte et traitement des eaux usées$Sewerage
+38.11Z$Collecte des déchets non dangereux$Collection of non-hazardous waste
+38.12Z$Collecte des déchets dangereux$Collection of hazardous waste
+38.21Z$Traitement et élimination des déchets non dangereux$Treatment and disposal of non-hazardous waste
+38.22Z$Traitement et élimination des déchets dangereux$Treatment and disposal of hazardous waste
+38.31Z$Démantèlement d'épaves$Dismantling of wrecks
+38.32Z$Récupération de déchets triés$Recovery of sorted materials
+39.00Z$Dépollution et autres services de gestion des déchets$Remediation activities and other waste management services
+41.10A$Promotion immobilière de logements$Development and selling of dwellings
+41.10B$Promotion immobilière de bureaux$Development and selling of offices
+41.10C$Promotion immobilière d'autres bâtiments$Development and selling of other buildings
+41.10D$Supports juridiques de programmes$Juridical compartmentalization of property programmes
+41.20A$Construction de maisons individuelles$Construction of detached and semi-detached houses
+41.20B$Construction d'autres bâtiments$Construction of other buildings
+42.11Z$Construction de routes et autoroutes$Construction of roads and motorways
+42.12Z$Construction de voies ferrées de surface et souterraines$Construction of railways and underground railways
+42.13A$Construction d'ouvrages d'art$Construction of civil engineering structures
+42.13B$Construction et entretien de tunnels$Construction and maintenance of tunnels
+42.21Z$Construction de réseaux pour fluides$Construction of utility projects for fluids
+42.22Z$Construction de réseaux électriques et de télécommunications$Construction of utility projects for electricity and telecommunications
+42.91Z$Construction d'ouvrages maritimes et fluviaux$Construction of water projects
+42.99Z$Construction d'autres ouvrages de génie civil n.c.a.$Construction of other civil engineering projects n.e.c.
+43.11Z$Travaux de démolition$Demolition
+43.12A$Travaux de terrassement courants et travaux préparatoires$Standard earth moving and preparation works
+43.12B$Travaux de terrassement spécialisés ou de grande masse$Specialized earth moving or in great mass
+43.13Z$Forages et sondages$Test drilling and boring
+43.21A$Travaux d'installation électrique dans tous locaux$Installation works of electrical wiring and fittings in all kind of buildings
+43.21B$Travaux d'installation électrique sur la voie publique$Installation works of electrical wiring and fittings on public thoroughfare
+43.22A$Travaux d'installation d'eau et de gaz en tous locaux$Water and gas installation works in all kind of premises
+43.22B$Travaux d'installation d'équipements thermiques et de climatisation$Installation works of thermic and air conditioning equipment
+43.29A$Travaux d'isolation$Insulation work activities
+43.29B$Autres travaux d'installation n.c.a.$Other building installation works n.e.c.
+43.31Z$Travaux de plâtrerie$Plastering
+43.32A$Travaux de menuiserie bois et PVC$Wood and PVC joinery works
+43.32B$Travaux de menuiserie métallique et serrurerie$Metal joinery works and ironwork
+43.32C$Agencement de lieux de vente$Finishing of sale premises
+43.33Z$Travaux de revêtement des sols et des murs$Floor and wall covering
+43.34Z$Travaux de peinture et vitrerie$Painting and glazing
+43.39Z$Autres travaux de finition$Other building completion and finishing
+43.91A$Travaux de charpente$Roof frames works
+43.91B$Travaux de couverture par éléments$Roof covering activities by elements
+43.99A$Travaux d'étanchéification$Waterproofness works
+43.99B$Travaux de montage de structures métalliques$Assembly works of metal structures
+43.99C$Travaux de maçonnerie générale et gros œuvre de bâtiment$Masonery works and building structural works
+43.99D$Autres travaux spécialisés de construction$Other construction works involving special trades
+43.99E$Location avec opérateur de matériel de construction$Renting of construction equipment with operator
+45.11Z$Commerce de voitures et de véhicules automobiles légers$Sale of cars and light motor vehicles
+45.19Z$Commerce d'autres véhicules automobiles$Sale of other motor vehicles
+45.20A$Entretien et réparation de véhicules automobiles légers$Maintenance and repair of light motor vehicles
+45.20B$Entretien et réparation d'autres véhicules automobiles$Maintenance and repair of other motor vehicles
+45.31Z$Commerce de gros d'équipements automobiles$Wholesale trade of motor vehicle parts and accessories
+45.32Z$Commerce de détail d'équipements automobiles$Retail trade of motor vehicle parts and accessories
+45.40Z$Commerce et réparation de motocycles$Sale, maintenance and repair of motorcycles and related parts and accessories
+46.11Z$Intermédiaires du commerce en matières premières agricoles, animaux vivants, matières premières textiles et produits semi-finis$Agents involved in the sale of agricultural raw materials, live animals, textile raw materials and semi-finished goods
+46.12A$Centrales d'achat de carburant$Automotive fuel buying groups
+46.12B$Autres intermédiaires du commerce en combustibles, métaux, minéraux et produits chimiques$Other agents involved in the sale of fuels, ores, metals and industrial chemicals
+46.13Z$Intermédiaires du commerce en bois et matériaux de construction$Agents involved in the sale of timber and building materials
+46.14Z$Intermédiaires du commerce en machines, équipements industriels, navires et avions$Agents involved in the sale of machinery, industrial equipment, ships and aircraft
+46.15Z$Intermédiaires du commerce en meubles, articles de ménage et quincaillerie$Agents involved in the sale of furniture, household goods, hardware and ironmongery
+46.16Z$Intermédiaires du commerce en textiles, habillement, fourrures, chaussures et articles en cuir$Agents involved in the sale of textiles, clothing, fur, footwear and leather goods
+46.17A$Centrales d'achat alimentaires$Food buying groups
+46.17B$Autres intermédiaires du commerce en denrées, boissons et tabac$Other agents involved in the sale of food, beverages and tobacco
+46.18Z$Intermédiaires spécialisés dans le commerce d'autres produits spécifiques$Agents specialised in the sale of other particular products
+46.19A$Centrales d'achat non alimentaires$Non food buying groups
+46.19B$Autres intermédiaires du commerce en produits divers$Other agents involved in the sale of a variety of goods
+46.21Z$Commerce de gros (commerce interentreprises) de céréales, de tabac non manufacturé, de semences et d'aliments pour le bétail$Wholesale (intercompany trade) of grain, unmanufactured tobacco, seeds and animal feeds
+46.22Z$Commerce de gros (commerce interentreprises) de fleurs et plantes$Wholesale (intercompany trade) of flowers and plants
+46.23Z$Commerce de gros (commerce interentreprises) d'animaux vivants$Wholesale (intercompany trade) of live animals
+46.24Z$Commerce de gros (commerce interentreprises) de cuirs et peaux$Wholesale (intercompany trade) of hides, skins and leather
+46.31Z$Commerce de gros (commerce interentreprises) de fruits et légumes$Wholesale (intercompany trade) of fruit and vegetables
+46.32A$Commerce de gros (commerce interentreprises) de viandes de boucherie$Wholesale (intercompany trade) of fresh meat
+46.32B$Commerce de gros (commerce interentreprises) de produits à base de viande$Wholesale (intercompany trade) of meat products
+46.32C$Commerce de gros (commerce interentreprises) de volailles et gibier$Wholesale (intercompany trade) of poultry and game
+46.33Z$Commerce de gros (commerce interentreprises) de produits laitiers, œufs, huiles et matières grasses comestibles$Wholesale (intercompany trade) of dairy products, eggs and edible oils and fats
+46.34Z$Commerce de gros (commerce interentreprises) de boissons$Wholesale (intercompany trade) of beverages
+46.35Z$Commerce de gros (commerce interentreprises) de produits à base de tabac$Wholesale (intercompany trade) of tobacco products
+46.36Z$Commerce de gros (commerce interentreprises) de sucre, chocolat et confiserie$Wholesale (intercompany trade) of sugar and chocolate and sugar confectionery
+46.37Z$Commerce de gros (commerce interentreprises) de café, thé, cacao et épices$Wholesale (intercompany trade) of coffee, tea, cocoa and spices
+46.38A$Commerce de gros (commerce interentreprises) de poissons, crustacés et mollusques$Wholesale (intercompany trade) of fish, crustaceans and molluscs
+46.38B$Commerce de gros (commerce interentreprises) alimentaire spécialisé divers$Wholesale (intercompany trade) of sundry food, specialized
+46.39A$Commerce de gros (commerce interentreprises) de produits surgelés$Wholesale (intercompany trade) of frozen products
+46.39B$Commerce de gros (commerce interentreprises) alimentaire non spécialisé$Wholesale (intercompany trade) of food, non specialized
+46.41Z$Commerce de gros (commerce interentreprises) de textiles$Wholesale (intercompany trade) of textiles
+46.42Z$Commerce de gros (commerce interentreprises) d'habillement et de chaussures$Wholesale (intercompany trade) of clothing and footwear
+46.43Z$Commerce de gros (commerce interentreprises) d'appareils électroménagers$Wholesale (intercompany trade) of electrical household appliances
+46.44Z$Commerce de gros (commerce interentreprises) de vaisselle, verrerie et produits d'entretien$Wholesale (intercompany trade) of china and glassware and cleaning materials
+46.45Z$Commerce de gros (commerce interentreprises) de parfumerie et de produits de beauté$Wholesale (intercompany trade) of perfume and cosmetics
+46.46Z$Commerce de gros (commerce interentreprises) de produits pharmaceutiques$Wholesale (intercompany trade) of pharmaceutical goods
+46.47Z$Commerce de gros (commerce interentreprises) de meubles, de tapis et d'appareils d'éclairage$Wholesale (intercompany trade) of furniture, carpets and lighting equipment
+46.48Z$Commerce de gros (commerce interentreprises) d'articles d'horlogerie et de bijouterie$Wholesale (intercompany trade) of watches and jewellery
+46.49Z$Commerce de gros (commerce interentreprises) d'autres biens domestiques$Wholesale (intercompany trade) of other household goods
+46.51Z$Commerce de gros (commerce interentreprises) d'ordinateurs, d'équipements informatiques périphériques et de logiciels$Wholesale (intercompany trade) of computers, computer peripheral equipment and software
+46.52Z$Commerce de gros (commerce interentreprises) de composants et d'équipements électroniques et de télécommunication$Wholesale (intercompany trade) of electronic and telecommunications equipment and parts
+46.61Z$Commerce de gros (commerce interentreprises) de matériel agricole$Wholesale (intercompany trade) of agricultural machinery, equipment and supplies
+46.62Z$Commerce de gros (commerce interentreprises) de machines-outils$Wholesale (intercompany trade) of machine tools
+46.63Z$Commerce de gros (commerce interentreprises) de machines pour l'extraction, la construction et le génie civil$Wholesale (intercompany trade) of mining, construction and civil engineering machinery
+46.64Z$Commerce de gros (commerce interentreprises) de machines pour l'industrie textile et l'habillement$Wholesale (intercompany trade) of machinery for the textile industry and of sewing and knitting machines
+46.65Z$Commerce de gros (commerce interentreprises) de mobilier de bureau$Wholesale (intercompany trade) of office furniture
+46.66Z$Commerce de gros (commerce interentreprises) d'autres machines et équipements de bureau$Wholesale (intercompany trade) of other office machinery and equipment
+46.69A$Commerce de gros (commerce interentreprises) de matériel électrique$Wholesale (intercompany trade) of electric equipment
+46.69B$Commerce de gros (commerce interentreprises) de fournitures et équipements industriels divers$Wholesale (intercompany trade) of sundry industrial supplies and equipment
+46.69C$Commerce de gros (commerce interentreprises) de fournitures et équipements divers pour le commerce et les services$Wholesale (intercompany trade) of sundry supplies and equipment for trade and services
+46.71Z$Commerce de gros (commerce interentreprises) de combustibles et de produits annexes$Wholesale (intercompany trade) of solid, liquid and gaseous fuels and related products
+46.72Z$Commerce de gros (commerce interentreprises) de minerais et métaux$Wholesale (intercompany trade) of metals and metal ores
+46.73A$Commerce de gros (commerce interentreprises) de bois et de matériaux de construction$Wholesale (intercompany trade) of wood and construction materials
+46.73B$Commerce de gros (commerce interentreprises) d'appareils sanitaires et de produits de décoration$Wholesale (intercompany trade) of sanitary equipment and fitting out of housing materials
+46.74A$Commerce de gros (commerce interentreprises) de quincaillerie$Wholesale (intercompany trade) of hardware
+46.74B$Commerce de gros (commerce interentreprises) de fournitures pour la plomberie et le chauffage$Wholesale (intercompany trade) of plumbing and heating equipment and supplies
+46.75Z$Commerce de gros (commerce interentreprises) de produits chimiques$Wholesale (intercompany trade) of chemical products
+46.76Z$Commerce de gros (commerce interentreprises) d'autres produits intermédiaires$Wholesale (intercompany trade) of other intermediate products
+46.77Z$Commerce de gros (commerce interentreprises) de déchets et débris$Wholesale (intercompany trade) of waste and scrap
+46.90Z$Commerce de gros (commerce interentreprises) non spécialisé$Non-specialised wholesale trade (intercompany trade)
+47.11A$Commerce de détail de produits surgelés$Retail sale of frozen products
+47.11B$Commerce d'alimentation générale$General food retail stores
+47.11C$Supérettes$Mini-markets
+47.11D$Supermarchés$Supermarkets
+47.11E$Magasins multi-commerces$Multi-trade stores
+47.11F$Hypermarchés$Hypermarkets
+47.19A$Grands magasins$Department stores
+47.19B$Autres commerces de détail en magasin non spécialisé$Other retail sale in non specialized stores
+47.21Z$Commerce de détail de fruits et légumes en magasin spécialisé$Retail sale of fruit and vegetables in specialised stores
+47.22Z$Commerce de détail de viandes et de produits à base de viande en magasin spécialisé$Retail sale of meat and meat products in specialised stores
+47.23Z$Commerce de détail de poissons, crustacés et mollusques en magasin spécialisé$Retail sale of fish, crustaceans and molluscs in specialised stores
+47.24Z$Commerce de détail de pain, pâtisserie et confiserie en magasin spécialisé$Retail sale of bread, cakes, flour confectionery and sugar confectionery in specialised stores
+47.25Z$Commerce de détail de boissons en magasin spécialisé$Retail sale of beverages in specialised stores
+47.26Z$Commerce de détail de produits à base de tabac en magasin spécialisé$Retail sale of tobacco products in specialised stores
+47.29Z$Autres commerces de détail alimentaires en magasin spécialisé$Other retail sale of food in specialised stores
+47.30Z$Commerce de détail de carburants en magasin spécialisé$Retail sale of automotive fuel in specialised stores
+47.41Z$Commerce de détail d'ordinateurs, d'unités périphériques et de logiciels en magasin spécialisé$Retail sale of computers, peripheral units and software in specialised stores
+47.42Z$Commerce de détail de matériels de télécommunication en magasin spécialisé$Retail sale of telecommunications equipment in specialised stores
+47.43Z$Commerce de détail de matériels audio et vidéo en magasin spécialisé$Retail sale of audio and video equipment in specialised stores
+47.51Z$Commerce de détail de textiles en magasin spécialisé$Retail sale of textiles in specialised stores
+47.52A$Commerce de détail de quincaillerie, peintures et verres en petites surfaces (moins de 400 m2)$Retail sale of hardware, paints and glass in small stores (less  than 400 m2)
+47.52B$Commerce de détail de quincaillerie, peintures et verres en grandes surfaces (400 m2et plus)$Retail sale of hardware, paints and glass in DIY superstores (400 m2 and more)
+47.53Z$Commerce de détail de tapis, moquettes et revêtements de murs et de sols en magasin spécialisé$Retail sale of carpets, rugs, wall and floor coverings in specialised stores
+47.54Z$Commerce de détail d'appareils électroménagers en magasin spécialisé$Retail sale of electrical household appliances in specialised stores
+47.59A$Commerce de détail de meubles$Retail sale of furniture
+47.59B$Commerce de détail d'autres équipements du foyer$Retail sale of other household equipment and articles
+47.61Z$Commerce de détail de livres en magasin spécialisé$Retail sale of books in specialised stores
+47.62Z$Commerce de détail de journaux et papeterie en magasin spécialisé$Retail sale of newspapers and stationery in specialised stores
+47.63Z$Commerce de détail d'enregistrements musicaux et vidéo en magasin spécialisé$Retail sale of music and video recordings in specialised stores
+47.64Z$Commerce de détail d'articles de sport en magasin spécialisé$Retail sale of sporting equipment in specialised stores
+47.65Z$Commerce de détail de jeux et jouets en magasin spécialisé$Retail sale of games and toys in specialised stores
+47.71Z$Commerce de détail d'habillement en magasin spécialisé$Retail sale of clothing in specialised stores
+47.72A$Commerce de détail de la chaussure$Retail sale of footwear
+47.72B$Commerce de détail de maroquinerie et d'articles de voyage$Retail sale of fine leather goods and of travel articles
+47.73Z$Commerce de détail de produits pharmaceutiques en magasin spécialisé$Dispensing chemist in specialised stores
+47.74Z$Commerce de détail d'articles médicaux et orthopédiques en magasin spécialisé$Retail sale of medical and orthopaedic goods in specialised stores
+47.75Z$Commerce de détail de parfumerie et de produits de beauté en magasin spécialisé$Retail sale of cosmetic and toilet articles in specialised stores
+47.76Z$Commerce de détail de fleurs, plantes, graines, engrais, animaux de compagnie et aliments pour ces animaux en magasin spécialisé$Retail sale of flowers, plants, seeds, fertilisers, pet animals and pet food in specialised stores
+47.77Z$Commerce de détail d'articles d'horlogerie et de bijouterie en magasin spécialisé$Retail sale of watches and jewellery in specialised stores
+47.78A$Commerces de détail d'optique$Retail sale of optics
+47.78B$Commerces de détail de charbons et combustibles$Retail sale of coal and fuels
+47.78C$Autres commerces de détail spécialisés divers$Other sundry specialized retail sale
+47.79Z$Commerce de détail de biens d'occasion en magasin$Retail sale of second-hand goods in stores
+47.81Z$Commerce de détail alimentaire sur éventaires et marchés$Retail sale via stalls and markets of food, beverages and tobacco products
+47.82Z$Commerce de détail de textiles, d'habillement et de chaussures sur éventaires et marchés$Retail sale via stalls and markets of textiles, clothing and footwear
+47.89Z$Autres commerces de détail sur éventaires et marchés$Retail sale via stalls and markets of other goods
+47.91A$Vente à distance sur catalogue général$Retail sale via home-shopping by general catalogue
+47.91B$Vente à distance sur catalogue spécialisé$Retail sale via home-shopping by specialized catalogue
+47.99A$Vente à domicile$From door to door sale
+47.99B$Vente par automates et autres commerces de détail hors magasin, éventaires ou marchés n.c.a.$Vending machine sale and sundry retail trade not in stores, stalls or markets, n.e.c.
+49.10Z$Transport ferroviaire interurbain de voyageurs$Passenger rail transport, interurban
+49.20Z$Transports ferroviaires de fret$Freight rail transport
+49.31Z$Transports urbains et suburbains de voyageurs$Urban and suburban passenger land transport
+49.32Z$Transports de voyageurs par taxis$Taxi operation
+49.39A$Transports routiers réguliers de voyageurs$Road scheduled passengers land transport
+49.39B$Autres transports routiers de voyageurs$Other land passenger transport
+49.39C$Téléphériques et remontées mécaniques$Cableway and ski lifts
+49.41A$Transports routiers de fret interurbains$Interurban freight transport by road
+49.41B$Transports routiers de fret de proximité$Proximity freight transport by road
+49.41C$Location de camions avec chauffeur$Rent of lorries with driver
+49.42Z$Services de déménagement$Removal services
+49.50Z$Transports par conduites$Transport via pipeline
+50.10Z$Transports maritimes et côtiers de passagers$Sea and coastal passenger water transport
+50.20Z$Transports maritimes et côtiers de fret$Sea and coastal freight water transport
+50.30Z$Transports fluviaux de passagers$Inland passenger water transport
+50.40Z$Transports fluviaux de fret$Inland freight water transport
+51.10Z$Transports aériens de passagers$Passenger air transport
+51.21Z$Transports aériens de fret$Freight air transport
+51.22Z$Transports spatiaux$Space transport
+52.10A$Entreposage et stockage frigorifique$Refrigerating warehousing and storage
+52.10B$Entreposage et stockage non frigorifique$Non refrigerating warehousing and storage
+52.21Z$Services auxiliaires des transports terrestres$Service activities incidental to land transportation
+52.22Z$Services auxiliaires des transports par eau$Service activities incidental to water transportation
+52.23Z$Services auxiliaires des transports aériens$Service activities incidental to air transportation
+52.24A$Manutention portuaire$Harbour cargo handling
+52.24B$Manutention non portuaire$Non harbour cargo handling
+52.29A$Messagerie, fret express$Freight services organization
+52.29B$Affrètement et organisation des transports$Chartering and transportation organisation
+53.10Z$Activités de poste dans le cadre d'une obligation de service universel$Postal activities under universal service obligation
+53.20Z$Autres activités de poste et de courrier$Other postal and courier activities
+55.10Z$Hôtels et hébergement similaire$Hotels and similar accommodation
+55.20Z$Hébergement touristique et autre hébergement de courte durée$Holiday and other short-stay accommodation
+55.30Z$Terrains de camping et parcs pour caravanes ou véhicules de loisirs$Camping grounds, recreational vehicle parks and trailer parks
+55.90Z$Autres hébergements$Other accommodation
+56.10A$Restauration traditionnelle$Traditional catering
+56.10B$Cafétérias et autres libres-services$Cafeterias and other self-service catering
+56.10C$Restauration de type rapide$Fast food restaurants
+56.21Z$Services des traiteurs$Event catering activities
+56.29A$Restauration collective sous contrat$Collective catering under contract
+56.29B$Autres services de restauration n.c.a.$Other catering n.e.c.
+56.30Z$Débits de boissons$Beverage serving activities
+58.11Z$Édition de livres$Book publishing
+58.12Z$Édition de répertoires et de fichiers d'adresses$Publishing of directories and mailing lists
+58.13Z$Édition de journaux$Publishing of newspapers
+58.14Z$Édition de revues et périodiques$Publishing of journals and periodicals
+58.19Z$Autres activités d'édition$Other publishing activities
+58.21Z$Édition de jeux électroniques$Publishing of computer games
+58.29A$Édition de logiciels système et de réseau$System and network software publishing
+58.29B$Edition de logiciels outils de développement et de langages$Development tools and programming languages software publishing
+58.29C$Edition de logiciels applicatifs$Application software publishing
+59.11A$Production de films et de programmes pour la télévision$Production of motion pictures for television and television programmes
+59.11B$Production de films institutionnels et publicitaires$Production of institutional and promotional motion pictures
+59.11C$Production de films pour le cinéma$Production of motion pictures for cinema
+59.12Z$Post-production de films cinématographiques, de vidéo et de programmes de télévision$Motion picture, video and television programme post-production activities
+59.13A$Distribution de films cinématographiques$Motion pictures for cinema distribution
+59.13B$Edition et distribution vidéo$Video edition and distribution
+59.14Z$Projection de films cinématographiques$Motion picture projection activities
+59.20Z$Enregistrement sonore et édition musicale$Sound recording and music publishing activities
+60.10Z$Édition et diffusion de programmes radio$Radio broadcasting
+60.20A$Edition de chaînes généralistes$Broadcast of general-interest television programmes
+60.20B$Edition de chaînes thématiques$Broadcast of thematic television programmes
+61.10Z$Télécommunications filaires$Wired telecommunications activities
+61.20Z$Télécommunications sans fil$Wireless telecommunications activities
+61.30Z$Télécommunications par satellite$Satellite telecommunications activities
+61.90Z$Autres activités de télécommunication$Other telecommunications activities
+62.01Z$Programmation informatique$Computer programming activities
+62.02A$Conseil en systèmes et logiciels informatiques$Hardware and software consultancy
+62.02B$Tierce maintenance de systèmes et d’applications informatiques$Third party maintenance of computer sytems and applications
+62.03Z$Gestion d'installations informatiques$Computer facilities management activities
+62.09Z$Autres activités informatiques$Other information technology and computer service activities
+63.11Z$Traitement de données, hébergement et activités connexes$Data processing, hosting and related activities
+63.12Z$Portails Internet$Web portals
+63.91Z$Activités des agences de presse$News agency activities
+63.99Z$Autres services d'information n.c.a.$Other information service activities n.e.c.
+64.11Z$Activités de banque centrale$Central banking
+64.19Z$Autres intermédiations monétaires$Other monetary intermediation
+64.20Z$Activités des sociétés holding$Activities of holding companies
+64.30Z$Fonds de placement et entités financières similaires$Trusts, funds and similar financial entities
+64.91Z$Crédit-bail$Financial leasing
+64.92Z$Autre distribution de crédit$Other credit granting
+64.99Z$Autres activités des services financiers, hors assurance et caisses de retraite, n.c.a.$Other financial service activities, except insurance and pension funding n.e.c.
+65.11Z$Assurance vie$Life insurance
+65.12Z$Autres assurances$Non-life insurance
+65.20Z$Réassurance$Reinsurance
+65.30Z$Caisses de retraite$Pension funding
+66.11Z$Administration de marchés financiers$Administration of financial markets
+66.12Z$Courtage de valeurs mobilières et de marchandises$Security and commodity contracts brokerage
+66.19A$Supports juridiques de gestion de patrimoine mobilier$Juridical arrangement of movable property management
+66.19B$Autres activités auxiliaires de services financiers, hors assurance et caisses de retraite, n.c.a.$Other activities auxiliary to financial services, except insurance and pension funding, n.e.c.
+66.21Z$Évaluation des risques et dommages$Risk and damage evaluation
+66.22Z$Activités des agents et courtiers d'assurances$Activities of insurance agents and brokers
+66.29Z$Autres activités auxiliaires d'assurance et de caisses de retraite$Other activities auxiliary to insurance and pension funding
+66.30Z$Gestion de fonds$Fund management activities
+68.10Z$Activités des marchands de biens immobiliers$Buying and selling of own real estate
+68.20A$Location de logements$Letting of dwellings
+68.20B$Location de terrains et d'autres biens immobiliers$Letting of land and other own property
+68.31Z$Agences immobilières$Real estate agencies
+68.32A$Administration d'immeubles et autres biens immobiliers$Management of residential building and other real estate on a fee or contract basis
+68.32B$Supports juridiques de gestion de patrimoine immobilier$Juridical arrangement of immovable property management
+69.10Z$Activités juridiques$Legal activities
+69.20Z$Activités comptables$Accounting, bookkeeping and auditing activities; tax consultancy
+70.10Z$Activités des sièges sociaux$Activities of head offices
+70.21Z$Conseil en relations publiques et communication$Public relations and communication activities
+70.22Z$Conseil pour les affaires et autres conseils de gestion$Business and other management consultancy activities
+71.11Z$Activités d'architecture$Architectural activities
+71.12A$Activité des géomètres$Surveyor activities
+71.12B$Ingénierie, études techniques$Engineering, technical studies
+71.20A$Contrôle technique automobile$Car technical testing
+71.20B$Analyses, essais et inspections techniques$Technical analyses, testing and inspections
+72.11Z$Recherche-développement en biotechnologie$Research and experimental development on biotechnology
+72.19Z$Recherche-développement en autres sciences physiques et naturelles$Other research and experimental development on natural sciences and engineering
+72.20Z$Recherche-développement en sciences humaines et sociales$Research and experimental development on social sciences and humanities
+73.11Z$Activités des agences de publicité$Advertising agencies
+73.12Z$Régie publicitaire de médias$Media representation
+73.20Z$Études de marché et sondages$Market research and public opinion polling
+74.10Z$Activités spécialisées de design$Specialised design activities
+74.20Z$Activités photographiques$Photographic activities
+74.30Z$Traduction et interprétation$Translation and interpretation activities
+74.90A$Activité des économistes de la construction$Activities of quantity surveyors
+74.90B$Activités spécialisées, scientifiques et techniques diverses$Sundry professional, scientific and technical activities
+75.00Z$Activités vétérinaires$Veterinary activities
+77.11A$Location de courte durée de voitures et de véhicules automobiles légers$Short term renting of cars and light motor vehicles
+77.11B$Location de longue durée de voitures et de véhicules automobiles légers$Long term renting of cars and light motor vehicles
+77.12Z$Location et location-bail de camions$Renting and leasing of trucks
+77.21Z$Location et location-bail d'articles de loisirs et de sport$Renting and leasing of recreational and sports goods
+77.22Z$Location de vidéocassettes et disques vidéo$Renting of video tapes and disks
+77.29Z$Location et location-bail d'autres biens personnels et domestiques$Renting and leasing of other personal and household goods
+77.31Z$Location et location-bail de machines et équipements agricoles$Renting and leasing of agricultural machinery and equipment
+77.32Z$Location et location-bail de machines et équipements pour la construction$Renting and leasing of construction and civil engineering machinery and equipment
+77.33Z$Location et location-bail de machines de bureau et de matériel informatique$Renting and leasing of office machinery and equipment (including computers)
+77.34Z$Location et location-bail de matériels de transport par eau$Renting and leasing of water transport equipment
+77.35Z$Location et location-bail de matériels de transport aérien$Renting and leasing of air transport equipment
+77.39Z$Location et location-bail d'autres machines, équipements et biens matériels n.c.a.$Renting and leasing of other machinery, equipment and tangible goods n.e.c.
+77.40Z$Location-bail de propriété intellectuelle et de produits similaires, à l'exception des œuvres soumises à copyright$Leasing of intellectual property and similar products, except copyrighted works
+78.10Z$Activités des agences de placement de main-d'œuvre$Activities of employment placement agencies
+78.20Z$Activités des agences de travail temporaire$Temporary employment agency activities
+78.30Z$Autre mise à disposition de ressources humaines$Other human resources provision
+79.11Z$Activités des agences de voyage$Travel agency activities
+79.12Z$Activités des voyagistes$Tour operator activities
+79.90Z$Autres services de réservation et activités connexes$Other reservation service and related activities
+80.10Z$Activités de sécurité privée$Private security activities
+80.20Z$Activités liées aux systèmes de sécurité$Security systems service activities
+80.30Z$Activités d'enquête$Investigation activities
+81.10Z$Activités combinées de soutien lié aux bâtiments$Combined facilities support activities
+81.21Z$Nettoyage courant des bâtiments$General cleaning of buildings
+81.22Z$Autres activités de nettoyage des bâtiments et nettoyage industriel$Other building and industrial cleaning activities
+81.29A$Désinfection, désinsectisation, dératisation$Desinfection, insect and rat extermination
+81.29B$Autres activités de nettoyage n.c.a.$Other cleaning activities n.e.c.
+81.30Z$Services d'aménagement paysager$Landscape service activities
+82.11Z$Services administratifs combinés de bureau$Combined office administrative service activities
+82.19Z$Photocopie, préparation de documents et autres activités spécialisées de soutien de bureau$Photocopying, document preparation and other specialised office support activities
+82.20Z$Activités de centres d'appels$Activities of call centres
+82.30Z$Organisation de foires, salons professionnels et congrès$Organisation of trade fairs, trade shows and conventions
+82.91Z$Activités des agences de recouvrement de factures et des sociétés d'information financière sur la clientèle$Activities of collection agencies and credit bureaus
+82.92Z$Activités de conditionnement$Packaging activities
+82.99Z$Autres activités de soutien aux entreprises n.c.a.$Other business support service activities n.e.c.
+84.11Z$Administration publique générale$General public administration activities
+84.12Z$Administration publique (tutelle) de la santé, de la formation, de la culture et des services sociaux, autre que sécurité sociale$Regulation of the activities of providing health care, education, cultural services and other social services, excluding social security
+84.13Z$Administration publique (tutelle) des activités économiques$Regulation of and contribution to more efficient operation of businesses
+84.21Z$Affaires étrangères$Foreign affairs
+84.22Z$Défense$Defence activities
+84.23Z$Justice$Justice and judicial activities
+84.24Z$Activités d’ordre public et de sécurité$Public order and safety activities
+84.25Z$Services du feu et de secours$Fire service activities
+84.30A$Activités générales de sécurité sociale$Social security general activities
+84.30B$Gestion des retraites complémentaires$Management of supplementary pensions
+84.30C$Distribution sociale de revenus$Social distribution of incomes
+85.10Z$Enseignement pré-primaire$Pre-primary education
+85.20Z$Enseignement primaire$Primary education
+85.31Z$Enseignement secondaire général$General secondary education
+85.32Z$Enseignement secondaire technique ou professionnel$Technical and vocational secondary education
+85.41Z$Enseignement post-secondaire non supérieur$Post-secondary non-tertiary education
+85.42Z$Enseignement supérieur$Tertiary education
+85.51Z$Enseignement de disciplines sportives et d'activités de loisirs$Sports and recreation education
+85.52Z$Enseignement culturel$Cultural education
+85.53Z$Enseignement de la conduite$Driving school activities
+85.59A$Formation continue d'adultes$Continuing education for adults
+85.59B$Autres enseignements$Sundry education
+85.60Z$Activités de soutien à l'enseignement$Educational support activities
+86.10Z$Activités hospitalières$Hospital activities
+86.21Z$Activité des médecins généralistes$General medical practice activities
+86.22A$Activités de radiodiagnostic et de radiothérapie$X-ray diagnosis and radiotherapy activities
+86.22B$Activités chirurgicales$Surgery activities
+86.22C$Autres activités des médecins spécialistes$Other specialist medical practice activities
+86.23Z$Pratique dentaire$Dental practice activities
+86.90A$Ambulances$Ambulances
+86.90B$Laboratoires d'analyses médicales$Medical analysis laboratory
+86.90C$Centres de collecte et banques d'organes$Collection centers and organ banks
+86.90D$Activités des infirmiers et des sages-femmes$Activities of nurses and midwives
+86.90E$Activités des professionnels de la rééducation, de l’appareillage et des pédicures-podologues$Activities of professionnals in re-education, prosthesis or health devices and chiropodists
+86.90F$Activités de santé humaine non classées ailleurs$Human health activities n.e.c.
+87.10A$Hébergement médicalisé pour personnes âgées$Residential nursing care activities for the elderly
+87.10B$Hébergement médicalisé pour enfants handicapés$Residential nursing care activities for disabled children
+87.10C$"Hébergement médicalisé pour adultes handicapés et autre hébergement médicalisé
+"$Residential nursing care activities for disabled adults and other residential nursing care
+87.20A$Hébergement social pour handicapés mentaux et malades mentaux$Residential care activities for mental retardation and mental health
+87.20B$Hébergement social pour toxicomanes$Residential care activities for substance abuse
+87.30A$Hébergement social pour personnes âgées$Residential care activities for the elderly
+87.30B$Hébergement social pour handicapés  physiques$Residential care activities for the disabled
+87.90A$Hébergement social pour enfants en difficultés$Residential care activities for children with difficulties
+87.90B$Hébergement social pour adultes et familles en difficultés et autre hébergement social$Residential care activities for adults and families with difficulties and other residential care activities
+88.10A$Aide à domicile$Home helps
+88.10B$Accueil ou accompagnement sans hébergement d’adultes handicapés ou de personnes âgées$Other welcome or guidance without accomodation for disabled adults or the elderly
+88.10C$Aide par le travail$Assistance by work
+88.91A$Accueil de jeunes enfants$Welcome facilities for young children
+88.91B$Accueil ou accompagnement sans hébergement d’enfants handicapés$Welcome or guidance without accomodation for disabled children
+88.99A$Autre accueil ou accompagnement sans hébergement d’enfants et d’adolescents$Other welcome or guidance without accomodation for children and teenagers
+88.99B$Action sociale sans hébergement n.c.a.$Social work activities without accommodation n.e.c.
+90.01Z$Arts du spectacle vivant$Performing arts
+90.02Z$Activités de soutien au spectacle vivant$Support activities to performing arts
+90.03A$Création artistique relevant des arts plastiques$Artistic creation related to fine arts
+90.03B$Autre création artistique$Other artistic creation
+90.04Z$Gestion de salles de spectacles$Operation of arts facilities
+91.01Z$Gestion des bibliothèques et des archives$Library and archives activities
+91.02Z$Gestion des musées$Museums activities
+91.03Z$Gestion des sites et monuments historiques et des attractions touristiques similaires$Operation of historical sites and buildings and similar visitor attractions
+91.04Z$Gestion des jardins botaniques et zoologiques et des réserves naturelles$Botanical and zoological gardens and nature reserves activities
+92.00Z$Organisation de jeux de hasard et d'argent$Gambling and betting activities
+93.11Z$Gestion d'installations sportives$Operation of sports facilities
+93.12Z$Activités de clubs de sports$Activities of sport clubs
+93.13Z$Activités des centres de culture physique$Fitness facilities
+93.19Z$Autres activités liées au sport$Other sports activities
+93.21Z$Activités des parcs d'attractions et parcs à thèmes$Activities of amusement parks and theme parks
+93.29Z$Autres activités récréatives et de loisirs$Other amusement and recreation activities
+94.11Z$Activités des organisations patronales et consulaires$Activities of business and employers membership organisations
+94.12Z$Activités des organisations professionnelles$Activities of professional membership organisations
+94.20Z$Activités des syndicats de salariés$Activities of trade unions
+94.91Z$Activités des organisations religieuses$Activities of religious organisations
+94.92Z$Activités des organisations politiques$Activities of political organisations
+94.99Z$Autres organisations fonctionnant par adhésion volontaire$Other membership organisations based on voluntary membership
+95.11Z$Réparation d'ordinateurs et d'équipements périphériques$Repair of computers and peripheral equipment
+95.12Z$Réparation d'équipements de communication$Repair of communication equipment
+95.21Z$Réparation de produits électroniques grand public$Repair of consumer electronics
+95.22Z$Réparation d'appareils électroménagers et d'équipements pour la maison et le jardin$Repair of household appliances and home and garden equipment
+95.23Z$Réparation de chaussures et d'articles en cuir$Repair of footwear and leather goods
+95.24Z$Réparation de meubles et d'équipements du foyer$Repair of furniture and home furnishings
+95.25Z$Réparation d'articles d'horlogerie et de bijouterie$Repair of watches, clocks and jewellery
+95.29Z$Réparation d'autres biens personnels et domestiques$Repair of other personal and household goods
+96.01A$Blanchisserie-teinturerie de gros$Washing and dry cleaning general services
+96.01B$Blanchisserie-teinturerie de détail$Washing and dry cleaning household services
+96.02A$Coiffure$Hairdressing
+96.02B$Soins de beauté$Beauty treatment
+96.03Z$Services funéraires$Funeral and related activities
+96.04Z$Entretien corporel$Physical well-being activities
+96.09Z$Autres services personnels n.c.a.$Other personal service activities n.e.c.
+97.00Z$Activités des ménages en tant qu'employeurs de personnel domestique$Activities of households as employers of domestic personnel
+98.10Z$Activités indifférenciées des ménages en tant que producteurs de biens pour usage propre$Undifferentiated goods-producing activities of private households for own use
+98.20Z$Activités indifférenciées des ménages en tant que producteurs de services pour usage propre$Undifferentiated service-producing activities of private households for own use
+99.00Z$Activités des organisations et organismes extraterritoriaux$Activities of extraterritorial organisations and bodies

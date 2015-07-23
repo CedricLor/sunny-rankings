@@ -66,8 +66,9 @@ gem 'minispec', '~> 0.0.5'
 # pundit
 gem 'pundit'
 
-# bootstrap rating system
-gem 'bootstrap-slider-rails', '~> 4.8.1'
+# Active Admin
+gem 'activeadmin', github: 'activeadmin'
+
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
@@ -86,6 +87,7 @@ end
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem "letter_opener"
 end
 
 

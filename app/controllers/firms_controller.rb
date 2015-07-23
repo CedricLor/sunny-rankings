@@ -22,7 +22,16 @@ class FirmsController < ApplicationController
   def geosearch
     addresses = Address.near([params[:latitude].to_f, params[:longitude].to_f], 40, :order => "distance")
     @firms = addresses.first.firms
-    redirect_to firm_path(@firms.last)
+    i = 1
+    while @firms.empty? && i < addresses.length - 1
+      @firms = addresses[i].firms
+      i += 1
+    end
+    if @firms.empty?
+      redirect_to firms_path
+    else
+      redirect_to firm_path(@firms.first)
+    end
   end
 
   def show

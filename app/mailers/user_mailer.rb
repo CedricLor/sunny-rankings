@@ -14,6 +14,6 @@ class UserMailer < ApplicationMailer
   end
 
   def new_user_on_vote(email)
-    mail(to: email, subject: "Please confirm your account on Skanher")
+    mail(to: email, subject: "Please confirm your vote on Skanher")
   end
 end

@@ -38,25 +38,23 @@
               </li>
               <li>
                 <%= link_to edit_user_registration_path, method: :get do %>
-                  <!-- TO DO update t parameter -->
                   <i class="fa fa-pencil-square-o"></i>  <%= t :update_connection_credentials, default: "Update your connexion credentials" %>
                 <% end %>
               </li>
-              <li>
-                <%= link_to profile_path(current_user.profile), method: :get do %>
-                  <!-- TO DO update t parameter -->
-                  <i class="fa fa-list-alt"></i>  <%= t ".view_profile", default: "View your user profile" %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to edit_profile_path(current_user.profile), method: :get do %>
-                  <!-- TO DO update t parameter -->
-                  <i class="fa fa-bars"></i>  <%= t ".update_profile", default: "Update your user profile" %>
-                <% end %>
-              </li>
+              <% if current_user.profile %>
+                <li>
+                  <%= link_to profile_path(current_user.profile), method: :get do %>
+                    <i class="fa fa-list-alt"></i>  <%= t ".view_profile", default: "View your user profile" %>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to edit_profile_path(current_user.profile), method: :get do %>
+                    <i class="fa fa-bars"></i>  <%= t ".update_profile", default: "Update your user profile" %>
+                  <% end %>
+                </li>
+              <% end %>
               <li>
                 <%= link_to pendingreviews_path, method: :get do %>
-                  <!-- TO DO update t parameter -->
                   <i class="fa fa-exclamation-triangle"></i>  <%= t :view_pending_review, default: "View your pending review" %>
                 <% end %>
               </li>

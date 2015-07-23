@@ -1,4 +1,4 @@
-<% content_for(:title, "#{@firm.name}") %>
+<% content_for(:title, raw("#{@firm.name}")) %>
 
 <div class="container">
   <div class="row">
@@ -12,7 +12,7 @@
         <div class="row" data-my-content="company-top-row">
           <div class="col-xs-12 col-sm-4" data-my-content="company-icon">
             <div class="icon-wrapper card-block shadowed-box">
-              <%= image_tag(@firm.icon_name, class: "company-icon") %>
+              <%= image_tag(@firm.icon_name.nil? ? "logo-missing.svg" : @firm.icon_name, class: "company-icon") %>
             </div>
           </div>
           <div class="col-xs-12 col-sm-8">

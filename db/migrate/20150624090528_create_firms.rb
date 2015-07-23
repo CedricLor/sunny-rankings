@@ -8,6 +8,7 @@ class CreateFirms < ActiveRecord::Migration
       t.text :business_description
       t.string :industry
       t.string :icon_name
+      t.string :reg_number
 
       t.timestamps null: false
     end

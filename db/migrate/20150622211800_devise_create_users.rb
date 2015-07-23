@@ -31,13 +31,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.datetime :locked_at
 
       t.boolean :validated, null: false, default: false
-      # t.references :user, index: true, foreign_key: true
       # TODO: Quick fix; in reality, should rely on the emails in the profiles
       t.string :real_email
-
-      # Preparing the creation of a profile model
-      t.references :profile, index: true, foreign_key: true
-      # t.integer :profile_id
 
       t.timestamps null: false
     end

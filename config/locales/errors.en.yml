@@ -1,0 +1,12 @@
+en:
+  errors:
+    messages:
+      association_count_less_than_or_equal_to:
+        one: count must be less than 1
+        other: count must be less than or equal to %{count}
+      association_count_greater_than_or_equal_to:
+        one: count must be greater than 1
+        other: count must be greater than or equal to %{count}
+      association_count_invalid:
+        one: count is invalid (must be equal to 1)
+        other: count is invalid (must be equal to %{count})

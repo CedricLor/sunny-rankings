@@ -6,6 +6,7 @@ fr:
       profile:
         first_name: "Prénom"
         last_name: "Nom de famille"
+        mother_maiden_name: "Nom de jeune femme de la mère"
         country: "Pays"
         phone_number: "Numéro de téléphone"
         age: "Age"
@@ -13,3 +14,5 @@ fr:
         employer_name: "Nom de l'employeur"
         current_position: "Poste actuellement occupé"
         address: "Adresse"
+        real_email: "Vrai email"
+        first_time_login_upon_review: "Premier login sur création de profile dans le cadre d'une revue"

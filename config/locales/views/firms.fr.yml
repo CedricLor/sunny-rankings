@@ -15,7 +15,7 @@ fr:
       no_search_result_header_html: "Search results for '%{search_string}'"
       no_search_result_header_html: "Il n'y a pas d'entreprise dont le nom contienne '%{search_string}' actuellement classé dans notre base de données."
       please_add_firm: "Ajoutez '%{search_string}' à nos classements !"
-      top_10_in_country: "Voici les 10 premières entreprises d'après notre communauté en %{user_ip_country}"
+      top_10_in_country: "Voici les 10 meilleures entreprises en %{user_ip_country} d'après notre communauté"
     show:
       is_ranked: " est classée "
       in: " en "

@@ -18,7 +18,7 @@
           <% default_for_welcome_parag_if_first_time_login_upon_review_html =
             "<p>An account with Skanher has been created for you!</p>
             <p class='red-paragraph'>For confidentiality reasons, we have granted you the following username #{current_user.email}</p>
-            <p class='red-paragraph'>To validate your review of #{current_user.reviews.last.firm.name}, please fill in your profile.</p>"
+            <p class='red-paragraph'>To validate your review of #{@firm.name}, please fill in your profile.</p>"
           %>
           <%= t(".welcome_parag_if_first_time_login_upon_review_html", username: current_user.email, reviewed_firm_name: @firm.name, default: default_for_welcome_parag_if_first_time_login_upon_review_html) %>
 

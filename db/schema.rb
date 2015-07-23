@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709192700) do
+ActiveRecord::Schema.define(version: 20150723134713) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "addresses", force: :cascade do |t|
     t.string   "city"
@@ -20,19 +35,12 @@ ActiveRecord::Schema.define(version: 20150709192700) do
     t.string   "zip_code"
     t.string   "country"
     t.string   "addr_complement"
+    t.string   "fuzzy_address"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.float    "latitude"
     t.float    "longitude"
   end
-
-  create_table "addresses_firms", id: false, force: :cascade do |t|
-    t.integer "firm_id",    null: false
-    t.integer "address_id", null: false
-  end
-
-  add_index "addresses_firms", ["address_id", "firm_id"], name: "index_addresses_firms_on_address_id_and_firm_id"
-  add_index "addresses_firms", ["firm_id", "address_id"], name: "index_addresses_firms_on_firm_id_and_address_id"
 
   create_table "addresses_profiles", id: false, force: :cascade do |t|
     t.integer "profile_id", null: false
@@ -54,11 +62,22 @@ ActiveRecord::Schema.define(version: 20150709192700) do
   add_index "answers", ["test_id"], name: "index_answers_on_test_id"
 
   create_table "awards", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",        null: false
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "firm_addresses", force: :cascade do |t|
+    t.integer  "firm_id"
+    t.integer  "address_id"
+    t.string   "type_of_address"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "firm_addresses", ["address_id"], name: "index_firm_addresses_on_address_id"
+  add_index "firm_addresses", ["firm_id"], name: "index_firm_addresses_on_firm_id"
 
   create_table "firms", force: :cascade do |t|
     t.string   "name"
@@ -68,9 +87,13 @@ ActiveRecord::Schema.define(version: 20150709192700) do
     t.text     "business_description"
     t.string   "industry"
     t.string   "icon_name"
+    t.string   "reg_number"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.string   "naf_code"
   end
+
+  add_index "firms", ["naf_code"], name: "index_firms_on_naf_code"
 
   create_table "granted_awards", force: :cascade do |t|
     t.integer  "award_id"
@@ -82,6 +105,17 @@ ActiveRecord::Schema.define(version: 20150709192700) do
 
   add_index "granted_awards", ["award_id"], name: "index_granted_awards_on_award_id"
   add_index "granted_awards", ["firm_id"], name: "index_granted_awards_on_firm_id"
+
+  create_table "low_level_industries", force: :cascade do |t|
+    t.string   "naf_code",              null: false
+    t.string   "naf_title_fr"
+    t.string   "naf_title_en"
+    t.integer  "top_level_industry_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "low_level_industries", ["naf_code"], name: "index_low_level_industries_on_naf_code"
 
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
@@ -97,9 +131,12 @@ ActiveRecord::Schema.define(version: 20150709192700) do
     t.string   "real_email"
     t.boolean  "validated"
     t.boolean  "first_time_login_upon_firm_review"
+    t.integer  "user_id"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "user_id"
@@ -123,6 +160,16 @@ ActiveRecord::Schema.define(version: 20150709192700) do
     t.datetime "updated_at",               null: false
   end
 
+  create_table "top_level_industries", force: :cascade do |t|
+    t.string   "naf_code"
+    t.string   "naf_title_fr"
+    t.string   "naf_title_en"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "top_level_industries", ["naf_code"], name: "index_top_level_industries_on_naf_code"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -136,13 +183,12 @@ ActiveRecord::Schema.define(version: 20150709192700) do
     t.string   "last_sign_in_ip"
     t.boolean  "validated",              default: false, null: false
     t.string   "real_email"
-    t.integer  "profile_id"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.boolean  "admin",                  default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["profile_id"], name: "index_users_on_profile_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  has_many :users
+  belongs_to :user
   has_many :reviews, through: :users, autosave: :true
   has_many :answers, through: :reviews, autosave: :true
   accepts_nested_attributes_for :reviews

@@ -3,9 +3,43 @@ class Firm < ActiveRecord::Base
   has_many :answers, through: :reviews
   has_many :granted_awards, inverse_of: :firm
   has_many :awards, through: :granted_awards
-  has_and_belongs_to_many :addresses
+  belongs_to :low_level_industry, foreign_key: :naf_code, primary_key: :naf_code, inverse_of: :firms
+  has_many :firm_addresses, inverse_of: :firm
+  has_many :addresses, through: :firm_addresses
   accepts_nested_attributes_for :reviews
   accepts_nested_attributes_for :answers
+  accepts_nested_attributes_for :addresses
+  accepts_nested_attributes_for :firm_addresses
+
+  validates_associated :addresses
+  # I think this one is looping around with the addresses one
+  # validates_associated :firm_addresses
+  validates :country, presence: :true, format: { with: /\A[A-Z][a-zA-Z\-]{3}[a-zA-Z\-' ]+[a-z]\z/ }
+  # To re-instate once I will have found the reg number of the French firms already in the database
+  # validates :reg_number, presence: :true, if: Proc.new { | firm | firm.country == ("France" || "FR") }
+  validates :naf_code, presence: :true, format: { with: /\A[0-9]{4}[A-Z]\z/ }, if: Proc.new { | firm | firm.country == ("France" || "FR") }
+  validates :name, presence: :true
+  validates :headcount, presence: :true, numericality: true
+
+  def self.create_with_addresses(params)
+    params = Address.save_or_retrieve_addresses_and_return_firm_addresses_hash(params)
+    create(params)
+  end
+
+  def add_addresses(params)
+    params = Address.save_or_retrieve_addresses_and_return_firm_addresses_hash(params)
+    self.update(params)
+  end
+
+  # def self.my_update_test
+  #   params = {
+  #     addresses_attributes: [
+  #       {fuzzy_address: "5 rue de Mesnilmontant, Paris, France"},
+  #       {fuzzy_address: "3 place Bellecourt, Lyon, France"}
+  #     ]
+  #   }
+  #   Firm.find_by_name("Crédit Foncier").add_addresses(params)
+  # end
 
   def self.ranking
     all.sort_by{ |f| f.avg_rating * -1 }

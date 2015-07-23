@@ -15,6 +15,10 @@ class CreateProfiles < ActiveRecord::Migration
       t.boolean :validated
       t.boolean :first_time_login_upon_firm_review
 
+      # Preparing the creation of a profile model
+      t.references :user, index: true, foreign_key: true
+      # t.integer :profile_id
+
       t.timestamps null: false
     end
   end

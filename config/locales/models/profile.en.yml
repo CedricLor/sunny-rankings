@@ -6,6 +6,7 @@ en:
       profile:
         first_name: "First name"
         last_name: "Last name"
+        mother_maiden_name: "Mother maiden name"
         country: "Country"
         phone_number: "Phone number"
         age: "Age"
@@ -13,3 +14,6 @@ en:
         employer_name: "Employer name"
         current_position: "Current position"
         address: "Address"
+        real_email: "Real email"
+        validated: "Validated"
+        first_time_login_upon_review: "First time login upon creation of profile upon review"
