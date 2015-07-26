@@ -8,6 +8,6 @@ class CreateLowLevelIndustries < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index :low_level_industries, :naf_code
+    add_index :low_level_industries, :naf_code, unique: true
   end
 end

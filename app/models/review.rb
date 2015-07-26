@@ -20,13 +20,16 @@ class Review < ActiveRecord::Base
   ANSWERS_REQUIRED_COUNT = 5
   ANSWERS_MINIMUM_COUNT = 1
 
-  belongs_to :user, inverse_of: :reviews
-  belongs_to :firm, inverse_of: :reviews
-  has_many :answers, inverse_of: :review, autosave: :true
+  belongs_to :review_portfolio
+  belongs_to :firm
+  belongs_to :user
+
+  has_many :answers, autosave: :true
+
   accepts_nested_attributes_for :answers, limit: 5, allow_destroy: true
 
   validates :firm, presence: true
-  validates :user, presence: true
+  validates :review_portfolio, presence: true, on: :update
   validates :confirmed_t_and_c, inclusion: { in: [true, false] }
   validates :confirmed_t_and_c, exclusion: { in: [nil] }
   validates :confirmed_t_and_c, acceptance: {

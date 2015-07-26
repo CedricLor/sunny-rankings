@@ -1,11 +1,15 @@
 class Firm < ActiveRecord::Base
-  has_many :reviews, inverse_of: :firm
+  has_many :reviews
   has_many :answers, through: :reviews
-  has_many :granted_awards, inverse_of: :firm
+
+  has_many :granted_awards
   has_many :awards, through: :granted_awards
+
   belongs_to :low_level_industry, foreign_key: :naf_code, primary_key: :naf_code, inverse_of: :firms
-  has_many :firm_addresses, inverse_of: :firm
+
+  has_many :firm_addresses
   has_many :addresses, through: :firm_addresses
+
   accepts_nested_attributes_for :reviews
   accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :addresses

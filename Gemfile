@@ -69,6 +69,8 @@ gem 'pundit'
 # Active Admin
 gem 'activeadmin', github: 'activeadmin'
 
+# Email validator
+gem 'email_validator'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

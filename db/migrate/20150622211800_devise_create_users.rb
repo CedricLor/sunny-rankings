@@ -31,8 +31,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.datetime :locked_at
 
       t.boolean :validated, null: false, default: false
-      # TODO: Quick fix; in reality, should rely on the emails in the profiles
-      t.string :real_email
 
       t.timestamps null: false
     end

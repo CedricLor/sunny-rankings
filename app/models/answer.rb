@@ -2,13 +2,16 @@ class Answer < ActiveRecord::Base
   CURRENT_PERIOD = 30.days
   PREVIOUS_PERIOD = 60.days
 
-  belongs_to :review, inverse_of: :answers
-  belongs_to :test, inverse_of: :answers
+  belongs_to :review
+  belongs_to :test
+  belongs_to :review_portfolio
+  belongs_to :firm
+  belongs_to :user
 
   validates :user_rating, presence: true
   validates :user_rating, numericality: { only_integer: true }
   validates :user_rating, inclusion: { in: (0..5) }
-  validates :review, presence: true
+  validates :review, presence: true, on: :update
   validates :test, presence: true
 
   after_update :destroy_if_user_rating_is_0

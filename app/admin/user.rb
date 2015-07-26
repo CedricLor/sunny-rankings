@@ -6,7 +6,6 @@ ActiveAdmin.register User do
 permit_params :email,
               :encrypted_password,
               :validated,
-              :real_email,
               :profile_id,
               :admin
 #
@@ -25,8 +24,6 @@ end
 
 # t.boolean :validated, null: false, default: false
 # # t.references :user, index: true, foreign_key: true
-# # TODO: Quick fix; in reality, should rely on the emails in the profiles
-# t.string :real_email
 
 # # Preparing the creation of a profile model
 # t.references :profile, index: true, foreign_key: true

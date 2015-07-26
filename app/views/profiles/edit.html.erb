@@ -14,29 +14,19 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
       <div class="card-block shadowed-box text-center">
 
-        <% if @profile.first_time_login_upon_firm_review %>
-          <% default_for_welcome_parag_if_first_time_login_upon_review_html =
-            "<p>An account with Skanher has been created for you!</p>
-            <p class='red-paragraph'>For confidentiality reasons, we have granted you the following username #{current_user.email}</p>
-            <p class='red-paragraph'>To validate your review of #{@firm.name}, please fill in your profile.</p>"
-          %>
-          <%= t(".welcome_parag_if_first_time_login_upon_review_html", username: current_user.email, reviewed_firm_name: @firm.name, default: default_for_welcome_parag_if_first_time_login_upon_review_html) %>
+        <% default_for_welcome_parag_if_simple_profile_review_html =
+          "<p>Please review your profile details below.</p>
+          <p class='red-paragraph'>Your username is #{current_user.email}</p>"
+        %>
+        <%= t(".welcome_parag_if_simple_profile_review_html", username: current_user.email, default: "Please review your profile details below") %>
 
-        <% else %>
-          <% default_for_welcome_parag_if_simple_profile_review_html =
-            "<p>Please review your profile details below.</p>
-            <p class='red-paragraph'>Your username is #{current_user.email}</p>"
-          %>
-          <%= t(".welcome_parag_if_simple_profile_review_html", username: current_user.email, default: "Please review your profile details below") %>
-
-          <p>
-            <% if @review.validated == false %>
-              <%= t(".sentence_if_last_review_not_validated", firm_name: @firm.name, default: "You have one pending review for #{@firm.name}. Please validate your review below.") %>
-            <% else %>
-              <%= t(".sentence_if_last_review_validated", default: "You do not currently have any pending review.") %>
-            <% end %>
-          </p>
-        <% end %>
+        <p>
+          <% if @review.validated == false %>
+            <%= t(".sentence_if_last_review_not_validated", firm_name: @firm.name, default: "You have one pending review for #{@firm.name}. Please validate your review below.") %>
+          <% else %>
+            <%= t(".sentence_if_last_review_validated", default: "You do not currently have any pending review.") %>
+          <% end %>
+        </p>
       </div>
     </div>
   </div>
@@ -47,7 +37,7 @@
           <div>
             <%= f.error_notification %>
             <div class="form-inputs">
-              <%= f.input :real_email, required: true, autofocus: true, label: t(".form_label_your_email", default: "Your email") %>
+              <%= f.input :default_email, required: true, autofocus: true, label: t(".form_label_your_default_email", default: "Your default email address") %>
               <%= f.input :first_name, required: true %>
               <%= f.input :last_name, required: true %>
               <%= f.input :country, required: true %>
@@ -128,5 +118,4 @@
 # t.string :current_position
 # t.integer :age
 # t.string :gender
-# t.string :real_email
 -->

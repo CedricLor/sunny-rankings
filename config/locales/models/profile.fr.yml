@@ -14,5 +14,4 @@ fr:
         employer_name: "Nom de l'employeur"
         current_position: "Poste actuellement occupé"
         address: "Adresse"
-        real_email: "Vrai email"
-        first_time_login_upon_review: "Premier login sur création de profile dans le cadre d'une revue"
+        email: "Addresse email principale"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150723134713) do
+ActiveRecord::Schema.define(version: 20150725134821) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 20150723134713) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "email_addresses", force: :cascade do |t|
+    t.string   "address"
+    t.integer  "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "firm_addresses", force: :cascade do |t|
     t.integer  "firm_id"
     t.integer  "address_id"
@@ -115,9 +122,10 @@ ActiveRecord::Schema.define(version: 20150723134713) do
     t.datetime "updated_at",            null: false
   end
 
-  add_index "low_level_industries", ["naf_code"], name: "index_low_level_industries_on_naf_code"
+  add_index "low_level_industries", ["naf_code"], name: "index_low_level_industries_on_naf_code", unique: true
 
   create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "mother_maiden_name"
@@ -128,18 +136,24 @@ ActiveRecord::Schema.define(version: 20150723134713) do
     t.string   "current_position"
     t.integer  "age"
     t.string   "gender"
-    t.string   "real_email"
     t.boolean  "validated"
-    t.boolean  "first_time_login_upon_firm_review"
-    t.integer  "user_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "default_email_id"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
-  create_table "reviews", force: :cascade do |t|
+  create_table "review_portfolios", force: :cascade do |t|
     t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "review_portfolios", ["user_id"], name: "index_review_portfolios_on_user_id"
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "review_portfolio_id"
     t.integer  "firm_id"
     t.string   "user_firm_relationship"
     t.boolean  "confirmed_t_and_c",      default: false
@@ -149,7 +163,7 @@ ActiveRecord::Schema.define(version: 20150723134713) do
   end
 
   add_index "reviews", ["firm_id"], name: "index_reviews_on_firm_id"
-  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+  add_index "reviews", ["review_portfolio_id"], name: "index_reviews_on_review_portfolio_id"
 
   create_table "tests", force: :cascade do |t|
     t.string   "test_question"
@@ -161,14 +175,14 @@ ActiveRecord::Schema.define(version: 20150723134713) do
   end
 
   create_table "top_level_industries", force: :cascade do |t|
-    t.string   "naf_code"
+    t.string   "naf_code",     null: false
     t.string   "naf_title_fr"
     t.string   "naf_title_en"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
-  add_index "top_level_industries", ["naf_code"], name: "index_top_level_industries_on_naf_code"
+  add_index "top_level_industries", ["naf_code"], name: "index_top_level_industries_on_naf_code", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -182,13 +196,14 @@ ActiveRecord::Schema.define(version: 20150723134713) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "validated",              default: false, null: false
-    t.string   "real_email"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false, null: false
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end

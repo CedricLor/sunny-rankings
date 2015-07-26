@@ -1,6 +1,6 @@
 <%= r.input :email,
       as: :fake,
-      input_html: { value: current_user ? current_user.profile.real_email : nil, placeholder: current_user ? current_user.profile.real_email : nil },
+      input_html: { value: current_user ? current_user.profile.email : nil, placeholder: current_user ? current_user.profile.email : nil },
       label: t( ".email_label", default: "Please enter your PERSONAL email"),
       hint: t( ".email_hint", default: "Your email will remain confidential and as per our conditions of rating services, will not be shared with your employer."),
       hint_html: {class: "voting-email-hint-class"}

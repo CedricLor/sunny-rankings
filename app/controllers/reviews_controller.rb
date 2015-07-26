@@ -41,7 +41,7 @@ class ReviewsController < ApplicationController
     updated_review_params = { answers_attributes: review_params[:answers_attributes].values }
     updated_review_params[:validated] = true
     review.update(updated_review_params)
-    flash[:notice] = "Dear #{current_user.real_email}, your review of #{current_user.reviews.last.firm.name} has been successfully validated."
+    flash[:notice] = "Dear #{current_user.profile.email}, your review of #{current_user.reviews.last.firm.name} has been successfully validated."
     redirect_to firm_path(review.firm)
   end
 
@@ -55,8 +55,6 @@ class ReviewsController < ApplicationController
   end
 
   def set_firm
-    # If the request comes from a firm's page
-    params[:firm_id].present?
     @firm = Firm.find(params[:firm_id])
     @firm_id = params[:firm_id]
   end
@@ -65,11 +63,11 @@ class ReviewsController < ApplicationController
     # is the user logged in
     if current_user.nil?
       # if no, is the user already in the database
-      if User.find_by_real_email(params[:email]).nil?
-        @user = create_user_on_vote
+      if User.find_by_email_addresses(params[:email]).empty?
+        create_user_on_vote
         @is_new_user = true
       else
-        @user = User.find_by_real_email(params[:email])
+        @user = User.find_by_email_addresses(params[:email])
         @is_new_user = false
       end
     # if the user is logged in, affect it to @user
@@ -80,38 +78,36 @@ class ReviewsController < ApplicationController
   end
 
   def create_user_on_vote
-    username = Faker::Internet.email
-    # password = Faker::Internet.password
-    password = "1234567890"
     # creation of a user to be validated by user
-    user = User.create({
-      email: username,
-      real_email: params[:email],
-      password: password,
-      password_confirmation: password,
+    user_data = {
+      email: params[:email],
+      password: "1234567890",
+      password_confirmation: "1234567890",
       validated: false
-    })
-    @profile = user.create_profile(real_email: params[:email], first_time_login_upon_firm_review: true)
-    UserMailer.new_user_on_vote(user.email).deliver_now
-    user
+    }
+    @user = User.create(user_data)
+    UserMailer.new_user_on_vote(params[:email]).deliver_now
   end
 
   def create_and_save_review
-    processed_answers_attributes = []
-    for i in 1..5 do
-      answer_hash = review_params[:answers_attributes].fetch("#{i - 1}") { |el| {"user_rating"=>"0"} }
-      answer_hash["test_id"] = "#{i}"
-      processed_answers_attributes << answer_hash
-    end
-    @review = @user.reviews.build(
+    process_answers_attributes(review_params)
+    @review = @user.review_portfolio.reviews.build(
       validated: false,
-      user_id: @user.id,
       firm_id: @firm_id,
       user_firm_relationship: "Undefined",
       confirmed_t_and_c: review_params[:confirmed_t_and_c],
-      answers_attributes: processed_answers_attributes
+      answers_attributes: @processed_answers_attributes
       )
     @review.save
+  end
+
+  def process_answers_attributes(review_params)
+    @processed_answers_attributes = []
+    for i in 1..5 do
+      answer_hash = review_params[:answers_attributes].fetch("#{i - 1}") { |el| {"user_rating"=>"0"} }
+      answer_hash["test_id"] = "#{i}"
+      @processed_answers_attributes << answer_hash
+    end
   end
 
   def form_has_errors?
@@ -134,7 +130,7 @@ class ReviewsController < ApplicationController
   def redirect_user
     if @is_new_user
       sign_in(@user)
-      redirect_to edit_profile_path(@profile) and return
+      redirect_to edit_profile_path(current_user.profile.id) and return
     elsif current_user
       flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved. It is currently pending. It still needs to be validated."
       redirect_to pendingreviews_path and return

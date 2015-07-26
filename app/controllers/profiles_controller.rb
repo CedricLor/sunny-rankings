@@ -3,9 +3,10 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def edit
-    @review = current_user.reviews.last
-    if @review.validated == false
-      variables_for_pending_review
+    unless @review = current_user.reviews.last.nil?
+      if @review.validated == false
+        variables_for_pending_review
+      end
     end
   end
 
@@ -17,7 +18,6 @@ class ProfilesController < ApplicationController
       updated_review_params[:id] = @review.id
       params[:profile][:reviews_attributes] = [updated_review_params]
     end
-    params[:profile][:first_time_login_upon_firm_review] = false
     if @profile.update(profile_params)
       params[:review] ? (redirect_to firm_path(@review.firm_id)) : (redirect_to profile_path(@profile.id))
     else
@@ -33,20 +33,24 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(
-      :real_email,
       :first_name,
       :last_name,
       :country,
       :phone_number,
       :age,
       :gender,
-      :first_time_login_upon_firm_review,
       reviews_attributes:
         [ :id,
           :validated,
           answers_attributes: [:user_rating, :id]
+        ],
+      email_addresses_attributes:
+        [ :id,
+          :address,
+          :profile_id
         ]
       )
+    # TO DO in email_addresses_attributes, check that id and profile_id are required
   end
 
   def review_params

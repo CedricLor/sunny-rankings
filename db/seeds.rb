@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: Chicago }, { name: Copenhagen }])
 #   Mayor.create(name: Emanuel, city: cities.first)
 
-######################
+##################################
 # SEEDING INDUSTRY NAF CLASSIFICATION TABLES
-######################
+##################################
 def seed_industry_tables(industry_descr_seed_files)
   low_level_ind_arr_of_arrs = CSV.read( industry_descr_seed_files[:low_level_indus_descr],
                                         col_sep: "$",
@@ -41,9 +41,9 @@ end
 
 launch_industry_table_seeding
 
-######################
+##################################
 # SEEDING AWARD TABLES
-######################
+##################################
 Award.create(name: "Diversity Charter in Sweden")
 Award.create(name: "Charta der Vielfalt, Österreich")
 Award.create(name: "Charte de la Diversité en Entreprise, France")
@@ -51,14 +51,13 @@ Award.create(name: "Label Egalité Diversité, Belgium")
 Award.create(name: "Charter de la Diversidad, España")
 Award.create(name: "Carta per le pari opportunità e luguaglianza sul lavoro, Italia")
 Award.create(name: "Economics Dividend for Gender Equality, U.S.A")
-
-######################
+##################################
 # SEEDING ADDRESSES AND FIRMS
-######################
+##################################
 def create_firm_and_address(firm)
   new_firm = Firm.create_with_addresses(firm)
 end
-
+##################################
 array_firm_addresses_belgium = [
     {name: "MyMicroInvest", url: "https://www.mymicroinvest.com/", country: "Belgium", headcount: "48", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-mymicroinvest.svg",
   addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Place Sainte-Gudule", number: "5", zip_code: "B-1000"}]},
@@ -91,12 +90,12 @@ array_firm_addresses_belgium = [
     {name: "idweaver", url: "http://www.idweaver.com/", country: "Belgium", headcount: "0", business_description: "Lorem ipsum", industry: "professional services", icon_name: "logo-idweaver.svg",
   addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Place Sainte-Gudule", number: "5", zip_code: "B-1000"}]}
 ]
-
+##################################
 array_firm_addresses_belgium.each do | firm |
   create_firm_and_address(firm)
   sleep 0.5
 end
-
+##################################
 array_firm_addresses_france = [
     {name: "BNP Paribas", url: "http://www.bnpparibas.com/", country: "France", headcount: "200000", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-bnp-paribas.svg", naf_code: "6419Z",
   addresses_attributes: [{city: "Paris", country: "France", street: "Boulevard des Italiens", number: "16", zip_code: "F-75009"}]},
@@ -119,12 +118,12 @@ array_firm_addresses_france = [
     {name: "La Banque Postale", url: "https://www.labanquepostale.fr/", country: "France", headcount: "0", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-labanquepostale.svg", naf_code: "6419Z",
   addresses_attributes: [{city: "Paris", country: "France", street: "Boulevard du Montparnasse", number: "83", zip_code: "F-75006"}]}
 ]
-
+##################################
 array_firm_addresses_france.each do | firm |
   create_firm_and_address(firm)
   sleep 0.5
 end
-
+##################################
 additional_addresses = [
   [ {name: "BNP Paribas"},
     {city: "Figeac", country: "France", street: "Boulevard Georges Juskiewenski", number: "4", zip_code: "F-46100"}
@@ -193,7 +192,7 @@ additional_addresses = [
     {city: "Caissargues", country: "France", street: "Place Marie Rose Pons", number: "", zip_code: "F-30132"}
   ]
 ]
-
+##################################
 def add_address_to_existing_firm(firm, address)
   if Firm.find_by_name(firm).nil?
     puts "could not find #{firm}"
@@ -202,11 +201,11 @@ def add_address_to_existing_firm(firm, address)
   searched_firm.add_addresses(addresses_attributes:[address])
   sleep 0.5
 end
-
+##################################
 additional_addresses.each do | array |
   add_address_to_existing_firm(array[0][:name], array[1])
 end
-
+##################################
 25.times do
   award = GrantedAward.new({
     award_id: Random.rand(7) + 1,
@@ -214,84 +213,85 @@ end
   })
   award.save
 end
-
+##################################
 Test.create(test_question: "Absence of sexists comments", test_long_question: "How frequent are sexists comments at this firm?", positive_negative_switch: "positive", select_options: "Very frequent; Fairly frequent; No more than anywhere else; Quite rare; Extremely rare")
 Test.create(test_question: "Absence of pregnancy related issues", test_long_question: "How is the pregnancy of an employee resented in this firm?", positive_negative_switch: "positive", select_options: "Very cumbersome; Cumbersome; Not worse than anywhere else; Quite easy; Really easy")
 Test.create(test_question: "Equal promotion opportunities", test_long_question: "Are female and male employees in the same position offered the same promotion opportunities in this firm?", positive_negative_switch: "positive", select_options: "Never; Sometimes; Quite often; Frequently; Always")
 Test.create(test_question: "Equal pay", test_long_question: "Are female and male employees in the same position offered the same wage at this firm?", positive_negative_switch: "positive", select_options: "Never; Sometimes; Quite often; Frequently; Always")
 Test.create(test_question: "Absence of harassment", test_long_question: "Are there any sexual harassment related issues at this firm?", positive_negative_switch: "positive", select_options: "Very frequently; Frequently; Now and then; Almost never; Never")
-
-def create_user
-  user = User.create({
+##################################
+def create_user_full_stack_and_return_portfolio
+  user_data = {
     email: Faker::Internet.email,
     password: "1234567890",
     password_confirmation: "1234567890",
     validated: true
-  })
-  user.id
+  }
+  user = User.create(user_data)
+  user.review_portfolio
 end
-
-250.times do
-  user_id = create_user
-
-  date = [Time.new(2015, 06, 01),Time.now].sample
-
-  tests = Test.all
+##################################
+def create_answers_and_review(date, portfolio, user_rating, firm_id)
   answers = []
-  tests.each do | test |
+  Test.all.each do | test |
     answer = {
-      user_rating: Random.rand(5) + 1,
+      user_rating: user_rating.call,
       test_id: test.id,
-      created_at: date
+      created_at: date,
+      updated_at: date
     }
     answers << answer
   end
-
-  review = Review.create({
-    firm_id: Random.rand(25) + 1,
-    user_id: user_id,
+  review = {
+    firm_id: firm_id,
     user_firm_relationship: "employee",
     confirmed_t_and_c: true,
     validated: true,
     created_at: date,
+    updated_at: date,
     answers_attributes: answers
-  })
+  }
+  portfolio.reviews.create!(review)
 end
-
-def create_review_and_answers_for_favorite_firms(user_id, favorite_firm)
-  tests = Test.all
-
-  answers = []
-  tests.each do | test |
-    answer = {
-      user_rating: favorite_firm[:user_rating],
-      test_id: test.id
-    }
-    answers << answer
-  end
-  review = Review.create({
-    firm_id: favorite_firm[:id],
-    user_id: user_id,
-    user_firm_relationship: "employee",
-    confirmed_t_and_c: true,
-    validated: true,
-    answers_attributes: answers
-  })
+##################################
+250.times do
+  portfolio = create_user_full_stack_and_return_portfolio
+  date = [Time.new(2015, 06, 15),Time.now].sample
+  user_rating = lambda { Random.rand(5) + 1 }
+  firm_id = Random.rand(25) + 1
+  create_answers_and_review(
+    date,
+    portfolio,
+    user_rating,
+    firm_id
+    )
 end
+##################################
+puts "*" * 40
+puts "Creating favorable reviews"
 
 def create_favorable_review(favorite_firm)
-  user_id = create_user
-  create_review_and_answers_for_favorite_firms(user_id, favorite_firm)
+  portfolio = create_user_full_stack_and_return_portfolio
+  date = Time.now
+  create_answers_and_review(
+    date,
+    portfolio,
+    user_rating = lambda { favorite_firm[:user_rating] },
+    favorite_firm[:id]
+    )
 end
-
+##################################
 favorite_firms = [
   {id: 1, user_rating: 5, favors_count: 10},
   {id: 5, user_rating: 5, favors_count: 5},
   {id: 7, user_rating: 5, favors_count: 5}
 ]
-
+##################################
 favorite_firms.each do | favorite_firm |
   favorite_firm[:favors_count].times do
     create_favorable_review(favorite_firm)
   end
 end
+
+puts "*" * 40
+puts "Over Roger!!!"

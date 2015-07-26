@@ -17,10 +17,10 @@
       <%# Firm.all.ranking_by_industry(selected_firm.industry).each do | firm | %>
         <tr>
           <td>
-            <%= t(".your_real_email", default: "Your real email") + ":" %>
+            <%= t(".your_default_email", default: "Your default email") + ":" %>
           </td>
           <td>
-            <%= @profile.real_email %>
+            <%= @profile.email %>
           </td>
         </tr>
         <tr>

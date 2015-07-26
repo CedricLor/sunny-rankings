@@ -13,9 +13,7 @@ permit_params :first_name,
               :current_position,
               :age,
               :gender,
-              :real_email,
-              :validated,
-              :first_time_login_upon_firm_review
+              :validated
 
 #
 # or
@@ -39,6 +37,4 @@ end
 # t.string :current_position
 # t.integer :age
 # t.string :gender
-# t.string :real_email
 # t.boolean :validated
-# t.boolean :first_time_login_upon_firm_review

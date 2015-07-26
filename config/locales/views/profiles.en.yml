@@ -3,11 +3,6 @@ en:
     edit:
       page_title: "New Profile"
       main_heading: "Fill-in your Profile"
-      welcome_parag_if_first_time_login_upon_review_html:
-        "<p>An account with Skanher has been created for you!</p>
-        <p class='red-paragraph'>For confidentiality reasons, we have granted you the following username:</p>
-        <p class='red-paragraph'> %{username}</p>
-        <p class='red-paragraph'>To validate your review of %{reviewed_firm_name}, please fill in your profile.</p>"
       welcome_parag_if_simple_profile_review_html:
         "<p>Please review your profile details below.</p>
         <p>Your username is:</p>
@@ -15,11 +10,11 @@ en:
       sentence_if_last_review_not_validated: "You have one pending review for %{firm_name}. Please validate your review below."
       sentence_if_last_review_validated: "You do not currently have any pending review."
       instruction_to_review_answers_and_validate: "Now please review your answers and validate"
-      form_label_your_email: "Your email"
+      form_label_your_default_email: "Your default email"
       validate_button_label: "Validate"
     show:
       page_title: "Your profile"
-      your_real_email: "Your real email"
+      your_default_email: "Your default email address"
       your_first_name: "Your first name"
       your_last_name: "Your last name"
       your_country_of_residence: "Your country of residence"
