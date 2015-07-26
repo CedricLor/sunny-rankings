@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
   has_many :answers, through: :reviews
 
   before_create :create_unique_credentials
-  before_create :validate_provided_email
   after_validation :store_email
   after_create :create_additional_stack
 
@@ -67,7 +66,7 @@ class User < ActiveRecord::Base
   protected
     def save_default_email
       if default_email.user.blank?
-        default_email.user = self
+        default_email.profile = self.profile
       elsif default_email.user != self
         raise Exceptions::EmailConflict
       end

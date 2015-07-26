@@ -52,7 +52,15 @@ class Profile < ActiveRecord::Base
   end
 
   def email= email
-    self.default_email = email_addresses.where(address: email).first_or_initialize
+    if EmailAddress.new(address: email).valid?
+      self.default_email = email_addresses.where(address: email).first_or_initialize
+      self.default_email.profile_id = id
+      self.default_email
+    elsif email_addresses.where(address: email).first
+      self.default_email = email_addresses.where(address: email).first
+    else
+      raise Exceptions::EmailConflict
+    end
   end
 
   private
