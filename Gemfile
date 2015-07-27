@@ -72,6 +72,9 @@ gem 'activeadmin', github: 'activeadmin'
 # Email validator
 gem 'email_validator'
 
+# Nested form handler
+gem 'cocoon', '~> 1.2.6'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

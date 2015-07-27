@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     # If no errors
     set_user
     set_firm
-    create_and_save_review
+    Review.create_review_for_user({user: @user, firm: @firm, review_params: review_params})
     redirect_user
   end
 
@@ -56,104 +56,41 @@ class ReviewsController < ApplicationController
 
   def set_firm
     @firm = Firm.find(params[:firm_id])
-    @firm_id = params[:firm_id]
   end
 
   def set_user
-    # is the user logged in
     if current_user.nil?
-      # if no, is the user already in the database
-      if User.find_by_email_addresses(params[:email]).empty?
-        create_user_on_vote
-        @is_new_user = true
-      else
-        @user = User.find_by_email_addresses(params[:email])
-        @is_new_user = false
-      end
-    # if the user is logged in, affect it to @user
+      @user = User.find_or_create_by_email_address(email: params[:email])
     else
       @user = current_user
-      @is_new_user = false
-    end
-  end
-
-  def create_user_on_vote
-    # creation of a user to be validated by user
-    user_data = {
-      email: params[:email],
-      password: "1234567890",
-      password_confirmation: "1234567890",
-      validated: false
-    }
-    @user = User.create(user_data)
-    UserMailer.new_user_on_vote(params[:email]).deliver_now
-  end
-
-  def create_and_save_review
-    process_answers_attributes(review_params)
-    @review = @user.review_portfolio.reviews.build(
-      validated: false,
-      firm_id: @firm_id,
-      user_firm_relationship: "Undefined",
-      confirmed_t_and_c: review_params[:confirmed_t_and_c],
-      answers_attributes: @processed_answers_attributes
-      )
-    @review.save
-  end
-
-  def process_answers_attributes(review_params)
-    @processed_answers_attributes = []
-    for i in 1..5 do
-      answer_hash = review_params[:answers_attributes].fetch("#{i - 1}") { |el| {"user_rating"=>"0"} }
-      answer_hash["test_id"] = "#{i}"
-      @processed_answers_attributes << answer_hash
     end
   end
 
   def form_has_errors?
-    status = false
-    if params[:email].nil? || params[:email] == ""
+    has_errors = false
+    unless EmailAddress.new(address: params[:email]).valid?
       flash[:alert] = "Please indicate your email! "
-      status = true
+      has_errors = true
     end
     if review_params[:answers_attributes] == {}
       flash[:alert] = "Please vote on at least one criteria! "
-      status = true
+      has_errors = true
     end
     if review_params[:confirmed_t_and_c] != "1"
       flash[:alert] = "Please accept the conditions of use of rating services!"
-      status = true
+      has_errors = true
     end
-    status
+    has_errors
   end
 
   def redirect_user
-    if @is_new_user
-      sign_in(@user)
-      redirect_to edit_profile_path(current_user.profile.id) and return
-    elsif current_user
+    if current_user
       flash[:notice] = "Dear #{current_user.email}, your review of #{current_user.reviews.last.firm.name} has been successfully saved. It is currently pending. It still needs to be validated."
       redirect_to pendingreviews_path and return
     else
-      flash[:notice] = "Dear #{params[:email]}, your review of #{@review.firm.name} has been successfully saved. Please login to your account #{@user.email} on our systems to validate it!"
+      flash[:notice] = "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. Please check your emails at #{params[:email]} to validate it!"
       redirect_to new_user_session_path and return
     end
   end
 end
 
-
-
-  # t.integer :user_rating
-  # t.references :review, index: true, foreign_key: true
-  # t.references :test, index: true, foreign_key: true
-
-# fields of a review
-      # t.references :user, index: true, foreign_key: true
-      # t.references :firm, index: true, foreign_key: true
-      # t.string :user_firm_relationship
-      # t.boolean :validated
-      # :validated is not added to the review_params. This should be set by us.
-# fields of an answer
-      # t.integer :user_rating
-      # t.references :review, index: true, foreign_key: true
-      # t.references :test, index: true, foreign_key: true

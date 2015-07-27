@@ -7,10 +7,10 @@ class Profile < ActiveRecord::Base
 
   ###############
   has_many :email_addresses, dependent: :destroy
-  after_commit :save_default_email, on: :create
+  # after_commit :save_default_email, on: :create
 
   belongs_to :default_email, class_name: "EmailAddress"
-  validates :default_email, presence: true
+  # validates :default_email, presence: true
   default_scope { includes :default_email }
   ###############
 
@@ -48,30 +48,32 @@ class Profile < ActiveRecord::Base
 
   ###############################
   def email
+    puts "*" * 40
+    puts "in profile email"
     default_email.address rescue nil
   end
 
   def email= email
-    if EmailAddress.new(address: email).valid?
-      self.default_email = email_addresses.where(address: email).first_or_initialize
-      self.default_email.profile_id = id
-      self.default_email
-    elsif email_addresses.where(address: email).first
-      self.default_email = email_addresses.where(address: email).first
-    else
-      raise Exceptions::EmailConflict
-    end
+    puts "*" * 40
+    puts "in profile email= email"
+    self.default_email = email_addresses.where(address: email).first_or_initialize
+  end
+
+  def email_changed?
+    self.default_email_id_changed?
   end
 
   private
-  def save_default_email
-    if default_email.profile.blank?
-      default_email.profile = self
-    elsif default_email.profile != self
-      raise Exceptions::EmailConflict
+    def save_default_email
+      puts "*" * 40
+      puts "in profile save_default_email"
+      if default_email.profile.blank?
+        default_email.profile = self
+      elsif default_email.profile != self
+        raise Exceptions::EmailConflict
+      end
+      default_email.save!
     end
-    default_email.save!
-  end
 end
 
   # t.string :first_name

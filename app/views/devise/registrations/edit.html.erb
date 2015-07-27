@@ -18,7 +18,12 @@
 
         <div class="form-inputs">
           <%= f.input :username, required: true, autofocus: true %>
-          <%= f.input :email, required: true %>
+          <%= f.simple_fields_for :email_addresses do |email_address_f| %>
+            <%= render "email_address_fields", f: email_address_f %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association 'Add Email Address', f, 'email_addresses' %>
+          </div>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
