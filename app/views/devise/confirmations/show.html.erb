@@ -1,0 +1,44 @@
+<% content_for(:title, t('.account_activation', :default => 'Account activation') ) %>
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
+      <div class="card-block shadowed-box text-center">
+        <div class="main-title-block">
+          <h1 class="main-title"><%= t('.account_activation', :default => 'Account activation') %></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
+      <div class="card-block shadowed-box text-center">
+      <%= simple_form_for(resource, as: resource_name, url: update_user_confirmation_path, html: { method: :patch }, :id => 'activation-form') do |f| %>
+        <%= f.error_notification %>
+        <%# Not sure we need the following tag %>
+        <%= f.full_error :confirmation_token %>
+        <%= devise_error_messages! %>
+
+        <% if @requires_password %>
+          <div class="form-inputs">
+            <p><%= f.input :password, label: t('.choose_a_password', :default => 'Choose a Password:') %></p>
+            <p><%= f.input :password_confirmation, label: t('.password_confirmation', :default => 'Password Confirmation:') %></p>
+          </div>
+        <% end %>
+        <%= hidden_field_tag :confirmation_token, @confirmation_token %>
+
+        <div class="form-actions">
+          <%= f.button :submit, t('.activate', :default => 'Activate') %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
+      <div class="card-block shadowed-box text-center">
+      <%= render "devise/shared/links" %>
+    </div>
+    </div>
+  </div>
+</div>

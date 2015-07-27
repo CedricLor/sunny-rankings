@@ -6,6 +6,11 @@ fr:
       confirmed: 'Votre compte a été confirmé avec succès.'
       send_instructions: 'Vous allez recevoir un e-mail avec les instructions nécessaires à la confirmation de votre compte dans quelques minutes.'
       send_paranoid_instructions: 'Si votre e-mail existe dans notre base de données, vous allez bientôt recevoir un e-mail contenant les instructions de confirmation de votre compte.'
+      show:
+        account_activation: 'Activation de votre compte'
+        choose_a_password: 'Choisissez un mot de passe'
+        password_confirmation: 'Confirmez votre mot de passe'
+        activate: 'Activez'
     failure:
       already_authenticated: "Vous êtes déjà connecté"
       inactive: "Votre compte n'est pas encore activé."
@@ -19,7 +24,7 @@ fr:
       unconfirmed: "Vous devez confirmer votre compte pour continuer."
     mailer:
       confirmation_instructions:
-        subject: "Instructions de confirmation"
+        subject: "Instructions de confirmation de votre addresse email"
       reset_password_instructions:
         subject: "Instructions pour changer le mot de passe"
       unlock_instructions:

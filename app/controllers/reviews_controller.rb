@@ -69,7 +69,7 @@ class ReviewsController < ApplicationController
   def form_has_errors?
     has_errors = false
     unless EmailAddress.new(address: params[:email]).valid?
-      flash[:alert] = "Please indicate your email! "
+      flash[:alert] = "Please indicate a valid email address! "
       has_errors = true
     end
     if review_params[:answers_attributes] == {}
