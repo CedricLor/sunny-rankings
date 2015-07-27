@@ -1,3 +1,4 @@
+<% require 'devise/version' %>
 <% content_for(:title, "Account email confirmation") %>
 
 <div class="container text-center">
@@ -13,9 +14,9 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
       <div class="card-block shadowed-box text-center">
-      <p>Welcome <%= @email %>!</p>
-      <p>You can confirm your account email through the link below:</p>
-      <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+      <p><%= t('.greeting', :recipient => @resource.email, :default => "Welcome #{@resource.email}!") %></p>
+      <p><%= t('.instruction', :default => "You can confirm your account email through the link below:") %></p>
+      <p><%= link_to t('.action', :default => "Confirm my account"), confirmation_url(@resource, :confirmation_token => (Devise::VERSION.start_with?('3.') ? @token : @resource.confirmation_token)) %></p></p>
       </div>
     </div>
   </div>

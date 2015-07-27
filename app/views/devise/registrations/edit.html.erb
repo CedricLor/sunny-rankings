@@ -1,4 +1,4 @@
-<% content_for(:title, "Edit #{resource_name.to_s.humanize}") %>
+<% content_for(:title, t('.title', :resource => resource_class.model_name.human , :default => "Edit #{resource_name.to_s.humanize}") ) %>
 
 <div class="container text-center">
   <div class="row">
@@ -15,6 +15,7 @@
       <div class="card-block shadowed-box text-center">
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <%= f.error_notification %>
+        <%= devise_error_messages! %>
 
         <div class="form-inputs">
           <%= f.input :username, required: true, autofocus: true %>
@@ -26,16 +27,16 @@
           </div>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <p><%= t('.currently_waiting_confirmation_for_email', :email => resource.unconfirmed_email, :default => "Currently waiting confirmation for: %{email}") %></p>
           <% end %>
 
-          <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+          <%= f.input :password, autocomplete: "off", hint: t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it"), required: false %>
           <%= f.input :password_confirmation, required: false %>
-          <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+          <%= f.input :current_password, hint: t('.we_need_your_current_password_to_confirm_your_changes', :default => 'we need your current password to confirm your changes'), required: true %>
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Update" %>
+          <%= f.button :submit, t('.update', :default => "Update") %>
         </div>
       <% end %>
       </div>
@@ -43,10 +44,10 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
-      <h3>Cancel my account</h3>
+      <h3><%= t('.cancel_my_account', :default => 'Cancel my account') %></h3>
       <div class="card-block shadowed-box text-center">
-      <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-      <%= link_to "Back", :back %>
+      <p><%= t('.unhappy', :default => 'Unhappy') %>? <%= link_to t('.cancel_my_account', :default => "Cancel my account"), registration_path(resource_name), data: { confirm: t('.are_you_sure', :default => "Are you sure?") }, method: :delete %></p>
+      <%= link_to t('devise.shared.links.back', :default => "Back"), :back %>
       </div>
     </div>
   </div>
