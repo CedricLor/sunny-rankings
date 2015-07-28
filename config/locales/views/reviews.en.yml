@@ -17,8 +17,11 @@ en:
       voting_button_label: "Vote"
     simple_review_without_firm_select:
       tell_us_about: "Tell us about "
-    pendingreviews:
+    edit:
       page_title: "Your Pending Review"
       heading_sentence_if_has_pending_review: "Here is your latest pending review for "
       instructions_html: "<p>Please review your votes carefully and update them, as the case may be.</p><p>Once your are done, press the Validate button below.</p>"
+    pendingreviews:
+      page_title: "Your Pending Review"
       heading_sentence_if_has_no_pending_review: "You do not have any pending reviews."
+      latest_review_intro_html: "<p>Please see below you latest review, which was made for #{@firm.name}.</p><p>This review has already been validated and can no longer be amemended.</p><p>Thank you for helping our users know more about gender equality on the workplace at #{@firm.name}.</p>"

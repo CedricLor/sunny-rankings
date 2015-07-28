@@ -1,0 +1,52 @@
+.embedded-members-reviews {
+  .mad {
+    background-image: image-url(image-path("mad.svg"));
+    background-color: red;
+  }
+  .bad {
+    background-image: image-url(image-path("bad.svg"));
+    background-color: yellow;
+  }
+  .fine {
+    background-image: image-url(image-path("fine.svg"));
+    background-color: grey;
+  }
+  .happy {
+    background-image: image-url(image-path("happy.svg"));
+    background-color: yellow;
+  }
+  .very-happy {
+    background-image: image-url(image-path("veryhappy.svg"));
+    background-color: green;
+  }
+  .indiv-review-test-question {
+    float: left;
+  }
+  .indiv-review-user-rating {
+    float: right;
+    height: 25px;
+    width: 25px;
+    background-size: cover;
+    border-radius: 50%;
+    color: rgba(0, 255, 255, 0);
+    opacity: .5;
+  }
+  .username {
+    font-weight: bold;
+  }
+  .comment-title {
+    font-style: italic;
+  }
+  .comment-body {
+    font-style: normal;
+  }
+  .your-pending-review {
+    border-style: solid;
+    border-width: thin;
+    padding: 10px 5px 5px 5px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  }
+  .table-individual-review {
+    margin-top: 15px;
+  }
+}

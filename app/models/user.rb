@@ -115,6 +115,23 @@ class User < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
   ################################
+  def pending_reviews_for_firm(firm)
+    reviews.where(firm_id: firm.id, validated: false)
+  end
+
+  def pending_review_for_firm(firm)
+    pending_reviews_for_firm(firm).last
+  end
+
+  def potentially_publicable_reviews_for_firm(firm)
+    reviews.where(firm_id: firm.id, agreed_for_publication: false)
+  end
+
+  def potentially_publicable_review_for_firm(firm)
+    reviews.where(firm_id: firm.id, agreed_for_publication: false).last
+  end
+
+  end
 
   protected
     def validate_email_or_exit
@@ -144,9 +161,8 @@ class User < ActiveRecord::Base
     end
 
     def create_unique_username
-      username = Faker::Internet.user_name(%w(. _ -))
       while User.find_by_username(username).present?
-        username = Faker::Internet.user_name(%w(. _ -))
+        username = Faker::Internet.user_name(%w(. _ -)) + Faker::Internet.user_name(%w(. _ -))
       end
       username
     end

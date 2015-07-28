@@ -1,0 +1,28 @@
+<% displayed_reviews_css_array = [
+  "mad",
+  "bad",
+  "fine",
+  "happy",
+  "very-happy"
+]
+%>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div id="latestMembersReviews" class="text-wrapper card-block shadowed-box embedded-members-reviews">
+      <h3 class="text-center"><%= t(".what_our_members_say_header",
+      firm_name: t(@firm.name, default: @firm.name),
+      default: "What our member say about #{@firm.name}!") %></h3>
+
+        <% if user_signed_in? && review = current_user.potentially_publicable_review_for_firm(@firm) %>
+          <%= render 'user_pending_review_for_firm', review: review, displayed_reviews_css_array: displayed_reviews_css_array %>
+        <% end %>
+
+        <% @firm.ordered_reviews_with_answers_test_names_and_usernames_for_publication.each do | review | %>
+          <%= render 'individual_review_table', review: review, displayed_reviews_css_array: displayed_reviews_css_array %>
+          <hr/>
+        <% end %>
+
+    </div>
+  </div>
+</div>

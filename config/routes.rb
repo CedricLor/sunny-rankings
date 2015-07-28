@@ -22,10 +22,10 @@ Rails.application.routes.draw do
 
     post 'firms/geosearch', to: "firms#geosearch"
 
-    resources :reviews, only: [ :create, :show ] do
-      resources :users, only: [ :edit, :update ]
-    end
-    resources :reviews, only: [ :update]
+    # resources :reviews, only: [ :create, :show ] do
+      # resources :users, only: [ :edit, :update ]
+    # end
+    resources :reviews, only: [ :update, :destroy]
     get 'pendingreviews', to: "reviews#pendingreviews"
 
     resources :profiles, only: [ :edit, :update, :show ]

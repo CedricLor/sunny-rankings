@@ -1,5 +1,4 @@
 class FirmsController < ApplicationController
-  # before_action :set_firm, only: [:show, :add_review]
   before_action :set_firm, only: [:show ]
 
   def index

@@ -1,0 +1,41 @@
+<div class="your-pending-review">
+  <h4><%= t(".your_pending_review_header", default: "Your pending review") %></h4>
+
+  <%= render 'individual_review_table', review: review, displayed_reviews_css_array: displayed_reviews_css_array %>
+
+
+  <%= form_tag(review_path(review), id: 'deleteReviewForm', method: :delete) do -%>
+  <% end %>
+  <%= simple_form_for review, url: review_path(review), method: :patch do |f| %>
+  <% end %>
+  <%= form_tag(review_path(review), id: 'publicizeReviewForm', method: :patch) do -%>
+    <%= hidden_field_tag 'review[agreed_for_publication]', 'true' %>
+  <% end %>
+
+
+  <div class="btn-group btn-group-justified" role="group" aria-label="review-buttons-group">
+    <div class="btn-group" role="group">
+      <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'discardReviewButton', form: "deleteReviewForm") do %>
+        <%= t( ".discard_button_label", default: "Discard") %>
+      <% end %>
+    </div>
+    <% if review.validated == false %>
+      <div class="btn-group" role="group">
+        <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'editReviewButton') do %>
+          <%= t( ".edit_button_label", default: "Edit") %>
+        <% end %>
+      </div>
+      <div class="btn-group" role="group">
+        <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'validateReviewButton', form: "edit_review_#{review.id}") do %>
+          <%= t( ".validate_button_label", default: "Validate") %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="btn-group" role="group">
+      <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'publicizeReviewButton', form: "publicizeReviewForm") do %>
+        <%= t( ".publicize_button_label", default: "Publicize") %>
+      <% end %>
+    </div>
+  </div>
+
+</div>

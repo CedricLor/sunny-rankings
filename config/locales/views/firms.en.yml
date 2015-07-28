@@ -1,7 +1,7 @@
 en:
   firms:
     community_ranking_details:
-      what_our_users_say: "What our users say about %{firm_name}:"
+      what_our_users_say: "The average ratings for %{firm_name}:"
     competitors_community_rankings:
       competitors_header: "Top 10 in the %{industry_name} in %{country_name}"
     official_labels:
@@ -24,3 +24,14 @@ en:
         other: "%{count} reviews"
       not_available: "N.A."
       big_call_to_rate: "Rate %{firm_name}"
+    latest_members_reviews:
+      what_our_members_say_header: "What our members say about %{firm_name}:"
+    user_pending_review_for_firm:
+      your_pending_review_header: "Your pending review"
+      discard_button_label: "Discard"
+      edit_button_label: "Edit"
+      validate_button_label: "Validate"
+      publicize_button_label: "Publicize"
+    individual_review_table:
+      by: "By "
+      on: " on '%{date}'"

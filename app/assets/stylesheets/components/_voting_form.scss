@@ -83,3 +83,11 @@ div.my-rating-wrapper {
 .voting-email-hint-class {
   color: red;
 }
+
+.vote-impact-wrapper {
+  .badge.trend-badge {
+    float: right;
+    margin-right: 5px;
+    margin-bottom: 3px;
+  }
+}

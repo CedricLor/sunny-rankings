@@ -24,7 +24,7 @@ class Review < ActiveRecord::Base
   belongs_to :firm
   belongs_to :user
 
-  has_many :answers, autosave: :true
+  has_many :answers, autosave: :true, dependent: :destroy
 
   accepts_nested_attributes_for :answers, limit: 5, allow_destroy: true
 
@@ -54,8 +54,12 @@ class Review < ActiveRecord::Base
   end
 
   def self.create_review_for_user(attributes)
-    process_answers_attributes(attributes[:review_params])
+    process_answers_attributes(attributes[:review_params][:answers_attributes])
     review = attributes[:user].review_portfolio.reviews.build(
+      comment: attributes[:review_params][:comment],
+      title: attributes[:review_params][:title],
+      agreed_for_publication: false,
+      publishable: false,
       validated: false,
       firm_id: attributes[:firm].id,
       user_firm_relationship: "Undefined",
@@ -63,6 +67,7 @@ class Review < ActiveRecord::Base
       answers_attributes: @processed_answers_attributes
       )
     review.save
+    review
   end
 
   def self.current_reporting_period
@@ -85,10 +90,10 @@ class Review < ActiveRecord::Base
   end
 
   private
-    def self.process_answers_attributes(review_params)
+    def self.process_answers_attributes(answers_attributes)
       @processed_answers_attributes = []
       for i in 1..5 do
-        answer_hash = review_params[:answers_attributes].fetch("#{i - 1}") { |el| {"user_rating"=>"0"} }
+        answer_hash = answers_attributes.fetch("#{i - 1}") { |el| {"user_rating"=>"0"} }
         answer_hash["test_id"] = "#{i}"
         @processed_answers_attributes << answer_hash
       end

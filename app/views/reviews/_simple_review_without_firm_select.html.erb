@@ -2,6 +2,8 @@
 <hr/>
 <%= simple_form_for [@firm, @review] do |r| %>
   <%= r.error_notification %>
+  <%= render "reviews/review_form_comments", r: r %>
+  <hr/>
   <%= render "reviews/review_form_master_content_first_time", r: r %>
   <%= render "reviews/review_form_legal_warning", r: r %>
   <%= render "reviews/review_form_accept_t_and_c", r: r %>

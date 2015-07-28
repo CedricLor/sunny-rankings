@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727135902) do
+ActiveRecord::Schema.define(version: 20150727193244) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -156,10 +156,14 @@ ActiveRecord::Schema.define(version: 20150727135902) do
     t.integer  "review_portfolio_id"
     t.integer  "firm_id"
     t.string   "user_firm_relationship"
-    t.boolean  "confirmed_t_and_c",      default: false
-    t.boolean  "validated",              default: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.boolean  "confirmed_t_and_c",                  default: false
+    t.boolean  "validated",                          default: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.text     "comment"
+    t.string   "title",                  limit: 255
+    t.boolean  "agreed_for_publication"
+    t.boolean  "publishable"
   end
 
   add_index "reviews", ["firm_id"], name: "index_reviews_on_firm_id"

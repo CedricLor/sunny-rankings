@@ -132,12 +132,28 @@ class Firm < ActiveRecord::Base
     reviews.count
   end
 
+  def valid_reviews
+    reviews.where(validated: true)
+  end
+
   def number_of_valid_reviews
-    reviews.where(validated: true).count
+    valid_reviews.count
   end
 
   def number_of_pending_reviews
     reviews.where(validated: false).count
+  end
+
+  def valid_and_agreed_for_publication_reviews
+    valid_reviews.where(agreed_for_publication: true)
+  end
+
+  def valid_and_publishable_reviews
+    valid_and_agreed_for_publication_reviews.where(publishable: true)
+  end
+
+  def ordered_reviews_with_answers_test_names_and_usernames_for_publication
+    valid_and_publishable_reviews.includes(review_portfolio: [:user], answers: [:test]).order(updated_at: :desc)
   end
 
   def awards_names
