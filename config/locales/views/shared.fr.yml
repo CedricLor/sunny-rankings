@@ -2,16 +2,17 @@ fr:
   geosearch_button_call_to_action: "Ou tentez votre chance sur la page de l'entreprise la plus proche de vous"
   top_call_to_action: "Notez une entreprise"
   sign_out: "Quitter"
-  update_connection_credentials: "Mettre à jour ses identifiants de connexion"
-  view_pending_review: "Voir son vote en attente de validation"
+  update_connection_credentials: "Identifiants de connexion"
+  view_latest_pending_review: "Voir son dernier vote en attente de validation"
   sign_up: "S'inscrire"
   sign_in: "Se connecter"
   profile: "Profil"
+  update_profile: "Mettre à jour son profil d'utilisateur"
+  view_reviews: "Voir toutes vos revues"
   shared:
     navbar:
       toggle_navigation: "Déplier le menu"
       messages: "Messages"
       view_profile: "Voir son profil d'utilisateur"
-      update_profile: "Mettre à jour son profil d'utilisateur"
     search_form:
       placeholder: "Rechercher une entreprise"

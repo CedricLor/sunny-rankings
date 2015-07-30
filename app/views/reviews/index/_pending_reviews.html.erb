@@ -1,0 +1,11 @@
+<div class="card-block shadowed-box">
+  <div class="text-center">
+    <h3>Reviews pending your validation</h3>
+    <p>You may also decide to publish them right away!!!</p>
+    <hr/>
+  </div>
+  <% @pending_reviews.each do | review | %>
+    <%= render 'reviews/index/user_pending_review', review: review, displayed_reviews_css_array: @displayed_reviews_css_array %>
+    <hr/>
+  <% end %>
+</div>

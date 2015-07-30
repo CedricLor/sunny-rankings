@@ -19,9 +19,25 @@ en:
       tell_us_about: "Tell us about "
     edit:
       page_title: "Your Pending Review"
-      heading_sentence_if_has_pending_review: "Here is your latest pending review for "
-      instructions_html: "<p>Please review your votes carefully and update them, as the case may be.</p><p>Once your are done, press the Validate button below.</p>"
-    pendingreviews:
-      page_title: "Your Pending Review"
-      heading_sentence_if_has_no_pending_review: "You do not have any pending reviews."
-      latest_review_intro_html: "<p>Please see below you latest review, which was made for #{@firm.name}.</p><p>This review has already been validated and can no longer be amemended.</p><p>Thank you for helping our users know more about gender equality on the workplace at #{@firm.name}.</p>"
+      heading_sentence: "Here is your latest pending review for "
+      instructions_html: "<p>Please review your votes carefully and update them, as the case may be.</p><p>Once your are done, press the Validate button below.</p><p>Or help the others and publish it on our platform.</p>"
+    index:
+      page_title: "Your Past Reviews"
+      intro_paragraph:
+        intro_sentence: "You have already made %{user_reviews}."
+        pending_review:
+          one: "Among these, %{count} need to be reviewed and approved by you."
+          other: "Among these, %{count} need to be reviewed and approved by you."
+        review_agreed_for_publication: "You have agreed to the publication of %{reviews_agreed_for_publication}. Thank you! It helps a lot our community to know more about gender equality on the workplace."
+        review_pending_publication:
+          one: "Among the reviews you have approved for publication, %{count} is pending approval for publication by our services. We will inform you as soon as it is published."
+          other: "Among the reviews you have approved for publication, %{count} are pending approval for publication by our services. We will inform you as soon as they are published."
+        effectively_published_review:
+          one: "And you already have %{count} published review. Congratulations!"
+          other: "And %{count} of your reviews have already been published. Congratulations!!!"
+      user_pending_review:
+        your_pending_review_header: "Your review pending %{validation_publication}"
+    individual_review_table:
+      by: "By "
+      for_firm: " for "
+      on: " on '%{date}'"

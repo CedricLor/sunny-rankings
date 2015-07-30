@@ -23,6 +23,7 @@ class Review < ActiveRecord::Base
   belongs_to :review_portfolio
   belongs_to :firm
   belongs_to :user
+  delegate :user, to: :review_portfolio
 
   has_many :answers, autosave: :true, dependent: :destroy
 
@@ -45,12 +46,47 @@ class Review < ActiveRecord::Base
   validates :answers, association_count: { maximum: ANSWERS_REQUIRED_COUNT }, on: :update
   validates :answers, association_count: { minimum: ANSWERS_MINIMUM_COUNT }
 
+  # validates :featured, inclusion: { in: [true] }, if: Proc.new { | rev | rev.publishable == true && rev.agreed_for_publication == true && rev.confirmed_t_and_c == true && rev.validated == true && ( rev.title.present? || rev.comment.present? ) }
+  validate :featured_checker
+
+  def featured_checker
+    if featured == true
+      if publishable == false
+        errors.add(:featured, "requires that review has been accepted by skanher for publication (publishable be true)")
+      elsif agreed_for_publication == false
+        errors.add(:feature, "requires that the user has agreed to the publication (agreed_for_publication be true)")
+      elsif confirmed_t_and_c == false
+        errors.add(:feature, "requires that the terms and conditions acceptance have been accepted")
+      elsif validated == false
+        errors.add(:feature, "requires that the post has been reviewed and validated by the user (validated be true)")
+      elsif ( title.nil? && comment.nil? )
+        errors.add(:feature, "requires that the post has a title or a comment")
+      end
+    end
+  end
+
   def self.answers
     joins(:answers)
   end
 
   def self.for_firm(firm_id)
     where(firm_id: firm_id)
+  end
+
+  def self.featured_for_firm(firm_id)
+    where(firm_id: firm_id, featured: true)
+  end
+
+  def self.featured
+    where(featured: true)
+  end
+
+  def self.featured_with_usernames_and_firm_names
+    includes(:user, :firm).where(featured: true)
+  end
+
+  def self.featured_with_usernames
+    joins(:user).where(featured: true)
   end
 
   def self.create_review_for_user(attributes)

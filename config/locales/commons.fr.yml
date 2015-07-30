@@ -1,2 +1,8 @@
 fr:
   gender_equality_on_the_workplace: "Parité sur le lieu de travail"
+  review:
+    one: "une revue"
+    other: "%{count} revues"
+  by: "De "
+  for_firm: " pour "
+  on: " le '%{date}'"

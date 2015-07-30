@@ -49,13 +49,13 @@
                 </li>
                 <li>
                   <%= link_to edit_profile_path(current_user.profile), method: :get do %>
-                    <i class="fa fa-bars"></i>  <%= t ".update_profile", default: "Update your user profile" %>
+                    <i class="fa fa-bars"></i>  <%= t "update_profile", default: "Update your user profile" %>
                   <% end %>
                 </li>
               <% end %>
               <li>
-                <%= link_to pendingreviews_path, method: :get do %>
-                  <i class="fa fa-exclamation-triangle"></i>  <%= t :view_pending_review, default: "View your pending review" %>
+                <%= link_to reviews_path, method: :get do %>
+                  <i class="fa fa-exclamation-triangle"></i>  <%= t "view_reviews", default: "View all your reviews" %>
                 <% end %>
               </li>
             </ul>

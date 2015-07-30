@@ -9,6 +9,13 @@
             <%= render "shared/search_form" %>
           </div>
         </div>
+        <% if (featured_review = @firm.reviews.featured.last).present? %>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= render "firms/featured_post_for_firm", featured_review: featured_review %>
+            </div>
+          </div>
+        <% end %>
         <div class="row" data-my-content="company-top-row">
           <div class="col-xs-12 col-sm-4" data-my-content="company-icon">
             <div class="icon-wrapper card-block shadowed-box">
@@ -24,7 +31,7 @@
                   </h4>
                 </div>
                 <div class="col-xs-9 text-right">
-                  (<%= t('.review', count: @firm.reviews.count, default: "#{@firm.reviews.count} review(s)")  %>)
+                  (<%= t("review", count: @firm.reviews.count, default: "#{@firm.reviews.count} review(s)")  %>)
                 </div>
               </div>
               <div class="row">

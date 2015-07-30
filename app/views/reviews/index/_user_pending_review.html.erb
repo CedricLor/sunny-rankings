@@ -1,0 +1,50 @@
+<div class="your-pending-review">
+  <h4 class="text-center">
+    <%= t(".your_pending_review_header", validation_publication: review.validated == true ? "publication" : "validation", default: "Your pending review") %>
+  </h4>
+
+  <% @firm.nil? ? firm = review.firm : firm = @firm %>
+  <%= render 'reviews/individual_review_table', review: review, username: current_user.username, firmname: firm.name, firmid: firm.id, displayed_reviews_css_array: displayed_reviews_css_array %>
+
+
+  <%= form_tag(review_path(review), id: 'deleteReviewForm', method: :delete) do -%>
+  <% end %>
+
+  <% if review.validated == false %>
+    <%= form_tag(edit_review_path(review), id: 'editReviewForm', method: :get) do -%>
+    <% end %>
+    <%= simple_form_for review, url: review_path(review), method: :patch do |f| %>
+    <% end %>
+  <% end %>
+
+  <%= form_tag(review_path(review), id: 'publishReviewForm', method: :patch) do -%>
+    <%= hidden_field_tag 'review[agreed_for_publication]', 'true' %>
+  <% end %>
+
+
+  <div class="btn-group btn-group-justified" role="group" aria-label="review-buttons-group">
+    <div class="btn-group" role="group">
+      <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'discardReviewButton', form: "deleteReviewForm") do %>
+        <%= t( "discard_button_label", default: "Discard") %>
+      <% end %>
+    </div>
+    <% if review.validated == false %>
+      <div class="btn-group" role="group">
+        <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'editReviewButton', form: "editReviewForm") do %>
+          <%= t( "edit_button_label", default: "Edit") %>
+        <% end %>
+      </div>
+      <div class="btn-group" role="group">
+        <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'validateReviewButton', form: "edit_review_#{review.id}") do %>
+          <%= t( "validate_button_label", default: "Validate") %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="btn-group" role="group">
+      <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'publishReviewButton', form: "publishReviewForm") do %>
+        <%= t( "publish_button_label", default: "Publish") %>
+      <% end %>
+    </div>
+  </div>
+
+</div>

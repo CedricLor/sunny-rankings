@@ -19,9 +19,25 @@ fr:
       tell_us_about: "A vous la parole sur "
     edit:
       page_title: "Votre vote en attente de validation"
-      heading_sentence_if_has_pending_review: "Voici votre dernier vote en attente de validation pour "
-      instructions_html: "<p>Merci de revoir vos réponses avec soin et de les mettre à jour en cas de besoin.</p><p>Une fois prêt, appuyez sur le bouton Valider ci-dessous.</p>"
-    pendingreviews:
-      page_title: "Vos votes en attente de validation"
-      heading_sentence_if_has_no_pending_review: "Vous n'avez pas de vote en attente de validation."
-      latest_review_intro_html: "<p>Vous trouverez ci-dessous votre dernière revue pour %{firm_name}.</p><p>Cette revue a déjà été validée et ne peux plus être modifiée.</p><p>Merci d'aider nos membres à en savoir plus sur la parité chez %{firm_name}."
+      heading_sentence: "Voici votre dernier vote en attente de validation pour "
+      instructions_html: "<p>Merci de revoir vos réponses avec soin et de les mettre à jour en cas de besoin.</p><p>Une fois prêt, appuyez sur le bouton Valider ci-dessous.</p><p>Ou aidez les autres et partagez votre revue sur notre platforme</p>"
+    index:
+      page_title: "Vos Revues"
+      intro_paragraph:
+        intro_sentence: "Vous avez déjà effectué %{user_reviews}."
+        pending_review:
+          one: "%{count} d'entre elles doit encore être relue et approuvée par vos soins."
+          other: "%{count} d'entre elles doivent encore être relues et approuvées par vos soins."
+        review_agreed_for_publication: "Vous avez approuvé la publication de %{reviews_agreed_for_publication}. Merci ! Ceci aide énormément notre communauté à en savoir plus sur la parité sur le lieu de travail."
+        review_pending_publication:
+          one: "Parmi les revues dont vous avez approuvé la publication, %{count} est en cours de revue par nos services. Nous vous informerons dès qu'elle sera publiée."
+          other: "Parmi les revues dont vous avez approuvé la publication, %{count} sont en cours de revue par nos services. Nous vous informerons dès qu'elles seront publiées."
+        effectively_published_review:
+          one: "Et vous avez déjà %{count} revue publiée. Bravo !"
+          other: "Et %{count} de vos revues ont déjà été publiées. Bravo !"
+      user_pending_review:
+        your_pending_review_header: "Votre revue en attente de %{validation_publication}"
+    individual_review_table:
+      by: "De "
+      for_firm: " pour "
+      on: " le '%{date}'"

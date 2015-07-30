@@ -3,7 +3,7 @@ en:
   top_call_to_action: "Rate A Firm"
   sign_out: "Sign out"
   update_connection_credentials: "Update your connexion credentials"
-  view_pending_review: "View your pending review"
+  view_last_pending_review: "View your last pending review"
   sign_up: "Sign up"
   sign_in: "Sign in"
   profile: "Profile"
@@ -13,5 +13,6 @@ en:
       messages: "Messages"
       view_profile: "View your user profile"
       update_profile: "Update your user profile"
+      view_reviews: "View all your reviews"
     search_form:
       placeholder: "Look up for a firm"

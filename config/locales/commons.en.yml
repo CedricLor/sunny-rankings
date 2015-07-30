@@ -1,2 +1,8 @@
 en:
   gender_equality_on_the_workplace: "Gender equality on the workplace"
+  review:
+    one: "one review"
+    other: "%{count} reviews"
+  by: "By "
+  for_firm: " for "
+  on: " on '%{date}'"

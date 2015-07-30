@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:pendingreviews, :show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy]
 
   def create
     # Error handling
@@ -15,45 +15,49 @@ class ReviewsController < ApplicationController
   end
 
   def index
-  end
+    @reviews = current_user.reviews
 
-  def pendingreviews
-    @review = current_user.reviews.last
-    @firm = @review.firm
-    @tests = Test.all
+    @validated_but_not_agreed_for_publication_reviews = current_user.validated_but_not_agreed_for_publication_reviews_with_answers_and_test_names_for_publication
+    @number_of_validated_but_not_agreed_for_publication_reviews = @validated_but_not_agreed_for_publication_reviews.count
 
-    # providing variable to build ratings and trends
-    @current_stage = :review_vote
-    @avg_ratings_by_test = @firm.avg_ratings_by_test
-    @current_period_averages = @firm.current_reporting_period_averages
-    @previous_period_averages = @firm.previous_reporting_period_averages
-    # providing variable for javascript immediate display
-    @total_by_test = @firm.total_by_test
-    @answer_count_by_test = @firm.answers_count_by_test
+    @number_of_validated_reviews_for_user = current_user.number_of_validated_reviews
+    @number_of_agreed_for_publication_reviews_for_user = current_user.number_of_agreed_for_publication_reviews
+
+    @pending_reviews = current_user.pending_reviews
+    @number_of_pending_reviews_for_user = @pending_reviews.count
+
+    @published_reviews = current_user.effectively_published_reviews
+    @number_of_effectively_published_reviews_for_user = @published_reviews.count
+
+    @pending_publication_reviews = current_user.pending_publication_reviews
+    @number_of_reviews_pending_publication_for_user = @pending_publication_reviews.count
   end
 
   def edit
+    @review = Review.find(params[:id])
+    @firm = @review.firm
+
+    variables_for_review_form
   end
 
   def update
-    # Called from the view pendingreviews and from the firm view
     review = Review.find(params[:id])
     @updated_review_params = {}
     review_params_updater unless params[:review].nil?
     @updated_review_params[:validated] = true
 
     if review.update(@updated_review_params)
-      if review.validated_changed? && review.agreed_for_publication_changed? && ( review.comment.present? || review.title.present? )
+      if review.agreed_for_publication && ( review.comment.present? || review.title.present? )
         flash[:notice] = "Dear #{current_user.profile.email}, thank you for agreeing to make your review of #{current_user.reviews.last.firm.name} public. Our team is currently reviewing your comments before publication."
-      elsif review.validated_changed? && review.agreed_for_publication_changed? && review.comment.empty? && review.title.empty?
+      elsif review.agreed_for_publication && review.comment.empty? && review.title.empty?
         flash[:notice] = "Dear #{current_user.profile.email}, your review of #{current_user.reviews.last.firm.name} has been successfully validated."
-      elsif review.validated_changed? && review.agreed_for_publication == false
-        flash[:notice] = "Dear #{current_user.profile.email}, your review of #{current_user.reviews.last.firm.name} has been successfully validated. You may now decide to publicize it."
+      elsif review.agreed_for_publication == false
+        flash[:notice] = "Dear #{current_user.profile.email}, your review of #{current_user.reviews.last.firm.name} has been successfully validated. You may now decide to publish it."
       end
       redirect_to firm_path(review.firm)
     else
       flash[:alert] = "Dear #{current_user.profile.email}, your review of #{current_user.reviews.last.firm.name} could not be validated."
-      redirect_to pendingreviews_path
+      redirect_to edit_review_path(review)
     end
   end
 
@@ -114,6 +118,18 @@ class ReviewsController < ApplicationController
     review_params.each do | param |
       @updated_review_params[param[0]] = param[1] unless param[0] == "answers_attributes"
     end
+  end
+
+  def variables_for_review_form
+    @tests = Test.all
+    # providing variable to build ratings and trends
+    @current_stage = :review_vote
+    @avg_ratings_by_test = @firm.avg_ratings_by_test
+    @current_period_averages = @firm.current_reporting_period_averages
+    @previous_period_averages = @firm.previous_reporting_period_averages
+    # providing variable for javascript immediate display
+    @total_by_test = @firm.total_by_test
+    @answer_count_by_test = @firm.answers_count_by_test
   end
 end
 

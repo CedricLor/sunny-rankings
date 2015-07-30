@@ -159,4 +159,7 @@ class Firm < ActiveRecord::Base
   def awards_names
     awards.map(&:name)
   end
+
+  def featured_reviews
+  end
 end

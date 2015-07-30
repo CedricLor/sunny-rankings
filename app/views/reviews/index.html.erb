@@ -1,0 +1,86 @@
+<% content_for(:title,  t(".page_title", default: "Your Past Reviews") ) %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="card-block shadowed-box">
+            <h1 class="text-center"><%= t(".page_title", default: "Your Past Reviews") %></h1>
+          </div>
+
+          <div class="card-block shadowed-box">
+
+            <% if @reviews.present? %>
+
+              <p>
+                <%= t(:intro_sentence, scope: [:reviews, :index, :intro_paragraph], user_reviews: t(:review, count: @reviews.count, default: "#{@reviews.count} review(s)"), default: "You have made #{@reviews.count} review(s).") %></p>
+              <% if @number_of_pending_reviews_for_user >= 1 %>
+                <p><%= t(:pending_review, scope: [:reviews, :index, :intro_paragraph], count: @number_of_pending_reviews_for_user, default: "Among these, #{@number_of_pending_reviews_for_user} need to be reviewed and approved by you.") %></p>
+              <% end %>
+              <% if @number_of_agreed_for_publication_reviews_for_user >= 1 %>
+                <p><%= t(:review_agreed_for_publication, scope: [:reviews, :index, :intro_paragraph], reviews_agreed_for_publication: t(:review, count: @number_of_agreed_for_publication_reviews_for_user, default: "#{@reviews.count} review(s)"), default: "You have agreed to the publication of #{@number_of_agreed_for_publication_reviews_for_user} review(s). Thank you! It helps a lot our community to know more about gender equality on the workplace.") %></p>
+              <% end %>
+              <% if @number_of_reviews_pending_publication_for_user >= 1 %>
+                <p><%= t(:review_pending_publication, scope: [:reviews, :index, :intro_paragraph], count: @number_of_reviews_pending_publication_for_user, default: "Among the reviews you have approved for publication, #{@number_of_reviews_pending_publication_for_user} is / are pending approval for publication by our services. We will inform you as soon as it is / they are published.") %></p>
+              <% end %>
+              <% if @number_of_effectively_published_reviews_for_user >= 1 %>
+                <p><%=  t(:effectively_published_review, scope: [:reviews, :index, :intro_paragraph], count: @number_of_effectively_published_reviews_for_user, default: "And you already have #{@number_of_effectively_published_reviews_for_user} published reviews.") %></p>
+              <% end %>
+
+            <% else %>
+
+              <h3>You do not have any reviews yet.</h3>
+              <p>Search for a firm to review <%= link_to "here", firms_path %> and make your first review to earn skanher points and benefit from our special offers.</p>
+              <%# TO DO: refactor all this to push it back to the controller and model %>
+              <% if @profile.employer_name.present? %>
+                <% if Firm.find_by_name(@profile.employer_name).present? %>
+                  <p>Or you can vote for your <%= link_to "#{@profile.employer_name}", firm_path(Firm.find_by_name(@profile.employer_name)) %></p>
+                <% elsif %>
+                  <p>Your employer is not yet present in our database. Ask us to add it <%= link_to "here", "#" %>.</p>
+                <% end %>
+              <% end %>
+
+            <% end %>
+
+          </div>
+
+          <% if @reviews.present? %>
+
+            <div class="embedded-members-reviews">
+
+              <%= render 'reviews/displayed_review_css_array' %>
+
+              <% if @number_of_validated_but_not_agreed_for_publication_reviews >= 1 %>
+
+                <%= render 'reviews/index/validated_but_not_agreed_for_publication_reviews' %>
+
+              <% end %>
+
+              <% if @number_of_pending_reviews_for_user >= 1 %>
+
+                <%= render 'reviews/index/pending_reviews' %>
+
+              <% end %>
+
+              <% if @number_of_effectively_published_reviews_for_user >= 1 %>
+
+                <%= render 'reviews/index/published_reviews' %>
+
+              <% end %>
+
+              <% if @number_of_reviews_pending_publication_for_user >= 1 %>
+
+                <%= render 'reviews/index/reviews_pending_publication' %>
+
+              <% end %>
+
+              </div>
+
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="card-block shadowed-box">
+  <div class="text-center">
+    <h3>Reviews under review by our services before publication</h3>
+    <p>You have already validated these reviews.</p>
+    <p>You have also marked them for publication.</p>
+    <p>We are currently reviewing the comments and titles before publication.</p>
+    <p>We will keep you informed as soon as they are published.</p>
+    <hr/>
+  </div>
+  <% @pending_publication_reviews.each do | review | %>
+    <% @firm.nil? ? firm = review.firm : firm = @firm %>
+    <%= render 'reviews/individual_review_table', review: review, username: current_user.username, firmname: firm.name, firmid: firm.id, displayed_reviews_css_array: displayed_reviews_css_array %>
+    <hr/>
+  <% end %>
+</div>

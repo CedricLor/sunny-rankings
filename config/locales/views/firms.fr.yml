@@ -12,7 +12,6 @@ fr:
       page_title_search: "Résultat pour %{search_string}"
       page_title_no_search: "Cherchez une entreprise !"
       search_result_header_html: "Résultats de la recherche pour '%{search_string}'"
-      no_search_result_header_html: "Search results for '%{search_string}'"
       no_search_result_header_html: "Il n'y a pas d'entreprise dont le nom contienne '%{search_string}' actuellement classé dans notre base de données."
       please_add_firm: "Ajoutez '%{search_string}' à nos classements !"
       top_10_in_country: "Voici les 10 meilleures entreprises en %{user_ip_country} d'après notre communauté"
@@ -20,19 +19,7 @@ fr:
       is_ranked: " est classée "
       in: " en "
       headcount: "Nombre d'employés "
-      review:
-        one: "une revue"
-        other: "%{count} revues"
       not_available: "N.D."
       big_call_to_rate: "Notez %{firm_name}"
     latest_members_reviews:
       what_our_members_say_header: "Ce que nos membres disent sur %{firm_name} :"
-    user_pending_review_for_firm:
-      your_pending_review_header: "Votre revue en attente de validation"
-      discard_button_label: "Annuler"
-      edit_button_label: "Modifier"
-      validate_button_label: "Valider"
-      publicize_button_label: "Publier"
-    individual_review_table:
-      by: "De "
-      on: " le '%{date}'"

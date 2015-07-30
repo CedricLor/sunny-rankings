@@ -15,23 +15,11 @@ en:
       no_search_result_header_html: "No firm with a name containing '%{search_string}' is currently ranked in our database."
       please_add_firm: "Please add '%{search_string}' to our rankings!"
       top_10_in_country: "Here are the top 10 firms ranked by our community in %{user_ip_country}"
+    show:
       is_ranked: " is ranked "
       in: " in "
-    show:
       headcount: "Headcount"
-      review:
-        one: "one review"
-        other: "%{count} reviews"
       not_available: "N.A."
       big_call_to_rate: "Rate %{firm_name}"
     latest_members_reviews:
       what_our_members_say_header: "What our members say about %{firm_name}:"
-    user_pending_review_for_firm:
-      your_pending_review_header: "Your pending review"
-      discard_button_label: "Discard"
-      edit_button_label: "Edit"
-      validate_button_label: "Validate"
-      publicize_button_label: "Publicize"
-    individual_review_table:
-      by: "By "
-      on: " on '%{date}'"

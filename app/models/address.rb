@@ -41,7 +41,6 @@ class Address < ActiveRecord::Base
   #     {city: "Paris", country: "France", street: "Avenue de Clichy", number: "20", zip_code: "75018"}
   #   ]
   #   save_or_retrieve_addresses_and_return_firm_addresses_hash(params)
-  #   byebug
   # end
 
   private

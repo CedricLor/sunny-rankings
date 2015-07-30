@@ -28,8 +28,8 @@
           </div>
           <div class="row">
             <div col="col-xs-12">
-              <%= button_to pendingreviews_path, method: :get, class: "btn btn-default btn-lg btn-block regular-btn", type: "button" do %>
-                <i class="fa fa-exclamation-triangle"></i><%= t :view_pending_review, default: "View pending reviews" %>
+              <%= button_to reviews_path, method: :get, class: "btn btn-default btn-lg btn-block regular-btn", type: "button" do %>
+                <i class="fa fa-exclamation-triangle"></i><%= t "view_reviews", default: "View all your reviews" %>
               <% end %>
             </div>
           </div>

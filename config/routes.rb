@@ -25,8 +25,7 @@ Rails.application.routes.draw do
     # resources :reviews, only: [ :create, :show ] do
       # resources :users, only: [ :edit, :update ]
     # end
-    resources :reviews, only: [ :update, :destroy]
-    get 'pendingreviews', to: "reviews#pendingreviews"
+    resources :reviews, only: [ :edit, :update, :destroy, :index]
 
     resources :profiles, only: [ :edit, :update, :show ]
 

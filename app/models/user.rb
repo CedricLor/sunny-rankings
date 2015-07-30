@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  has_one :profile
-  has_one :review_portfolio
+  has_one :profile, dependent: :destroy
+  has_one :review_portfolio, dependent: :destroy
 
   ###############
   has_many :email_addresses, through: :profile, dependent: :destroy
@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
   default_scope { includes :default_email }
   ###############
 
-  has_many :reviews, through: :review_portfolio
-  has_many :answers, through: :reviews
+  has_many :reviews, through: :review_portfolio, dependent: :destroy
+  has_many :answers, through: :reviews, dependent: :destroy
 
   before_create :create_unique_username
   before_save :validate_email_or_exit
@@ -115,23 +115,75 @@ class User < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
   ################################
+  def pending_reviews
+    reviews.where(validated: false)
+  end
+
+  def validated_reviews
+    reviews.where(validated: true)
+  end
+
+  def validated_but_not_agreed_for_publication_reviews
+    reviews.where(validated: true, agreed_for_publication: false)
+  end
+
+  def validated_but_not_agreed_for_publication_reviews_with_answers_and_test_names_for_publication
+    validated_but_not_agreed_for_publication_reviews.includes(answers: [:test]).order(updated_at: :desc)
+  end
+
+  def agreed_for_publication_reviews
+    reviews.where(agreed_for_publication: true)
+  end
+
+  def pending_publication_reviews
+    reviews.where(agreed_for_publication: true, publishable: false)
+  end
+
+  def effectively_published_reviews
+    reviews.where(agreed_for_publication: true, publishable: true)
+  end
+  ################################
+  def number_of_reviews
+    reviews.count
+  end
+
+  def number_of_pending_reviews
+    pending_reviews.count
+  end
+
+  def number_of_validated_reviews
+    validated_reviews.count
+  end
+
+  def number_of_agreed_for_publication_reviews
+    agreed_for_publication_reviews.count
+  end
+
+  def number_of_reviews_pending_publication
+    pending_publication_reviews.count
+  end
+
+  def number_of_effectively_published_reviews
+    effectively_published_reviews.count
+  end
+  ################################
   def pending_reviews_for_firm(firm)
-    reviews.where(firm_id: firm.id, validated: false)
+    pending_reviews.where(firm_id: firm.id)
+    # reviews.where(firm_id: firm.id, validated: false)
   end
 
   def pending_review_for_firm(firm)
     pending_reviews_for_firm(firm).last
   end
 
-  def potentially_publicable_reviews_for_firm(firm)
+  def potentially_publishable_reviews_for_firm(firm)
     reviews.where(firm_id: firm.id, agreed_for_publication: false)
   end
 
-  def potentially_publicable_review_for_firm(firm)
+  def potentially_publishable_review_for_firm(firm)
     reviews.where(firm_id: firm.id, agreed_for_publication: false).last
   end
-
-  end
+  ################################
 
   protected
     def validate_email_or_exit
@@ -161,10 +213,10 @@ class User < ActiveRecord::Base
     end
 
     def create_unique_username
+      self.username = Faker::Internet.user_name(%w(. _ -)) + "_" + Faker::Internet.user_name(%w(. _ -)) if username == nil
       while User.find_by_username(username).present?
-        username = Faker::Internet.user_name(%w(. _ -)) + Faker::Internet.user_name(%w(. _ -))
+        username = Faker::Internet.user_name(%w(. _ -)) + "_" + Faker::Internet.user_name(%w(. _ -))
       end
-      username
     end
 
     def save_additional_stack
