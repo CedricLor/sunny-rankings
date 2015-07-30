@@ -162,8 +162,8 @@ ActiveRecord::Schema.define(version: 20150729152824) do
     t.datetime "updated_at",                                         null: false
     t.text     "comment"
     t.string   "title",                  limit: 255
-    t.boolean  "agreed_for_publication"
-    t.boolean  "publishable"
+    t.boolean  "agreed_for_publication",             default: false, null: false
+    t.boolean  "publishable",                        default: false, null: false
     t.boolean  "featured"
     t.string   "created_at_ip"
     t.string   "updated_at_ip"

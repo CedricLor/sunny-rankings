@@ -6,7 +6,7 @@
         <% for i in 1..5 do %>
           <tr>
             <td>
-              <%#= t( :short_question, scope: ["tests_questions.question_#{i}"], default: @tests.fetch(i - 1).test_question ) %>
+              <%= t( :short_question, scope: [:tests_questions, :"question_#{i}"], default: @tests.fetch(i - 1).test_question ) %>
             </td>
             <td>
               <span class="badge"><%= @avg_ratings_by_test.fetch(i).to_f.round(1) %></span>
