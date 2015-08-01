@@ -1,8 +1,9 @@
 // This is the form checker
 // On Document Fully Ready
 $(window).load( function() {
-  /* Start by disabling the vote button on load*/
-  $('#voteButton').prop("disabled",true);
+  const fields_identifier = "#email"
+  const checkbox_identifier = "#confirmed_t_and_c"
+  const vote_button_identifier = "#voteButton"
 
   const regexes = {
     "zip_code": /^(F-)?((2[A|B])|[0-9]{2})[0-9]{3}$/,
@@ -25,14 +26,13 @@ $(window).load( function() {
       var regex;
       const ids = {
         zip_code: function() { isNotName() },
-        email: function() { isNotName()  },
+        email: function() { isNotName() },
         mobile_phone: function() { isNotName() },
         first_name: function() { isName() },
         last_name: function() { isName() },
         city: function() { isName() },
         other: function() { regex = regexes['other'] }
       };
-      console.log(ids);
       function isNotName() { regex = regexes[id] };
       function isName() { regex = regexes.person_or_city_name };
       (ids[id] || ids['other'] )();
@@ -48,10 +48,7 @@ $(window).load( function() {
   myChecker = new function() {
     function myFieldsLoader() {
       var myFields = {};
-      /* Quick fix to avoid that the form control controls other form fields than the field of
-      the review form (such as the search form, for instance) */
-      // This selector should select all the fields that need to be validated
-      $('#email').each(function() {
+      $(fields_identifier).each(function() {
         myFields[$(this).attr("id")] = new myField($(this));
       });
       return myFields;
@@ -71,29 +68,45 @@ $(window).load( function() {
       this.myFields[id].updateCSS();
       this.switch_are_all_valid();
     };
+    this.controlAll = function(allFields) {
+      $(allFields).each(function() {
+        myChecker.validityControl($(this).attr("id"), $(this).val());
+      });
+    };
   };
 
   function enable_button() {
-    (($('#confirmed_t_and_c').is(':checked')) && myChecker.are_all_valid) ?
-      $('#voteButton').prop("disabled",false).removeClass('vote-btn-deactivated').addClass('main-call-to-action-btn') :
-      $('#voteButton').prop("disabled",true).addClass('vote-btn-deactivated').removeClass('main-call-to-action-btn');
+    myChecker.controlAll(fields_identifier);
+    if (($(checkbox_identifier).is(':checked')) && myChecker.are_all_valid) {
+      $(vote_button_identifier).prop("disabled",false).removeClass('vote-btn-deactivated').addClass('main-call-to-action-btn');
+      $(vote_button_identifier).focus();
+    } else {
+      $(vote_button_identifier).prop("disabled",true).addClass('vote-btn-deactivated').removeClass('main-call-to-action-btn');
+      var from_field;
+      if (arguments.length == 1) {
+        from_field = arguments[0];
+        $(from_field).focus( function(){this.value = this.value} ).focus();
+      };
+    };
   };
 
   // Applying deactivated class to vote button on load
-  $('#voteButton').addClass('vote-btn-deactivated');
+  /* Disabling the vote button on load*/
+  $('#voteButton').addClass('vote-btn-deactivated').prop("disabled",true);
+  myChecker.controlAll(fields_identifier);
+  enable_button();
 
   // Attach a handler triggered when the check-box is clicked
-  $('.cgu').click(function() {
-    if ($('#confirmed_t_and_c').is(':checked')) {
+  $(checkbox_identifier).click(function() {
+    if (!($(checkbox_identifier).is(':checked'))) {
       alert("Please agree to the terms of services!");
     }
     enable_button();
   });
   // Attach a handler triggered when the focus goes out of a form field
   // This selector should select all the fields that need to be validated
-  $('#email').focusout(function() {
-    myChecker.validityControl($(this).attr("id"), $(this).val());
-    enable_button();
+  $(fields_identifier).focusout(function() {
+    enable_button("#" + this.id);
   });
 
 });
