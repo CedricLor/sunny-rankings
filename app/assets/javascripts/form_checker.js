@@ -24,14 +24,15 @@ $(window).load( function() {
     this.regexSelector = function(id) {
       var regex;
       const ids = {
-        zip_code() { isNotName() },
-        email() { isNotName()  },
-        mobile_phone() { isNotName() },
-        first_name() { isName() },
-        last_name() { isName() },
-        city() { isName() },
-        other() { regex = regexes['other'] }
+        zip_code: function() { isNotName() },
+        email: function() { isNotName()  },
+        mobile_phone: function() { isNotName() },
+        first_name: function() { isName() },
+        last_name: function() { isName() },
+        city: function() { isName() },
+        other: function() { regex = regexes['other'] }
       };
+      console.log(ids);
       function isNotName() { regex = regexes[id] };
       function isName() { regex = regexes.person_or_city_name };
       (ids[id] || ids['other'] )();
