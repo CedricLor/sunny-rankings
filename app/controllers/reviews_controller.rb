@@ -45,18 +45,18 @@ class ReviewsController < ApplicationController
     review_params_updater unless params[:review].nil?
     @updated_review_params[:validated] = true
 
-    if review.update(@updated_review_params)
-      if review.agreed_for_publication && ( review.comment.present? || review.title.present? )
+    if @review.update(@updated_review_params)
+      if @review.agreed_for_publication && ( @review.comment.present? || @review.title.present? )
         flash[:notice] = "Dear #{current_user.profile.email}, thank you for agreeing to make your review of #{current_user.reviews.last.firm.name} public. Our team is currently reviewing your comments before publication."
-      elsif review.agreed_for_publication && review.comment.empty? && review.title.empty?
+      elsif @review.agreed_for_publication && @review.comment.empty? && @review.title.empty?
         flash[:notice] = "Dear #{current_user.profile.email}, your review of #{current_user.reviews.last.firm.name} has been successfully validated."
-      elsif review.agreed_for_publication == false
+      elsif @review.agreed_for_publication == false
         flash[:notice] = "Dear #{current_user.profile.email}, your review of #{current_user.reviews.last.firm.name} has been successfully validated. You may now decide to publish it."
       end
-      redirect_to firm_path(review.firm)
+      redirect_to firm_path(@review.firm)
     else
       flash[:alert] = "Dear #{current_user.profile.email}, your review of #{current_user.reviews.last.firm.name} could not be validated."
-      redirect_to edit_review_path(review)
+      redirect_to edit_review_path(@review)
     end
   end
 
