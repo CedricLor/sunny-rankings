@@ -43,7 +43,7 @@ class ReviewsController < ApplicationController
   def update
     @updated_review_params = {}
     review_params_updater unless params[:review].nil?
-    @updated_review_params[:validated] = true
+    @updated_review_params.merge(validated: true, updated_at_ip: request.remote_ip)
 
     if @review.update(@updated_review_params)
       if @review.agreed_for_publication && ( @review.comment.present? || @review.title.present? )
@@ -108,8 +108,14 @@ class ReviewsController < ApplicationController
   def redirect_user
     if current_user
       flash[:notice] = "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. It is currently pending. It still needs to be validated."
+      ReviewMailer.new_review_for(params[:email], @firm).deliver_now
     else
       flash[:notice] = "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. Please check your emails at #{params[:email]} to validate it!"
+      if @user.is_new_user_created_on_vote
+        ReviewMailer.first_review_for(params[:email], @firm).deliver_now
+      else
+        ReviewMailer.new_review_with_your_email(params[:email], @firm).deliver_now
+      end
     end
     redirect_to firm_path(@firm.id) and return
   end
@@ -119,6 +125,7 @@ class ReviewsController < ApplicationController
     review_params.each do | param |
       @updated_review_params[param[0]] = param[1] unless param[0] == "answers_attributes"
     end
+    @updated_review_params[:created_at_ip] = request.remote_ip
   end
 
   def create_new_review

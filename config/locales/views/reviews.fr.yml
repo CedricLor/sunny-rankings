@@ -38,12 +38,12 @@ fr:
       user_pending_review:
         your_pending_review_header: "Votre revue en attente de %{validation_publication}"
         pending_review_display_by_session_sentence_html:
-          "<p>Nous vous présentons ici votre revue telle qu'elle pourrait paraître une fois validée.</p>
-          <p>Nous vous avons envoyé un email avec des explications à ce sujet à votre addresse email.</p>"
+          "<p>Nous vous présentons ici votre revue telle qu'elle pourrait paraître avant sa validation par vos soins.</p>
+           <p>Nous vous avons envoyé un email avec des explications à ce sujet à l'addresse que vous nous avez fournie.</p>"
     individual_review_table:
       by: "De "
       for_firm: " pour "
       on: " le '%{date}'"
     review_form_comments:
-      title_label_for_review_comments: "Title (optional)"
-      comment_label_for_review_comments: "Comments (optional)"
+      title_label_for_review_comments: "Titre (facultatif)"
+      comment_label_for_review_comments: "Commentaire (facultatif)"

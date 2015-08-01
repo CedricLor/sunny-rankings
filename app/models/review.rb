@@ -102,7 +102,8 @@ class Review < ActiveRecord::Base
       firm_id: attributes[:firm].id,
       user_firm_relationship: "Undefined",
       confirmed_t_and_c: attributes[:review_params][:confirmed_t_and_c],
-      answers_attributes: @processed_answers_attributes
+      answers_attributes: @processed_answers_attributes,
+      created_at_ip: attributes[:review_params][:created_at_ip]
       )
     review = review.save ? review : false
   end

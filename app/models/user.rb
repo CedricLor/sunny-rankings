@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
-  attr_accessor :login
+  attr_accessor :login, :is_new_user_created_on_vote
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -54,9 +54,11 @@ class User < ActiveRecord::Base
     if user.nil?
       user = create(
         email: attributes[:email],
-        validated: false)
+        validated: false,
+        is_new_user_created_on_vote: true)
     else
       user
+      user.is_new_user_created_on_vote = false
     end
     user
   end

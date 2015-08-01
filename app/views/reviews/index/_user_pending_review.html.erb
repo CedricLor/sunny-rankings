@@ -7,8 +7,8 @@
 
     <% if @status == "disabled" %>
       <% default_for_pending_review_display_by_session_sentence_html =
-          "<p>You are seeing what your review will look like once validated.</p>
-           <p>We sent you an email with explanations for this purpose at your email address.</p>"
+          "<p>You are seeing what your review will look like prior to your validation.</p>
+           <p>We sent you an email with explanations for this purpose to the address you provided us with.</p>"
       %>
       <%= t(".pending_review_display_by_session_sentence_html", default: default_for_pending_review_display_by_session_sentence_html) %>
     <% end %>
@@ -38,6 +38,8 @@
 
     <%# Buttons %>
 
+    <% if @status == "disabled" %>
+
     <div class="btn-group btn-group-justified" role="group" aria-label="review-buttons-group">
       <div class="btn-group" role="group">
         <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'discardReviewButton', form: "deleteReviewForm", disabled: "#{@status}") do %>
@@ -62,5 +64,34 @@
         <% end %>
       </div>
     </div>
+
+    <% else %>
+
+    <div class="btn-group btn-group-justified" role="group" aria-label="review-buttons-group">
+      <div class="btn-group" role="group">
+        <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'discardReviewButton', form: "deleteReviewForm") do %>
+          <%= t( "discard_button_label", default: "Discard") %>
+        <% end %>
+      </div>
+      <% if review.validated == false %>
+        <div class="btn-group" role="group">
+          <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'editReviewButton', form: "editReviewForm") do %>
+            <%= t( "edit_button_label", default: "Edit") %>
+          <% end %>
+        </div>
+        <div class="btn-group" role="group">
+          <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'validateReviewButton', form: "edit_review_#{review.id}") do %>
+            <%= t( "validate_button_label", default: "Validate") %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="btn-group" role="group">
+        <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'publishReviewButton', form: "publishReviewForm") do %>
+          <%= t( "publish_button_label", default: "Publish") %>
+        <% end %>
+      </div>
+    </div>
+
+    <% end %>
 
 </div>

@@ -38,8 +38,8 @@ en:
       user_pending_review:
         your_pending_review_header: "Your review pending %{validation_publication}"
         pending_review_display_by_session_sentence_html:
-          "<p>You are seeing what your review will look like once validated.</p>
-          <p>We sent you an email with explanations for this purpose at your email address.</p>"
+          "<p>You are seeing what your review will look like prior to your validation.</p>
+           <p>We sent you an email with explanations for this purpose to the address you provided us with.</p>"
     individual_review_table:
       by: "By "
       for_firm: " for "
