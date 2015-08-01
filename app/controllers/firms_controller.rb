@@ -34,6 +34,14 @@ class FirmsController < ApplicationController
   end
 
   def show
+    if user_signed_in?
+      @potentially_publishable_by_user_review_for_firm = current_user.potentially_publishable_review_for_firm(@firm)
+    elsif session[:review_token] && session[:review_token].present?
+      @potentially_publishable_by_user_review_for_firm = Review.find_by_token(session[:review_token])
+      @potentially_publishable_by_user_review_for_firm.update(token: "")
+      @status = "disabled"
+      session[:review_token] = ""
+    end
     @competitors = Firm.top10_by_industry_by_country(@firm.industry, @firm.country)
     @tests = Test.all
     @review = Review.new

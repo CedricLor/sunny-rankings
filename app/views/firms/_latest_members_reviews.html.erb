@@ -5,11 +5,10 @@
       firm_name: t(@firm.name, default: @firm.name),
       default: "What our member say about #{@firm.name}!") %></h3>
 
-        <%= render 'reviews/displayed_review_css_array' %>
-
-        <% if user_signed_in? && (review = current_user.potentially_publishable_review_for_firm(@firm)) %>
-          <%= render 'reviews/index/user_pending_review', review: review, displayed_reviews_css_array: @displayed_reviews_css_array %>
+        <% if @potentially_publishable_by_user_review_for_firm %>
+          <%= render 'reviews/index/user_pending_review', review: @potentially_publishable_by_user_review_for_firm, displayed_reviews_css_array: @displayed_reviews_css_array %>
         <% end %>
+        <hr/>
 
         <% @firm.ordered_reviews_with_answers_test_names_and_usernames_for_publication.each do | review | %>
           <%= render 'reviews/individual_review_table', review: review, username: review.review_portfolio.user.username, firmname: @firm.name, firmid: @firm.id, displayed_reviews_css_array: @displayed_reviews_css_array %>

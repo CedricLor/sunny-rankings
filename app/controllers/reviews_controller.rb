@@ -124,6 +124,7 @@ class ReviewsController < ApplicationController
   def create_new_review
     set_user
     @review = Review.create_review_for_user({user: @user, firm: @firm, review_params: review_params})
+    session[:review_token] = @review.token
   end
 
   def variables_for_review_form

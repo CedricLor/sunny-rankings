@@ -12,7 +12,7 @@ fr:
       potential_impact: "Votre impact potentiel"
       real_impact: "Votre impact"
     review_form_email_and_voting_button:
-      email_label: "Merci d'indiquer votre email PERSONNEL"
+      email_label: "Merci d'indiquer votre email PERSONNEL. Nous allons vous envoyer un email de confirmation à cette addresse."
       email_hint: "Votre email restera confidentiel et conformément à nos conditions de services de notation, ne sera pas communiqué à votre employeur."
       voting_button_label: "Voter !"
     simple_review_without_firm_select:
@@ -37,7 +37,13 @@ fr:
           other: "Et %{count} de vos revues ont déjà été publiées. Bravo !"
       user_pending_review:
         your_pending_review_header: "Votre revue en attente de %{validation_publication}"
+        pending_review_display_by_session_sentence_html:
+          "<p>Nous vous présentons ici votre revue telle qu'elle pourrait paraître une fois validée.</p>
+          <p>Nous vous avons envoyé un email avec des explications à ce sujet à votre addresse email.</p>"
     individual_review_table:
       by: "De "
       for_firm: " pour "
       on: " le '%{date}'"
+    review_form_comments:
+      title_label_for_review_comments: "Title (optional)"
+      comment_label_for_review_comments: "Comments (optional)"

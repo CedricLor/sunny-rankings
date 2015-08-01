@@ -12,7 +12,7 @@ en:
       potential_impact: "Your potential impact"
       real_impact: "Your impact"
     review_form_email_and_voting_button:
-      email_label: "Please enter your PERSONAL email"
+      email_label: "Please enter your PERSONAL email. We are going to send you a confirmation email to this address."
       email_hint: "Your email will remain confidential and as per our conditions of rating services, will not be shared with your employer."
       voting_button_label: "Vote"
     simple_review_without_firm_select:
@@ -37,7 +37,13 @@ en:
           other: "And %{count} of your reviews have already been published. Congratulations!!!"
       user_pending_review:
         your_pending_review_header: "Your review pending %{validation_publication}"
+        pending_review_display_by_session_sentence_html:
+          "<p>You are seeing what your review will look like once validated.</p>
+          <p>We sent you an email with explanations for this purpose at your email address.</p>"
     individual_review_table:
       by: "By "
       for_firm: " for "
       on: " on '%{date}'"
+    review_form_comments:
+      title_label_for_review_comments: "Title (optional)"
+      comment_label_for_review_comments: "Comments (optional)"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729152824) do
+ActiveRecord::Schema.define(version: 20150801155912) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -167,6 +167,7 @@ ActiveRecord::Schema.define(version: 20150729152824) do
     t.boolean  "featured"
     t.string   "created_at_ip"
     t.string   "updated_at_ip"
+    t.string   "token",                              default: ""
   end
 
   add_index "reviews", ["firm_id"], name: "index_reviews_on_firm_id"

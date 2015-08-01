@@ -39,7 +39,7 @@ class Review < ActiveRecord::Base
   }
   validates :validated, inclusion: { in: [true, false] }, on: :create
   validates :validated, exclusion: { in: [nil] }
-  validates :validated, :acceptance => {:accept => true}, on: :update
+  validates :validated, :acceptance => {:accept => true}, on: :update, unless: "token_changed?"
 
   validates_associated :answers
   validates :answers, association_count: { is: ANSWERS_REQUIRED_COUNT }, on: :save
@@ -48,6 +48,8 @@ class Review < ActiveRecord::Base
 
   # validates :featured, inclusion: { in: [true] }, if: Proc.new { | rev | rev.publishable == true && rev.agreed_for_publication == true && rev.confirmed_t_and_c == true && rev.validated == true && ( rev.title.present? || rev.comment.present? ) }
   validate :featured_checker
+
+  before_create :generate_token, unless: :token?
 
   def featured_checker
     if featured == true
@@ -131,6 +133,12 @@ class Review < ActiveRecord::Base
         answer_hash = answers_attributes.fetch("#{i - 1}") { |el| {"user_rating"=>"0"} }
         answer_hash["test_id"] = "#{i}"
         @processed_answers_attributes << answer_hash
+      end
+    end
+
+    def generate_token
+      while Review.find_by_token(self.token).present? || self.token.blank?
+        self.token = SecureRandom.uuid
       end
     end
 end

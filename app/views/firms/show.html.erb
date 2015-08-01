@@ -4,6 +4,17 @@
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
       <div class="company-container">
+      <%# A DEPLACER DANS LE CONTROLLER, VOIR LE MODELE DES REVIEWS%>
+      <%= render 'reviews/displayed_review_css_array' %>
+        <% if @potentially_publishable_by_user_review_for_firm %>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="text-wrapper card-block shadowed-box embedded-members-reviews">
+                <%= render 'reviews/index/user_pending_review', review: @potentially_publishable_by_user_review_for_firm, displayed_reviews_css_array: @displayed_reviews_css_array %>
+              </div>
+            </div>
+          </div>
+        <% end %>
         <div class="row">
           <div class="col-xs-12">
             <%= render "shared/search_form" %>

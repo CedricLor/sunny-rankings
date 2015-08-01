@@ -14,7 +14,7 @@ class Profile < ActiveRecord::Base
   default_scope { includes :default_email }
   ###############
 
-  validates :user, presence: true
+  # validates :user, presence: true
 
   validates :first_name, presence: true, on: :update
   validates :last_name, presence: true, on: :update
