@@ -1,8 +1,9 @@
 <table class="table table-striped table-responsive table-individual-review">
   <tr>
     <td>
-      <%= t(".by", default: "By ") %><span class="username"><%= username.capitalize %></span>
-      <%= t(".for_firm", default: " for ") %>
+      <%= t("by", default: "By ") %><span class="username"><%= "#{Faker::Name.name}" %></span>
+      <%= t("pseudonym", default: ' pseudonym') %>
+      <%= t("for_firm", default: " for ") %>
       <%= link_to(content_tag(:span, "#{firmname}", class: "firmname"), firm_path(firmid)) %>, <%= l(review.updated_at, format: :short) %>
     </td>
   </tr>

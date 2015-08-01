@@ -31,7 +31,7 @@ class Review < ActiveRecord::Base
 
   validates :firm, presence: true
   validates :review_portfolio, presence: true, on: :update
-  validates :confirmed_t_and_c, inclusion: { in: [true, false] }
+  validates :confirmed_t_and_c, inclusion: { in: [true] }
   validates :confirmed_t_and_c, exclusion: { in: [nil] }
   validates :confirmed_t_and_c, acceptance: {
     accept: true,
@@ -102,8 +102,7 @@ class Review < ActiveRecord::Base
       confirmed_t_and_c: attributes[:review_params][:confirmed_t_and_c],
       answers_attributes: @processed_answers_attributes
       )
-    review.save
-    review
+    review = review.save ? review : false
   end
 
   def self.current_reporting_period

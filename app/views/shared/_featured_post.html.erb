@@ -3,6 +3,10 @@
   <div class="comment-body"><%= "#{review.comment}" %></div>
 </div>
 <div>
-  <%= t("by", default: "By ") %><%= content_tag(:span, "#{username}", class: "username") %><%= t('for_firm', default: ' for ') %><%= link_to(content_tag(:span, "#{firmname}", class: "firmname"), firm_path(firmid)) %>, <%= l(review.updated_at, format: :short) %>
+  <%= t("by", default: "By ") %>
+  <%= content_tag(:span, "#{Faker::Name.name}", class: "username") %>
+  <%= t("pseudonym", default: ' (pseudonym)') %>
+  <%= t('for_firm', default: ' for ') %>
+  <%= link_to(content_tag(:span, "#{firmname}", class: "firmname"), firm_path(firmid)) %>, <%= l(review.updated_at, format: :short) %>
 </div>
 

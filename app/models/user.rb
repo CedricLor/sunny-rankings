@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   default_scope { includes :default_email }
   ###############
 
-  validates_associated :email_addresses, :default_email
+  validates_associated :email_addresses, :default_email, :profile
 
   has_many :reviews, through: :review_portfolio, dependent: :destroy
   has_many :answers, through: :reviews, dependent: :destroy
@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   before_update :validate_additional_emails_and_save_if_valid
 
   accepts_nested_attributes_for :email_addresses, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :profile, allow_destroy: true
 
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'

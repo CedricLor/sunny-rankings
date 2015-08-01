@@ -1,13 +1,13 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :edit, :update, :destroy]
+  before_action :set_review, only: [:edit, :update, :destroy]
 
   def create
+    set_firm
     # Error handling
     redirect_to firm_path(params[:firm_id]) and return if form_has_errors?
     # If no errors
-    set_user
-    set_firm
-    @review = Review.create_review_for_user({user: @user, firm: @firm, review_params: review_params})
+    create_new_review
     redirect_user
   end
 
@@ -35,14 +35,12 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
     @firm = @review.firm
 
     variables_for_review_form
   end
 
   def update
-    review = Review.find(params[:id])
     @updated_review_params = {}
     review_params_updater unless params[:review].nil?
     @updated_review_params[:validated] = true
@@ -63,7 +61,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find(params[:id])
     @review.destroy
     flash[:notice] = "Dear #{current_user.email}, your review of #{@review.firm.name} has been successfully delete."
     redirect_to firm_path(@review.firm_id)
@@ -87,6 +84,10 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def set_review
+    @review = Review.find(params[:id])
+  end
+
   def form_has_errors?
     has_errors = false
     unless EmailValidator.valid?(params[:email])
@@ -107,11 +108,10 @@ class ReviewsController < ApplicationController
   def redirect_user
     if current_user
       flash[:notice] = "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. It is currently pending. It still needs to be validated."
-      redirect_to firm_path(@review.firm_id) and return
     else
       flash[:notice] = "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. Please check your emails at #{params[:email]} to validate it!"
-      redirect_to new_user_session_path and return
     end
+    redirect_to firm_path(@firm.id) and return
   end
 
   def review_params_updater
@@ -119,6 +119,11 @@ class ReviewsController < ApplicationController
     review_params.each do | param |
       @updated_review_params[param[0]] = param[1] unless param[0] == "answers_attributes"
     end
+  end
+
+  def create_new_review
+    set_user
+    @review = Review.create_review_for_user({user: @user, firm: @firm, review_params: review_params})
   end
 
   def variables_for_review_form

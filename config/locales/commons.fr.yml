@@ -6,3 +6,4 @@ fr:
   by: "De "
   for_firm: " pour "
   on: " le '%{date}'"
+  pseudonym: " (pseudonyme)"

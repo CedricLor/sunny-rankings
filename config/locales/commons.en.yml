@@ -6,3 +6,4 @@ en:
   by: "By "
   for_firm: " for "
   on: " on '%{date}'"
+  pseudonym: " (pseudonym)"
