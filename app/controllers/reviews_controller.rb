@@ -12,6 +12,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
+
   end
 
   def index
@@ -80,7 +81,7 @@ class ReviewsController < ApplicationController
 
   def set_user
     if current_user.nil?
-      @user = User.find_or_create_by_email_address(email: params[:email])
+      @user = User.find_or_create_by_email(email: params[:email])
     else
       @user = current_user
     end

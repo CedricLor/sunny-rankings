@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :confirmable #, :validatable
 
   has_one :profile, dependent: :destroy
   has_one :review_portfolio, dependent: :destroy
@@ -12,15 +12,16 @@ class User < ActiveRecord::Base
   # after_commit :save_default_email
 
   has_one :default_email, through: :profile, class_name: "EmailAddress"
-  # validates :default_email, presence: true
+  validates :default_email, presence: true
   default_scope { includes :default_email }
   ###############
+
+  validates_associated :email_addresses, :default_email
 
   has_many :reviews, through: :review_portfolio, dependent: :destroy
   has_many :answers, through: :reviews, dependent: :destroy
 
   before_create :create_unique_username
-  before_save :validate_email_or_exit
   after_create :save_additional_stack
   before_update :validate_additional_emails_and_save_if_valid
 
@@ -43,17 +44,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.find_by_email_address(email)
+  def self.find_by_email(email)
     joins(:email_addresses).where("email_addresses.address = ?", email).first
   end
 
-  def self.find_or_create_by_email_address(attributes)
-    user = find_by_email_address(attributes[:email])
+  def self.find_or_create_by_email(attributes)
+    user = find_by_email(attributes[:email])
     if user.nil?
       user = create(
         email: attributes[:email],
-        password: attributes[:password].nil? ? "password" : attributes[:password],
-        password_confirmation: attributes[:password].nil? ? "password" : attributes[:password],
         validated: false)
     else
       user
@@ -61,24 +60,14 @@ class User < ActiveRecord::Base
   end
 
   def email
-    puts "*" * 40
-    puts "in email"
     default_email.address rescue nil
   end
 
   def email= email
-    puts "*" * 40
-    puts "in email= email"
-    if self.default_email.nil?
-      self.default_email = email_addresses.where(address: email).first_or_initialize
-    else
-      self.default_email.address = email
-    end
+    self.default_email = email_addresses.where(address: email).first_or_initialize
   end
 
   def email_changed?
-    puts "*" * 40
-    puts "in email changed?"
     self.profile.default_email_id_changed?
   end
   ################################
@@ -93,12 +82,10 @@ class User < ActiveRecord::Base
   def has_no_password?
     self.encrypted_password.blank?
   end
-
   # new function to provide access to protected method unless_confirmed
   def only_if_unconfirmed
     pending_any_confirmation {yield}
   end
-
   def password_required?
   # Password is required if it is being set, but not for new records
     if !persisted?
@@ -141,6 +128,10 @@ class User < ActiveRecord::Base
 
   def effectively_published_reviews
     reviews.where(agreed_for_publication: true, publishable: true)
+  end
+
+  def has_pending_reviews
+    pending_reviews.count > 0
   end
   ################################
   def number_of_reviews
@@ -186,12 +177,9 @@ class User < ActiveRecord::Base
   ################################
 
   protected
-    def validate_email_or_exit
-      self.default_email.valid?
-    end
 
     def validate_additional_emails_and_save_if_valid
-      email_addresses.each { | email_address | email_address.save if email_address.id.nil? && email_address.valid? }
+      email_addresses.each { | email_address | email_address.save if email_address.valid? }
     end
 
     # def update_default_email
@@ -213,9 +201,8 @@ class User < ActiveRecord::Base
     end
 
     def create_unique_username
-      self.username = Faker::Internet.user_name(%w(. _ -)) + "_" + Faker::Internet.user_name(%w(. _ -)) if username == nil
-      while User.find_by_username(username).present?
-        username = Faker::Internet.user_name(%w(. _ -)) + "_" + Faker::Internet.user_name(%w(. _ -))
+      while User.find_by_username(self.username).present? || self.username.blank?
+        self.username = Faker::Internet.user_name(%w(. _ -)) + "_" + Faker::Internet.user_name(%w(. _ -))
       end
     end
 

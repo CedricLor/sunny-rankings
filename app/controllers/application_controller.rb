@@ -17,6 +17,14 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale }.merge options
   end
 
+  def after_sign_in_path_for(resource)
+    if current_user.has_pending_reviews
+      reviews_path
+    else
+      root_path
+    end
+  end
+
   protected
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }

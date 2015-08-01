@@ -48,14 +48,10 @@ class Profile < ActiveRecord::Base
 
   ###############################
   def email
-    puts "*" * 40
-    puts "in profile email"
     default_email.address rescue nil
   end
 
   def email= email
-    puts "*" * 40
-    puts "in profile email= email"
     self.default_email = email_addresses.where(address: email).first_or_initialize
   end
 
@@ -65,8 +61,6 @@ class Profile < ActiveRecord::Base
 
   private
     def save_default_email
-      puts "*" * 40
-      puts "in profile save_default_email"
       if default_email.profile.blank?
         default_email.profile = self
       elsif default_email.profile != self

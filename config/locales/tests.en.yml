@@ -2,10 +2,10 @@ en:
   tests_questions:
     question_1:
       long_question: "How frequent are sexists comments at this firm?"
-      short_question: "Absence of sexists comments"
+      short_question: "Fighting sexists comments"
     question_2:
       long_question: "How is the pregnancy of an employee resented in this firm?"
-      short_question: "Absence of pregnancy related issues"
+      short_question: "Limiting pregnancy related issues"
     question_3:
       long_question: "Are female and male employees in the same position offered the same promotion opportunities in this firm?"
       short_question: "Equal promotion opportunities"
