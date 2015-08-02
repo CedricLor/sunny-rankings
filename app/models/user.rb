@@ -23,7 +23,6 @@ class User < ActiveRecord::Base
 
   before_create :create_unique_username
   after_create :save_additional_stack
-  before_update :validate_additional_emails_and_save_if_valid
 
   # after_initialize { byebug }
   # before_validation { byebug }
