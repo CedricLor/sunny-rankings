@@ -4,7 +4,6 @@
 // $navbar-color: $gray-light;
 $navbar-color: $gray-darker;
 $navbar-hover-color: $yellow;
-$navbar-font-family: $navbar-font;
 $navbar-font-size: 14px;
 $navbar-text-transform: capitalize;
 $navbar-font-weight: 300;
@@ -166,10 +165,13 @@ $navbar-profile-border-width: 2px;
     width: 60px;
   }
   .brand-text {
-    text-transform: lowercase;
     font-size: 1.5em;
     font-weight: bold;
   }
+}
+.brand-text {
+  font-family: roboto;
+  text-transform: lowercase;
 }
 .vertical-align-inline-block {
   vertical-align: middle;
@@ -181,3 +183,12 @@ $navbar-profile-border-width: 2px;
 .brandtext-second-part {
   color: black;
 }
+
+/* -------------------------------------
+ * Navbar font
+ * ------------------------------------- */
+// TO DO: Adjust this paramet
+// font-family: $navbar-font-family;
+// ul.navbar-right {
+//   font-family: montserrat;
+// }

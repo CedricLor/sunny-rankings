@@ -10,7 +10,7 @@ fr:
       sentence_if_last_review_not_validated: "Vous avez un vote en attente pour %{firm_name}. Merci de valider votre vote ci-dessous."
       sentence_if_last_review_validated: "Vous n'avez actuellement aucune revue en attente de validation."
       instruction_to_review_answers_and_validate: "A présent, revoyez vos réponses et validez"
-      form_label_your_default_email: "Your addresse email principale"
+      form_label_your_default_email: "Votre addresse email principale"
       validate_button_label: "Validez"
     show:
       page_title: "Votre profil"

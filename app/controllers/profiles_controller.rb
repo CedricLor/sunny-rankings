@@ -3,7 +3,8 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update]
 
   def edit
-    unless @review = current_user.reviews.last.nil?
+    unless current_user.reviews.last.nil?
+      @review = current_user.reviews.last
       if @review.validated == false
         variables_for_pending_review
       end
@@ -33,6 +34,7 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(
+      :email,
       :first_name,
       :last_name,
       :country,

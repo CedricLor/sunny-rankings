@@ -18,7 +18,7 @@
           "<p>Please review your profile details below.</p>
           <p class='red-paragraph'>Your username is #{current_user.email}</p>"
         %>
-        <%= t(".welcome_parag_if_simple_profile_review_html", username: current_user.email, default: "Please review your profile details below") %>
+        <%= t(".welcome_parag_if_simple_profile_review_html", username: current_user.username, default: "Please review your profile details below") %>
 
         <p>
           <% if @review.validated == false %>
@@ -37,7 +37,10 @@
           <div>
             <%= f.error_notification %>
             <div class="form-inputs">
-              <%= f.input :default_email, required: true, autofocus: true, label: t(".form_label_your_default_email", default: "Your default email address") %>
+              <%#= f.simple_fields_for :default_email do | default_email | %>
+                <%#= default_email.input :address, required: true, autofocus: true, label: t(".form_label_your_default_email", default: "Your default email address") %>
+              <%# end %>
+              <%= f.input :email, required: true, autofocus: true, label: t(".form_label_your_default_email", default: "Your default email address") %>
               <%= f.input :first_name, required: true %>
               <%= f.input :last_name, required: true %>
               <%= f.input :country, required: true %>
