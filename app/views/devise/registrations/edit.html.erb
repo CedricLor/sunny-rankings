@@ -5,7 +5,7 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
       <div class="card-block shadowed-box text-center">
         <div class="main-title-block">
-          <h1 class="main-title">Edit <%= resource_name.to_s.humanize %></h1>
+          <h1 class="main-title"><%= t('edit_user_heading', scope: [:devise, :registrations], default: "Edit #{resource_name.to_s.humanize}") %></h1>
         </div>
       </div>
     </div>
@@ -19,20 +19,28 @@
 
         <div class="form-inputs">
           <%= f.input :username, required: true, autofocus: true %>
-          <%= f.simple_fields_for :email_addresses do |email_address_f| %>
-            <%= render "email_address_fields", f: email_address_f %>
+
+          <%= f.simple_fields_for :profile do | profile | %>
+            <%= profile.simple_fields_for :email_addresses do |email_address_f| %>
+              <%= render "email_address_fields", f: email_address_f %>
+            <% end %>
+            <div class="links">
+              <%= link_to_add_association 'Add Email Address', f, 'email_addresses' %>
+            </div>
           <% end %>
-          <div class="links">
-            <%= link_to_add_association 'Add Email Address', f, 'email_addresses' %>
-          </div>
+          <hr/>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <p><%= t('.currently_waiting_confirmation_for_email', :email => resource.unconfirmed_email, :default => "Currently waiting confirmation for: %{email}") %></p>
           <% end %>
+          <hr/>
 
           <%= f.input :password, autocomplete: "off", hint: t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it"), required: false %>
-          <%= f.input :password_confirmation, required: false %>
+          <%= f.input :password_confirmation, autocomplete: "off", hint: t('.leave_blank_if_you_don_t_want_to_change_it', :default => "leave blank if you don't want to change it"), required: false %>
+          <hr/>
+
           <%= f.input :current_password, hint: t('.we_need_your_current_password_to_confirm_your_changes', :default => 'we need your current password to confirm your changes'), required: true %>
+
         </div>
 
         <div class="form-actions">

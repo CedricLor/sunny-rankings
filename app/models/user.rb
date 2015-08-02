@@ -25,8 +25,14 @@ class User < ActiveRecord::Base
   after_create :save_additional_stack
   before_update :validate_additional_emails_and_save_if_valid
 
+  # after_initialize { byebug }
+  # before_validation { byebug }
+  # after_validation { byebug }
+  # before_create { byebug}
+  # after_create { byebug }
+
   accepts_nested_attributes_for :email_addresses, reject_if: :all_blank, allow_destroy: true
-  # accepts_nested_attributes_for :profile, allow_destroy: true
+  accepts_nested_attributes_for :profile, allow_destroy: true
 
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
@@ -64,15 +70,22 @@ class User < ActiveRecord::Base
   end
 
   def email
+    # byebug
     default_email.address rescue nil
   end
 
   def email= email
-    self.default_email = email_addresses.where(address: email).first_or_initialize
+    # byebug
+    self.default_email = email_addresses.where(address: email).first_or_initialize unless self.default_email && self.default_email.address == email
   end
 
   def email_changed?
-    self.profile.default_email_id_changed?
+    # byebug
+    if self.profile
+      self.profile.email_changed?
+    elsif self.default_email
+      self.default_email.address_changed?
+    end
   end
   ################################
   # new function to set the password without knowing the current password used in our confirmation controller.
@@ -164,7 +177,6 @@ class User < ActiveRecord::Base
   ################################
   def pending_reviews_for_firm(firm)
     pending_reviews.where(firm_id: firm.id)
-    # reviews.where(firm_id: firm.id, validated: false)
   end
 
   def pending_review_for_firm(firm)
@@ -181,38 +193,18 @@ class User < ActiveRecord::Base
   ################################
 
   protected
-
-    def validate_additional_emails_and_save_if_valid
-      email_addresses.each { | email_address | email_address.save if email_address.valid? }
-    end
-
-    # def update_default_email
-    #   puts "*" * 40
-    #   puts "in update_default_email"
-    #   puts "self.default_email"
-    #   de = self.default_email
-    #   de.save!
-    # end
-
-    def save_default_email
-      if default_email.user.blank?
-        default_email.profile = self.profile
-      elsif default_email.user != self
-        raise Exceptions::EmailConflict
-      end
-      de = self.default_email
-      de.save!
-    end
-
     def create_unique_username
+      # byebug
       while User.find_by_username(self.username).present? || self.username.blank?
         self.username = Faker::Internet.user_name(%w(. _ -)) + "_" + Faker::Internet.user_name(%w(. _ -))
       end
     end
 
     def save_additional_stack
+      # byebug
       self.default_email.profile_id = self.profile.id
       self.default_email.save!
+      # byebug
       self.create_review_portfolio
     end
 end

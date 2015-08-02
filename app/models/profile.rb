@@ -7,7 +7,7 @@ class Profile < ActiveRecord::Base
 
   ###############
   has_many :email_addresses, dependent: :destroy
-  # after_commit :save_default_email, on: :create
+  after_create :save_default_email
 
   belongs_to :default_email, class_name: "EmailAddress"
   # validates :default_email, presence: true
@@ -46,17 +46,28 @@ class Profile < ActiveRecord::Base
     record.errors.add(attr, 'must start with upper case') if value =~ /\A[[:lower:]]/
   end
 
+  accepts_nested_attributes_for :email_addresses, reject_if: :all_blank, allow_destroy: true
+
+  # after_initialize { byebug }
+  # before_validation { byebug }
+  # after_validation { byebug }
+  # before_create { byebug}
+  # after_create { byebug }
+
   ###############################
   def email
+    # byebug
     default_email.address rescue nil
   end
 
   def email= email
-    self.default_email = email_addresses.where(address: email).first_or_initialize
+    # byebug
+    self.default_email = email_addresses.where(address: email).first_or_initialize unless self.default_email && self.default_email.address == email
   end
 
   def email_changed?
-    self.default_email_id_changed?
+    # byebug
+    self.default_email_id_changed? || self.default_email.address_changed?
   end
 
   private

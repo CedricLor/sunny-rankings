@@ -46,6 +46,7 @@ fr:
       signed_up_but_unconfirmed: 'Un message contenant un lien de confirmation a été envoyé à votre adresse email. Ouvrez ce lien pour confirmer votre compte.'
       update_needs_confirmation: "Votre compte a bien été mis à jour mais nous devons vérifier votre nouvelle adresse email. Merci de vérifier vos emails et de cliquer sur le lien de confirmation pour finaliser la validation de votre nouvelle adresse."
       updated: 'Votre compte a été modifié avec succès.'
+      edit_user_heading: "Modifier les identifiants de connexion"
     sessions:
       signed_in: "Connecté avec succès."
       signed_out: "Déconnecté avec succès."

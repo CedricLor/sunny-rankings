@@ -17,15 +17,33 @@
       <%# Firm.all.ranking_by_industry(selected_firm.industry).each do | firm | %>
         <tr>
           <td>
-            <%= t(".your_default_email", default: "Your default email") + ":" %>
+            <%= t(".your_username", default: "Your username:") %>
+          </td>
+          <td>
+            <%= @user.username %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= t(".your_default_email", default: "Your default email:") %>
           </td>
           <td>
             <%= @profile.email %>
           </td>
         </tr>
+        <% @email_addresses.each_with_index do | email_address, i | %>
+          <tr>
+            <td>
+              <%= "email # #{i + 1}:" %>
+            </td>
+            <td>
+              <%= email_address.address %>
+            </td>
+          </tr>
+        <% end %>
         <tr>
           <td>
-            <%= t(".your_first_name", default: "Your first name") + ":" %>
+            <%= t(".your_first_name", default: "Your first name") %>
           </td>
           <td>
             <%= @profile.first_name %>
@@ -33,7 +51,7 @@
         </tr>
         <tr>
           <td>
-            <%= t(".your_last_name", default: "Your last name") + ":" %>
+            <%= t(".your_last_name", default: "Your last name") %>
           </td>
           <td>
             <%= @profile.last_name %>
@@ -41,7 +59,7 @@
         </tr>
         <tr>
           <td>
-            <%= t(".your_country_of_residence", default: "Your country of residence") + ":" %>
+            <%= t(".your_country_of_residence", default: "Your country of residence") %>
           </td>
           <td>
             <%= @profile.country %>
@@ -49,7 +67,7 @@
         </tr>
         <tr>
           <td>
-            <%= t(".your_phone_number", default: "Your phone number") + ":" %>
+            <%= t(".your_phone_number", default: "Your phone number") %>
           </td>
           <td>
             <%= @profile.phone_number %>
@@ -57,7 +75,7 @@
         </tr>
         <tr>
           <td>
-            <%= t(".your_age", default: "Your age") + ":" %>
+            <%= t(".your_age", default: "Your age") %>
           </td>
           <td>
             <%= @profile.age %>
@@ -65,7 +83,7 @@
         </tr>
         <tr>
           <td>
-            <%= t(".your_gender", default: "Your gender") + ":" %>
+            <%= t(".your_gender", default: "Your gender") %>
           </td>
           <td>
             <%= @profile.gender %>

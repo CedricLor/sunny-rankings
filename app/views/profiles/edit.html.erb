@@ -21,7 +21,7 @@
         <%= t(".welcome_parag_if_simple_profile_review_html", username: current_user.username, default: "Please review your profile details below") %>
 
         <p>
-          <% if @review.validated == false %>
+          <% if @review && @review.validated == false %>
             <%= t(".sentence_if_last_review_not_validated", firm_name: @firm.name, default: "You have one pending review for #{@firm.name}. Please validate your review below.") %>
           <% else %>
             <%= t(".sentence_if_last_review_validated", default: "You do not currently have any pending review.") %>
@@ -37,10 +37,13 @@
           <div>
             <%= f.error_notification %>
             <div class="form-inputs">
-              <%#= f.simple_fields_for :default_email do | default_email | %>
-                <%#= default_email.input :address, required: true, autofocus: true, label: t(".form_label_your_default_email", default: "Your default email address") %>
-              <%# end %>
               <%= f.input :email, required: true, autofocus: true, label: t(".form_label_your_default_email", default: "Your default email address") %>
+              <%= f.simple_fields_for :email_addresses do |email_address_f| %>
+                <%= render "email_address_fields", f: email_address_f %>
+              <% end %>
+              <div class="links">
+                <%= link_to_add_association 'Add Email Address', f, 'email_addresses' %>
+              </div>
               <%= f.input :first_name, required: true %>
               <%= f.input :last_name, required: true %>
               <%= f.input :country, required: true %>
@@ -53,7 +56,7 @@
       </div>
     </div>
 
-    <% if @review.validated == true %>
+    <% if @review.nil? || @review.validated == true %>
 
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
@@ -69,7 +72,7 @@
       </div>
     </div>
 
-    <% else %>
+    <% elsif @review %>
 
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">

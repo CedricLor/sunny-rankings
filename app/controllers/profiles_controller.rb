@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
   def edit
     unless current_user.reviews.last.nil?
       @review = current_user.reviews.last
-      if @review.validated == false
+      if @review.nil? == false && @review.validated == false
         variables_for_pending_review
       end
     end
@@ -22,12 +22,14 @@ class ProfilesController < ApplicationController
     if @profile.update(profile_params)
       params[:review] ? (redirect_to firm_path(@review.firm_id)) : (redirect_to profile_path(@profile.id))
     else
-      variables_for_pending_review
+      variables_for_pending_review unless @review.nil?
       render :edit
     end
   end
 
   def show
+    @user = current_user
+    @email_addresses = @profile.email_addresses
   end
 
   private
@@ -49,7 +51,8 @@ class ProfilesController < ApplicationController
       email_addresses_attributes:
         [ :id,
           :address,
-          :profile_id
+          :profile_id,
+          :_destroy
         ]
       )
     # TO DO in email_addresses_attributes, check that id and profile_id are required

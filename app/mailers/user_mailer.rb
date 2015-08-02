@@ -16,4 +16,11 @@ class UserMailer < ApplicationMailer
   def new_user_on_vote(email)
     mail(to: email, subject: "Please confirm your vote on Skanher")
   end
+
+  def attempt_to_sign_up_with(user, attempt_email)
+    @email = user.email
+    @attempt_email = attempt_email
+
+    mail(to: @email, to: @attempt_email, subject: "Someone is trying to create an account on Skanher with one of your emails. Is it you?")
+  end
 end
