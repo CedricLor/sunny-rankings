@@ -157,21 +157,27 @@ $navbar-profile-border-width: 2px;
 /* -------------------------------------
  * Navbar brand
  * ------------------------------------- */
-
-.navbar-brand {
-  padding-top: 5px !important;
+@media screen and (min-width: 768px) {
+  .navbar-brand {
+    padding-top: 5px !important;
+  }
+  .navbar-brand > img {
+    height: 60px !important;
+    width: 60px;
+  }
+  .brand-text {
+    text-transform: lowercase;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
 }
-.navbar-brand > img {
+.vertical-align-inline-block {
   vertical-align: middle;
-  display: inline-block;
-  height: 60px !important;
-  width: 60px;
+  display: inline-block !important;
 }
-.brand-text {
-  vertical-align: middle;
-  display: inline-block;
-  text-transform: lowercase;
-  font-size: 1.5em;
-  font-weight: bold;
+.brandtext-first-part {
+  color: grey;
 }
-
+.brandtext-second-part {
+  color: black;
+}
