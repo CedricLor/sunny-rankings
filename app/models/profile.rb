@@ -16,31 +16,31 @@ class Profile < ActiveRecord::Base
 
   # validates :user, presence: true
 
-  validates :first_name, presence: true, on: :update
-  validates :last_name, presence: true, on: :update
-  validates :country, presence: true, on: :update
+  validates :first_name, presence: true, on: :update, unless: :non_sensitive
+  validates :last_name, presence: true, on: :update, unless: :non_sensitive
+  validates :country, presence: true, on: :update, unless: :non_sensitive
 
-  validates :phone_number, presence: true, on: :update
+  validates :phone_number, presence: true, on: :update, unless: :non_sensitive
   validates :phone_number, uniqueness: {
     case_sensitive: false,
     message: "You already have a profile. Please login or request a reset email if you have lost your connection credentials."
-  }, on: :update
+  }, on: :update, unless: :non_sensitive
 
-  validates :gender, presence: true, on: :update
+  validates :gender, presence: true, on: :update, unless: :non_sensitive
   validates :gender, inclusion: {
     in: %w(male female transgenre other none Male Female Transgenre Other None m f t M F T),
     message: "%{value} is not a valid gender. You may choose between Female, Male, Transgenre, Other or None."
-    }, on: :update
+    }, on: :update, unless: :non_sensitive
 
-  validates :age, presence: true, on: :update
+  validates :age, presence: true, on: :update, unless: :non_sensitive
   validates :age, numericality: {
     only_integer: true,
     message: "%{value} must be an integer."
-  }, on: :update
+  }, on: :update, unless: :non_sensitive
   validates :age, numericality: {
     greater_than_or_equal_to: 16,
     message: "You must be over 16 to vote."
-  }, on: :update
+  }, on: :update, unless: :non_sensitive
 
   validates_each :first_name, :last_name do |record, attr, value|
     record.errors.add(attr, 'must start with upper case') if value =~ /\A[[:lower:]]/
@@ -78,6 +78,15 @@ class Profile < ActiveRecord::Base
         raise Exceptions::EmailConflict
       end
       default_email.save!
+    end
+
+    def non_sensitive
+      # TO DO: User other criteria to require the validations
+      if user.validated == false
+        true
+      else
+        false
+      end
     end
 end
 
