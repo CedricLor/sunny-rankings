@@ -31,3 +31,38 @@
   background: $purple;
   color: white;
 }
+/* GENERAL BOX FORMATTING */
+
+.shadowed-box {
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.card-block {
+  margin: 5px;
+  /*width: 100%;*/ /* TO BE DISCUSSED WITH TEDDY */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+/* PRESENTATION BOX FORMATTING */
+
+.main-title {
+  margin-bottom: 0px;
+}
+
+.main-subtitle {
+  margin-top: 0px;
+}
+
+.top-img {
+  height: 100px;
+  width: 100px;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+

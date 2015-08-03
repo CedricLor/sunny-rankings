@@ -27,7 +27,7 @@ $navbar-btn-height: 40px;
 $navbar-btn-bg: lightgrey;
 $navbar-btn-color: white;
 $navbar-btn-horizontal-padding: 10px;
-$navbar-btn-radius: 2px;
+$navbar-btn-radius: $border-radius-base;
 
 /* -------------------------------------
  * Navbar profile picture
@@ -39,110 +39,146 @@ $navbar-profile-border-width: 2px;
 /* -------------------------------------
  * SCSS code
  * ------------------------------------- */
-.navbar-wagon {
-  background: $navbar-bg;
-  font-family: $navbar-font-family;
-  border: none;
-  font-size: $navbar-font-size;
-  text-transform: $navbar-text-transform;
-  font-weight: $navbar-font-weight;
-  letter-spacing: $navbar-letter-spacing;
-  padding-left: $navbar-horizontal-padding;
-  padding-right: $navbar-horizontal-padding;
-  border-bottom: $navbar-border-bottom-width solid $navbar-border-bottom-color;
-  min-height: 0;
-  transition: background 0.4s ease;
+ #topNavi {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 
-  .navbar-nav > li > a,
-  .navbar-nav > .open > a,
-  .navbar-nav > li > a:focus,
-  .navbar-nav > .open > a:focus {
-    outline: none;
-    color: $navbar-color;
-    line-height: $navbar-height;
-    padding-top: $navbar-vertical-padding;
-    padding-bottom: $navbar-vertical-padding;
-    background-color: transparent;
-  }
+  .navbar-wagon {
+    background: $navbar-bg;
+    // font-family: $navbar-font-family;
+    font-family: "Open Sans" !important;
+    border: none;
+    font-size: $navbar-font-size;
+    text-transform: $navbar-text-transform;
+    font-weight: $navbar-font-weight;
+    letter-spacing: $navbar-letter-spacing;
+    padding-left: $navbar-horizontal-padding;
+    padding-right: $navbar-horizontal-padding;
+    // border-bottom: $navbar-border-bottom-width solid $navbar-border-bottom-color;
+    // TODO -> Configure variables
+    border-bottom: 1px solid #FF0000;
+    min-height: 0;
+    transition: background 0.4s ease;
+    margin-bottom: 5px;
 
-  .navbar-nav > li > a:hover,
-  .navbar-nav > .open > a:hover {
-    color: $navbar-hover-color;
-    background-color: transparent;
-  }
-
-  .navbar-brand,
-  .navbar-brand:hover {
-    outline: none;
-    color: $navbar-color;
-    padding-top: $navbar-vertical-padding;
-    padding-bottom: $navbar-vertical-padding;
-  }
-
-  .navbar-nav > li > a.btn {
-    line-height: $navbar-btn-height;
-    padding: 0 $navbar-btn-horizontal-padding;
-    color: $navbar-btn-color;
-    border-radius: $navbar-btn-radius;
-    margin-top: ($navbar-height + 2 * $navbar-vertical-padding - $navbar-btn-height) / 2;
-    margin-bottom: ($navbar-height + 2 * $navbar-vertical-padding - $navbar-btn-height) / 2;
-    font-weight: bold;
-    background-color: $navbar-btn-bg;
-    font-size: 12px;
-    &:hover{
-      background-color: darken($navbar-btn-bg, 30%);
+    #bs-example-navbar-collapse-1 {
+      height: 60px !important;
     }
-  }
 
-  .navbar-brand img, .navbar-brand svg {
-    height: $navbar-height;
-    padding: 0px;
-  }
+    .navbar-nav > li > a,
+    .navbar-nav > .open > a,
+    .navbar-nav > li > a:focus,
+    .navbar-nav > .open > a:focus {
+      outline: none;
+      color: $navbar-color;
+      // color: black;
+      line-height: $navbar-height;
+      // padding-top: $navbar-vertical-padding;
+      padding-top: 4px;
+      // padding-bottom: $navbar-vertical-padding;
+      padding-bottom: 0px;
+      background-color: transparent;
+      // TODO Check this line
+      // important might not be necessary anymore
+      font-size: 13px !important;
+    }
 
-  .img-avatar{
-    border: $navbar-profile-border-width solid $navbar-profile-border-color;
-    box-shadow: 0 0 2px rgb(200, 200, 200);
-    height: $navbar-height - (2 * $navbar-profile-border-width);
-    margin-right: 10px;
-    border-radius: $navbar-profile-radius;
-  }
+    .navbar-nav > li > a:hover,
+    .navbar-nav > .open > a:hover {
+      // color: $navbar-hover-color;
+      color: #4D9260;
+      background-color: transparent;
+    }
 
-  .navbar-toggle {
-    border-color: #dddddd;
-    width: 45px;
-    background: transparent;
-  }
+    .navbar-brand,
+    .navbar-brand:hover {
+      outline: none;
+      color: $navbar-color;
+      padding-top: $navbar-vertical-padding;
+      padding-bottom: $navbar-vertical-padding;
+    }
 
-  .navbar-nav > li > .dropdown-menu{
-    border-radius: 0;
-    margin-top: 10px;
-  }
+    .navbar-nav > li > a.btn {
+      line-height: $navbar-btn-height;
+      padding: 0 $navbar-btn-horizontal-padding;
+      // color: $navbar-btn-color;
+      // color: rgba(60, 2, 20, 0.85);
+      color: black;
+      border-radius: $navbar-btn-radius;
+      // border-radius: 4px;
+      // margin-top: ($navbar-height + 2 * $navbar-vertical-padding - $navbar-btn-height) / 2;
+      margin-top: 8px;
+      // margin-bottom: ($navbar-height + 2 * $navbar-vertical-padding - $navbar-btn-height) / 2;
+      margin-bottom: 0px;
+      margin-right: 30px;
+      // font-weight: bold;
+      font-weight: normal;
+      // background-color: $navbar-btn-bg;
+      background-color: rgba(105, 203, 77, 0.33);
+      font-size: 12px;
+      // TODO Les lignes suivantes sont certainement
+      // à commenter
+      &:hover{
+      //   background-color: darken($navbar-btn-bg, 30%);
+        color: white;
+        // TODO Define the following color as a variable
+        // used for red-hover-btn
+        background-color: #8c1818;
+        }
+      }
 
-  .navbar-nav > li > .dropdown-menu:before{
-    position: absolute;
-    background: white;
-    height: 10px;
-    width: 10px;
-    content: "\00a0";
-    display: block;
-    left: 50%;
-    margin-left: -5px;
-    top: -5px;
-    transform: rotate(45deg);
-    border-top: 1px solid #e6e6e6;
-    border-left: 1px solid #e6e6e6;
-    z-index: -1;
+    .navbar-brand img, .navbar-brand svg {
+      height: $navbar-height;
+      padding: 0px;
+    }
+
+    .img-avatar {
+      border: $navbar-profile-border-width solid $navbar-profile-border-color;
+      box-shadow: 0 0 2px rgb(200, 200, 200);
+      height: $navbar-height - (2 * $navbar-profile-border-width);
+      margin-right: 10px;
+      border-radius: $navbar-profile-radius;
+    }
+
+    .navbar-toggle {
+      border-color: #dddddd;
+      width: 45px;
+      background: transparent;
+    }
+
+    .navbar-nav > li > .dropdown-menu {
+      border-radius: 0;
+      margin-top: 10px;
+    }
+
+    .navbar-nav > li > .dropdown-menu:before {
+      position: absolute;
+      background: white;
+      height: 10px;
+      width: 10px;
+      content: "\00a0";
+      display: block;
+      left: 50%;
+      margin-left: -5px;
+      top: -5px;
+      transform: rotate(45deg);
+      border-top: 1px solid #e6e6e6;
+      border-left: 1px solid #e6e6e6;
+      z-index: -1;
+    }
   }
 }
 
 /* -------------------------------------
- * Navbar profile picture
+ * Navbar brand
  * ------------------------------------- */
-
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .navbar-wagon {
-    .navbar-brand img, .navbar-brand svg {
-      height: 50px;
+    // border-radius: 0px;
+    .navbar-brand {
+      padding-top: 5px !important;
+      margin-top: -5px !important;
     }
     .navbar-brand, .navbar-brand:hover
      {
@@ -151,22 +187,14 @@ $navbar-profile-border-width: 2px;
       padding-top: 0;
       padding-bottom: 0;
     }
-  }
-}
-/* -------------------------------------
- * Navbar brand
- * ------------------------------------- */
-@media screen and (min-width: 768px) {
-  .navbar-brand {
-    padding-top: 5px !important;
-  }
-  .navbar-brand > img {
-    height: 60px !important;
-    width: 60px;
-  }
-  .brand-text {
-    font-size: 1.5em;
-    font-weight: bold;
+    .navbar-brand > img, .navbar-brand svg {
+      height: 60px !important;
+      width: 60px;
+    }
+    .brand-text {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
   }
 }
 .brand-text {

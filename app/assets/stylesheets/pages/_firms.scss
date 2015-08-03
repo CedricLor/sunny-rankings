@@ -1,4 +1,105 @@
-.navbar.navbar-default.navbar-wagon {
-  margin-bottom: 5px;
+/* COMPANY SHOW VIEW */
+/* Compagny Icon */
+.company-icon {
+  width: 100%;
+  max-width: 130px;
+  margin: 0 auto;
+  display: block;
+}
+.company-index-icon {
+  max-width: 100px;
+  max-height: 35px;
+}
+/* Goody */
+.card-block span.badge:hover {
+  color: #4A4747;
+}
+/* Button */
+.rate-me {
+  font-size: 12px;
+}
+.add-me-after-search {
+  font-size: 16px;
+}
+/* Align badges to the right */
+span.badge:not(.top-row-badge):not(.trend-badge) {
+  float: right;
+}
+/* Competitor partial index formating */
+#competitorsCommunityRankings {
+  tr {
+    height: 52px;
+  }
+  td {
+    display: table-cell;
+    vertical-align: middle;
+  }
 }
 
+.competitor-rank {
+  transition: all 0.3s ease;
+  &:hover {
+    border-right: 2px solid $green !important;
+    td:nth-child(3) {
+      left: 1px;
+    }
+  }
+  td {
+    position: relative;
+  }
+  .cover-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+.cgu {
+  color: $gray;
+  &-checkbox {
+    visibility: hidden;
+    display: none;
+  }
+  a {
+    color: $gray;
+  }
+  .fa {
+    transition: all 0.3s ease;
+    background: $gray-lighter;
+    padding: 15px;
+    color: white;
+    border-radius: 50%;
+  }
+  &-checkbox:checked ~ label.cgu {
+    cursor: pointer;
+    color: $gray !important;
+    .fa {
+      background: $green !important;
+      padding: 18px;
+    }
+    a {
+      color: $blue !important;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    color: $gray-dark;
+    .fa {
+      background: $gray-dark;
+    }
+    a {
+      color: $gray-dark;
+    }
+  }
+}
+
+.red-paragraph {
+  color: red;
+}
+
+/* TOOLS */
+
+a.icon-wrapper:hover {
+  color: rgba(60, 2, 2, 0.8);;
+}

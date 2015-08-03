@@ -4,4 +4,70 @@
  * Before writing in this file, look if there is not
  * already a Bootstrap SCSS variable that does the same job
  * ------------------------------------- */
+* {
+  box-sizing: border-box;
+}
 
+body {
+  background-color: $my-body-bg;
+  font-family: roboto;
+  font-weight: 300;
+  letter-spacing: 0.7pt;
+  color: rgba(90, 100, 125, 0.8);
+  line-height: 1.2em;
+  font-size: 14px;
+}
+
+/* HEADER FORMATTINGS */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Open Sans;
+  font-weight: 400;
+  margin-top: 0px;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 1.8em;
+  color: #D55;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 1.5em;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 1.3em;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 1.1em;
+}
+
+/* LINK FORMATTING */
+
+a {
+  // TODO User variables
+  color: rgba(29, 6, 6, 0.98);
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgba(60, 2, 20, 0.5);
+}
+
+a:hover {
+  text-decoration: none;
+  color: rgba(60, 2, 2, 0.5);
+}
+
+label {
+  font-weight: lighter;
+}
+#main-container {
+  padding: 100px;
+  color: black;
+}
