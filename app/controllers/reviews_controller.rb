@@ -82,7 +82,7 @@ class ReviewsController < ApplicationController
   end
 
   def set_user
-    user_signed_in == false : @user = User.find_or_create_by_email(email: params[:email]) ? @user = current_user
+    user_signed_in == false ? @user = User.find_or_create_by_email(email: params[:email]) : @user = current_user
   end
 
   def set_review
