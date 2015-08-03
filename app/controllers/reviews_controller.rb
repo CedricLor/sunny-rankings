@@ -16,21 +16,18 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = current_user.reviews
+    set_user
+    @reviews = @user.reviews
 
-    @validated_but_not_agreed_for_publication_reviews = current_user.validated_but_not_agreed_for_publication_reviews_with_answers_and_test_names_for_publication
-    @number_of_validated_but_not_agreed_for_publication_reviews = @validated_but_not_agreed_for_publication_reviews.count
+    @number_of_validated_reviews_for_user = @user.number_of_validated_reviews
 
-    @number_of_validated_reviews_for_user = current_user.number_of_validated_reviews
-    @number_of_agreed_for_publication_reviews_for_user = current_user.number_of_agreed_for_publication_reviews
-
-    @pending_reviews = current_user.pending_reviews
+    @pending_reviews = @user.pending_reviews
     @number_of_pending_reviews_for_user = @pending_reviews.count
 
-    @published_reviews = current_user.effectively_published_reviews
+    @published_reviews = @user.effectively_published_reviews
     @number_of_effectively_published_reviews_for_user = @published_reviews.count
 
-    @pending_publication_reviews = current_user.pending_publication_reviews
+    @pending_publication_reviews = @user.pending_publication_reviews
     @number_of_reviews_pending_publication_for_user = @pending_publication_reviews.count
   end
 
@@ -41,35 +38,43 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    @firm = @review.firm
     @updated_review_params = {}
-    review_params_updater unless params[:review].nil?
-    @updated_review_params.merge(validated: true, updated_at_ip: request.remote_ip)
+    review_params_updater if review_params
+    # The validated: true happens here and not in the partials/views
+    # The update method may be called by a click on the (validate) button
+    # form the firm show view or the review index view (user_pending_review partial) or
+    # the edit review view (review edit view)
+    @updated_review_params.merge!(validated: true, updated_at_ip: request.remote_ip)
 
     if @review.update(@updated_review_params)
-      if @review.agreed_for_publication && ( @review.comment.present? || @review.title.present? )
-        flash[:notice] = "Dear #{current_user.profile.email}, thank you for agreeing to make your review of #{current_user.reviews.last.firm.name} public. Our team is currently reviewing your comments before publication."
-      elsif @review.agreed_for_publication && @review.comment.empty? && @review.title.empty?
-        flash[:notice] = "Dear #{current_user.profile.email}, your review of #{current_user.reviews.last.firm.name} has been successfully validated."
-      elsif @review.agreed_for_publication == false
-        flash[:notice] = "Dear #{current_user.profile.email}, your review of #{current_user.reviews.last.firm.name} has been successfully validated. You may now decide to publish it."
+      if ( @review.comment.present? || @review.title.present? )
+        flash[:notice] = "Your review of #{@firm.name} has been validated. Our team is currently reviewing your comments before publication."
+      elsif @review.comment.empty? && @review.title.empty?
+        flash[:notice] = "Your review of #{@firm.name} has been successfully validated. You can find it hereunder."
       end
-      redirect_to firm_path(@review.firm)
+      redirect_to firm_path(@firm)
     else
-      flash[:alert] = "Dear #{current_user.profile.email}, your review of #{current_user.reviews.last.firm.name} could not be validated."
+      flash[:alert] = "Your review of #{@firm.name} could not be validated."
       redirect_to edit_review_path(@review)
     end
   end
 
   def destroy
     @review.destroy
-    flash[:notice] = "Dear #{current_user.email}, your review of #{@review.firm.name} has been successfully delete."
+    flash[:notice] = "Your review of #{@review.firm.name} has been successfully delete."
     redirect_to firm_path(@review.firm_id)
   end
 
   private
 
   def review_params
-    params.require(:review).permit(:id, :firm_id, :confirmed_t_and_c, :comment, :title, :agreed_for_publication, answers_attributes: [:user_rating, :id])
+    params.require(:review).permit(:id, :firm_id, :confirmed_t_and_c, :comment, :title, answers_attributes: [:user_rating, :id]) if params[:review]
+  end
+
+  def review_params_updater
+    @updated_review_params[:answers_attributes] = review_params[:answers_attributes].values if review_params[:answers_attributes]
+    @updated_review_params.merge!(review_params.except(:answers_attributes))
   end
 
   def set_firm
@@ -77,11 +82,7 @@ class ReviewsController < ApplicationController
   end
 
   def set_user
-    if current_user.nil?
-      @user = User.find_or_create_by_email(email: params[:email])
-    else
-      @user = current_user
-    end
+    user_signed_in == false : @user = User.find_or_create_by_email(email: params[:email]) ? @user = current_user
   end
 
   def set_review
@@ -120,18 +121,10 @@ class ReviewsController < ApplicationController
     redirect_to firm_path(@firm.id) and return
   end
 
-  def review_params_updater
-    @updated_review_params = { answers_attributes: review_params[:answers_attributes].values } if review_params[:answers_attribues]
-    review_params.each do | param |
-      @updated_review_params[param[0]] = param[1] unless param[0] == "answers_attributes"
-    end
-    @updated_review_params[:created_at_ip] = request.remote_ip
-  end
-
   def create_new_review
     set_user
-    @review = Review.create_review_for_user({user: @user, firm: @firm, review_params: review_params})
-    session[:review_token] = @review.token
+    @review = Review.create_review_for_user({user: @user, firm: @firm, review_params: review_params, created_at_ip: request.remote_ip})
+    session[:review_token] = @review.token if user_signed_in == false
   end
 
   def variables_for_review_form

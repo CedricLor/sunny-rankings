@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
   has_one :review_portfolio, dependent: :destroy
+  has_many :reviews, through: :review_portfolio, dependent: :destroy
+  has_many :answers, through: :reviews, dependent: :destroy
+  has_many :firms, through: :reviews
 
   ###############
   has_many :email_addresses, through: :profile, dependent: :destroy
@@ -13,13 +16,11 @@ class User < ActiveRecord::Base
 
   has_one :default_email, through: :profile, class_name: "EmailAddress"
   validates :default_email, presence: true
-  default_scope { includes :default_email }
+  default_scope { includes :default_email, :profile, :review_portfolio, :answers, :reviews, :firms }
   ###############
 
   validates_associated :email_addresses, :default_email
 
-  has_many :reviews, through: :review_portfolio, dependent: :destroy
-  has_many :answers, through: :reviews, dependent: :destroy
 
   before_create :create_unique_username
   after_create :save_additional_stack
@@ -118,56 +119,40 @@ class User < ActiveRecord::Base
     password == password_confirmation && !password.blank?
   end
   ################################
-  def pending_reviews
-    reviews.where(validated: false)
-  end
-
-  def validated_reviews
-    reviews.where(validated: true)
-  end
-
-  def validated_but_not_agreed_for_publication_reviews
-    reviews.where(validated: true, agreed_for_publication: false)
-  end
-
-  def validated_but_not_agreed_for_publication_reviews_with_answers_and_test_names_for_publication
-    validated_but_not_agreed_for_publication_reviews.includes(answers: [:test]).order(updated_at: :desc)
-  end
-
-  def agreed_for_publication_reviews
-    reviews.where(agreed_for_publication: true)
-  end
-
-  def pending_publication_reviews
-    reviews.where(agreed_for_publication: true, publishable: false)
-  end
-
-  def effectively_published_reviews
-    reviews.where(agreed_for_publication: true, publishable: true)
-  end
-
-  def has_pending_reviews
-    pending_reviews.count > 0
-  end
-  ################################
   def number_of_reviews
     reviews.count
+  end
+  ################################
+  def pending_reviews
+    reviews.where(validated: false)
   end
 
   def number_of_pending_reviews
     pending_reviews.count
   end
 
+  def has_pending_reviews
+    number_of_pending_reviews > 0
+  end
+  #*************
+  def validated_reviews
+    reviews.where(validated: true)
+  end
+
   def number_of_validated_reviews
     validated_reviews.count
   end
-
-  def number_of_agreed_for_publication_reviews
-    agreed_for_publication_reviews.count
+  #*************
+  def pending_publication_reviews
+    reviews.where(validated: true, publishable: false)
   end
 
   def number_of_reviews_pending_publication
     pending_publication_reviews.count
+  end
+  #*************
+  def effectively_published_reviews
+    reviews.where(validated: false, publishable: true)
   end
 
   def number_of_effectively_published_reviews
@@ -183,11 +168,11 @@ class User < ActiveRecord::Base
   end
 
   def potentially_publishable_reviews_for_firm(firm)
-    reviews.where(firm_id: firm.id, agreed_for_publication: false)
+    reviews.where(firm_id: firm.id, validated: false)
   end
 
   def potentially_publishable_review_for_firm(firm)
-    reviews.where(firm_id: firm.id, agreed_for_publication: false).last
+    reviews.where(firm_id: firm.id, validated: false).last
   end
   ################################
 

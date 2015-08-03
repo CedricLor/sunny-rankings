@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150801155912) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
@@ -24,9 +27,9 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "addresses", force: :cascade do |t|
     t.string   "city"
@@ -47,8 +50,8 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.integer "address_id", null: false
   end
 
-  add_index "addresses_profiles", ["address_id", "profile_id"], name: "index_addresses_profiles_on_address_id_and_profile_id"
-  add_index "addresses_profiles", ["profile_id", "address_id"], name: "index_addresses_profiles_on_profile_id_and_address_id"
+  add_index "addresses_profiles", ["address_id", "profile_id"], name: "index_addresses_profiles_on_address_id_and_profile_id", using: :btree
+  add_index "addresses_profiles", ["profile_id", "address_id"], name: "index_addresses_profiles_on_profile_id_and_address_id", using: :btree
 
   create_table "answers", force: :cascade do |t|
     t.integer  "user_rating"
@@ -58,8 +61,8 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "answers", ["review_id"], name: "index_answers_on_review_id"
-  add_index "answers", ["test_id"], name: "index_answers_on_test_id"
+  add_index "answers", ["review_id"], name: "index_answers_on_review_id", using: :btree
+  add_index "answers", ["test_id"], name: "index_answers_on_test_id", using: :btree
 
   create_table "awards", force: :cascade do |t|
     t.string   "name",        null: false
@@ -83,8 +86,8 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "firm_addresses", ["address_id"], name: "index_firm_addresses_on_address_id"
-  add_index "firm_addresses", ["firm_id"], name: "index_firm_addresses_on_firm_id"
+  add_index "firm_addresses", ["address_id"], name: "index_firm_addresses_on_address_id", using: :btree
+  add_index "firm_addresses", ["firm_id"], name: "index_firm_addresses_on_firm_id", using: :btree
 
   create_table "firms", force: :cascade do |t|
     t.string   "name"
@@ -100,7 +103,7 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.string   "naf_code"
   end
 
-  add_index "firms", ["naf_code"], name: "index_firms_on_naf_code"
+  add_index "firms", ["naf_code"], name: "index_firms_on_naf_code", using: :btree
 
   create_table "granted_awards", force: :cascade do |t|
     t.integer  "award_id"
@@ -110,8 +113,8 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "granted_awards", ["award_id"], name: "index_granted_awards_on_award_id"
-  add_index "granted_awards", ["firm_id"], name: "index_granted_awards_on_firm_id"
+  add_index "granted_awards", ["award_id"], name: "index_granted_awards_on_award_id", using: :btree
+  add_index "granted_awards", ["firm_id"], name: "index_granted_awards_on_firm_id", using: :btree
 
   create_table "low_level_industries", force: :cascade do |t|
     t.string   "naf_code",              null: false
@@ -122,7 +125,7 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.datetime "updated_at",            null: false
   end
 
-  add_index "low_level_industries", ["naf_code"], name: "index_low_level_industries_on_naf_code", unique: true
+  add_index "low_level_industries", ["naf_code"], name: "index_low_level_industries_on_naf_code", unique: true, using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
@@ -142,7 +145,7 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.integer  "default_email_id"
   end
 
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "review_portfolios", force: :cascade do |t|
     t.integer  "user_id"
@@ -150,7 +153,7 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "review_portfolios", ["user_id"], name: "index_review_portfolios_on_user_id"
+  add_index "review_portfolios", ["user_id"], name: "index_review_portfolios_on_user_id", using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "review_portfolio_id"
@@ -170,8 +173,8 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.string   "token",                              default: ""
   end
 
-  add_index "reviews", ["firm_id"], name: "index_reviews_on_firm_id"
-  add_index "reviews", ["review_portfolio_id"], name: "index_reviews_on_review_portfolio_id"
+  add_index "reviews", ["firm_id"], name: "index_reviews_on_firm_id", using: :btree
+  add_index "reviews", ["review_portfolio_id"], name: "index_reviews_on_review_portfolio_id", using: :btree
 
   create_table "tests", force: :cascade do |t|
     t.string   "test_question"
@@ -190,7 +193,7 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "top_level_industries", ["naf_code"], name: "index_top_level_industries_on_naf_code", unique: true
+  add_index "top_level_industries", ["naf_code"], name: "index_top_level_industries_on_naf_code", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "encrypted_password",     default: "",    null: false
@@ -212,8 +215,18 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.datetime "confirmation_sent_at"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "answers", "reviews"
+  add_foreign_key "answers", "tests"
+  add_foreign_key "firm_addresses", "addresses"
+  add_foreign_key "firm_addresses", "firms"
+  add_foreign_key "firms", "low_level_industries", column: "naf_code", primary_key: "naf_code", name: "naf_code"
+  add_foreign_key "granted_awards", "awards"
+  add_foreign_key "granted_awards", "firms"
+  add_foreign_key "review_portfolios", "users"
+  add_foreign_key "reviews", "firms"
+  add_foreign_key "reviews", "review_portfolios"
 end

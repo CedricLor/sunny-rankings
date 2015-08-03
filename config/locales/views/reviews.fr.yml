@@ -20,7 +20,7 @@ fr:
     edit:
       page_title: "Votre vote en attente de validation"
       heading_sentence: "Voici votre dernier vote en attente de validation pour "
-      instructions_html: "<p>Merci de revoir vos réponses avec soin et de les mettre à jour en cas de besoin.</p><p>Une fois prêt, appuyez sur le bouton Valider ci-dessous.</p><p>Ou aidez les autres et partagez votre revue sur notre platforme</p>"
+      instructions_html: "<p>Merci de revoir vos réponses avec soin et de les mettre à jour en cas de besoin.</p><p>Une fois prêt, appuyez sur le bouton Valider ci-dessous.</p>"
     index:
       page_title: "Vos Revues"
       intro_paragraph:
@@ -28,7 +28,6 @@ fr:
         pending_review:
           one: "%{count} d'entre elles doit encore être relue et approuvée par vos soins."
           other: "%{count} d'entre elles doivent encore être relues et approuvées par vos soins."
-        review_agreed_for_publication: "Vous avez approuvé la publication de %{reviews_agreed_for_publication}. Merci ! Ceci aide énormément notre communauté à en savoir plus sur la parité sur le lieu de travail."
         review_pending_publication:
           one: "Parmi les revues dont vous avez approuvé la publication, %{count} est en cours de revue par nos services. Nous vous informerons dès qu'elle sera publiée."
           other: "Parmi les revues dont vous avez approuvé la publication, %{count} sont en cours de revue par nos services. Nous vous informerons dès qu'elles seront publiées."

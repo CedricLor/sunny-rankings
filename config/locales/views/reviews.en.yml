@@ -20,7 +20,7 @@ en:
     edit:
       page_title: "Your Pending Review"
       heading_sentence: "Here is your latest pending review for "
-      instructions_html: "<p>Please review your votes carefully and update them, as the case may be.</p><p>Once your are done, press the Validate button below.</p><p>Or help the others and publish it on our platform.</p>"
+      instructions_html: "<p>Please review your votes carefully and update them, as the case may be.</p><p>Once your are done, press the Validate button below.</p>"
     index:
       page_title: "Your Past Reviews"
       intro_paragraph:
@@ -28,7 +28,6 @@ en:
         pending_review:
           one: "Among these, %{count} need to be reviewed and approved by you."
           other: "Among these, %{count} need to be reviewed and approved by you."
-        review_agreed_for_publication: "You have agreed to the publication of %{reviews_agreed_for_publication}. Thank you! It helps a lot our community to know more about gender equality on the workplace."
         review_pending_publication:
           one: "Among the reviews you have approved for publication, %{count} is pending approval for publication by our services. We will inform you as soon as it is published."
           other: "Among the reviews you have approved for publication, %{count} are pending approval for publication by our services. We will inform you as soon as they are published."

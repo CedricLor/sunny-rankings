@@ -1,3 +1,4 @@
+<%# Very similar to the reviews/edit form %>
 <div class="your-pending-review">
   <h4 class="text-center">
     <%= t(".your_pending_review_header", validation_publication: review.validated == true ? "publication" : "validation", default: "Your pending review") %>
@@ -21,19 +22,19 @@
     <%# Forms %>
 
     <% unless @status == "disabled" %>
+      <%# discard form %>
       <%= form_tag(review_path(review), id: 'deleteReviewForm', method: :delete) do -%>
       <% end %>
 
       <% if review.validated == false %>
+        <%# edit form %>
         <%= form_tag(edit_review_path(review), id: 'editReviewForm', method: :get) do -%>
         <% end %>
+        <%# validate form %>
         <%= simple_form_for review, url: review_path(review), method: :patch do |f| %>
         <% end %>
       <% end %>
 
-      <%= form_tag(review_path(review), id: 'publishReviewForm', method: :patch) do -%>
-        <%= hidden_field_tag 'review[agreed_for_publication]', 'true' %>
-      <% end %>
     <% end %>
 
     <%# Buttons %>
@@ -60,11 +61,6 @@
         </div>
       <% end %>
 
-      <div class="btn-group" role="group">
-        <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'publishReviewButton', form: "publishReviewForm", disabled: @button_status) do %>
-          <%= t( "publish_button_label", default: "Publish") %>
-        <% end %>
-      </div>
     </div>
 
 

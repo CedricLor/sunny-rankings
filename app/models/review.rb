@@ -46,17 +46,17 @@ class Review < ActiveRecord::Base
   validates :answers, association_count: { maximum: ANSWERS_REQUIRED_COUNT }, on: :update
   validates :answers, association_count: { minimum: ANSWERS_MINIMUM_COUNT }
 
-  # validates :featured, inclusion: { in: [true] }, if: Proc.new { | rev | rev.publishable == true && rev.agreed_for_publication == true && rev.confirmed_t_and_c == true && rev.validated == true && ( rev.title.present? || rev.comment.present? ) }
   validate :featured_checker
 
   before_create :generate_token, unless: :token?
+
+  default_scope { includes :firm, :answers }
+
 
   def featured_checker
     if featured == true
       if publishable == false
         errors.add(:featured, "requires that review has been accepted by skanher for publication (publishable be true)")
-      elsif agreed_for_publication == false
-        errors.add(:feature, "requires that the user has agreed to the publication (agreed_for_publication be true)")
       elsif confirmed_t_and_c == false
         errors.add(:feature, "requires that the terms and conditions acceptance have been accepted")
       elsif validated == false
@@ -96,7 +96,6 @@ class Review < ActiveRecord::Base
     review = attributes[:user].review_portfolio.reviews.build(
       comment: attributes[:review_params][:comment],
       title: attributes[:review_params][:title],
-      agreed_for_publication: false,
       publishable: false,
       validated: false,
       firm_id: attributes[:firm].id,

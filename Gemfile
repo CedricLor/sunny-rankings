@@ -3,7 +3,8 @@ source 'https://rubygems.org'
 # For Heroku
 ruby '2.2.2'
 gem 'rails_12factor', group: :production
-gem 'pg',             group: :production
+# gem 'pg',             group: :production
+gem 'pg'
 gem 'puma',           group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -77,7 +78,7 @@ gem 'cocoon', '~> 1.2.6'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  # gem 'sqlite3'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
