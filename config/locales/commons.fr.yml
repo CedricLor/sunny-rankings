@@ -19,7 +19,7 @@ fr:
         review_destruction_failure: "Votre revue de %{firm_name} n'a pas pu être effacée."
       create:
         review_successfully_saved_logged_user: "Cher %{user_email}, votre revue de %{firm_name} a été enregistrée avec succès. Elle doit encore être validée par vos soins."
-        review_successfully_saved_unlogged_user: "Cher #{params[:email]}, votre revue de %{firm_name} a été enregistrée avec succès. Merci de consulter vos emails sur %{user_mail} pour la valider !"
-        invalid_email: "Merci d'indiquer une addresse eamil valide ! "
+        review_successfully_saved_unlogged_user: "Cher %{user_email}, votre revue de %{firm_name} a été enregistrée avec succès. Merci de consulter vos emails sur %{user_mail} pour la valider !"
+        invalid_email: "Merci d'indiquer une addresse email valide ! "
         no_vote_on_any_criteria: "Merci de voter sur au moins un critère ! "
         conditions_not_accepted: "Merci d'accepter les conditions d'utilisation de nos services !"
