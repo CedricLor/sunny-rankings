@@ -63,10 +63,10 @@
           </li>
         <% else %>
           <li>
-            <%= link_to t(:sign_in, default: "Sign in"), new_user_session_path %>
+            <%= link_to t(:sign_in, default: "Sign in"), new_user_session_path, class: "btn btn-default" %>
           </li>
           <li>
-            <%= link_to t(:sign_up, default: "Sign up"), new_user_registration_path %>
+            <%= link_to t(:sign_up, default: "Sign up"), new_user_registration_path, class: "btn btn-default" %>
           </li>
         <% end %>
       </ul>

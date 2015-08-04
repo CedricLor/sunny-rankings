@@ -1,8 +1,11 @@
 <div class="row">
   <div class="col-xs-12">
-    <%= r.input :title, label: t(".title_label_for_review_comments", default: "Title (optional)") %>
+    <h5><%= t(".comment_action_sentence", firm_name: @firm.name, default: "Share your experience on %{@firm.name}") %></h5>
   </div>
   <div class="col-xs-12">
-    <%= r.input :comment, label: t(".comment_label_for_review_comments", default: "Comments (optional)") %>
+    <%= r.input :title, label: t(".title_label_for_review_comments", default: "Title") %>
+  </div>
+  <div class="col-xs-12">
+    <%= r.input :comment, label: t(".comment_label_for_review_comments", default: "Comments") %>
   </div>
 </div>

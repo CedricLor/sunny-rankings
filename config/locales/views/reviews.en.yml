@@ -44,5 +44,6 @@ en:
       for_firm: " for "
       on: " on '%{date}'"
     review_form_comments:
-      title_label_for_review_comments: "Title (optional)"
-      comment_label_for_review_comments: "Comments (optional)"
+      comment_action_sentence: "Share your experience on %{firm_name} with us!"
+      title_label_for_review_comments: "Title"
+      comment_label_for_review_comments: "Comments"
