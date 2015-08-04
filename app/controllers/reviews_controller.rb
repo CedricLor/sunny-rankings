@@ -82,7 +82,7 @@ class ReviewsController < ApplicationController
   end
 
   def set_user
-    user_signed_in == false ? @user = User.find_or_create_by_email(email: params[:email]) : @user = current_user
+    user_signed_in? ? @user = current_user : @user = User.find_or_create_by_email(email: params[:email])
   end
 
   def set_review
@@ -124,7 +124,7 @@ class ReviewsController < ApplicationController
   def create_new_review
     set_user
     @review = Review.create_review_for_user({user: @user, firm: @firm, review_params: review_params, created_at_ip: request.remote_ip})
-    session[:review_token] = @review.token if user_signed_in == false
+    session[:review_token] = @review.token unless user_signed_in?
   end
 
   def variables_for_review_form
