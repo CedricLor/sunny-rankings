@@ -45,7 +45,6 @@ class ReviewsController < ApplicationController
     review_params_updater
 
     if @review.update(@updated_review_params)
-      byebug
       if ( @review.comment.present? || @review.title.present? )
         flash[:notice] = t(
           "review_validated_but_under_review",
