@@ -25,6 +25,8 @@ fr:
     mailer:
       confirmation_instructions:
         subject: "Instructions de confirmation de votre addresse email"
+        thank_you_for_your_review: "Et merci pour votre revue de %{firm_name}!"
+        instruction_if_first_review: "Afin de valider votre revue de %{firm_name}, vous devez confirmer votre email en cliquant sur le lien ci-dessous :"
       reset_password_instructions:
         subject: "Instructions pour changer le mot de passe"
       unlock_instructions:

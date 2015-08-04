@@ -58,10 +58,12 @@ class User < ActiveRecord::Base
   def self.find_or_create_by_email(attributes)
     user = find_by_email(attributes[:email])
     if user.nil?
-      user = create(
+      user = new(
         email: attributes[:email],
         validated: false,
         is_new_user_created_on_vote: true)
+      user.skip_confirmation_notification!
+      user.save
     else
       user
       user.is_new_user_created_on_vote = false

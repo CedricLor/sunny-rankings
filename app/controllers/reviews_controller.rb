@@ -167,7 +167,8 @@ class ReviewsController < ApplicationController
           default: "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. Please check your emails at #{params[:email]} to validate it!"
           )
       if @user.is_new_user_created_on_vote
-        ReviewMailer.first_review_for(params[:email], @firm).deliver_now
+        @user.send_confirmation_instructions
+        # ReviewMailer.first_review_for(params[:email], @firm).deliver_now
       else
         ReviewMailer.new_review_with_your_email(params[:email], @firm).deliver_now
       end

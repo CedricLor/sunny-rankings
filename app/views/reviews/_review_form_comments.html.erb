@@ -6,6 +6,6 @@
     <%= r.input :title, label: t(".title_label_for_review_comments", default: "Title") %>
   </div>
   <div class="col-xs-12">
-    <%= r.input :comment, label: t(".comment_label_for_review_comments", default: "Comments") %>
+    <%= r.input :comment, as: :text, input_html: { rows: 4 }, label: t(".comment_label_for_review_comments", default: "Comments") %>
   </div>
 </div>

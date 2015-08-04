@@ -19,6 +19,8 @@ en:
     mailer:
       confirmation_instructions:
         subject: "Account email confirmation instructions"
+        thank_you_for_your_review: "And thank you for your review of %{firm_name}!"
+        instruction_if_first_review: "In order to validate your review of %{firm_name}, you must confirm your account email through the link below:"
       reset_password_instructions:
         subject: "Reset password instructions"
       unlock_instructions:

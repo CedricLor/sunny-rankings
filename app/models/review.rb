@@ -145,10 +145,8 @@ class Review < ActiveRecord::Base
     end
 
     def switch_publishable_to_true
-      byebug
       if validated == true && comment.empty? && title.empty?
         self.publishable = true
       end
-      byebug
     end
 end
