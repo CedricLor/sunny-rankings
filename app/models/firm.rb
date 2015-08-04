@@ -144,12 +144,12 @@ class Firm < ActiveRecord::Base
     reviews.where(validated: false).count
   end
 
-  def valid_and_agreed_for_publication_reviews
-    valid_reviews.where(agreed_for_publication: true)
+  def valid_and_publishable_reviews
+    valid_reviews.where(publishable: true)
   end
 
-  def valid_and_publishable_reviews
-    valid_and_agreed_for_publication_reviews.where(publishable: true)
+  def number_of_valid_and_publishable_reviews
+    valid_and_publishable_reviews.count
   end
 
   def ordered_reviews_with_answers_test_names_and_usernames_for_publication

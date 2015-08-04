@@ -42,6 +42,7 @@ class FirmsController < ApplicationController
       @status = "disabled"
       session[:review_token] = ""
     end
+    @number_of_accounted_firm_reviews = @firm.number_of_valid_and_publishable_reviews
     @competitors = Firm.top10_by_industry_by_country(@firm.industry, @firm.country)
     @tests = Test.all
     @review = Review.new

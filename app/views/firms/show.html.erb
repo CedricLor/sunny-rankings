@@ -42,7 +42,7 @@
                   </h4>
                 </div>
                 <div class="col-xs-9 text-right">
-                  (<%= t("review", count: @firm.reviews.count, default: "#{@firm.reviews.count} review(s)")  %>)
+                  (<%= t("review", count: @number_of_accounted_firm_reviews, default: "#{@firm.reviews.count} review(s)")  %>)
                 </div>
               </div>
               <div class="row">
@@ -67,7 +67,7 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="text-wrapper card-block shadowed-box">
-              <%= link_to t('.big_call_to_rate', firm_name: @firm.name, default: "Rate #{@firm.name}!"), "#review_form", class: "btn btn-default btn-lg btn-block red-hover-btn main-call-to-action-btn", type: "button" %>
+              <%= link_to t('.big_call_to_rate', firm_name: @firm.name, default: "Rate #{@firm.name}!"), "#slightly_above_review_form", class: "btn btn-default btn-lg btn-block red-hover-btn main-call-to-action-btn", type: "button" %>
             </div>
           </div>
         </div>
@@ -75,6 +75,7 @@
         <%= render "community_ranking_details" %>
         <%= render "competitors_community_rankings", selected_firm: @firm, competitors: @competitors %>
         <%= render "official_labels" %>
+        <span id="slightly_above_review_form"></span>
         <%= render "new_review_given_firm" %>
         <%= render "latest_members_reviews" %>
       </div>
