@@ -1,7 +1,8 @@
 <div class="card-block shadowed-box">
   <div class="text-center">
-    <h3>Reviews pending your validation</h3>
-    <p>You may also decide to publish them right away!!!</p>
+    <h3>
+      <%= t('.section_title', count: @pending_reviews.count, default: "Reviews pending your validation") %>
+    </h3>
     <hr/>
   </div>
   <% @pending_reviews.each do | review | %>

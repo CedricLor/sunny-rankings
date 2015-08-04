@@ -1,10 +1,15 @@
 <div class="card-block shadowed-box">
   <div class="text-center">
-    <h3>Reviews under review by our services before publication</h3>
+    <h3>
+      <%= t('.section_title', count: @pending_publication_reviews.count, default: "Review(s) pending validation by our services before publication") %>
+    </h3>
+    <% process_explanation_text_html = "
     <p>You have already validated these reviews.</p>
-    <p>You have also marked them for publication.</p>
     <p>We are currently reviewing the comments and titles before publication.</p>
-    <p>We will keep you informed as soon as they are published.</p>
+    <p>We will inform you as soon as they are published.</p>
+    "
+    %>
+    <%= t('.process_explanation_text_html', count: @pending_publication_reviews.count, default: process_explanation_text_html) %>
     <hr/>
   </div>
   <% @pending_publication_reviews.each do | review | %>

@@ -49,6 +49,7 @@ class Review < ActiveRecord::Base
   validate :featured_checker
 
   before_create :generate_token, unless: :token?
+  before_update :switch_publishable_to_true
 
   default_scope { includes :firm, :answers }
 
@@ -98,6 +99,7 @@ class Review < ActiveRecord::Base
       title: attributes[:review_params][:title],
       publishable: false,
       validated: false,
+      featured: false,
       firm_id: attributes[:firm].id,
       user_firm_relationship: "Undefined",
       confirmed_t_and_c: attributes[:review_params][:confirmed_t_and_c],
@@ -140,5 +142,13 @@ class Review < ActiveRecord::Base
       while Review.find_by_token(self.token).present? || self.token.blank?
         self.token = SecureRandom.uuid
       end
+    end
+
+    def switch_publishable_to_true
+      byebug
+      if validated == true && comment.empty? && title.empty?
+        self.publishable = true
+      end
+      byebug
     end
 end

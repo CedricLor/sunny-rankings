@@ -1,6 +1,8 @@
 <div class="card-block shadowed-box">
   <div class="text-center">
-    <h3>Your published reviews</h3>
+    <h3>
+      <%= t('.section_title', count: @number_of_effectively_published_reviews_for_user, default: "Your published reviews") %>
+    </h3>
     <hr/>
   </div>
   <% @published_reviews.each do | review | %>

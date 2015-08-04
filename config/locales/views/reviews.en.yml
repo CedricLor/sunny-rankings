@@ -29,8 +29,8 @@ en:
           one: "Among these, %{count} need to be reviewed and approved by you."
           other: "Among these, %{count} need to be reviewed and approved by you."
         review_pending_publication:
-          one: "Among the reviews you have approved for publication, %{count} is pending approval for publication by our services. We will inform you as soon as it is published."
-          other: "Among the reviews you have approved for publication, %{count} are pending approval for publication by our services. We will inform you as soon as they are published."
+          one: "Among the reviews you have validated, %{count} is pending approval for publication by our services. We will inform you as soon as it is published."
+          other: "Among the reviews you have validated, %{count} are pending approval for publication by our services. We will inform you as soon as they are published."
         effectively_published_review:
           one: "And you already have %{count} published review. Congratulations!"
           other: "And %{count} of your reviews have already been published. Congratulations!!!"
@@ -39,6 +39,21 @@ en:
         pending_review_display_by_session_sentence_html:
           "<p>You are seeing what your review will look like prior to your validation.</p>
            <p>We sent you an email with explanations for this purpose to the address you provided us with.</p>"
+      pending_reviews:
+        section_title:
+          one: "Review pending your validation"
+          other: "Reviews pending your validation"
+      reviews_pending_publication:
+        section_title:
+          one: "Review pending validation by our services before publication"
+          other: "Reviews pending validation by our services before publication"
+        process_explanation_text_html:
+          one: "<p>You have already validated this review.</p><p>We are currently reviewing the comments and the title before publication.</p><p>We will inform you as soon as it is published.</p>"
+          other: "<p>You have already validated these reviews.</p><p>We are currently reviewing the comments and titles before publication.</p><p>We will inform you as soon as they are published.</p>"
+      published_reviews:
+        section_title:
+          one: "Revue publiée"
+          other: "Revues publiées"
     individual_review_table:
       by: "By "
       for_firm: " for "

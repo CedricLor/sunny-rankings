@@ -16,6 +16,8 @@ class Answer < ActiveRecord::Base
 
   after_update :destroy_if_user_rating_is_0
 
+  default_scope { includes :test }
+
   def sensitive
     (user_rating == 1 && test.positive_negative_switch == "negative") || (user_rating == 5 && test.positive_negative_switch == "positive")
   end

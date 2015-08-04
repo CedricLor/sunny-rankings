@@ -15,7 +15,7 @@
       </td>
     </tr>
   <% end %>
-  <% review.answers.each do | answer | %>
+  <% review.answers.reverse.each do | answer | %>
     <tr>
       <td>
         <span class="indiv-review-test-question"><%= t( :short_question, scope: [:tests_questions, :"question_#{answer.test_id}"], default: answer.test.test_question ) %></span>

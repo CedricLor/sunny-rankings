@@ -29,8 +29,8 @@ fr:
           one: "%{count} d'entre elles doit encore être relue et approuvée par vos soins."
           other: "%{count} d'entre elles doivent encore être relues et approuvées par vos soins."
         review_pending_publication:
-          one: "Parmi les revues dont vous avez approuvé la publication, %{count} est en cours de revue par nos services. Nous vous informerons dès qu'elle sera publiée."
-          other: "Parmi les revues dont vous avez approuvé la publication, %{count} sont en cours de revue par nos services. Nous vous informerons dès qu'elles seront publiées."
+          one: "Parmi les revues que vous avez validées, %{count} est en cours de revue par nos services. Nous vous informerons dès qu'elle sera publiée."
+          other: "Parmi les revues que vous avez validées, %{count} sont en cours de revue par nos services. Nous vous informerons dès qu'elles seront publiées."
         effectively_published_review:
           one: "Et vous avez déjà %{count} revue publiée. Bravo !"
           other: "Et %{count} de vos revues ont déjà été publiées. Bravo !"
@@ -39,6 +39,21 @@ fr:
         pending_review_display_by_session_sentence_html:
           "<p>Nous vous présentons ici votre revue telle qu'elle pourrait paraître avant sa validation par vos soins.</p>
            <p>Nous vous avons envoyé un email avec des explications à ce sujet à l'addresse que vous nous avez fournie.</p>"
+      pending_reviews:
+        section_title:
+          one: "Revue en attente de validation de votre part"
+          other: "Revues en attente de validation de votre part"
+      reviews_pending_publication:
+        section_title:
+          one: "Revue en attente de validation pas nos services avant publication"
+          other: "Revues en attente de validation par nos services avant publication"
+        process_explanation_text_html:
+          one: "<p>Cette revue a déjà été validée par vos soins.</p><p>Nous sommes actuellement en train de revoir le commentaire et le titre avant sa publication.</p><p>Nous vous informerons dés qu'elle sera publiée.</p>"
+          other: "<p>Ces revues ont déjà été validées par vos soins.</p><p>Nous sommes actuellement en train de revoir les commentaires et les titres avant leur publication.</p><p>Nous vous informerons dés qu'elles seront publiées.</p>"
+      published_reviews:
+        section_title:
+          one: "Revue publiée"
+          other: "Revues publiées"
     individual_review_table:
       by: "De "
       for_firm: " pour "

@@ -7,3 +7,19 @@ en:
   for_firm: " for "
   on: " on '%{date}'"
   pseudonym: " (pseudonym)"
+  controllers:
+    reviews:
+      destroy:
+        review_destruction_success: "Your review of %{firm_name} has been successfully delete."
+      update:
+        review_validated_but_under_review: "Your review of %{firm_name} has been validated. Our team is currently reviewing your comments before publication."
+        review_validated_and_published: "Your review of %{firm_name} has been successfully validated. You can find it hereunder."
+        review_validation_failure: "Your review of %{firm_name} could not be validated."
+      destroy:
+        review_destruction_failure: "Your review of %{firm_name} could not be deleted."
+      create:
+        review_successfully_saved_logged_user: "Dear %{user_email}, your review of %{firm_name} has been successfully saved. You still need to validated it."
+        review_successfully_saved_unlogged_user: "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. Please check your emails at #{params[:email]} to validate it!"
+        invalid_email: "Please indicate a valid email address! "
+        no_vote_on_any_criteria: "Please vote on at least one criteria! "
+        conditions_not_accepted: "Please accept the conditions of use of rating services!"

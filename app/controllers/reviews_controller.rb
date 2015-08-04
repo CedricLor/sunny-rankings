@@ -38,32 +38,59 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @firm = @review.firm
-    @updated_review_params = {}
-    review_params_updater if review_params
-    # The validated: true happens here and not in the partials/views
     # The update method may be called by a click on the (validate) button
     # form the firm show view or the review index view (user_pending_review partial) or
     # the edit review view (review edit view)
-    @updated_review_params.merge!(validated: true, updated_at_ip: request.remote_ip)
+    @firm = @review.firm
+    review_params_updater
 
     if @review.update(@updated_review_params)
+      byebug
       if ( @review.comment.present? || @review.title.present? )
-        flash[:notice] = "Your review of #{@firm.name} has been validated. Our team is currently reviewing your comments before publication."
+        flash[:notice] = t(
+          "review_validated_but_under_review",
+          scope: [:controllers, :reviews, :update],
+          firm_name: @firm.name,
+          default: "Your review of #{@firm.name} has been validated. Our team is currently reviewing your comments before publication."
+          )
       elsif @review.comment.empty? && @review.title.empty?
-        flash[:notice] = "Your review of #{@firm.name} has been successfully validated. You can find it hereunder."
+        flash[:notice] = t(
+          "review_validated_and_published",
+          scope: [:controllers, :reviews, :update],
+          firm_name: @firm.name,
+          default: "Your review of #{@firm.name} has been successfully validated. You can find it hereunder."
+          )
       end
       redirect_to firm_path(@firm)
     else
-      flash[:alert] = "Your review of #{@firm.name} could not be validated."
+      flash[:alert] = t(
+          "review_validation_failure",
+          scope: [:controllers, :reviews, :update],
+          firm_name: @firm.name,
+          default: "Your review of #{@firm.name} could not be validated."
+          )
       redirect_to edit_review_path(@review)
     end
   end
 
   def destroy
-    @review.destroy
-    flash[:notice] = "Your review of #{@review.firm.name} has been successfully delete."
-    redirect_to firm_path(@review.firm_id)
+    firm = @review.firm
+    if @review.destroy
+      flash[:notice] = t(
+          "review_destruction_success",
+          scope: [:controllers, :reviews, :destroy],
+          firm_name: firm.name,
+          default: "Your review of #{firm.name} has been successfully delete."
+          )
+    else
+      flash[:notice] = t(
+          "review_destruction_failure",
+          scope: [:controllers, :reviews, :destroy],
+          firm_name: firm.name,
+          default: "Your review of #{firm.name} could not be deleted."
+          )
+    end
+    redirect_to firm_path(@review.firm_id) if params[:controller] == "firms" || reviews_path if params[:controller] == "reviews"
   end
 
   private
@@ -73,8 +100,11 @@ class ReviewsController < ApplicationController
   end
 
   def review_params_updater
-    @updated_review_params[:answers_attributes] = review_params[:answers_attributes].values if review_params[:answers_attributes]
-    @updated_review_params.merge!(review_params.except(:answers_attributes))
+    @updated_review_params = {updated_at_ip: request.remote_ip, validated: true}
+    if review_params
+      @updated_review_params.merge!(review_params.except(:answers_attributes))
+      @updated_review_params[:answers_attributes] = review_params[:answers_attributes].values if review_params[:answers_attributes]
+    end
   end
 
   def set_firm
@@ -92,15 +122,27 @@ class ReviewsController < ApplicationController
   def form_has_errors?
     has_errors = false
     unless EmailValidator.valid?(params[:email])
-      flash[:alert] = "Please indicate a valid email address! "
+      flash[:alert] = t(
+          :invalid_email,
+          scope: [:controllers, :reviews, :create],
+          default: "Please indicate a valid email address! "
+          )
       has_errors = true
     end
     if review_params[:answers_attributes] == {}
-      flash[:alert] = "Please vote on at least one criteria! "
+      flash[:alert] = t(
+          :no_vote_on_any_criteria,
+          scope: [:controllers, :reviews, :create],
+          default: "Please vote on at least one criteria! "
+          )
       has_errors = true
     end
     if review_params[:confirmed_t_and_c] != "1"
-      flash[:alert] = "Please accept the conditions of use of rating services!"
+      flash[:alert] = t(
+          :conditions_not_accepted,
+          scope: [:controllers, :reviews, :create],
+          default: "Please accept the conditions of use of rating services!"
+          )
       has_errors = true
     end
     has_errors
@@ -108,10 +150,22 @@ class ReviewsController < ApplicationController
 
   def redirect_user
     if current_user
-      flash[:notice] = "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. It is currently pending. It still needs to be validated."
+      flash[:notice] = t(
+          :review_successfully_saved_logged_user,
+          scope: [:controllers, :reviews, :create],
+          firm_name: @firm.name,
+          user_email: params[:email],
+          default: "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. It is currently pending. It still needs to be validated."
+          )
       ReviewMailer.new_review_for(params[:email], @firm).deliver_now
     else
-      flash[:notice] = "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. Please check your emails at #{params[:email]} to validate it!"
+      flash[:notice] = t(
+          :review_successfully_saved_unlogged_user,
+          scope: [:controllers, :reviews, :create],
+          firm_name: @firm.name,
+          user_email: params[:email],
+          default: "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. Please check your emails at #{params[:email]} to validate it!"
+          )
       if @user.is_new_user_created_on_vote
         ReviewMailer.first_review_for(params[:email], @firm).deliver_now
       else

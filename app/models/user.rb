@@ -152,7 +152,7 @@ class User < ActiveRecord::Base
   end
   #*************
   def effectively_published_reviews
-    reviews.where(validated: false, publishable: true)
+    reviews.where(validated: true, publishable: true)
   end
 
   def number_of_effectively_published_reviews

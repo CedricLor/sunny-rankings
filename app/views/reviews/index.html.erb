@@ -19,7 +19,7 @@
                 <p><%= t(:pending_review, scope: [:reviews, :index, :intro_paragraph], count: @number_of_pending_reviews_for_user, default: "Among these, #{@number_of_pending_reviews_for_user} need to be reviewed and approved by you.") %></p>
               <% end %>
               <% if @number_of_reviews_pending_publication_for_user >= 1 %>
-                <p><%= t(:review_pending_publication, scope: [:reviews, :index, :intro_paragraph], count: @number_of_reviews_pending_publication_for_user, default: "Among the reviews you have approved, #{@number_of_reviews_pending_publication_for_user} is / are pending approval for publication by our services. We will inform you as soon as it is / they are published.") %></p>
+                <p><%= t(:review_pending_publication, scope: [:reviews, :index, :intro_paragraph], count: @number_of_reviews_pending_publication_for_user, default: "Among the reviews you have validated, #{@number_of_reviews_pending_publication_for_user} is / are pending approval for publication by our services. We will inform you as soon as it is / they are published.") %></p>
               <% end %>
               <% if @number_of_effectively_published_reviews_for_user >= 1 %>
                 <p><%=  t(:effectively_published_review, scope: [:reviews, :index, :intro_paragraph], count: @number_of_effectively_published_reviews_for_user, default: "And you already have #{@number_of_effectively_published_reviews_for_user} published reviews.") %></p>
