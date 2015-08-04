@@ -21,6 +21,6 @@ class UserMailer < ApplicationMailer
     @email = user.email
     @attempt_email = attempt_email
 
-    mail(to: @email, to: @attempt_email, subject: "Someone is trying to create an account on Skanher with one of your emails. Is it you?")
+    mail(to: [@email, @attempt_email], subject: "Someone is trying to create an account on Skanher with one of your emails. Is it you?")
   end
 end
