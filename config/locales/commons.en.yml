@@ -19,7 +19,7 @@ en:
         review_destruction_failure: "Your review of %{firm_name} could not be deleted."
       create:
         review_successfully_saved_logged_user: "Dear %{user_email}, your review of %{firm_name} has been successfully saved. You still need to validated it."
-        review_successfully_saved_unlogged_user: "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. Please check your emails at #{params[:email]} to validate it!"
+        review_successfully_saved_unlogged_user: "Dear %{user_email}, your review of %{@firm.name} has been successfully saved. Please check your emails at %{user_email} to validate it!"
         invalid_email: "Please indicate a valid email address! "
         no_vote_on_any_criteria: "Please vote on at least one criteria! "
         conditions_not_accepted: "Please accept the conditions of use of rating services!"
