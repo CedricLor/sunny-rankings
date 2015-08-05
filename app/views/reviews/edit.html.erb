@@ -18,9 +18,6 @@
 
             <%# forms group %>
 
-            <%# delete form %>
-            <%= form_tag(review_path(@review), id: 'deleteReviewForm', method: :delete) do -%>
-            <% end %>
             <%# validate form %>
             <%= simple_form_for @review do |r| %>
               <%= r.error_notification %>
@@ -31,11 +28,8 @@
             <%# buttons group %>
 
             <div class="btn-group btn-group-justified" role="group" aria-label="review-buttons-group">
-              <div class="btn-group" role="group">
-                <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'discardReviewButton', form: "deleteReviewForm") do %>
-                  <%= t( "discard_button_label", default: "Discard") %>
-                <% end %>
-              </div>
+              <%# discard form %>
+              <%= render 'reviews/discard_button_for_review', review: review %>
               <div class="btn-group" role="group">
                 <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'validateReviewButton', form: "edit_review_#{@review.id}") do %>
                   <%= t( "validate_button_label", default: "Validate") %>

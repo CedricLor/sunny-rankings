@@ -1,21 +1,15 @@
-<div class="row xs-hidden text-center">
-  <div class="col-xs-3">
+<div id= "socialButtonsContainer" class="row xs-hidden">
+  <div class="col-xs-4 text-left">
     <div class="fb-share-button" data-href="http://www.skanher.se/" data-layout="button">
     </div>
   </div>
-  <div class="col-xs-3">
+  <div class="col-xs-4 text-center">
     <%= link_to("Tweet", "https://twitter.com/share", class: "twitter-share-button", "data-via" => "skanher", "data-count" => "none") %>
   </div>
-  <div class="col-xs-3">
+  <div class="col-xs-4 text-right">
     <%= javascript_include_tag '//platform.linkedin.com/in.js' do %>
       lang: en_US
     <% end %>
-    <%#= javascript_tag, type: "IN/Share", "data-url" => "http://www.skanher.se/" do %>
-    <%# end %>
-    <!-- TO BE DISCUSSED WITH LIEN -->
     <script type="IN/Share" data-url="http://www.skanher.se/"></script>
-  </div>
-  <div class="col-xs-3">
-    <%= link_to( t(".rate_me", default: "Rate me!"), "#review_form", class: "btn btn-default btn-xs rate-me red-hover-btn", role: "button") %>
   </div>
 </div>

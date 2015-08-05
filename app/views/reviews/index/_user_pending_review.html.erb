@@ -19,44 +19,26 @@
     <% @firm.nil? ? firm = review.firm : firm = @firm %>
     <%= render 'reviews/individual_review_table', review: review, firmname: firm.name, firmid: firm.id, displayed_reviews_css_array: displayed_reviews_css_array %>
 
-    <%# Forms %>
-
-    <% unless @status == "disabled" %>
-      <%# discard form %>
-      <%= form_tag(review_path(review), id: 'deleteReviewForm', method: :delete) do -%>
-      <% end %>
-
-      <% if review.validated == false %>
-        <%# edit form %>
-        <%= form_tag(edit_review_path(review), id: 'editReviewForm', method: :get) do -%>
-        <% end %>
-        <%# validate form %>
-        <%= simple_form_for review, url: review_path(review), method: :patch do |f| %>
-        <% end %>
-      <% end %>
-
-    <% end %>
-
-    <%# Buttons %>
-
-    <% @status == "disabled" ? @button_status = true : @button_status = false %>
+    <%# Forms & Buttons %>
 
     <div class="btn-group btn-group-justified" role="group" aria-label="review-buttons-group">
-      <div class="btn-group" role="group">
-        <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'discardReviewButton', form: "deleteReviewForm", disabled: @button_status) do %>
-          <%= t( "discard_button_label", default: "Discard") %>
-        <% end %>
-      </div>
+      <%# discard form %>
+      <%= render 'reviews/discard_button_for_review', review: review %>
 
       <% if review.validated == false %>
         <div class="btn-group" role="group">
-          <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'editReviewButton', form: "editReviewForm", disabled: @button_status) do %>
-            <%= t( "edit_button_label", default: "Edit") %>
+        <%# edit form %>
+          <%= form_tag(edit_review_path(review), id: 'editReviewForm', method: :get) do -%>
+            <%= button_tag(type: 'submit', class: "btn btn-default", id: 'editReviewButton', form: "editReviewForm") do %>
+              <%= t( "edit_button_label", default: "Edit") %>
+            <% end %>
           <% end %>
         </div>
         <div class="btn-group" role="group">
-          <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'validateReviewButton', form: "edit_review_#{review.id}", disabled: @button_status) do %>
-            <%= t( "validate_button_label", default: "Validate") %>
+          <%= simple_form_for review, url: review_path(review), method: :patch do |f| %>
+            <%= button_tag(type: 'submit', class: "btn btn-default", id: 'validateReviewButton', form: "edit_review_#{review.id}") do %>
+              <%= t( "validate_button_label", default: "Validate") %>
+            <% end %>
           <% end %>
         </div>
       <% end %>

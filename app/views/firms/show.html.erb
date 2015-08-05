@@ -82,8 +82,6 @@
   </div>
 </div>
 
-
-
 <% content_for(:facebook_js) do %>
   <%= javascript_tag do %>
     window.mobilecheck = function() {
@@ -124,5 +122,16 @@
         });
       }, false);
     }
+  <% end %>
+<% end %>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+  window.hideSocialButtons = function(isMobile) {
+    if (isMobile) {
+      $("#socialButtonsContainer").hide();
+    }
+  }
+  hideSocialButtons(isMobile);
   <% end %>
 <% end %>

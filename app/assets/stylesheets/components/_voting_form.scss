@@ -10,13 +10,16 @@
 }
 div.my-rating-wrapper {
   label.collection_radio_buttons {
-    visibility: hidden;
+    // visibility: hidden;
+    color: rgba(0,0,0,0);
     padding-left: 0;
     width: 45px;
     height: 45px;
-    margin-top: -25px;
+    background-size: cover;
     margin-right: 2px;
     margin-left: 2px;
+    border-radius: 50%;
+    opacity: 0.5;
   }
   label.collection_radio_buttons::after {
     visibility: visible;
@@ -28,46 +31,66 @@ div.my-rating-wrapper {
     cursor: pointer;
     margin: 10px 3px 0px 3px;
     border-radius: 50%;
-    opacity: 0.5;
+    // opacity: 0.5;
   }
   span:nth-child(2) {
-    label.collection_radio_buttons::after {
+    label.collection_radio_buttons {
       background-image: image-url(image-path("mad.svg"));
     }
-    input:checked ~ label.collection_radio_buttons::after {
-      background-color: red;
+    label.collection_radio_buttons:focus,
+    label.collection_radio_buttons:hover,
+    label.collection_radio_buttons:active,
+    input:checked ~ label.collection_radio_buttons {
+      // background-color: red;
+      background-color: #FC221D;
     }
   }
   span:nth-child(3) {
-    label.collection_radio_buttons::after {
+    label.collection_radio_buttons {
       background-image: image-url(image-path("bad.svg"));
     }
-    input:checked ~ label.collection_radio_buttons::after {
-      background-color: yellow;
+    label.collection_radio_buttons:focus,
+    label.collection_radio_buttons:hover,
+    label.collection_radio_buttons:active,
+    input:checked ~ label.collection_radio_buttons {
+      // background-color: red;
+      background-color: #F98617;
     }
   }
   span:nth-child(4) {
-    label.collection_radio_buttons::after {
+    label.collection_radio_buttons {
       background-image: image-url(image-path("fine.svg"));
     }
-    input:checked ~ label.collection_radio_buttons::after {
-      background-color: grey;
+    label.collection_radio_buttons:focus,
+    label.collection_radio_buttons:hover,
+    label.collection_radio_buttons:active,
+    input:checked ~ label.collection_radio_buttons {
+      // background-color: grey;
+      background-color: #F7ED11;
     }
   }
   span:nth-child(5) {
-    label.collection_radio_buttons::after {
+    label.collection_radio_buttons {
       background-image: image-url(image-path("happy.svg"));
     }
-    input:checked ~ label.collection_radio_buttons::after {
-      background-color: yellow;
+    label.collection_radio_buttons:focus,
+    label.collection_radio_buttons:hover,
+    label.collection_radio_buttons:active,
+    input:checked ~ label.collection_radio_buttons {
+      // background-color: yellow;
+      background-color: #90F40C;
     }
   }
   span:nth-child(6) {
-    label.collection_radio_buttons::after {
+    label.collection_radio_buttons {
       background-image: image-url(image-path("veryhappy.svg"));
     }
-    input:checked ~ label.collection_radio_buttons::after {
-      background-color: green;
+    label.collection_radio_buttons:focus,
+    label.collection_radio_buttons:hover,
+    label.collection_radio_buttons:active,
+    input:checked ~ label.collection_radio_buttons {
+      // background-color: green;
+      background-color: #1FF207;
     }
   }
 }
