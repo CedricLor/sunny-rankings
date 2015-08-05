@@ -34,7 +34,10 @@
 /* GENERAL BOX FORMATTING */
 
 .shadowed-box {
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-color: lightblue;
+  border-style: solid;
+  border-width: thin;
 }
 
 .card-block {
@@ -64,5 +67,9 @@
 
 .img-circle {
   border-radius: 50%;
+}
+
+.red-paragraph {
+  color: red;
 }
 

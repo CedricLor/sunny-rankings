@@ -3,7 +3,7 @@
  * ------------------------------------- */
 // $navbar-color: $gray-light;
 $navbar-color: $gray-darker;
-$navbar-hover-color: $yellow;
+$navbar-hover-color: $green-for-navbar;
 $navbar-font-size: 14px;
 $navbar-text-transform: capitalize;
 $navbar-font-weight: 300;
@@ -18,7 +18,7 @@ $navbar-height: 50px;
 $navbar-vertical-padding: 10px;
 $navbar-horizontal-padding: 20px;
 $navbar-border-bottom-width: 1px;
-$navbar-border-bottom-color: $gray-lighter;
+$navbar-border-bottom-color: $red-for-navbar;
 
 /* -------------------------------------
  * Navbar button
@@ -42,13 +42,12 @@ $navbar-profile-border-width: 2px;
  #topNavi {
   position: fixed;
   width: 100%;
-  z-index: 1;
+  z-index: 3;
   top: 0;
 
   .navbar-wagon {
     background: $navbar-bg;
-    // font-family: $navbar-font-family;
-    font-family: "Open Sans" !important;
+    font-family: $navbar-font-family;
     border: none;
     font-size: $navbar-font-size;
     text-transform: $navbar-text-transform;
@@ -58,7 +57,7 @@ $navbar-profile-border-width: 2px;
     padding-right: $navbar-horizontal-padding;
     // border-bottom: $navbar-border-bottom-width solid $navbar-border-bottom-color;
     // TODO -> Configure variables
-    border-bottom: 1px solid #FF0000;
+    border-bottom: 1px solid $navbar-border-bottom-color;
     min-height: 0;
     transition: background 0.4s ease;
     margin-bottom: 5px;
@@ -75,7 +74,6 @@ $navbar-profile-border-width: 2px;
     .navbar-nav > .open > a:focus {
       outline: none;
       color: $navbar-color;
-      // color: black;
       line-height: $navbar-height;
       // padding-top: $navbar-vertical-padding;
       padding-top: 4px;
@@ -89,8 +87,7 @@ $navbar-profile-border-width: 2px;
 
     .navbar-nav > li > a:hover,
     .navbar-nav > .open > a:hover {
-      // color: $navbar-hover-color;
-      color: #4D9260;
+      color: $navbar-hover-color;
       background-color: transparent;
     }
 
@@ -228,10 +225,13 @@ $navbar-profile-border-width: 2px;
 }
 
 /* -------------------------------------
- * Navbar font
+ * Navbar mobile bottom of page
  * ------------------------------------- */
-// TO DO: Adjust this paramet
-// font-family: $navbar-font-family;
-// ul.navbar-right {
-//   font-family: montserrat;
-// }
+#bottomMobileNavBarContainer {
+  font-family: $navbar-font-family;
+  .btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+  }
+}

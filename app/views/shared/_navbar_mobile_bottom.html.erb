@@ -1,11 +1,11 @@
-<div class="container visible-xs-* hidden-sm hidden-md hidden-lg">
+<div id="bottomMobileNavBarContainer" class="container visible-xs-* hidden-sm hidden-md hidden-lg">
   <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
       <div class="card-block shadowed-box">
         <!-- Do a new review -->
         <div class="row">
           <div col="col-xs-12">
-            <%= button_to t(:top_call_to_action, default: "Rate a firm"), firms_path, method: :get, class: "btn btn-default btn-lg btn-block red-hover-btn", type: "button"%>
+            <%= button_to t(:top_call_to_action, default: "Rate a firm"), firms_path, method: :get, class: "btn btn-default btn-block red-hover-btn", type: "button"%>
           </div>
         </div>
 
@@ -13,14 +13,14 @@
         <% if user_signed_in? %>
           <div class="row">
             <div col="col-xs-12">
-              <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-default btn-lg btn-block regular-btn", type: "button" do %>
+              <%= button_to destroy_user_session_path, method: :delete, class: "btn btn-default btn-block regular-btn", type: "button" do %>
                 <i class="fa fa-sign-out"></i>  <%= t :sign_out, default: "Sign out" %>
               <% end %>
             </div>
           </div>
           <div class="row">
             <div col="col-xs-12">
-              <%= button_to edit_user_registration_path, method: :get, class: "btn btn-default btn-lg btn-block regular-btn", type: "button" do %>
+              <%= button_to edit_user_registration_path, method: :get, class: "btn btn-default btn-block regular-btn", type: "button" do %>
                 <!-- TO DO update t parameter -->
                 <i class="fa fa-pencil-square-o"></i>  <%= t :update_connection_credentials, default: "Update your credentials" %>
               <% end %>
@@ -28,7 +28,7 @@
           </div>
           <div class="row">
             <div col="col-xs-12">
-              <%= button_to reviews_path, method: :get, class: "btn btn-default btn-lg btn-block regular-btn", type: "button" do %>
+              <%= button_to reviews_path, method: :get, class: "btn btn-default btn-block regular-btn", type: "button" do %>
                 <i class="fa fa-exclamation-triangle"></i><%= t "view_reviews", default: "View all your reviews" %>
               <% end %>
             </div>
@@ -36,12 +36,12 @@
         <% else %>
           <div class="row">
             <div col="col-xs-12">
-              <%= button_to t(:sign_up, default: "Sign up"), new_user_registration_path, method: :get, class: "btn btn-default btn-lg btn-block", type: "button"%>
+              <%= button_to t(:sign_up, default: "Sign up"), new_user_registration_path, method: :get, class: "btn btn-default btn-block", type: "button"%>
             </div>
           </div>
           <div class="row">
             <div col="col-xs-12">
-              <%= button_to t(:sign_in, default: "Sign in"), new_user_session_path, method: :get, class: "btn btn-default btn-lg btn-block", type: "button"%>
+              <%= button_to t(:sign_in, default: "Sign in"), new_user_session_path, method: :get, class: "btn btn-default btn-block", type: "button"%>
             </div>
           </div>
         <% end %>

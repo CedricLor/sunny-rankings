@@ -68,6 +68,11 @@ label {
   font-weight: lighter;
 }
 #main-container {
-  padding-top: 100px;
+  padding-top: 60px;
   color: black;
+}
+@media screen and (min-width: 768px) {
+  #main-container {
+    padding-top: 100px;
+  }
 }
