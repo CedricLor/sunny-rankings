@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get 'static_pages/help'
     get 'static_pages/home'
     get 'static_pages/terms_and_conditions'
+    get 'static_pages/cookies_policy'
+    get 'static_pages/legal_notices'
 
     as :user do
         patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
