@@ -16,23 +16,23 @@ div.my-rating-wrapper {
     width: 45px;
     height: 45px;
     background-size: cover;
-    margin-right: 2px;
-    margin-left: 2px;
+    margin-right: 3px;
+    margin-left: 3px;
     border-radius: 50%;
     opacity: 0.5;
-  }
-  label.collection_radio_buttons::after {
-    visibility: visible;
-    content: " ";
-    display: inline-block;
-    width: 45px;
-    height: 45px;
-    background-size: cover;
     cursor: pointer;
-    margin: 10px 3px 0px 3px;
-    border-radius: 50%;
-    // opacity: 0.5;
   }
+  // label.collection_radio_buttons::after {
+  //   visibility: visible;
+  //   content: " ";
+  //   display: inline-block;
+  //   width: 45px;
+  //   height: 45px;
+  //   background-size: cover;
+  //   margin: 10px 3px 0px 3px;
+  //   border-radius: 50%;
+  //   // opacity: 0.5;
+  // }
   span:nth-child(2) {
     label.collection_radio_buttons {
       background-image: image-url(image-path("mad.svg"));
