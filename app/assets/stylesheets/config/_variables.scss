@@ -48,4 +48,18 @@ $gray-lighter: lighten(#000, 93.5%); // #eee
 // $my-body-bg:                 #BBF6FB;
 // $my-body-bg:                 #73F4FF;
 // $my-body-bg:                 #EAF6F7;
-$my-body-bg:                    rgb(253, 253, 253)
+$my-body-bg:                    rgb(253, 253, 253);
+
+// Color scheme for rating icons
+$mad-bg-color:        #FC221D;
+$bad-bg-color:        #F98617;
+$fine-bg-color:       #F7ED11;
+$happy-bg-color:      #90F40C;
+$very-happy-bg-color: #1FF207;
+// Icon for ratings
+$mad-icon:        image-url(image-path("mad.svg"));
+$bad-icon:        image-url(image-path("bad.svg"));
+$fine-icon:       image-url(image-path("fine.svg"));
+$happy-icon:      image-url(image-path("happy.svg"));
+$very-happy-icon: image-url(image-path("veryhappy.svg"));
+

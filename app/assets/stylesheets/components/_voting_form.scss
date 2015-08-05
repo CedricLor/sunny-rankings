@@ -22,75 +22,60 @@ div.my-rating-wrapper {
     opacity: 0.5;
     cursor: pointer;
   }
-  // label.collection_radio_buttons::after {
-  //   visibility: visible;
-  //   content: " ";
-  //   display: inline-block;
-  //   width: 45px;
-  //   height: 45px;
-  //   background-size: cover;
-  //   margin: 10px 3px 0px 3px;
-  //   border-radius: 50%;
-  //   // opacity: 0.5;
-  // }
+
   span:nth-child(2) {
     label.collection_radio_buttons {
-      background-image: image-url(image-path("mad.svg"));
+      background-image: $mad-icon;
     }
     label.collection_radio_buttons:focus,
     label.collection_radio_buttons:hover,
     label.collection_radio_buttons:active,
     input:checked ~ label.collection_radio_buttons {
-      // background-color: red;
-      background-color: #FC221D;
+      background-color: $mad-bg-color;
     }
   }
   span:nth-child(3) {
     label.collection_radio_buttons {
-      background-image: image-url(image-path("bad.svg"));
+      background-image: $bad-icon;
     }
     label.collection_radio_buttons:focus,
     label.collection_radio_buttons:hover,
     label.collection_radio_buttons:active,
     input:checked ~ label.collection_radio_buttons {
-      // background-color: red;
-      background-color: #F98617;
+      background-color: $bad-bg-color;
     }
   }
   span:nth-child(4) {
     label.collection_radio_buttons {
-      background-image: image-url(image-path("fine.svg"));
+      background-image: $fine-icon;
     }
     label.collection_radio_buttons:focus,
     label.collection_radio_buttons:hover,
     label.collection_radio_buttons:active,
     input:checked ~ label.collection_radio_buttons {
-      // background-color: grey;
-      background-color: #F7ED11;
+      background-color: $fine-bg-color;
     }
   }
   span:nth-child(5) {
     label.collection_radio_buttons {
-      background-image: image-url(image-path("happy.svg"));
+      background-image: $happy-icon;
     }
     label.collection_radio_buttons:focus,
     label.collection_radio_buttons:hover,
     label.collection_radio_buttons:active,
     input:checked ~ label.collection_radio_buttons {
-      // background-color: yellow;
-      background-color: #90F40C;
+      background-color: $happy-bg-color;
     }
   }
   span:nth-child(6) {
     label.collection_radio_buttons {
-      background-image: image-url(image-path("veryhappy.svg"));
+      background-image: $very-happy-icon;
     }
     label.collection_radio_buttons:focus,
     label.collection_radio_buttons:hover,
     label.collection_radio_buttons:active,
     input:checked ~ label.collection_radio_buttons {
-      // background-color: green;
-      background-color: #1FF207;
+      background-color: $very-happy-bg-color;
     }
   }
 }

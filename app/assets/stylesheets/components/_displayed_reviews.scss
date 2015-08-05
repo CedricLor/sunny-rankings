@@ -1,23 +1,23 @@
 .embedded-members-reviews {
   .mad {
-    background-image: image-url(image-path("mad.svg"));
-    background-color: red;
+    background-image: $mad-icon;
+    background-color: $mad-bg-color;
   }
   .bad {
-    background-image: image-url(image-path("bad.svg"));
-    background-color: yellow;
+    background-image: $bad-icon;
+    background-color: $bad-bg-color;;
   }
   .fine {
-    background-image: image-url(image-path("fine.svg"));
-    background-color: grey;
+    background-image: $fine-icon;
+    background-color: $fine-bg-color;
   }
   .happy {
-    background-image: image-url(image-path("happy.svg"));
-    background-color: yellow;
+    background-image: $happy-icon;
+    background-color: $happy-bg-color;
   }
   .very-happy {
-    background-image: image-url(image-path("veryhappy.svg"));
-    background-color: green;
+    background-image: $very-happy-icon;
+    background-color: $very-happy-bg-color;
   }
   .indiv-review-test-question {
     float: left;
