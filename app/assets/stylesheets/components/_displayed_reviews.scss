@@ -19,13 +19,19 @@
     background-image: $very-happy-icon;
     background-color: $very-happy-bg-color;
   }
+  .indiv-review-answers-wrapper {
+    margin-right: 25px;
+  }
   .indiv-review-test-question {
     float: left;
+    width: 100%;
+    padding-right: 5px;
   }
-  .indiv-review-user-rating {
+  .indiv-review-user-rating-icon {
     float: right;
     height: 25px;
     width: 25px;
+    margin-right: -25px;
     background-size: cover;
     border-radius: 50%;
     color: rgba(0, 255, 255, 0);

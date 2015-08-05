@@ -29,7 +29,7 @@
 
             <div class="btn-group btn-group-justified" role="group" aria-label="review-buttons-group">
               <%# discard form %>
-              <%= render 'reviews/discard_button_for_review', review: review %>
+              <%= render 'reviews/discard_button_for_review', review: @review %>
               <div class="btn-group" role="group">
                 <%= button_tag(type: 'submit', class: 'btn btn-default', id: 'validateReviewButton', form: "edit_review_#{@review.id}") do %>
                   <%= t( "validate_button_label", default: "Validate") %>

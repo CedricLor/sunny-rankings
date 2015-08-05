@@ -3,7 +3,7 @@
 $(window).load( function() {
   const fields_identifier = "#email"
   const checkbox_identifier = "#confirmed_t_and_c"
-  const vote_button_identifier = "#voteButton"
+  const vote_button_identifier = ".vote-button"
 
   const regexes = {
     "zip_code": /^(F-)?((2[A|B])|[0-9]{2})[0-9]{3}$/,
@@ -92,7 +92,7 @@ $(window).load( function() {
 
   // Applying deactivated class to vote button on load
   /* Disabling the vote button on load*/
-  $('#voteButton').addClass('vote-btn-deactivated').prop("disabled",true);
+  $(vote_button_identifier).addClass('vote-btn-deactivated').prop("disabled",true);
   myChecker.controlAll(fields_identifier);
   enable_button();
 

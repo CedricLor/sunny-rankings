@@ -18,8 +18,11 @@
   <% review.answers.reverse.each do | answer | %>
     <tr>
       <td>
-        <span class="indiv-review-test-question"><%= t( :short_question, scope: [:tests_questions, :"question_#{answer.test_id}"], default: answer.test.test_question ) %></span>
-        <span class="indiv-review-user-rating <%= displayed_reviews_css_array[answer.user_rating - 1] %>"><%= answer.user_rating %></span>
+        <div class="indiv-review-answers-wrapper">
+          <div class="indiv-review-test-question"><%= t( :short_question, scope: [:tests_questions, :"question_#{answer.test_id}"], default: answer.test.test_question ) %></div>
+          <div class="indiv-review-user-rating-icon <%= displayed_reviews_css_array[answer.user_rating - 1] %>"><%= answer.user_rating %></div>
+          </div>
+        </div>
       </td>
     </tr>
   <% end %>

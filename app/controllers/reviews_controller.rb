@@ -73,6 +73,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    set_user
     firm = @review.firm
     if @review.destroy
       flash[:notice] = t(

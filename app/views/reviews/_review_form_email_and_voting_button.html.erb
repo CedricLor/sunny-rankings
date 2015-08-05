@@ -1,8 +1,11 @@
 <%= r.input :email,
       as: :fake,
-      input_html: { value: current_user ? current_user.profile.email : nil, placeholder: current_user ? current_user.profile.email : nil },
+      input_html: { value: user_signed_in? ? @user.email : nil, placeholder: user_signed_in? ? @user.email : nil },
       label: t( ".email_label", default: "Please enter your PERSONAL email"),
       hint: t( ".email_hint", default: "Your email will remain confidential and as per our conditions of rating services, will not be shared with your employer."),
       hint_html: {class: "voting-email-hint-class"}
 %>
-<%= r.button :submit, t( ".voting_button_label", default: "Vote"), class: "btn-center", id: "voteButton" %>
+<%= r.button :submit, t( ".voting_button_label", default: button_label), class: "btn-center vote-button", name: button_name %>
+<% if called_from == "comment_section" %>
+  <%= r.hint t( ".post_comment_for_firm_button_hint", default: 'If you also want to vote on our criteria, please scroll down, make your choices and press the "Vote" button below'), class: "text-center" %>
+<% end %>

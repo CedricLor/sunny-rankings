@@ -95,3 +95,63 @@ div.my-rating-wrapper {
     margin-bottom: 3px;
   }
 }
+
+.cgu {
+  color: $gray;
+  &-checkbox {
+    visibility: hidden;
+    display: none;
+  }
+  a {
+    color: $gray;
+  }
+  @keyframes ticker {
+      0% {background: $gray-lighter;}
+      50% {background: $gray-darker;}
+      100% {background: $gray-lighter;}
+  }
+  @keyframes noticker {
+      from {background: $green;}
+      to {background: $green}
+  }
+  .fa {
+    transition: all 0.3s ease;
+    background: $gray-lighter;
+    padding: 15px;
+    color: white;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: $gray-dark;
+    border-width: thin;
+    animation-name: ticker;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  &-checkbox:checked ~ label.cgu {
+    cursor: pointer;
+    color: $gray !important;
+    .fa {
+      background: $green !important;
+      padding: 18px;
+      border-style: none;
+      animation-name: noticker;
+      animation-duration: 10s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    a {
+      color: $blue !important;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    color: $gray-dark;
+    .fa {
+      background: black;
+    }
+    a {
+      color: $gray-dark;
+    }
+  }
+}

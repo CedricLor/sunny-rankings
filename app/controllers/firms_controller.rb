@@ -36,6 +36,7 @@ class FirmsController < ApplicationController
   def show
     if user_signed_in?
       @potentially_publishable_by_user_review_for_firm = current_user.potentially_publishable_review_for_firm(@firm)
+      @user = current_user
     elsif session[:review_token] && session[:review_token].present?
       @potentially_publishable_by_user_review_for_firm = Review.find_by_token(session[:review_token])
       @potentially_publishable_by_user_review_for_firm.update(token: "")
