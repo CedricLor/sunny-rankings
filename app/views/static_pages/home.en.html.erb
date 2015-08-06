@@ -1,0 +1,82 @@
+<% content_for(:title, t(:home)) %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <div class="row">
+        <div class="class-xs-12">
+          <div class="card-block shadowed-box">
+            We know that everyone is different.
+          </div>
+          <div class="card-block shadowed-box">
+            We know that aquestionnaire asks the same questions to everyone.
+          </div>
+          <div class="card-block shadowed-box">
+            But we believe that together, we can make a difference.
+          </div>
+          <div class="card-block shadowed-box">
+            On the internet, the NSA watches you. The security agencies are spying on your emails.
+          </div>
+          <div class="card-block shadowed-box">
+            The governments make you fit in little boxes.
+          </div>
+          <div class="card-block shadowed-box">
+            The big corporations profile you in "big data".
+          </div>
+          <div class="card-block shadowed-box">
+            And you? When will you react?
+          </div>
+          <div class="card-block shadowed-box">
+            Democracy is meant to be the power of the people, by the people and for the people.
+          </div>
+          <div class="card-block shadowed-box">
+            Together, we are holding the power to say no!
+          </div>
+          <div class="card-block shadowed-box">
+            So come and take part in the most challenging experience the web can give you.
+          </div>
+          <div class="card-block shadowed-box">
+            Give democracy a name! Today!
+          </div>
+          <div class="card-block shadowed-box">
+            Come and rank the abstract person who pretends to hold you because it pretends to give you what it takes to leave:
+          </div>
+          <div class="card-block shadowed-box">
+            <h1>
+              a wage!
+            </h1>
+          </div>
+          <div class="card-block shadowed-box">
+            As if money was enough to keep you from talking!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<% content_for(:facebook_js) do %>
+  <%= javascript_tag do %>
+    // Facebook block
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '703613196451829',
+        xfbml      : true,
+        version    : 'v2.3'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
+     // Twitter block
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+  <% end %>
+<% end %>

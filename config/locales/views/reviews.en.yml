@@ -60,5 +60,5 @@ en:
       on: " on '%{date}'"
     review_form_comments:
       comment_action_sentence: "Share your experience on %{firm_name} with us!"
-      title_label_for_review_comments: "Title"
-      comment_label_for_review_comments: "Comments"
+      title_label_for_review_comments: "Please give a title to your experience (ex. This morning, when I came to the office...)"
+      comment_label_for_review_comments: "Describe your experience (ex. ... I was told that I had made an effort today. My boss was here and he did not react.)"

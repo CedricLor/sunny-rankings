@@ -3,9 +3,9 @@
     <h5><%= t(".comment_action_sentence", firm_name: @firm.name, default: "Share your experience on %{@firm.name}") %></h5>
   </div>
   <div class="col-xs-12">
-    <%= r.input :title, label: t(".title_label_for_review_comments", default: "Title") %>
+    <%= r.input :title, label: t(".title_label_for_review_comments", default: "Give a title to your experience (ex. This morning, when I came to the office...)") %>
   </div>
   <div class="col-xs-12">
-    <%= r.input :comment, as: :text, input_html: { rows: 4 }, label: t(".comment_label_for_review_comments", default: "Comments") %>
+    <%= r.input :comment, as: :text, input_html: { rows: 4 }, label: t(".comment_label_for_review_comments", default: "Describe your experience (ex. ... I was told that I had made an effort today. My boss was here and he did not react.)") %>
   </div>
 </div>

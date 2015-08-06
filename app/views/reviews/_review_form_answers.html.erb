@@ -9,6 +9,7 @@
     boolean_style: :inline,
     collection: (user_rating_option_array),
     label: t( :short_question, scope: [:tests_questions, :"question_#{a.index + 1}"], default: "#{@tests.fetch(a.index).test_long_question}"),
+    required: false,
     label_html: {
       class: "block"
       },
