@@ -1,0 +1,149 @@
+<% content_for(:title, "How does it work?") %>
+
+<div id="howItWorks">
+  <div id="currentFeatures" class="fluid-container text-center section">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Parité sur le lieu de travail</h1>
+        <h3>Employés, notez votre employeur ! Employeurs, relevez le challenge !</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-block shadowed-box">
+          <div id="voteIcon" class="icon"></div>
+          <h3>Voter et Commenter</h3>
+          <ul>
+            <li>Choisissez une entreprise.</li>
+            <li>Ecrivez un commentaire.</li>
+            <li>Votez sur nos critères.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-block shadowed-box">
+          <div id="anonymousIcon" class="icon"></div>
+          <h3>Anonyme</h3>
+          <ul>
+            <li>Respect absolu de vos données personnelles (noms, emails, IP, etc.).</li>
+            <li>Revues publiées sous pseudonymes choisis au hasard.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-block shadowed-box">
+          <div id="rankingsIcon" class="icon"></div>
+          <h3>Classement par "Crowdsourcing"</h3>
+          <ul>
+            <li>Consultez les notes des entreprises calculées sur la base des votes des utilisateurs.</li>
+            <li>Obtenez les classements par industrie et par pays.</li>
+            <li>Accédez à des données critiques avant de postuler.</li>
+            <li>Accédez à des données critiques avant de consommer.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-block shadowed-box">
+          <div id="publicationIcon" class="icon"></div>
+          <h3>Publication des Revues des Utilisateurs</h3>
+          <ul>
+            <li>Publication des revues individuelles, afin de fournir de l'information qualitative.</li>
+            <li>Mise en avant des meilleurs commentaires de la communauté.</li>
+            <li>Protection des données personnelles derrières des pseudonymes choisis aux hasard.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Main call to action -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="mainCallToActionWrapper">
+          <%= link_to t(:top_call_to_action, default: "Rate a firm"), firms_path, class: "btn btn-default" %>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll arrow -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="scrollArrowWrapper">
+          <a href="#futureFeatures">
+            <i class="fa fa-angle-down fa-4x pulse scroll-arrow"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- END OF FIRST SECTION -->
+  <!-- BEGINNING OF SECOND SECTION -->
+
+  <div id="futureFeatures" class="fluid-container text-center section">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Fonctionnalités à venir</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-block shadowed-box">
+          <div id="feelingRepositoryIcon" class="icon"></div>
+          <h3>Archivage de Ressentis</h3>
+          <ul>
+            <li>Votez à nouveau à tout moment, en fonction de votre humeur.</li>
+            <li>Passez des tests additionels, afin de mieux cerner votre situation.</li>
+            <li>Accédez à vos tests, revues et notations passées, afin de suivre l'évolution de votre situation.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-block shadowed-box">
+          <div id="advicesIcon" class="icon"></div>
+          <h3>Conseils</h3>
+          <ul>
+            <li>Exposez votre situation sur nos forums privés.</li>
+            <li>Recevez des conseils gratuits de la part d'autres membres de la communauté.</li>
+            <li>Conseillez d'autres membres de la communauté.</li>
+            <li>Prenez contact avec l'un de nos partenaires (avocats, psychologues du travail, coaches).</li>
+            <li>Fournissez plus de données sur votre situation personnelle et recevez des remises sur vos consultations.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-block shadowed-box">
+          <div id="employersAdvisoryIcon" class="icon"></div>
+          <h3>Services aux Employeurs</h3>
+          <ul>
+            <li>Améliorez la diversité et la parité dans votre entreprise.</li>
+            <li>Fait un audit.</li>
+            <li>Recevez de la formation.</li>
+            <li>Recevez un badge de réputation pour votre engagement en faveur de la parité et de la diversité.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-block shadowed-box">
+          <div id="adrIcon" class="icon"></div>
+          <h3>Médiation / Conciliation</h3>
+          <ul>
+            <li>Les cas les plus critiques relèvent d'une action judiciaire.</li>
+            <li>Les actions judiciaires consomment du temps et des ressources.</li>
+            <li>Accédez à notre plateforme de médiation / conciliation.</li>
+            <li>Les entreprises acceptant la médiation / conciliation recevront un badge de réputation.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+  if (viewport().width > 768) {
+    $('#howItWorks .section').each(function(){
+      setBoxHeight($(this).attr("id"));
+    });
+//    <!-- window.load = setBoxHeight("#currentFeatures"); -->
+//    <!-- window.load = setBoxHeight("#futureFeatures"); -->
+  }
+  <% end %>
+<% end %>

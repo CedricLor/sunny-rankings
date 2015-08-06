@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get 'static_pages/terms_and_conditions'
     get 'static_pages/cookies_policy'
     get 'static_pages/legal_notices'
+    get 'static_pages/how_it_works'
 
     as :user do
         patch '/user/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
@@ -34,7 +35,9 @@ Rails.application.routes.draw do
 
     resources :profiles, only: [ :edit, :update, :show ]
 
-    root 'firms#index'
+    root 'static_pages#how_it_works'
+
+    # root 'firms#index'
   end
 
 

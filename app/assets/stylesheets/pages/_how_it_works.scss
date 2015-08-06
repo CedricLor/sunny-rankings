@@ -1,0 +1,73 @@
+#howItWorks {
+  @media screen and (min-width: 768px) {
+    .section {
+      height: 100vh;
+    }
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    li {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+    li:first-child {
+      margin-top: 15px;
+    }
+  }
+  .icon {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    width: 75px;
+    height: 75px;
+    background-size: cover;
+  }
+  #mainCallToActionWrapper {
+    width: 100%;
+    text-align: center;
+    .btn {
+      margin-top: 3vh;
+      line-height: 30px;
+      padding-left: 30px;
+      padding-right: 30px;
+      font-weight: normal;
+      border-radius: 50px;
+      font-family: "Open Sans", "Helvetica", "sans-serif";
+      // Quick fix
+      color: rgba(60, 2, 20, 0.5);
+      background-color: rgba(105, 203, 77, 0.33);
+    }
+  }
+  #scrollArrowWrapper {
+    // Quick fix
+    width: 100%;
+    margin-top: 10px;
+  }
+  #voteIcon {
+    background-image: image-url(image-path("icon_vote.png"));
+  }
+  #anonymousIcon {
+    background-image: image-url(image-path("icon_anonymous.png"));
+  }
+  #rankingsIcon {
+    background-image: image-url(image-path("icon_rankings.png"));
+  }
+  #publicationIcon {
+    background-image: image-url(image-path("icon_publication.png"));
+  }
+  #feelingRepositoryIcon {
+    background-image: image-url(image-path("icon_feeling_repository.png"));
+  }
+  #advicesIcon {
+    background-image: image-url(image-path("icon_advice.png"));
+  }
+  #employersAdvisoryIcon {
+    background-image: image-url(image-path("icon_employers_advisory.png"));
+  }
+  #adrIcon {
+    background-image: image-url(image-path("icon_adr.png"));
+  }
+}
