@@ -110,7 +110,16 @@ div.my-rating-wrapper {
       50% {background: $gray-darker;}
       100% {background: $gray-lighter;}
   }
+  @-webkit-keyframes ticker {
+      0% {background: $gray-lighter;}
+      50% {background: $gray-darker;}
+      100% {background: $gray-lighter;}
+  }
   @keyframes noticker {
+      from {background: $green;}
+      to {background: $green}
+  }
+  @-webkit-keyframes ticker {
       from {background: $green;}
       to {background: $green}
   }

@@ -61,4 +61,4 @@ fr:
     review_form_comments:
       comment_action_sentence: "Partagez votre experience sur %{firm_name} avec nous !"
       title_label_for_review_comments: "Donnez un titre à votre expérience (par ex. Ce matin, quand je suis arrivée au travail...)"
-      comment_label_for_review_comments: "Decrivez votre expérience (ex. ... On m'a dit que j'avais fait un effort aujourd'hui. Mon patron était là et il n'a pas réagit.)"
+      comment_label_for_review_comments: "Décrivez votre expérience (ex. ... On m'a dit que j'avais fait un effort aujourd'hui. Mon patron était là et il n'a pas réagit.)"
