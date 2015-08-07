@@ -105,25 +105,26 @@ div.my-rating-wrapper {
   a {
     color: $gray;
   }
+  @-webkit-keyframes ticker {
+      0% {background: $gray-lighter;}
+      50% {background: $gray-darker;}
+      100% {background: $gray-lighter;}
+  }
   @keyframes ticker {
       0% {background: $gray-lighter;}
       50% {background: $gray-darker;}
       100% {background: $gray-lighter;}
   }
   @-webkit-keyframes ticker {
-      0% {background: $gray-lighter;}
-      50% {background: $gray-darker;}
-      100% {background: $gray-lighter;}
+      from {background: $green;}
+      to {background: $green}
   }
   @keyframes noticker {
       from {background: $green;}
       to {background: $green}
   }
-  @-webkit-keyframes ticker {
-      from {background: $green;}
-      to {background: $green}
-  }
   .fa {
+    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     background: $gray-lighter;
     padding: 15px;
@@ -132,6 +133,10 @@ div.my-rating-wrapper {
     border-style: solid;
     border-color: $gray-dark;
     border-width: thin;
+    -webkit-animation-name: ticker;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
     animation-name: ticker;
     animation-duration: 2s;
     animation-timing-function: linear;
