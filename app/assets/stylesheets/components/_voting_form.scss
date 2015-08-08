@@ -149,6 +149,10 @@ div.my-rating-wrapper {
       background: $green !important;
       padding: 18px;
       border-style: none;
+      -webkit-animation-name: noticker;
+      -webkit-animation-duration: 10s;
+      -webkit-animation-timing-function: linear;
+      -webkit-animation-iteration-count: infinite;
       animation-name: noticker;
       animation-duration: 10s;
       animation-timing-function: linear;
