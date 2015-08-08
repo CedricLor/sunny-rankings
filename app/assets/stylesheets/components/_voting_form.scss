@@ -115,7 +115,7 @@ div.my-rating-wrapper {
       50% {background: $gray-darker;}
       100% {background: $gray-lighter;}
   }
-  @-webkit-keyframes ticker {
+  @-webkit-keyframes noticker {
       from {background: $green;}
       to {background: $green}
   }
