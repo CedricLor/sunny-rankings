@@ -8,58 +8,67 @@
 
         <!-- Search Form -->
         <div class="row">
-          <div div="class-xs-12">
+          <div class="col-xs-12">
             <%= render "shared/search_form" %>
           </div>
         </div>
-        <!-- If the user has searched something -->
-        <h1>
-          <% if params[:search] %>
-            <%= t('.search_result_header_html', search_string: params[:search], default: "Search results for '#{params[:search]}'") %>
-          <% end %>
-        </h1>
-        <!-- If the search has not given any result -->
+        <!-- If the user has searched something: title line indicating what was searched for -->
+        <% if params[:search] %>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="text-center">
+                <h1>
+                    <%= t('.search_result_header_html', search_string: params[:search], default: "Search results for '#{params[:search]}'") %>
+                </h1>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <!-- If the search has not given any result: box informing of no search results and form to add the firm -->
         <% if @no_search_results == true %>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="text-wrapper card-block shadowed-box text-center">
-              <h4>
-                <%= t( ".no_search_result_header_html", search_string: params[:search], default: "No firm with a name containing \"#{params[:search]}\" is currently ranked in our database.") %>
-                <br><br>
-                <!-- TO DO: Replace br with nice css -->
-                <%= link_to( t(".please_add_firm", search_string: params[:search], default: "Please add \"#{params[:search]}\" to our rankings!"), "#", class: "btn btn-default btn-lg add-me-after-search red-hover-btn main-call-to-action-btn", role: "button") %>
-              </h4>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="text-wrapper card-block shadowed-box text-center">
+                <%= render "firms/firm_not_found" %>
+              </div>
             </div>
           </div>
-        </div>
         <% end %>
-        <!-- if the search has not given any results or if the user has not searched anything -->
+        <!-- if the search has not given any results or if the user has not searched anything: give the classical header (Gender equality on the work place) and the ranking of the 10 top firms in country -->
         <% if (@no_search_results == true || params[:search].nil? ) %>
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="text-wrapper card-block shadowed-box text-center">
-              <h1><%= t(:gender_equality_on_the_workplace, default: "Gender equality on the workplace") %></h1>
-              <p>
-                <%= t('.top_10_in_country', user_ip_country: @user_ip_country, default: "Here are the top 10 firms ranked by our community in #{@user_ip_country}") %>
-              </p>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="text-wrapper card-block shadowed-box text-center">
+                <h1><%= t(:gender_equality_on_the_workplace, default: "Gender equality on the workplace") %></h1>
+                <p>
+                  <%= t('.top_10_in_country', user_ip_country: @user_ip_country, default: "Here are the top 10 firms ranked by our community in #{@user_ip_country}") %>
+                </p>
+              </div>
             </div>
           </div>
-        </div>
         <% end %>
-        <!-- listing of all firms or search result -->
+        <%# listing of the top 10 firms for the country of the user
+        (in case no search has been made or the search has not returned any results,
+        @firms is the top 10 firms for the country of the user)
+        OR
+        of the companies matching the search result
+        (in case a search has been made and the research has returned something) %>
         <div class="row">
           <div class="col-xs-12">
             <div id="competitorsCommunityRankings" class="text-wrapper card-block shadowed-box">
               <%= render "competitors_community_rankings_table", competitors: @firms %>
+              <hr>
+              <%= render "firms/firm_not_found" if @no_search_results == false %>
             </div>
           </div>
         </div>
       </div>
-    <!-- if the search by name has returned something, display top 10 competitors
-    ordered by ranking -->
-    <% if (params[:search] && @no_search_results == false ) %>
-      <%= render "competitors_community_rankings", selected_firm: @firms.first, competitors: @competitors %>
-    <% end %>
+      <%# if the search by name has returned something, display top 10 competitors
+      ordered by ranking below the search results %>
+      <% if (params[:search] && @no_search_results == false ) %>
+        <%= render "competitors_community_rankings", selected_firm: @firms.first, competitors: @competitors %>
+      <% end %>
+    </div>
   </div>
 </div>
 

@@ -75,7 +75,25 @@ class FirmsController < ApplicationController
   def destroy
   end
 
+  def request_firm_addition
+    if FirmMailer.request_new_firm(params[:firm_name], request.location.country, request.location.city).deliver_now
+      @flash_text = "Your request to add \"#{params[:firm_name]}\" was received by our services. We are currently processing it."
+      flash_type = "notice"
+    else
+      @flash_text = "Your request to add \"#{params[:firm_name]}\" could not be sent to our services. Please try again later."
+      flash_type = "alert"
+    end
+    respond_to do |format|
+      format.html { request_firm_addition_helper(flash[flash_type] = @flash_text) }
+      format.js
+    end
+  end
+
   private
+
+  def request_firm_addition_helper(flash)
+    redirect_to firms_path
+  end
 
   def firms_params
     params.require(:firm).permit(:name, :address, :country, :headcount, :business_description, :business_sector, :icon_name)

@@ -88,6 +88,12 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # help to kill N+1 queries and unused eager loading
+  # gem 'bullet', '~> 4.14.7'
+
+  # A Ruby code quality reporter
+  gem "rubycritic", :require => false
 end
 
 group :development do

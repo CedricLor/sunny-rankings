@@ -12,9 +12,11 @@ en:
       page_title_search: "Search results for %{search_string}"
       page_title_no_search: "Look up a firm's ranking"
       search_result_header_html: "Search results for '%{search_string}'"
-      no_search_result_header_html: "No firm with a name containing '%{search_string}' is currently ranked in our database."
-      please_add_firm: "Please add '%{search_string}' to our rankings!"
       top_10_in_country: "Here are the top 10 firms ranked by our community in %{user_ip_country}"
+    no_firm_found:
+      no_search_result_header_html: "No firm with a name containing '%{search_string}' is currently ranked in our database."
+      please_add_firm: "Do you want that '%{search_string}' be added to our rankings? Request it!"
+      request_button: "Request"
     show:
       is_ranked: " is ranked "
       in: " in "

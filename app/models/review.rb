@@ -51,9 +51,6 @@ class Review < ActiveRecord::Base
   before_create :generate_token, unless: :token?
   before_update :switch_publishable_to_true
 
-  default_scope { includes :firm, :answers }
-
-
   def featured_checker
     if featured == true
       if publishable == false

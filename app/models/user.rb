@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   has_one :default_email, through: :profile, class_name: "EmailAddress"
   validates :default_email, presence: true
-  default_scope { includes :default_email, :profile, :review_portfolio, :answers, :reviews, :firms }
+  default_scope { includes :default_email, :profile }
   ###############
 
   validates_associated :email_addresses, :default_email
@@ -125,8 +125,13 @@ class User < ActiveRecord::Base
     reviews.count
   end
   ################################
+  def scoped_reviews
+    reviews.includes(:firm, answers: [:test])
+  end
+  ################################
   def pending_reviews
-    reviews.where(validated: false)
+    # reviews.where(validated: false)
+    scoped_reviews.where(validated: false)
   end
 
   def number_of_pending_reviews
@@ -138,7 +143,7 @@ class User < ActiveRecord::Base
   end
   #*************
   def validated_reviews
-    reviews.where(validated: true)
+    scoped_reviews.where(validated: true)
   end
 
   def number_of_validated_reviews
@@ -146,7 +151,7 @@ class User < ActiveRecord::Base
   end
   #*************
   def pending_publication_reviews
-    reviews.where(validated: true, publishable: false)
+    scoped_reviews.where(validated: true, publishable: false)
   end
 
   def number_of_reviews_pending_publication
@@ -154,7 +159,7 @@ class User < ActiveRecord::Base
   end
   #*************
   def effectively_published_reviews
-    reviews.where(validated: true, publishable: true)
+    scoped_reviews.where(validated: true, publishable: true)
   end
 
   def number_of_effectively_published_reviews
