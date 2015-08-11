@@ -51,20 +51,6 @@ class Review < ActiveRecord::Base
   before_create :generate_token, unless: :token?
   before_update :switch_publishable_to_true
 
-  def featured_checker
-    if featured == true
-      if publishable == false
-        errors.add(:featured, "requires that review has been accepted by skanher for publication (publishable be true)")
-      elsif confirmed_t_and_c == false
-        errors.add(:feature, "requires that the terms and conditions acceptance have been accepted")
-      elsif validated == false
-        errors.add(:feature, "requires that the post has been reviewed and validated by the user (validated be true)")
-      elsif ( title.nil? && comment.nil? )
-        errors.add(:feature, "requires that the post has a title or a comment")
-      end
-    end
-  end
-
   def self.answers
     joins(:answers)
   end
@@ -144,6 +130,15 @@ class Review < ActiveRecord::Base
     def switch_publishable_to_true
       if validated == true && comment.empty? && title.empty?
         self.publishable = true
+      end
+    end
+
+    def featured_checker
+      if featured == true
+        errors.add(:featured, "requires that review has been accepted by skanher for publication (publishable be true)") if publishable == false
+        errors.add(:feature, "requires that the terms and conditions acceptance have been accepted") if confirmed_t_and_c == false
+        errors.add(:feature, "requires that the post has been reviewed and validated by the user (validated be true)") if validated == false
+        errors.add(:feature, "requires that the post has a title or a comment") if ( title.nil? && comment.nil? )
       end
     end
 end
