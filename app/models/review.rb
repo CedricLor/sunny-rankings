@@ -133,12 +133,16 @@ class Review < ActiveRecord::Base
       end
     end
 
+    def run_featured_checker_validations
+      errors.add(:featured, "requires that review has been accepted by skanher for publication (publishable be true)") if publishable == false
+      errors.add(:feature, "requires that the terms and conditions acceptance have been accepted") if confirmed_t_and_c == false
+      errors.add(:feature, "requires that the post has been reviewed and validated by the user (validated be true)") if validated == false
+      errors.add(:feature, "requires that the post has a title or a comment") if ( title.nil? && comment.nil? )
+    end
+
     def featured_checker
       if featured == true
-        errors.add(:featured, "requires that review has been accepted by skanher for publication (publishable be true)") if publishable == false
-        errors.add(:feature, "requires that the terms and conditions acceptance have been accepted") if confirmed_t_and_c == false
-        errors.add(:feature, "requires that the post has been reviewed and validated by the user (validated be true)") if validated == false
-        errors.add(:feature, "requires that the post has a title or a comment") if ( title.nil? && comment.nil? )
+        run_featured_checker_validations
       end
     end
 end
