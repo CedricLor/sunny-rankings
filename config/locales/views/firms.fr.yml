@@ -13,9 +13,10 @@ fr:
       page_title_no_search: "Cherchez une entreprise !"
       search_result_header_html: "Résultats de la recherche pour '%{search_string}'"
       top_10_in_country: "Voici les 10 meilleures entreprises en %{user_ip_country} d'après notre communauté"
-    no_firm_found:
+    firm_not_found:
+      firm_not_listed_header_html: "'%{search_string' n'est pas dans nos classements?"
       no_search_result_header_html: "Il n'y a pas d'entreprise dont le nom contienne '%{search_string}' actuellement classée dans notre base de données."
-      please_add_firm: "Vous souhaiteriez que '%{search_string}' soit ajoutée à nos classements ? Demandez-le!"
+      firm_not_listed_please_add_firm: "Souhaitez-vous que '%{search_string}' soit ajoutée à nos classements ? Demandez-le!"
       request_button: "Ajouter"
     show:
       is_ranked: " est classée "

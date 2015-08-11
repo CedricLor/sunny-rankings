@@ -93,7 +93,7 @@ group :development, :test do
   # gem 'bullet', '~> 4.14.7'
 
   # A Ruby code quality reporter
-  gem "rubycritic", :require => false
+  # gem "rubycritic", :require => false
 end
 
 group :development do

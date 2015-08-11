@@ -5,8 +5,8 @@
       firm_name: t(@firm.name, default: @firm.name),
       default: "What our member say about #{@firm.name}!") %></h3>
 
-        <% if @potentially_publishable_by_user_review_for_firm %>
-          <%= render 'reviews/index/user_pending_review', review: @potentially_publishable_by_user_review_for_firm, displayed_reviews_css_array: @displayed_reviews_css_array %>
+        <% if @user_pending_review_for_this_firm %>
+          <%= render 'reviews/index/user_pending_review', review: @user_pending_review_for_this_firm, displayed_reviews_css_array: @displayed_reviews_css_array %>
         <% end %>
         <hr/>
 

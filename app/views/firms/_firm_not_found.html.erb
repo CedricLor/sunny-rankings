@@ -1,13 +1,18 @@
 <h4>
   <p id="first_para_no_search_result" class="parag_no_search_result">
-  <% if @no_search_results == false %>
-    <%= t( ".firm_not_listed_header_html", search_string: params[:search], default: "\"#{params[:search]}\" is not in our list?") %>
-  <% else %>
-    <%= t( ".no_search_result_header_html", search_string: params[:search], default: "No firm with a name containing \"#{params[:search]}\" is currently ranked in our database.") %>
-  <% end %>
+
+    <% if @no_search_results == false %>
+      <%= t( ".firm_not_listed_header_html", search_string: params[:search], default: "\"#{params[:search]}\" is not in our list?") %>
+    <% else %>
+      <%= t( ".no_search_result_header_html", search_string: params[:search], default: "No firm with a name containing \"#{params[:search]}\" is currently ranked in our database.") %>
+    <% end %>
+
   </p>
+
   <p id="second_para_no_search_result" class="parag_no_search_result">
+
     <%= t(".firm_not_listed_please_add_firm", search_string: params[:search], default: "Do you want that \"#{params[:search]}\" be added to our rankings? Request it!")%>
+
   </p>
 
   <%= form_tag(firms_request_firm_addition_path, method: "post", remote: true) do %>

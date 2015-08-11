@@ -23,3 +23,7 @@ en:
         invalid_email: "Please indicate a valid email address! "
         no_vote_on_any_criteria: "Please vote on at least one criteria! "
         conditions_not_accepted: "Please accept the conditions of use of rating services!"
+    firms:
+      flash_message_selector:
+        firm_addition_request_success: 'Your request to add "%{firm_name}" was received by our services. We are currently processing it.'
+        firm_addition_request_failure: 'Your request to add "%{firm_name}" could not be sent to our services. Please try again later.'

@@ -5,6 +5,8 @@
   <%= render "reviews/review_form_comments", r: r %>
   <%#= render "reviews/review_form_email_and_voting_button", r: r, button_label: "Post", button_name: "postCommentOnlyButton", called_from: "comment_section" %>
   <hr/>
+  <h4><%= t( ".intro_question_vote_form", firm_name: @firm.name, default: "Give us your feelings about #{@firm.name} on each of the following criteria:") %></h4>
+  <br/>
   <%= render "reviews/review_form_master_content_first_time", r: r %>
   <%= render "reviews/review_form_legal_warning", r: r %>
   <%= render "reviews/review_form_accept_t_and_c", r: r %>

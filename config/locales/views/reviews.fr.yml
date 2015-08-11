@@ -17,6 +17,7 @@ fr:
       voting_button_label: "Voter !"
     simple_review_without_firm_select:
       tell_us_about: "A vous la parole sur "
+      intro_question_vote_form: "Faites-nous part de vos sentiments lorsque l'on parle de chacun des critères suivantes chez %{firm_name} :"
     edit:
       page_title: "Votre vote en attente de validation"
       heading_sentence: "Voici votre dernier vote en attente de validation pour "

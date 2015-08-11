@@ -17,6 +17,7 @@ en:
       voting_button_label: "Vote"
     simple_review_without_firm_select:
       tell_us_about: "Tell us about "
+      intro_question_vote_form: "Give us your feelings about %{firm_name} on each of the following criteria:"
     edit:
       page_title: "Your Pending Review"
       heading_sentence: "Here is your latest pending review for "
