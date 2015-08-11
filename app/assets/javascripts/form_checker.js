@@ -1,9 +1,9 @@
 // This is the form checker
 // On Document Fully Ready
 $(window).load( function() {
-  const fields_identifier = "#email"
-  const checkbox_identifier = "#confirmed_t_and_c"
-  const vote_button_identifier = ".vote-button"
+  const fields_identifier = "#email";
+  const checkbox_identifier = "#confirmed_t_and_c";
+  const vote_button_identifier = ".vote-button";
 
   const regexes = {
     "zip_code": /^(F-)?((2[A|B])|[0-9]{2})[0-9]{3}$/,

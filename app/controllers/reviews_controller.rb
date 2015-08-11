@@ -168,17 +168,31 @@ class ReviewsController < ApplicationController
       send_mail_block.call
     end
 
-    def send_mail_to_user
-      if user_signed_in?
-        set_flash_notice_and_send_mail(
-          { flash_type: "notice",
-            flash_message:  t(
+    def i18n_flash_messages_store(flash_message_ref)
+      flash_messages_hash = {
+        review_successfully_saved_logged_user: t(
             :review_successfully_saved_logged_user,
             scope: [:controllers, :reviews, :create],
             firm_name: @firm.name,
             user_email: params[:email],
             default: "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. It is currently pending. It still needs to be validated."
+            ),
+        review_successfully_saved_unlogged_user: t(
+            :review_successfully_saved_unlogged_user,
+            scope: [:controllers, :reviews, :create],
+            firm_name: @firm.name,
+            user_email: params[:email],
+            default: "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. Please check your emails at #{params[:email]} to validate it!"
             )
+      }
+      flash_messages_hash[flash_message_ref]
+    end
+
+    def send_mail_to_user
+      if user_signed_in?
+        set_flash_notice_and_send_mail(
+          { flash_type: "notice",
+            flash_message: i18n_flash_messages_store[:review_successfully_saved_logged_user]
           },
           {
             ReviewMailer.new_review_for(params[:email], @firm).deliver_now
@@ -194,13 +208,7 @@ class ReviewsController < ApplicationController
       else
         set_flash_notice_and_send_mail(
           { flash_type: "notice",
-            flash_message:  t(
-            :review_successfully_saved_unlogged_user,
-            scope: [:controllers, :reviews, :create],
-            firm_name: @firm.name,
-            user_email: params[:email],
-            default: "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. Please check your emails at #{params[:email]} to validate it!"
-            )
+            flash_message: i18n_flash_messages_store[:review_successfully_saved_unlogged_user]
           },
           {
             @user.is_new_user_created_on_vote ? @user.send_confirmation_instructions : ReviewMailer.new_review_with_your_email(params[:email], @firm).deliver_now
