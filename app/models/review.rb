@@ -46,7 +46,7 @@ class Review < ActiveRecord::Base
   validates :answers, association_count: { maximum: ANSWERS_REQUIRED_COUNT }, on: :update
   validates :answers, association_count: { minimum: ANSWERS_MINIMUM_COUNT }
 
-  validate :featured_checker
+  validate :featured_checker, if: :is_featured
 
   before_create :generate_token, unless: :token?
   before_update :switch_publishable_to_true
@@ -111,6 +111,10 @@ class Review < ActiveRecord::Base
     response
   end
 
+  def is_featured
+    featured == true
+  end
+
   private
     def self.process_answers_attributes(answers_attributes)
       @processed_answers_attributes = []
@@ -133,16 +137,10 @@ class Review < ActiveRecord::Base
       end
     end
 
-    def run_featured_checker_validations
-      errors.add(:featured, "requires that review has been accepted by skanher for publication (publishable be true)") if publishable == false
-      errors.add(:feature, "requires that the terms and conditions acceptance have been accepted") if confirmed_t_and_c == false
-      errors.add(:feature, "requires that the post has been reviewed and validated by the user (validated be true)") if validated == false
-      errors.add(:feature, "requires that the post has a title or a comment") if ( title.nil? && comment.nil? )
-    end
-
     def featured_checker
-      if featured == true
-        run_featured_checker_validations
-      end
+      errors.add(:featured, "requires that review has been accepted by skanher for publication (publishable be true)") if publishable == false
+      errors.add(:featured, "requires that the terms and conditions acceptance have been accepted") if confirmed_t_and_c == false
+      errors.add(:featured, "requires that the post has been reviewed and validated by the user (validated be true)") if validated == false
+      errors.add(:featured, "requires that the post has a title or a comment") if ( title.nil? && comment.nil? )
     end
 end
