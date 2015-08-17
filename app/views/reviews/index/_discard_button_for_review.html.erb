@@ -1,8 +1,0 @@
-<%# discard form & button %>
-<div class="btn-group" role="group">
-  <%= form_tag(review_path(review), id: 'deleteReviewForm', method: :delete) do -%>
-    <%= button_tag(type: 'submit', class: "btn btn-default", id: 'discardReviewButton', form: "deleteReviewForm") do %>
-      <%= t( "discard_button_label", default: "Discard") %>
-    <% end %>
-  <% end %>
-</div>

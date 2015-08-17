@@ -17,7 +17,7 @@ fr:
       voting_button_label: "Voter !"
     simple_review_without_firm_select:
       tell_us_about: "A vous la parole sur "
-      intro_question_vote_form: "Faites-nous part de vos sentiments lorsque l'on parle de chacun des critères suivantes chez %{firm_name} :"
+      intro_question_vote_form: "Faites-nous part de vos sentiments lorsque l'on parle de chacun des critères suivants chez %{firm_name} :"
     edit:
       page_title: "Votre vote en attente de validation"
       heading_sentence: "Voici votre dernier vote en attente de validation pour "
@@ -63,3 +63,11 @@ fr:
       comment_action_sentence: "Partagez votre experience sur %{firm_name} avec nous !"
       title_label_for_review_comments: "Donnez un titre à votre expérience (par ex. Quand j'ai annoncé que j'étais enceinte...)"
       comment_label_for_review_comments: "Décrivez votre expérience (ex. ... On m'a demandé si j'avais pensé à la charge de travail qu'on avait actuellement.)"
+    user_firm_relationship:
+      user_firm_relationship_label: "Merci d'indiquer votre relation actuelle avec %{firm_name}"
+      user_firm_relationship_confidentiality_decla: "Cette information demeurera confidentielle selon nos conditions d'utilisation des services de notation."
+      employee: "Salarié"
+      ceocoo: "Dirigeant"
+      subcontractor: "Prestataire"
+      client: "Client"
+      other: "Autre"

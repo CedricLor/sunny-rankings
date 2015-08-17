@@ -1,0 +1,14 @@
+<%= simple_form_for review, url: review_path(review), method: :patch, remote: true do |r| %>
+  <div class="btn-group btn-group-justified" role="group" aria-label="flag-and-upvote-button-group">
+    <div class="btn-group" role="group">
+      <% flagButtonContent = t( ".flag_button_label", default: "Flag") %>
+      <% flagButtonContent << " (#{review.down_votes})" if review.down_votes > 0 %>
+      <%= r.button :submit, flagButtonContent, class: "btn btn-default", name: "flagButton" %>
+    </div>
+    <div class="btn-group" role="group">
+      <% upvoteButtonContent = t( ".upvote_button_label", default: "Upvote") %>
+      <% upvoteButtonContent << " (#{review.up_votes})" if review.up_votes > 0 %>
+      <%= r.button :submit, upvoteButtonContent, class: "btn btn-default", name: "upvoteButton" %>
+    </div>
+  </div>
+<% end %>

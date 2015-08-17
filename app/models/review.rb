@@ -16,7 +16,7 @@ end
 
 class Review < ActiveRecord::Base
   CURRENT_PERIOD = 30.days
-  PREVIOUS_PERIOD = 60.days
+  PREVIOUS_PERIOD = 90.days
   ANSWERS_REQUIRED_COUNT = 5
   ANSWERS_MINIMUM_COUNT = 1
 
@@ -84,7 +84,7 @@ class Review < ActiveRecord::Base
       validated: false,
       featured: false,
       firm_id: attributes[:firm].id,
-      user_firm_relationship: "Undefined",
+      user_firm_relationship: attributes[:review_params][:user_firm_relationship],
       confirmed_t_and_c: attributes[:review_params][:confirmed_t_and_c],
       answers_attributes: @processed_answers_attributes,
       created_at_ip: attributes[:review_params][:created_at_ip]
@@ -132,9 +132,7 @@ class Review < ActiveRecord::Base
     end
 
     def switch_publishable_to_true
-      if validated == true && comment.empty? && title.empty?
-        self.publishable = true
-      end
+      self.publishable = true if validated == true && (comment.nil? || comment.empty?) && (title.nil? || title.empty?)
     end
 
     def featured_checker

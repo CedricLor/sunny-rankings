@@ -1,0 +1,10 @@
+<div class="btn-group btn-group-justified" role="group" aria-label="review-buttons-group">
+  <%# discard form %>
+  <%= render 'reviews/discard_button_for_review', review: review %>
+
+  <% if review.validated == false %>
+    <%= render 'reviews/edit_button_for_review', review: review %>
+    <%= render 'reviews/validate_button_for_review', review: review %>
+  <% end %>
+
+</div>

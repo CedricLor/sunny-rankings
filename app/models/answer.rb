@@ -1,6 +1,6 @@
 class Answer < ActiveRecord::Base
   CURRENT_PERIOD = 30.days
-  PREVIOUS_PERIOD = 60.days
+  PREVIOUS_PERIOD = 90.days
 
   belongs_to :review
   belongs_to :test

@@ -13,11 +13,8 @@
             </td>
             <td>
               <span class="badge trend-badge">
-                <% css_class_for_arrow = {up: "rotate-right-up", down: "rotate-right-down", neutral: "rotate-neutral"} %>
-                <% arrow_direction = :neutral %>
-                <% arrow_direction = :up if (@current_period_averages.fetch(i).to_f > @previous_period_averages.fetch(i).to_f) %>
-                <% arrow_direction = :down if @current_period_averages.fetch(i).to_f < @previous_period_averages.fetch(i).to_f %>
-                <i class="fa fa-long-arrow-up fa-lg <%= css_class_for_arrow[arrow_direction] %>"></i>
+                <% trend_arrow(i) %>
+                <i class="fa fa-long-arrow-up fa-lg <%= @css_class_for_arrow[@arrow_direction] %>"></i>
               </span>
             </td>
           </tr>

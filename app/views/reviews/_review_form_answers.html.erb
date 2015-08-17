@@ -7,7 +7,7 @@
 <%= a.input :user_rating,
     as: :radio_buttons,
     boolean_style: :inline,
-    collection: (user_rating_option_array),
+    collection: user_rating_option_array,
     label: t( :short_question, scope: [:tests_questions, :"question_#{a.index + 1}"], default: "#{@tests.fetch(a.index).test_long_question}"),
     required: false,
     label_html: {
@@ -30,45 +30,20 @@
           <%= t(".current_rating", default: "Current rating") %>
           <span class="badge"><%= @avg_ratings_by_test.fetch(a.index + 1).to_f.round(1) %></span>
           <span class="badge trend-badge">
-            <% css_class_for_arrow = {up: "rotate-right-up", down: "rotate-right-down", neutral: "rotate-neutral"} %>
-            <% arrow_direction = :neutral %>
-            <% arrow_direction = :up if (@current_period_averages.fetch(a.index + 1).to_f > @previous_period_averages.fetch(a.index + 1).to_f) %>
-            <% arrow_direction = :down if @current_period_averages.fetch(a.index + 1).to_f < @previous_period_averages.fetch(a.index + 1).to_f %>
-              <i class="fa fa-long-arrow-up fa-lg <%= css_class_for_arrow[arrow_direction] %>"></i>
+            <% trend_arrow(a.index + 1) %>
+            <i class="fa fa-long-arrow-up fa-lg <%= @css_class_for_arrow[@arrow_direction] %>"></i>
+          </span>
         </td>
       </tr>
 
-      <%  unless @current_stage == :first_time_vote
-            new_average_including_voter = ( (@total_by_test.fetch(a.index + 1) + @review.answers[a.index].user_rating ).to_f / (@answer_count_by_test.fetch(a.index + 1) + 1) ).to_f
-            new_average_including_voter_rounded = new_average_including_voter.round(1)
-            arrow_direction_including_voter = :neutral
-            arrow_direction_including_voter = :up if ( new_average_including_voter > @avg_ratings_by_test.fetch(a.index + 1).to_f )
-            arrow_direction_including_voter = :down if ( new_average_including_voter < @avg_ratings_by_test.fetch(a.index + 1).to_f )
-          end
-          voting_stages = {
-            first_time_vote: {
-              text: t('.potential_impact', default: "Your potential impact"),
-              css_hidden_switch: "my-hidden-class",
-              new_average_including_voter: "",
-              arrow_direction_including_voter: :neutral},
-            review_vote: {
-              text: t('.potential_impact', default: "Your potential impact"),
-              css_hidden_switch: "",
-              new_average_including_voter: new_average_including_voter_rounded,
-              arrow_direction_including_voter: arrow_direction_including_voter},
-            archived_vote: {
-              text: t('.real_impact', default: "Your impact"),
-              css_hidden_switch: "",
-              new_average_including_voter: new_average_including_voter_rounded,
-              arrow_direction_including_voter: arrow_direction_including_voter}
-          }
+      <%  voting_stage_params_setter(a.index)
       %>
-      <tr class="your-impact <%= voting_stages[@current_stage][:css_hidden_switch] %>">
+      <tr class="your-impact <%= @voting_stages[@current_stage][:css_hidden_switch] %>">
         <td>
-          <%= voting_stages[@current_stage][:text] %>
-          <span class="badge average"><%= voting_stages[@current_stage][:new_average_including_voter] %></span>
+          <%= @voting_stages[@current_stage][:text] %>
+          <span class="badge average"><%= @voting_stages[@current_stage][:new_average_including_voter] %></span>
           <span class="badge trend-badge">
-            <i class="fa fa-long-arrow-up fa-lg <%= css_class_for_arrow[voting_stages[@current_stage][:arrow_direction_including_voter]] %>"></i>
+            <i class="fa fa-long-arrow-up fa-lg <%= @css_class_for_arrow[@voting_stages[@current_stage][:arrow_direction_including_voter]] %>"></i>
           </span>
         </td>
       </tr>

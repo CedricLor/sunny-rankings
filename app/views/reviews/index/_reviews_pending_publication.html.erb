@@ -15,6 +15,9 @@
   <% @pending_publication_reviews.each do | review | %>
     <% @firm.nil? ? firm = review.firm : firm = @firm %>
     <%= render 'reviews/individual_review_table', review: review, username: current_user.username, firmname: firm.name, firmid: firm.id, displayed_reviews_css_array: @displayed_reviews_css_array %>
+    <div class="btn-group btn-group-justified" role="group" aria-label="review-buttons-group">
+      <%= render 'reviews/discard_button_for_review', review: review %>
+    </div>
     <hr/>
   <% end %>
 </div>

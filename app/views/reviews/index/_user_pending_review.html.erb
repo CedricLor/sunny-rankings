@@ -21,29 +21,7 @@
 
     <%# Forms & Buttons %>
 
-    <div class="btn-group btn-group-justified" role="group" aria-label="review-buttons-group">
-      <%# discard form %>
-      <%= render 'reviews/discard_button_for_review', review: review %>
-
-      <% if review.validated == false %>
-        <div class="btn-group" role="group">
-        <%# edit form %>
-          <%= form_tag(edit_review_path(review), id: 'editReviewForm', method: :get) do -%>
-            <%= button_tag(type: 'submit', class: "btn btn-default", id: 'editReviewButton', form: "editReviewForm") do %>
-              <%= t( "edit_button_label", default: "Edit") %>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="btn-group" role="group">
-          <%= simple_form_for review, url: review_path(review), method: :patch do |f| %>
-            <%= button_tag(type: 'submit', class: "btn btn-default", id: 'validateReviewButton', form: "edit_review_#{review.id}") do %>
-              <%= t( "validate_button_label", default: "Validate") %>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
-
-    </div>
+    <%= render 'reviews/review_buttons_wrapper', review: review %>
 
 
 </div>

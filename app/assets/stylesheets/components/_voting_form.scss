@@ -96,43 +96,27 @@ div.my-rating-wrapper {
   }
 }
 
+@-webkit-keyframes ticker {
+    0% {background: $gray-lighter;}
+    50% {background: $gray-darker;}
+    100% {background: $gray-lighter;}
+}
+@keyframes ticker {
+    0% {background: $gray-lighter;}
+    50% {background: $gray-darker;}
+    100% {background: $gray-lighter;}
+}
+@-webkit-keyframes noticker {
+    from {background: $green;}
+    to {background: $green}
+}
+@keyframes noticker {
+    from {background: $green;}
+    to {background: $green}
+}
+
 .cgu {
-  color: $gray;
-  &-checkbox {
-    visibility: hidden;
-    display: none;
-  }
-  a {
-    color: $gray;
-  }
-  @-webkit-keyframes ticker {
-      0% {background: $gray-lighter;}
-      50% {background: $gray-darker;}
-      100% {background: $gray-lighter;}
-  }
-  @keyframes ticker {
-      0% {background: $gray-lighter;}
-      50% {background: $gray-darker;}
-      100% {background: $gray-lighter;}
-  }
-  @-webkit-keyframes noticker {
-      from {background: $green;}
-      to {background: $green}
-  }
-  @keyframes noticker {
-      from {background: $green;}
-      to {background: $green}
-  }
   .fa {
-    -webkit-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    background: $gray-lighter;
-    padding: 15px;
-    color: white;
-    border-radius: 50%;
-    border-style: solid;
-    border-color: $gray-dark;
-    border-width: thin;
     -webkit-animation-name: ticker;
     -webkit-animation-duration: 2s;
     -webkit-animation-timing-function: linear;
@@ -161,6 +145,47 @@ div.my-rating-wrapper {
     a {
       color: $blue !important;
     }
+  }
+}
+
+#userFirmRelationshipGlobalWrapper {
+  input:checked + label.user-firm-relationship {
+    cursor: pointer;
+    color: $gray !important;
+    .fa {
+      background: $green !important;
+      padding: 18px;
+      border-style: none;
+    }
+    a {
+      color: $blue !important;
+    }
+    p.button-label {
+      line-height: 50px;
+      height: 50px;
+    }
+  }
+  p.button-label {
+    line-height: 45px;
+    height: 45px;
+  }
+}
+
+.form-bottom-fields {
+  color: $gray;
+  a {
+    color: $gray;
+  }
+  .fa {
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background: $gray-lighter;
+    padding: 15px;
+    color: white;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: $gray-dark;
+    border-width: thin;
   }
   &:hover {
     cursor: pointer;

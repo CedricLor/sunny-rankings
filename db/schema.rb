@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801155912) do
+ActiveRecord::Schema.define(version: 20150813091908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,6 +171,8 @@ ActiveRecord::Schema.define(version: 20150801155912) do
     t.string   "created_at_ip"
     t.string   "updated_at_ip"
     t.string   "token",                              default: ""
+    t.integer  "down_votes",                         default: 0
+    t.integer  "up_votes",                           default: 0
   end
 
   add_index "reviews", ["firm_id"], name: "index_reviews_on_firm_id", using: :btree

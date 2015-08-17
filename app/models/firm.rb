@@ -75,7 +75,7 @@ class Firm < ActiveRecord::Base
   end
 
   def overall_current_reporting_period_average
-      answers.validated.current_reporting_period.average(:user_rating).to_f
+    answers.validated.current_reporting_period.average(:user_rating).to_f
   end
   # This is the method
   def current_reporting_period_averages

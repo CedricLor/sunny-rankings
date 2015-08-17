@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     redirect_to firm_path(params[:firm_id]) and return if form_has_errors?
     # If no errors
     create_new_review
-    redirect_user
+    send_mail_and_redirect_user
   end
 
   def show
@@ -38,38 +38,13 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    # The update method may be called by a click on the (validate) button
-    # form the firm show view or the review index view (user_pending_review partial) or
-    # the edit review view (review edit view)
+    # The update method may be called by a click on:
+    # - the validate button on the firm show view
+    # - the validate button the review index view (user_pending_review partial)
+    # - the validate button on the edit review view
+    # It may also be called by clicks on the "flag" and "upvote"
     @firm = @review.firm
-    review_params_updater
-
-    if @review.update(@updated_review_params)
-      if ( @review.comment.present? || @review.title.present? )
-        flash[:notice] = t(
-          "review_validated_but_under_review",
-          scope: [:controllers, :reviews, :update],
-          firm_name: @firm.name,
-          default: "Your review of #{@firm.name} has been validated. Our team is currently reviewing your comments before publication."
-          )
-      elsif @review.comment.empty? && @review.title.empty?
-        flash[:notice] = t(
-          "review_validated_and_published",
-          scope: [:controllers, :reviews, :update],
-          firm_name: @firm.name,
-          default: "Your review of #{@firm.name} has been successfully validated. You can find it hereunder."
-          )
-      end
-      redirect_to firm_path(@firm)
-    else
-      flash[:alert] = t(
-          "review_validation_failure",
-          scope: [:controllers, :reviews, :update],
-          firm_name: @firm.name,
-          default: "Your review of #{@firm.name} could not be validated."
-          )
-      redirect_to edit_review_path(@review)
-    end
+    update_type_switch
   end
 
   def destroy
@@ -97,15 +72,7 @@ class ReviewsController < ApplicationController
     ####################
     # General purposes helpers methods
     def review_params
-      params.require(:review).permit(:id, :firm_id, :confirmed_t_and_c, :comment, :title, answers_attributes: [:user_rating, :id]) if params[:review]
-    end
-
-    def review_params_updater
-      @updated_review_params = {updated_at_ip: request.remote_ip, validated: true}
-      if review_params
-        @updated_review_params.merge!(review_params.except(:answers_attributes))
-        @updated_review_params[:answers_attributes] = review_params[:answers_attributes].values if review_params[:answers_attributes]
-      end
+      params.require(:review).permit(:id, :firm_id, :confirmed_t_and_c, :comment, :title, :user_firm_relationship, :up_votes, :down_votes, answers_attributes: [:user_rating, :id]) if params[:review]
     end
 
     def set_firm
@@ -119,7 +86,81 @@ class ReviewsController < ApplicationController
     def set_review
       @review = Review.find(params[:id])
     end
+    ####################
+    # update helpers methods
+    def review_params_updater
+      @updated_review_params = {updated_at_ip: request.remote_ip, validated: true}
+      if review_params
+        @updated_review_params.merge!(review_params.except(:answers_attributes))
+        @updated_review_params[:answers_attributes] = review_params[:answers_attributes].values if review_params[:answers_attributes]
+      end
+    end
 
+    def is_upvote_or_flag_update
+      params[:upvoteButton] || params[:flagButton]
+    end
+
+    def upvote_or_flag_update_action
+      params[:upvoteButton] ? upvotes = @review.up_votes + 1 : upvotes = @review.up_votes
+      params[:flagButton] ? downvotes = @review.down_votes + 1 : downvotes = @review.down_votes
+      @review.update({up_votes: upvotes, down_votes: downvotes})
+    end
+
+    def upvote_or_flag_review
+      if upvote_or_flag_update_action
+        respond_to do |format|
+          format.html { redirect_to firm_path(@firm) }
+          format.js
+        end
+      # else
+      #   respond_to do |format|
+      #     format.html { render 'firms/show' }
+      #     format.js
+      #   end
+      end
+    end
+
+    def set_successfull_update_flash_message
+      if ( @review.comment.present? || @review.title.present? )
+        flash[:notice] = t(
+          "review_validated_but_under_review",
+          scope: [:controllers, :reviews, :update],
+          firm_name: @firm.name,
+          default: "Your review of #{@firm.name} has been validated. Our team is currently reviewing your comments before publication."
+          )
+      else
+        flash[:notice] = t(
+          "review_validated_and_published",
+          scope: [:controllers, :reviews, :update],
+          firm_name: @firm.name,
+          default: "Your review of #{@firm.name} has been successfully validated. You can find it hereunder."
+          )
+      end
+    end
+
+    def set_failed_update_fash_message
+      flash[:alert] = t(
+          "review_validation_failure",
+          scope: [:controllers, :reviews, :update],
+          firm_name: @firm.name,
+          default: "Your review of #{@firm.name} could not be validated."
+          )
+    end
+
+    def user_validate_review
+      review_params_updater
+      if @review.update(@updated_review_params)
+        set_successfull_update_flash_message
+        redirect_to firm_path(@firm)
+      else
+        set_failed_update_flash_message
+        redirect_to edit_review_path(@review)
+      end
+    end
+
+    def update_type_switch
+      is_upvote_or_flag_update ? upvote_or_flag_review : user_validate_review
+    end
     ####################
     # create helpers methods
     def has_valid_email
@@ -163,9 +204,9 @@ class ReviewsController < ApplicationController
       @has_errors
     end
     #######
-    def set_flash_notice_and_send_mail(flash_variables, send_mail_block)
+    def set_flash_notice_and_send_mail(flash_variables)
       flash[flash_variables[:flash_type]] = flash_variables[:flash_message]
-      send_mail_block.call
+      yield
     end
 
     def i18n_flash_messages_store(flash_message_ref)
@@ -192,11 +233,8 @@ class ReviewsController < ApplicationController
       if user_signed_in?
         set_flash_notice_and_send_mail(
           { flash_type: "notice",
-            flash_message: i18n_flash_messages_store[:review_successfully_saved_logged_user]
-          },
-          {
-            ReviewMailer.new_review_for(params[:email], @firm).deliver_now
-          }
+            flash_message: i18n_flash_messages_store(:review_successfully_saved_logged_user)
+          }) { ReviewMailer.new_review_for(params[:email], @firm).deliver_now }
         # flash[:notice] = t(
         #     :review_successfully_saved_logged_user,
         #     scope: [:controllers, :reviews, :create],
@@ -208,11 +246,8 @@ class ReviewsController < ApplicationController
       else
         set_flash_notice_and_send_mail(
           { flash_type: "notice",
-            flash_message: i18n_flash_messages_store[:review_successfully_saved_unlogged_user]
-          },
-          {
-            @user.is_new_user_created_on_vote ? @user.send_confirmation_instructions : ReviewMailer.new_review_with_your_email(params[:email], @firm).deliver_now
-          }
+            flash_message: i18n_flash_messages_store(:review_successfully_saved_unlogged_user)
+          }) { @user.is_new_user_created_on_vote ? @user.send_confirmation_instructions : ReviewMailer.new_review_with_your_email(params[:email], @firm).deliver_now }
         # flash[:notice] = t(
         #     :review_successfully_saved_unlogged_user,
         #     scope: [:controllers, :reviews, :create],

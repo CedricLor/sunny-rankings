@@ -2,6 +2,7 @@ class FirmsController < ApplicationController
   before_action :set_firm, only: [:show ]
 
   def index
+    set_user if user_signed_in?
     set_location
     set_first_hit_tracker
     set_firms_list_on_search_results_or_country_index

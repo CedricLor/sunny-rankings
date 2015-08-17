@@ -1,0 +1,30 @@
+<div id="userFirmRelationshipGlobalWrapper">
+  <% array_of_relationships = ["Employee", "CEO/COO", "Subcontractor", "Client", "Other"] %>
+
+  <h4><%= t( ".user_firm_relationship_label", firm_name: @firm.name, default: "Please indicate your relationship with #{@firm.name}") %></h4>
+  <p><%= t( ".user_firm_relationship_confidentiality_decla", default: "This information will remain confidential as per our terms of use of the ranking services.") %></p>
+  <div>
+  <% array_of_relationships.each do |relationship| %>
+    <% normalized_relationship = relationship.sub(/\//,"").downcase %>
+    <%= r.radio_button(
+        :user_firm_relationship,
+        "#{normalized_relationship}",
+        id: "review_user_firm_relationship_#{normalized_relationship}",
+        class: "my-hidden-class",
+        checked: (@review.user_firm_relationship == normalized_relationship) || (params[:action] == 'show' && params[:controller] == 'firms' && relationship == "Employee")
+        ) %>
+    <label for=<%= "review_user_firm_relationship_#{normalized_relationship}" %> class="block form-bottom-fields user-firm-relationship">
+      <div class="row vertical-align-middle">
+        <div class="col-xs-3 text-center">
+          <i class="fa fa-check"></i>
+        </div>
+        <div class="col-xs-9">
+          <p class="button-label">
+            <%= t ".#{normalized_relationship}", default: relationship %>
+          </p>
+        </div>
+      </div>
+    </label>
+  <% end %>
+  </div>
+</div>

@@ -63,3 +63,11 @@ en:
       comment_action_sentence: "Share your experience on %{firm_name} with us!"
       title_label_for_review_comments: "Please give a title to your experience (ex. When I announced I was pregnant...)"
       comment_label_for_review_comments: "Describe your experience (ex. ... I was asked whether I had thought about the current workload...)"
+    user_firm_relationship:
+      user_firm_relationship_label: "Please indicate your actual relationship with %{firm_name}"
+      user_firm_relationship_confidentiality_decla: "This information will remain confidential as per our terms of use of the ranking services."
+      employee: "Employee"
+      ceocoo: "Executive Officer"
+      subcontractor: "Subcontractor"
+      client: "Client"
+      other: "Other"

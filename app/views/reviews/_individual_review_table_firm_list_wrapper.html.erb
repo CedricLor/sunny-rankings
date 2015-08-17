@@ -1,0 +1,11 @@
+<% is_user_review = user_signed_in? && review.user.id == @user.id %>
+<div class=<%= "your-pending-review" if is_user_review %> >
+  <%= render 'reviews/individual_review_table', review: review, username: username, firmname: firmname, firmid: firmid, displayed_reviews_css_array: displayed_reviews_css_array %>
+  <% if is_user_review %>
+    <div class="btn-group btn-group-justified" role="group" aria-label="review-buttons-group">
+      <%= render 'reviews/discard_button_for_review', review: review %>
+    </div>
+  <% else %>
+    <%= render 'reviews/form_for_published_review', review: review %>
+  <% end %>
+</div>

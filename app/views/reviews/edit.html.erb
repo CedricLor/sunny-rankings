@@ -23,10 +23,11 @@
               <%= r.error_notification %>
               <%= render "reviews/review_form_comments", r: r %>
               <%= render "reviews/review_form_master_content_validate", r: r %>
+              <%= render "reviews/user_firm_relationship", r: r %>
             <% end %>
 
             <%# buttons group %>
-
+            <hr/>
             <div class="btn-group btn-group-justified" role="group" aria-label="review-buttons-group">
               <%# discard form %>
               <%= render 'reviews/discard_button_for_review', review: @review %>

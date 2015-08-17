@@ -1,0 +1,11 @@
+<%# setting the target ids %>
+<% target_id_flag = "#edit_review_#{@review.id} input[name=flagButton]" %>
+<% target_id_upvote = "#edit_review_#{@review.id} input[name=upvoteButton]" %>
+<%# setting the new content for the buttons %>
+<% flagButtonContent = t( ".flag_button_label", default: "Flag") %>
+<% flagButtonContent << " (#{@review.down_votes})" if @review.down_votes > 0 %>
+<% upvoteButtonContent = t( ".upvote_button_label", default: "Upvote") %>
+<% upvoteButtonContent << " (#{@review.up_votes})" if @review.up_votes > 0 %>
+<%# setting the content of the buttons %>
+$("<%= target_id_flag %>").val("<%= flagButtonContent %>");
+$("<%= target_id_upvote %>").val("<%= upvoteButtonContent %>");
