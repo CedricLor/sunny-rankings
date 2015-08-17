@@ -113,7 +113,7 @@ class ReviewsController < ApplicationController
         # respond_to do |format|
         #   format.html { redirect_to firm_path(@firm) }
         #   format.js
-        end
+        # end
       # else
       #   respond_to do |format|
       #     format.html { render 'firms/show' }
