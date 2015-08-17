@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :edit, :destroy]
   before_action :set_review, only: [:edit, :update, :destroy]
 
   def create
@@ -113,8 +113,7 @@ class ReviewsController < ApplicationController
           format.html { redirect_to firm_path(@firm) }
           format.js
         end
-      else
-        puts "error in upvote_or_flag_update_action *****************"
+      # else
        #  respond_to do |format|
        #    format.html { render 'firms/show' }
        #    format.js
@@ -150,6 +149,7 @@ class ReviewsController < ApplicationController
     end
 
     def user_validate_review
+      authenticate_user!
       review_params_updater
       if @review.update(@updated_review_params)
         set_successfull_update_flash_message
