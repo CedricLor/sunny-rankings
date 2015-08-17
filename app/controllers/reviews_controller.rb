@@ -101,9 +101,10 @@ class ReviewsController < ApplicationController
     end
 
     def upvote_or_flag_update_action
-      params[:upvoteButton] ? upvotes = @review.up_votes + 1 : upvotes = @review.up_votes
-      params[:flagButton] ? downvotes = @review.down_votes + 1 : downvotes = @review.down_votes
-      @review.update({up_votes: upvotes, down_votes: downvotes})
+      params[:upvoteButton] ? @review.up_votes += 1 : @review.up_votes
+      params[:flagButton] ? @review.down_votes += 1 : @review.down_votes
+      @review.save
+      # @review.update({up_votes: upvotes, down_votes: downvotes})
     end
 
     def upvote_or_flag_review
@@ -116,7 +117,7 @@ class ReviewsController < ApplicationController
       #   respond_to do |format|
       #     format.html { render 'firms/show' }
       #     format.js
-      #   end
+      #  end
       end
     end
 

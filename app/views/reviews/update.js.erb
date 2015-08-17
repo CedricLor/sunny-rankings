@@ -1,7 +1,7 @@
-<%# setting the target ids %>
+<%# setting the target ids for the buttons where the number of flags or upvote should be displayed %>
 <% target_id_flag = "#edit_review_#{@review.id} input[name=flagButton]" %>
 <% target_id_upvote = "#edit_review_#{@review.id} input[name=upvoteButton]" %>
-<%# setting the new content for the buttons %>
+<%# setting the new content for the buttons (the nuw numbers of flags or upvotes) %>
 <% flagButtonContent = t( ".flag_button_label", default: "Flag") %>
 <% flagButtonContent << " (#{@review.down_votes})" if @review.down_votes > 0 %>
 <% upvoteButtonContent = t( ".upvote_button_label", default: "Upvote") %>
