@@ -109,16 +109,16 @@ class ReviewsController < ApplicationController
 
     def upvote_or_flag_review
       if upvote_or_flag_update_action
-        redirect_to firm_path(@firm)
-        # respond_to do |format|
-        #   format.html { redirect_to firm_path(@firm) }
-        #   format.js
-        # end
-      # else
-      #   respond_to do |format|
-      #     format.html { render 'firms/show' }
-      #     format.js
-      #  end
+        respond_to do |format|
+          format.html { redirect_to firm_path(@firm) }
+          format.js
+        end
+      else
+        puts "error in upvote_or_flag_update_action *****************"
+       #  respond_to do |format|
+       #    format.html { render 'firms/show' }
+       #    format.js
+       #  end
       end
     end
 
