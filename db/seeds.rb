@@ -296,6 +296,8 @@ favorite_firms.each do | favorite_firm |
 end
 
 User.all.update_all confirmed_at: Time.now
+Review.all.update_all confirmed_t_and_c: true
+Review.all.update_all validated: true
 
 puts "*" * 40
 puts "Over Roger!!!"
