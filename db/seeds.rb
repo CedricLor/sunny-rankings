@@ -247,6 +247,8 @@ def create_answers_and_review(date, portfolio, user_rating, firm_id)
     user_firm_relationship: "employee",
     confirmed_t_and_c: true,
     validated: true,
+    agreed_for_publication: true,
+    publishable: true,
     created_at: date,
     updated_at: date,
     answers_attributes: answers
