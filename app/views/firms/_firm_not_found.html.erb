@@ -14,12 +14,34 @@
     <%= t(".firm_not_listed_please_add_firm", search_string: params[:search], default: "Do you want that \"#{params[:search]}\" be added to our rankings? Request it!")%>
 
   </p>
-
-  <%= form_tag(firms_request_firm_addition_path, method: "post", remote: true) do %>
-
-    <%= hidden_field_tag 'firm_name', "#{params[:search]}" %>
-    <%= button_tag t(".request_button", default: "Request"), type: 'submit', class: "btn btn-default btn-green-bg red-hover-btn btn-lg btn-block main-call-to-action-btn", id: "btnToAddFirm" %>
-
-  <% end %>
-
 </h4>
+
+<%= simple_form_for(@firm_creation_request, remote: true) do | form | %>
+  <%= form.input :name,
+                input_html: {
+                  value: params[:search]
+                },
+                label: t( ".firm_name_label", default: "Please confirm the name of the firm you would like us to add to our rankings.")
+   %>
+  <%= form.input :country_of_firm,
+                input_html: {
+                  value: request.location.country
+                },
+                label: t( ".firm_name_label", default: "Help us by providing the name of the country where this firm is located (optional).")
+   %>
+  <%= form.input :city_of_firm,
+                input_html: {
+                  value: request.location.city
+                },
+                label: t( ".firm_name_label", default: "Help us by providing the name of the city where this firm is located (optional).")
+   %>
+  <% unless user_signed_in? %>
+    <%= form.input :email,
+                  input_html: {
+                    value: user_signed_in? ? @user.email : nil,
+                    placeholder: user_signed_in? ? @user.email : nil },
+                  label: t( ".user_email_label", default: "If you leave us your email, we will kindly inform you as soon as '#{params[:search]}' will be added to our rankings (optional).")
+     %>
+  <% end %>
+  <%= form.button :submit, t(".request_button", default: "Request"), class: "btn btn-default btn-green-bg red-hover-btn btn-lg btn-block main-call-to-action-btn", id: "btnToAddFirm" %>
+<% end %>

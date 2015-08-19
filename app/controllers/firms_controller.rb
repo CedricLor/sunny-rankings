@@ -14,6 +14,7 @@ class FirmsController < ApplicationController
   end
 
   def show
+    set_user if user_signed_in?
     select_pending_review_for_this_firm_if_any
     @number_of_accounted_firm_reviews = @firm.number_of_valid_and_publishable_reviews
     set_variables_for_ratings_and_trends
@@ -34,17 +35,6 @@ class FirmsController < ApplicationController
   end
 
   def destroy
-  end
-
-  def request_firm_addition
-    if FirmMailer.request_new_firm(params[:firm_name], request.location.country, request.location.city).deliver_now
-      # set_flash_variables("Your request to add \"#{params[:firm_name]}\" was received by our services. We are currently processing it.", "notice")
-      set_flash_variables(flash_message_selector(:firm_addition_request_success))
-    else
-      # set_flash_variables("Your request to add \"#{params[:firm_name]}\" could not be sent to our services. Please try again later.", "alert")
-      set_flash_variables(flash_message_selector(:firm_addition_request_failure))
-    end
-    ajax_or_html_response_for_request_firm_addition
   end
 
   private
@@ -88,6 +78,7 @@ class FirmsController < ApplicationController
 
     def set_no_search_results_to_true_and_select_top10_by_country
       @no_search_results = true
+      @firm_creation_request = FirmCreationRequest.new
       @firms = Firm.top10_by_country(@user_ip_country)
     end
 
@@ -137,8 +128,7 @@ class FirmsController < ApplicationController
     end
     ################################
     # Show helpers methods
-    def set_user_and_select_latest_pending_review_for_this_firm
-      set_user
+    def select_latest_pending_review_for_this_firm
       @user_pending_review_for_this_firm = @user.potentially_publishable_review_for_firm(@firm)
     end
 
@@ -154,7 +144,7 @@ class FirmsController < ApplicationController
 
     def select_pending_review_for_this_firm_if_any
       if user_signed_in?
-        set_user_and_select_latest_pending_review_for_this_firm
+        select_latest_pending_review_for_this_firm
       elsif session[:review_token] && session[:review_token].present?
         select_latest_review_corresponding_to_review_token_stored_in_session
         delete_review_token_in_session_and_in_db
@@ -174,6 +164,7 @@ class FirmsController < ApplicationController
       # variables required by /app/views/firms/_community_ranking_details.html.erb
       # and /app/views/reviews/_review_form_answers.html.erb
       @avg_ratings_by_test = @firm.avg_ratings_by_test
+      @number_of_questions = @avg_ratings_by_test.length
       @current_period_averages = @firm.current_reporting_period_averages
       @previous_period_averages = @firm.previous_reporting_period_averages
     end
@@ -187,46 +178,5 @@ class FirmsController < ApplicationController
       set_main_review_variables_and_build_answers
       @current_stage = :first_time_vote
       set_variables_for_js_immediate_display
-    end
-    ################################
-    # request firm addition helpers methods
-    def flash_message_selector(flash_request)
-      flash_messages = {
-        firm_addition_request_success: {
-          flash_message: t(
-            'firm_addition_request_success',
-            scope: [:controllers, :firms, :flash_message_selector],
-            firm_name: params[:firm_name],
-            default: "Your request to add \"#{params[:firm_name]}\" was received by our services. We are currently processing it."
-            ),
-          flash_type: "notice"
-          },
-        firm_addition_request_failure: {
-          flash_message: t(
-            'firm_addition_request_failure',
-            scope: [:controllers, :firms, :flash_message_selector],
-            firm_name: params[:firm_name],
-            default: "Your request to add \"#{params[:firm_name]}\" could not be sent to our services. Please try again later."
-            ),
-          flash_type: "alert"
-        }
-      }
-      flash_messages[flash_request]
-    end
-
-    def set_flash_variables(flash_variables_hash)
-      @flash_text = flash_variables_hash[:flash_message]
-      @flash_type = flash_variables_hash[:flash_type]
-    end
-
-    def request_firm_addition_redirect_helper(flash)
-      redirect_to firms_path
-    end
-
-    def ajax_or_html_response_for_request_firm_addition
-      respond_to do |format|
-        format.html { request_firm_addition_redirect_helper(flash[@flash_type] = @flash_text) }
-       format.js
-      end
     end
 end

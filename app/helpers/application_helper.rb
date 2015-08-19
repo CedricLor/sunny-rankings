@@ -47,6 +47,6 @@ module ApplicationHelper
     def arrow_direction_setter_if_data_available(current_period_averages, previous_period_averages)
       @arrow_direction = :up if current_period_averages.to_f > previous_period_averages.to_f
       @arrow_direction = :down if current_period_averages.to_f < previous_period_averages.to_f
-      @arrow_direction = :neural if current_period_averages.to_f == previous_period_averages.to_f
+      @arrow_direction = :neutral if current_period_averages.to_f == previous_period_averages.to_f
     end
 end

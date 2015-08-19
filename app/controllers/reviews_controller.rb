@@ -100,15 +100,74 @@ class ReviewsController < ApplicationController
       params[:upvoteButton] || params[:flagButton]
     end
 
-    def upvote_or_flag_update_action
-      params[:upvoteButton] ? @review.up_votes += 1 : @review.up_votes
-      params[:flagButton] ? @review.down_votes += 1 : @review.down_votes
+    def set_upvote_or_flag_cookies
+      cookies[:ufr_store] ? upvoted_or_flagged_reviews = JSON.parse(cookies[:ufr_store]) : upvoted_or_flagged_reviews = []
+      upvoted_or_flagged_reviews << { review_id: @review.id, type: params[:upvoteButton] ? "upvoteButton" : "flagButton", date: Time.now }
+      cookies.permanent[:ufr_store] = JSON.generate(upvoted_or_flagged_reviews)
+    end
+
+    def remove_upvote
+      params[:upvoteButton] ? @review.up_votes -= 1 : @review.up_votes
       @review.save
-      # @review.update({up_votes: upvotes, down_votes: downvotes})
+    end
+
+    def remove_flag
+      params[:flagButton] ? @review.down_votes -= 1 : @review.down_votes
+      @review.save
+    end
+
+    def remove_cookie
+      updated_cookie_content = []
+      @upvoted_or_flagged_reviews.each do | review |
+        unless review["review_id"] == @review.id && ( (review["type"] == "upvoteButton" && params[:upvoteButton]) || (review["type"] == "flagButton" && params[:flagButton]) )
+          updated_cookie_content << review
+        end
+      end
+      cookies.permanent[:ufr_store] = JSON.generate(updated_cookie_content)
+    end
+
+    def remove_upvote_or_flag_switch(review)
+      if review["type"] == "upvoteButton" && params[:upvoteButton]
+        remove_upvote
+        remove_cookie
+      elsif review["type"] == "flagButton" && params[:flagButton]
+        remove_flag
+        remove_cookie
+      else
+        return false
+      end
+    end
+
+    def check_if_review_already_touched
+      @upvoted_or_flagged_reviews = JSON.parse(cookies[:ufr_store])
+      @upvoted_or_flagged_reviews.each do | review |
+        if review["review_id"] == @review.id
+          remove_upvote_or_flag_switch(review)
+          return false
+        end
+      end
+      true
+    end
+
+    def cookie_agrees
+      if cookies[:ufr_store]
+        check_if_review_already_touched
+      else
+        true
+      end
+    end
+
+    def upvote_or_flag_update_action
+      if cookie_agrees
+        params[:upvoteButton] ? @review.up_votes += 1 : @review.up_votes
+        params[:flagButton] ? @review.down_votes += 1 : @review.down_votes
+        @review.save
+      end
     end
 
     def upvote_or_flag_review
       if upvote_or_flag_update_action
+        set_upvote_or_flag_cookies
         respond_to do |format|
           format.html { redirect_to firm_path(@firm) }
           format.js

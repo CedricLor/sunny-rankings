@@ -3,7 +3,7 @@
     <div id="communityRankingDetails" class="text-wrapper card-block shadowed-box">
       <h4><%= t(".what_our_users_say", firm_name: @firm.name, default: "What our users say about #{@firm.name}:") %></h4>
       <table class="table table-striped table-responsive">
-        <% for i in 1..5 do %>
+        <% for i in 1..@number_of_questions do %>
           <tr>
             <td>
               <%= t( :short_question, scope: [:tests_questions, :"question_#{i}"], default: @tests.fetch(i - 1).test_question ) %>

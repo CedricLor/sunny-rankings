@@ -6,6 +6,8 @@
       hint_html: {class: "voting-email-hint-class"}
 %>
 <%= r.button :submit, t( ".voting_button_label", default: button_label), class: "btn-center vote-button", name: button_name %>
+<%# the following part is not currently in use %>
+<%# drafted in prevision of reviews without rating %>
 <% if called_from == "comment_section" %>
   <%= r.hint t( ".post_comment_for_firm_button_hint", default: 'If you also want to vote on our criteria, please scroll down, make your choices and press the "Vote" button below'), class: "text-center" %>
 <% end %>

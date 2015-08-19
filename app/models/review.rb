@@ -51,29 +51,38 @@ class Review < ActiveRecord::Base
   before_create :generate_token, unless: :token?
   before_update :switch_publishable_to_true
 
+  scope :with_firm, -> { includes(:firm) }
+  scope :with_user, -> { includes(review_portfolio: [:user]) }
+  scope :with_answers, -> { includes(answers: [:test]) }
+  scope :pending, -> { where(validated: false) }
+
   def self.answers
     joins(:answers)
   end
 
-  def self.for_firm(firm_id)
-    where(firm_id: firm_id)
+  def self.for_firm(firm)
+    where(firm_id: firm.id)
   end
 
-  def self.featured_for_firm(firm_id)
-    where(firm_id: firm_id, featured: true)
-  end
+  # def self.featured_for_firm(firm)
+  #   where(firm_id: firm.id, featured: true)
+  # end
 
   def self.featured
     where(featured: true)
   end
 
-  def self.featured_with_usernames_and_firm_names
-    includes(:user, :firm).where(featured: true)
+  def self.for_user(user)
+    where("users.id" => user.id)
   end
 
-  def self.featured_with_usernames
-    joins(:user).where(featured: true)
-  end
+  # def self.featured_with_usernames_and_firm_names
+  #   includes(:user, :firm).where(featured: true)
+  # end
+
+  # def self.featured_with_usernames
+  #   joins(:user).where(featured: true)
+  # end
 
   def self.create_review_for_user(attributes)
     process_answers_attributes(attributes[:review_params][:answers_attributes])
@@ -118,7 +127,7 @@ class Review < ActiveRecord::Base
   private
     def self.process_answers_attributes(answers_attributes)
       @processed_answers_attributes = []
-      for i in 1..5 do
+      for i in 1..Test.all.length do
         answer_hash = answers_attributes.fetch("#{i - 1}") { |el| {"user_rating"=>"0"} }
         answer_hash["test_id"] = "#{i}"
         @processed_answers_attributes << answer_hash

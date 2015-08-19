@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813091908) do
+ActiveRecord::Schema.define(version: 20150819133518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,20 @@ ActiveRecord::Schema.define(version: 20150813091908) do
   add_index "firm_addresses", ["address_id"], name: "index_firm_addresses_on_address_id", using: :btree
   add_index "firm_addresses", ["firm_id"], name: "index_firm_addresses_on_firm_id", using: :btree
 
+  create_table "firm_creation_requests", force: :cascade do |t|
+    t.string   "country_of_requester"
+    t.string   "city_of_requester"
+    t.string   "country_of_firm"
+    t.string   "city_of_firm"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "user_id"
+    t.integer  "requested_firm_id"
+  end
+
+  add_index "firm_creation_requests", ["requested_firm_id"], name: "index_firm_creation_requests_on_requested_firm_id", using: :btree
+  add_index "firm_creation_requests", ["user_id"], name: "index_firm_creation_requests_on_user_id", using: :btree
+
   create_table "firms", force: :cascade do |t|
     t.string   "name"
     t.string   "url"
@@ -101,6 +115,8 @@ ActiveRecord::Schema.define(version: 20150813091908) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.string   "naf_code"
+    t.integer  "number_of_researches"
+    t.integer  "number_of_views"
   end
 
   add_index "firms", ["naf_code"], name: "index_firms_on_naf_code", using: :btree
@@ -146,6 +162,13 @@ ActiveRecord::Schema.define(version: 20150813091908) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
+  create_table "requested_firms", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "number_of_requests"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "review_portfolios", force: :cascade do |t|
     t.integer  "user_id"
@@ -225,6 +248,8 @@ ActiveRecord::Schema.define(version: 20150813091908) do
   add_foreign_key "answers", "tests"
   add_foreign_key "firm_addresses", "addresses"
   add_foreign_key "firm_addresses", "firms"
+  add_foreign_key "firm_creation_requests", "requested_firms"
+  add_foreign_key "firm_creation_requests", "users"
   add_foreign_key "firms", "low_level_industries", column: "naf_code", primary_key: "naf_code", name: "naf_code"
   add_foreign_key "granted_awards", "awards"
   add_foreign_key "granted_awards", "firms"

@@ -26,7 +26,8 @@ Rails.application.routes.draw do
       resources :reviews, only: [ :create]
     end
 
-    post 'firms/request_firm_addition', to: "firms#request_firm_addition"
+    resources :firm_creation_requests, only: [ :create] do
+    end
 
     post 'firms/geosearch', to: "firms#geosearch"
 

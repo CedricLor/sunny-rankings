@@ -65,7 +65,6 @@ $(window).load( function() {
     this.validityControl = function(id, newValue) {
       this.myFields[id].textValue = newValue;
       this.myFields[id].updateValidity();
-      this.myFields[id].updateCSS();
       this.switch_are_all_valid();
     };
     this.controlAll = function(allFields) {
@@ -76,16 +75,16 @@ $(window).load( function() {
   };
 
   function enable_button() {
-    myChecker.controlAll(fields_identifier);
-    if (($(checkbox_identifier).is(':checked')) && myChecker.are_all_valid) {
+    if ( $(checkbox_identifier).is(':checked') && myChecker.are_all_valid ) {
       $(vote_button_identifier).prop("disabled",false).removeClass('vote-btn-deactivated').addClass('main-call-to-action-btn');
       $(vote_button_identifier).focus();
     } else {
       $(vote_button_identifier).prop("disabled",true).addClass('vote-btn-deactivated').removeClass('main-call-to-action-btn');
       var from_field;
-      if (arguments.length == 1) {
-        from_field = arguments[0];
-        $(from_field).focus( function(){this.value = this.value} ).focus();
+      if ( (arguments.length == 1) && !($(arguments[0]).val() == "") ) {
+        $(arguments[0]).focus( function(){
+          this.value = this.value
+        } );
       };
     };
   };
@@ -93,8 +92,6 @@ $(window).load( function() {
   // Applying deactivated class to vote button on load
   /* Disabling the vote button on load*/
   $(vote_button_identifier).addClass('vote-btn-deactivated').prop("disabled",true);
-  myChecker.controlAll(fields_identifier);
-  enable_button();
 
   // Attach a handler triggered when the check-box is clicked
   $(checkbox_identifier).click(function() {
@@ -106,6 +103,8 @@ $(window).load( function() {
   // Attach a handler triggered when the focus goes out of a form field
   // This selector should select all the fields that need to be validated
   $(fields_identifier).focusout(function() {
+    myChecker.validityControl($(this).attr("id"), $(this).val());
+    myChecker.myFields[$(this).attr("id")].updateCSS();
     enable_button("#" + this.id);
   });
 

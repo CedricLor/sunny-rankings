@@ -71,3 +71,6 @@ fr:
       subcontractor: "Prestataire"
       client: "Client"
       other: "Autre"
+    form_for_published_review:
+      flag_button_label: "Signaler"
+      upvote_button_label: "Approuver"
