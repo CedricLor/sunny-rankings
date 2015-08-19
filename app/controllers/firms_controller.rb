@@ -84,14 +84,14 @@ class FirmsController < ApplicationController
       if @requested_firm = RequestedFirm.find_by_name(requested_firm_params[:name])
         @requested_firm.update(number_of_requests: @requested_firm.number_of_requests + 1)
       else
-        @requested_firm = RequestedFirm.create({firm_name: requested_firm_params[:name], number_of_requests: 1})
+        @requested_firm = RequestedFirm.create({name: requested_firm_params[:name], number_of_requests: 1})
       end
     end
 
     def actions_if_no_search_results
       @no_search_results = true
       find_or_create_requested_firm
-      @firm_creation_request = FirmCreationRequest.new({requested_firm_id: @requested_firm.id, user_id: user_signed_in? ? user.id : nil})
+      @firm_creation_request = FirmCreationRequest.new({requested_firm_id: @requested_firm.id, user_id: user_signed_in? ? @user.id : nil})
       @firms = Firm.top10_by_country(@user_ip_country)
     end
 
@@ -111,7 +111,8 @@ class FirmsController < ApplicationController
 
     def set_firms_list_on_search_results_or_country_index
       if params[:requested_firm]
-        @firms = Firm.where("LOWER(name) LIKE ?", "%#{requested_firm_params[:name].downcase}%")
+        @requested_firm_params = requested_firm_params
+        @firms = Firm.where(country: @user_ip_country).where("LOWER(name) LIKE ?", "%#{requested_firm_params[:name].downcase}%")
         define_search_results_variables_depending_on_search_results
       else
         @firms = Firm.top10_by_country(@user_ip_country)

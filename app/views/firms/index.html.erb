@@ -1,4 +1,4 @@
-<% content_for(:title,  params[:search] ? t(".page_title_search", search_string: params[:search], default: "Searching for #{params[:search]}") : raw( t(".page_title_no_search", default: "Look up a firm's ranking" ) ) ) %>
+<% content_for(:title,  params[:requested_firm] ? t(".page_title_search", search_string: @requested_firm_params[:name], default: "Searching for #{@requested_firm_params[:name]}") : raw( t(".page_title_no_search", default: "Look up a firm's ranking" ) ) ) %>
 
 <div class="container">
 
@@ -13,12 +13,12 @@
           </div>
         </div>
         <!-- If the user has searched something: title line indicating what was searched for -->
-        <% if params[:search] %>
+        <% if params[:requested_firm] %>
           <div class="row">
             <div class="col-xs-12">
               <div class="text-center">
                 <h1>
-                    <%= t('.search_result_header_html', search_string: params[:search], default: "Search results for '#{params[:search]}'") %>
+                    <%= t('.search_result_header_html', search_string: @requested_firm_params[:name], default: "Search results for '#{@requested_firm_params[:name]}'") %>
                 </h1>
               </div>
             </div>
@@ -35,7 +35,7 @@
           </div>
         <% end %>
         <!-- if the search has not given any results or if the user has not searched anything: give the classical header (Gender equality on the work place) and the ranking of the 10 top firms in country -->
-        <% if (@no_search_results == true || params[:search].nil? ) %>
+        <% if (@no_search_results == true || params[:requested_firm].nil? ) %>
           <div class="row">
             <div class="col-xs-12">
               <div class="text-wrapper card-block shadowed-box text-center">
@@ -63,7 +63,7 @@
       </div>
       <%# if the search by name has returned something, display top 10 competitors
       ordered by ranking below the search results %>
-      <% if (params[:search] && @no_search_results == false ) %>
+      <% if (params[:requested_firm] && @no_search_results == false ) %>
         <%= render "competitors_community_rankings", selected_firm: @firms.first, competitors: @competitors %>
       <% end %>
     </div>
