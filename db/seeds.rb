@@ -293,5 +293,7 @@ favorite_firms.each do | favorite_firm |
   end
 end
 
+User.all.update_all confirmed_at: Time.now
+
 puts "*" * 40
 puts "Over Roger!!!"
