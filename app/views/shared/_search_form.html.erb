@@ -1,9 +1,9 @@
 <div class="search-form-card-block">
   <%= form_tag(firms_path, method: "get", class: "form-inline") do %>
     <div class="input-group input-group-search-form">
-      <%= text_field_tag :search, params[:search], class: "form-control my-navbar-form-control", placeholder: t(".placeholder", default: "Look up for a firm") %>
+      <%= search_field(:requested_firm, :name, class: "form-control my-navbar-form-control", placeholder: t(".placeholder", default: "Look for a firm")) %>
       <span class="input-group-btn">
-        <button type="submit" class="btn btn-default btn-search-form" type="button"><i class="fa fa-search"></i></button>
+        <button type="submit" class="btn btn-default btn-search-form"><i class="fa fa-search"></i></button>
       </span>
     </div><!-- /input-group -->
   <% end %>

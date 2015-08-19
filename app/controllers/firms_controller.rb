@@ -40,7 +40,7 @@ class FirmsController < ApplicationController
   private
     ################################
     # general purposes helpers methods
-    def firms_params
+    def firm_params
       params.require(:firm).permit(:name, :address, :country, :headcount, :business_description, :business_sector, :icon_name)
     end
 
@@ -50,6 +50,10 @@ class FirmsController < ApplicationController
 
     def set_user
       @user = current_user
+    end
+
+    def requested_firm_params
+      params.require(:requested_firm).permit(:name)
     end
     ################################
     # index helpers methods
@@ -76,28 +80,38 @@ class FirmsController < ApplicationController
       session[:first_hit].nil? ? session[:first_hit] = true : session[:first_hit] = false
     end
 
-    def set_no_search_results_to_true_and_select_top10_by_country
+    def find_or_create_requested_firm
+      if @requested_firm = RequestedFirm.find_by_name(requested_firm_params[:name])
+        @requested_firm.update(number_of_requests: @requested_firm.number_of_requests + 1)
+      else
+        @requested_firm = RequestedFirm.create({firm_name: requested_firm_params[:name], number_of_requests: 1})
+      end
+    end
+
+    def actions_if_no_search_results
       @no_search_results = true
-      @firm_creation_request = FirmCreationRequest.new
+      find_or_create_requested_firm
+      @firm_creation_request = FirmCreationRequest.new({requested_firm_id: @requested_firm.id, user_id: user_signed_in? ? user.id : nil})
       @firms = Firm.top10_by_country(@user_ip_country)
     end
 
-    def set_no_search_results_to_false_and_select_top10_competitors_by_country
+    def actions_if_search_results
       @no_search_results = false
+      @firms.first.update({number_of_researches: @firms.first.number_of_researches + 1})
       @competitors = Firm.top10_by_industry_by_country(@firms.first.industry, @firms.first.country)
     end
 
     def define_search_results_variables_depending_on_search_results
       if @firms.empty?
-        set_no_search_results_to_true_and_select_top10_by_country
+        actions_if_no_search_results
       else
-        set_no_search_results_to_false_and_select_top10_competitors_by_country
+        actions_if_search_results
       end
     end
 
     def set_firms_list_on_search_results_or_country_index
-      if params[:search]
-        @firms = Firm.where("LOWER(name) LIKE ?", "%#{params[:search].downcase}%")
+      if params[:requested_firm]
+        @firms = Firm.where("LOWER(name) LIKE ?", "%#{requested_firm_params[:name].downcase}%")
         define_search_results_variables_depending_on_search_results
       else
         @firms = Firm.top10_by_country(@user_ip_country)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819133518) do
+ActiveRecord::Schema.define(version: 20150819215151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,8 +115,8 @@ ActiveRecord::Schema.define(version: 20150819133518) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.string   "naf_code"
-    t.integer  "number_of_researches"
-    t.integer  "number_of_views"
+    t.integer  "number_of_researches", null: false
+    t.integer  "number_of_views",      null: false
   end
 
   add_index "firms", ["naf_code"], name: "index_firms_on_naf_code", using: :btree

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
     resources :firms, only: [ :index, :show ] do
       resources :reviews, only: [ :create]
+      resources :requested_firm, only: [ :create, :update]
     end
 
     resources :firm_creation_requests, only: [ :create] do
