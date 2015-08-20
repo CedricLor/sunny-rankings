@@ -50,21 +50,7 @@ class ReviewsController < ApplicationController
   def destroy
     set_user
     firm = @review.firm
-    if @review.destroy
-      flash[:notice] = t(
-          "review_destruction_success",
-          scope: [:controllers, :reviews, :destroy],
-          firm_name: firm.name,
-          default: "Your review of #{firm.name} has been successfully delete."
-          )
-    else
-      flash[:notice] = t(
-          "review_destruction_failure",
-          scope: [:controllers, :reviews, :destroy],
-          firm_name: firm.name,
-          default: "Your review of #{firm.name} could not be deleted."
-          )
-    end
+    destroy_and_set_flash_notices
     redirect_to firm_path(@review.firm_id) if params[:controller] == "firms" || reviews_path if params[:controller] == "reviews"
   end
 
@@ -341,6 +327,25 @@ class ReviewsController < ApplicationController
       # providing variable for javascript immediate display
       @total_by_test = @firm.total_by_test
       @answer_count_by_test = @firm.answers_count_by_test
+    end
+    ################
+    # destroy helpers method
+    def destroy_and_set_flash_notices
+      if @review.destroy
+        flash[:notice] = t(
+            "review_destruction_success",
+            scope: [:controllers, :reviews, :destroy],
+            firm_name: firm.name,
+            default: "Your review of #{firm.name} has been successfully delete."
+            )
+      else
+        flash[:notice] = t(
+            "review_destruction_failure",
+            scope: [:controllers, :reviews, :destroy],
+            firm_name: firm.name,
+            default: "Your review of #{firm.name} could not be deleted."
+            )
+      end
     end
 end
 
