@@ -1,0 +1,8 @@
+<%= form.input :email,
+      as: :fake,
+      input_html: { value: user_signed_in? ? @user.email : nil,
+                    placeholder: user_signed_in? ? @user.email : nil },
+      label: label,
+      hint: hint,
+      hint_html: hint_html
+%>

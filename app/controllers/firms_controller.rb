@@ -14,6 +14,7 @@ class FirmsController < ApplicationController
   end
 
   def show
+    set_metric
     set_user if user_signed_in?
     select_pending_review_for_this_firm_if_any
     @number_of_accounted_firm_reviews = @firm.number_of_valid_and_publishable_reviews
@@ -139,10 +140,14 @@ class FirmsController < ApplicationController
     def look_up_closest_addresses_and_set_closest_firm
       # collect addresses of firms present in the database near the current latitude and longitude of the user
       @addresses = Address.near([params[:latitude].to_f, params[:longitude].to_f], 40, :order => "distance")
-      set_closest_firm
+      @addresses.empty? ? @firms = [] : set_closest_firm
     end
     ################################
     # Show helpers methods
+    def set_metric
+      @firm.update({number_of_views: @firm.number_of_views + 1})
+    end
+
     def select_latest_pending_review_for_this_firm
       @user_pending_review_for_this_firm = @user.potentially_publishable_review_for_firm(@firm)
     end
