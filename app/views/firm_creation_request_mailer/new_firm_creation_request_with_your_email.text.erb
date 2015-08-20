@@ -1,0 +1,18 @@
+Hi! Was it you?
+
+
+Someone using this email address (<%= @usermail %>) has posted a request for the creation of a file for <%= @requested_firm.name %> on <%= link_to("skanher", "http://www.skanher.se") %>.
+
+However, such person was not logged in on your account.
+
+Because we do not want anyone to use your email address fraudulently, we always send an email to our members when their email address is used on our <%= link_to("website", "http://www.skanher.se") %>.
+
+If it was you, you do not have anything to do.
+
+If it was not you, please take the time to let us know so that we can improve our security measures at: <%= mail_to("security@skanher.se", "security@skanher.se") %>.
+
+If it was you, thank you for having taken the time to notify us of this missing firm and contributing to making the world a better, more equal place.
+
+Else, please accept our apologies for the disturbance.
+
+We hope to see you soon again on <%= link_to("skanher", "http://www.skanher.se") %>.

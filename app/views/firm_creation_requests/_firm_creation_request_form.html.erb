@@ -1,20 +1,22 @@
-<%= simple_form_for(@firm_creation_request, remote: true) do | form | %>
+<%= simple_form_for(@requested_firm, remote: true) do | form | %>
   <%= form.input :name,
                 input_html: {
                   value: @requested_firm_params[:name]
                 },
                 label: t( ".firm_name_label", default: "Please confirm the name of the firm you would like us to add to our rankings.")
    %>
-  <%= form.input :country_of_firm,
-                selected: request.location.country_code == "RD" ? "FR" : request.location.country_code,
-                label: t( ".firm_name_label", default: "Help us by providing the name of the country where this firm is located (optional).")
-   %>
-  <%= form.input :city_of_firm,
-                input_html: {
-                  value: request.location.city
-                },
-                label: t( ".firm_name_label", default: "Help us by providing the name of the city where this firm is located (optional).")
-   %>
+  <%= form.simple_fields_for :firm_creation_request do | firm_creation_request | %>
+    <%= firm_creation_request.input :country_of_firm,
+                  selected: request.location.country_code == "RD" ? "FR" : request.location.country_code,
+                  label: t( ".firm_name_label", default: "Help us by providing the name of the country where this firm is located (optional).")
+     %>
+    <%= firm_creation_request.input :city_of_firm,
+                  input_html: {
+                    value: request.location.city
+                  },
+                  label: t( ".firm_name_label", default: "Help us by providing the name of the city where this firm is located (optional).")
+     %>
+  <% end %>
   <% unless user_signed_in? %>
     <%# variables for the shared/email_for_forms partial %>
     <%#  label = t( ".user_email_label", default: "If you leave us your email, we will kindly inform you as soon as '#{@requested_firm_params[:name]}' will be added to our rankings (optional).") %>

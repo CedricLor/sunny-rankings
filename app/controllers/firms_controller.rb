@@ -80,7 +80,7 @@ class FirmsController < ApplicationController
     def set_first_hit_tracker
       session[:first_hit].nil? ? session[:first_hit] = true : session[:first_hit] = false
     end
-
+    # This is a model method -> TODO: move it to the RequestedFirm model
     def find_or_create_requested_firm
       if @requested_firm = RequestedFirm.find_by_name(requested_firm_params[:name])
         @requested_firm.update(number_of_requests: @requested_firm.number_of_requests + 1)

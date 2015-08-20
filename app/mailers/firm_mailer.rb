@@ -8,6 +8,7 @@ class FirmMailer < ApplicationMailer
   def request_new_firm(firm_name, country_name, city_name)
     @firm_name = firm_name
     @country_name = country_name
+    @city_name = city_name
 
     mail to: 'cedric@skanher.se', subject: "Quelqu'un a demandé l'ajout d'une nouvelle entreprise"
   end

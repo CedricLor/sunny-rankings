@@ -308,7 +308,7 @@ class ReviewsController < ApplicationController
         set_flash_notice_and_send_mail(
           { flash_type: "notice",
             flash_message: i18n_flash_messages_store(:review_successfully_saved_unlogged_user)
-          }) { @user.is_new_user_created_on_vote ? @user.send_confirmation_instructions : ReviewMailer.new_review_with_your_email(params[:email], @firm).deliver_now }
+          }) { @user.is_new_user_created_on_process ? @user.send_confirmation_instructions : ReviewMailer.new_review_with_your_email(params[:email], @firm).deliver_now }
         # flash[:notice] = t(
         #     :review_successfully_saved_unlogged_user,
         #     scope: [:controllers, :reviews, :create],
@@ -316,7 +316,7 @@ class ReviewsController < ApplicationController
         #     user_email: params[:email],
         #     default: "Dear #{params[:email]}, your review of #{@firm.name} has been successfully saved. Please check your emails at #{params[:email]} to validate it!"
         #     )
-        # @user.is_new_user_created_on_vote ? @user.send_confirmation_instructions : ReviewMailer.new_review_with_your_email(params[:email], @firm).deliver_now
+        # @user.is_new_user_created_on_process ? @user.send_confirmation_instructions : ReviewMailer.new_review_with_your_email(params[:email], @firm).deliver_now
       end
     end
 

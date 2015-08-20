@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :reviews, through: :review_portfolio, dependent: :destroy
   has_many :answers, through: :reviews, dependent: :destroy
   has_many :firms, through: :reviews
+  has_many :firm_creation_requests
 
   ###############
   has_many :email_addresses, through: :profile, dependent: :destroy
@@ -36,7 +37,7 @@ class User < ActiveRecord::Base
 
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
-  attr_accessor :login, :is_new_user_created_on_vote
+  attr_accessor :login, :is_new_user_created_on_process
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -61,12 +62,12 @@ class User < ActiveRecord::Base
       user = new(
         email: attributes[:email],
         validated: false,
-        is_new_user_created_on_vote: true)
+        is_new_user_created_on_process: true)
       user.skip_confirmation_notification!
       user.save
     else
       user
-      user.is_new_user_created_on_vote = false
+      user.is_new_user_created_on_process = false
     end
     user
   end

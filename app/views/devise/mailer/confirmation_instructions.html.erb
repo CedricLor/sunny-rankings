@@ -19,6 +19,9 @@
       <% if @firm %>
         <p><%= t('.thank_you_for_your_review', :firm_name => @firm.name, :default => "And thank you for your review of #{@firm.name}!") %></p>
         <p><%= t('.instruction_if_first_review', :firm_name => @firm.name, :default => "In order to validate your review of #{@firm.name}, you must confirm your account email through the link below:") %></p>
+      <% elsif @requested_firm %>
+        <p><%= t('.thank_you_for_your_firm_creation_request', :firm_name => @requested_firm.name, :default => "And thank you for your request for creation of a file on Skanher for #{@requested_firm.name}!") %></p>
+        <p><%= t('.instruction_if_firm_creation_request', :firm_name => @requested_firm.name, :default => "In order to keep you informed of the creation a file for #{@requested_firm.name}, please confirm your account email through the link below:") %></p>
       <% else %>
         <p><%= t('.instruction', :default => "You can confirm your account email through the link below:") %></p>
       <% end %>
