@@ -1,15 +1,36 @@
 <% content_for(:title, "How does it work?") %>
 
 <div id="howItWorks">
-  <div id="currentFeatures" class="fluid-container text-center section">
+  <div id="mainLandingMotto" class="fluid-container text-center section bg-img-container">
     <div class="row">
       <div class="col-xs-12">
-        <h1>Gender equality on the workplace</h1>
-        <h3>Employees, come and rate your employer! Employers, put yourself to the test!</h3>
+        <div class="hiw-division hiw-top-division">
+          <div class="vertically-aligned-content-block motto-container-block">
+            <%= image_tag "logo-skanher.png", class: "vertical-align-inline-block", id: "mainLogoHiw" %>
+            <span class="brand-text vertical-align-inline-block">
+              <span class='brandtext-first-part'>skan</span><span class='brandtext-second-part'>her</span>
+            </span>
+            <div class="motto-line main-text-line">Digital democracy for actual equality</div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+  <div id="motivationSection" class="fluid-container text-center section bg-img-container">
     <div class="row">
-      <div class="col-xs-12 col-md-3">
+      <div class="col-xs-12">
+        <div class="hiw-division">
+          <div class="vertically-aligned-content-block motto-container-block">
+            <div class="main-text-line">People! Take the power: vote for a firm!</div>
+            <div class="main-text-line">Employers! Will you stand up the disruption and improve your reputation ?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="currentFeatures" class="fluid-container text-center section">
+    <div class="row">
+      <div class="col-xs-12 col-md-4">
         <div class="card-block shadowed-box">
           <div id="voteIcon" class="icon"></div>
           <h3>Vote and Comment</h3>
@@ -20,36 +41,24 @@
           </ul>
         </div>
       </div>
-      <div class="col-xs-12 col-md-3">
+      <div class="col-xs-12 col-md-4">
         <div class="card-block shadowed-box">
           <div id="anonymousIcon" class="icon"></div>
-          <h3>Anonymous</h3>
+          <h3>Remain Anonymous</h3>
           <ul>
-            <li>Absolute privacy of personal data (names, emails, IP, aso.).</li>
-            <li>Reviews are published under random pseudonyms.</li>
+            <li>Pseudonym wrapping of all publication.</li>
           </ul>
         </div>
       </div>
-      <div class="col-xs-12 col-md-3">
+      <div class="col-xs-12 col-md-4">
         <div class="card-block shadowed-box">
           <div id="rankingsIcon" class="icon"></div>
-          <h3>Crowdsourced Rankings</h3>
+          <h3>Access Information</h3>
           <ul>
             <li>Consult firm ratings calculated from user votes.</li>
             <li>Get firms rankings by industry and by country.</li>
             <li>Access critical data for job applicants.</li>
             <li>Access critical data for engaged consumers.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-3">
-        <div class="card-block shadowed-box">
-          <div id="publicationIcon" class="icon"></div>
-          <h3>User Reviews Publication</h3>
-          <ul>
-            <li>Publication of individual reviews, to provide qualitative information.</li>
-            <li>Featuring of the best community comments.</li>
-            <li>Personal data protection behind random pseudonyms.</li>
           </ul>
         </div>
       </div>

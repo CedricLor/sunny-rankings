@@ -1,4 +1,55 @@
 #howItWorks {
+  /* First section design */
+  .bg-img-container {
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #mainLandingMotto {
+    background-image: image-url(image-path("bg-main-motto.jpg"));
+    background-position-y: 75%;
+    background-attachment: fixed;
+  }
+  #motivationSection {
+    background-image: image-url(image-path("bg-main-motto.jpg"));
+    background-position-y: 75%;
+    background-attachment: fixed;
+  }
+  .hiw-division {
+    min-height: 100vh;
+    line-height: 100vh;
+    .main-text-line {
+      font-size: 28px;
+      line-height: 1.8em;
+      color: #FFFCFC;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+  .hiw-top-division {
+    img {
+      max-height: 200px;
+    }
+    .brand-text {
+      font-size: 80px;
+      font-weight: bold;
+    }
+    .motto-line {
+      margin-top: -25px;
+    }
+  }
+  .vertically-aligned-content-block {
+    margin-top: -200px;
+    vertical-align:middle;
+    display:inline-block;
+    line-height:normal;
+  }
+  .motto-container-block {
+    background-color: rgba(255, 255, 255, 0.16);
+    .brand-text {
+      margin-right: 20px;
+    }
+  }
+  /* Boxes of feature presentation design */
   @media screen and (min-width: 970px) {
     .section {
       height: 100vh;
