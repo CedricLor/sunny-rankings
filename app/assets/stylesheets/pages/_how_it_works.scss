@@ -7,11 +7,13 @@
   #mainLandingMotto {
     background-image: image-url(image-path("bg-main-motto.jpg"));
     background-position-y: 75%;
+    background-position-x: 50%;
     background-attachment: fixed;
   }
   #motivationSection {
     background-image: image-url(image-path("bg-main-motto.jpg"));
     background-position-y: 75%;
+    background-position-x: 50%;
     background-attachment: fixed;
   }
   .hiw-division {
@@ -32,9 +34,6 @@
     .brand-text {
       font-size: 80px;
       font-weight: bold;
-    }
-    .motto-line {
-      margin-top: -25px;
     }
   }
   .vertically-aligned-content-block {
