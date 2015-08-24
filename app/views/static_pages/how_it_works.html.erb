@@ -1,4 +1,4 @@
-<% content_for(:title, "How does it work?") %>
+<% content_for(:title,  t(".title_for_how_it_works", default: "How does it work?") ) %>
 
 <div id="howItWorks">
   <div id="mainLandingMotto" class="fluid-container text-center section bg-img-container">
@@ -6,24 +6,66 @@
       <div class="col-xs-12">
         <div class="hiw-division hiw-top-division">
           <div class="vertically-aligned-content-block motto-container-block">
-            <%= image_tag "logo-skanher.png", class: "vertical-align-inline-block", id: "mainLogoHiw" %>
-            <span class="brand-text vertical-align-inline-block">
+            <%#= image_tag "logo-skanher.png", class: "vertical-align-inline-block", id: "mainLogoHiw" %>
+            <%#<span class="brand-text vertical-align-inline-block">
               <span class='brandtext-first-part'>skan</span><span class='brandtext-second-part'>her</span>
-            </span>
-            <div class="motto-line main-text-line">Digital democracy for actual equality</div>
+            </span>%>
+            <div class="motto-line main-text-line"><%= t(".main_motto", default: "Digital democracy for actual equality") %></div>
+            <div class="motto-line main-text-line sub-motto"><%= t(".main_sub_motto", default: "Empowering people") %></div>
           </div>
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="scrolling-arrow-container">
+          <a href="#peopleMotivationSection">
+            <i class="fa fa-angle-down fa-4x pulse scroll-arrow white-scrolling-arrow"></i>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="motivationSection" class="fluid-container text-center section bg-img-container">
+  <div id="peopleMotivationSection" class="fluid-container text-center section bg-img-container motivation-section">
     <div class="row">
       <div class="col-xs-12">
         <div class="hiw-division">
           <div class="vertically-aligned-content-block motto-container-block">
-            <div class="main-text-line">People! Take the power: vote for a firm!</div>
-            <div class="main-text-line">Employers! Will you stand up the disruption and get a free reputation-premium?</div>
+            <div class="main-text-line">
+              <%= t(".motivation_employees", default: "People, take the power: vote for a firm!") %>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="scrolling-arrow-container">
+          <a href="#firmMotivationSection">
+            <i class="fa fa-angle-down fa-4x pulse scroll-arrow white-scrolling-arrow"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="firmMotivationSection" class="fluid-container text-center section bg-img-container motivation-section">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="hiw-division">
+          <div class="vertically-aligned-content-block motto-container-block">
+            <div class="main-text-line">
+              <%= t(".motivation_employers", default: "Employers, are you ready to stand up the disruption and get a free reputation-premium?") %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="scrolling-arrow-container">
+          <a href="#currentFeatures">
+            <i class="fa fa-angle-down fa-4x pulse scroll-arrow white-scrolling-arrow"></i>
+          </a>
         </div>
       </div>
     </div>
@@ -33,32 +75,32 @@
       <div class="col-xs-12 col-md-4">
         <div class="card-block shadowed-box">
           <div id="voteIcon" class="icon"></div>
-          <h3>Vote and Comment</h3>
+          <h3><%= t(".vote_and_comment_title", default: "Vote and Comment" )%></h3>
           <ul>
-            <li>Pick a firm.</li>
-            <li>Post a comment.</li>
-            <li>Vote on our criteria.</li>
+            <li><%= t(".pick_a_firm", default: "Pick a firm.") %></li>
+            <li><%= t(".post_a_comment", default: "Post a comment.")%></li>
+            <li><%= t(".vote_on_our_criteria", default: "Vote on our criteria.")%></li>
           </ul>
         </div>
       </div>
       <div class="col-xs-12 col-md-4">
         <div class="card-block shadowed-box">
           <div id="anonymousIcon" class="icon"></div>
-          <h3>Remain Anonymous</h3>
+          <h3><%= t(".remain_anonymous", default: "Remain Anonymous" )%></h3>
           <ul>
-            <li>Pseudonym wrapping of all publication.</li>
+            <li><%= t(".pseudonym_wrapping", default: "Pseudonym wrapping of all publication.") %></li>
           </ul>
         </div>
       </div>
       <div class="col-xs-12 col-md-4">
         <div class="card-block shadowed-box">
           <div id="rankingsIcon" class="icon"></div>
-          <h3>Access Information</h3>
+          <h3><%= t(".access_information", default: "Access Information") %></h3>
           <ul>
-            <li>Consult firm ratings calculated from user votes.</li>
-            <li>Get firms rankings by industry and by country.</li>
-            <li>Access critical data for job applicants.</li>
-            <li>Access critical data for engaged consumers.</li>
+            <li><%= t(".consult_firm_ratings", default: "Consult firm ratings based on users' votes.") %></li>
+            <li><%= t(".get_firms_rankings", default: "Get firms rankings by industry and by country.")%></li>
+            <li><%= t(".critical_data_for_job_applic", default: "Access critical data for job applicants.")%></li>
+            <li><%= t(".critical_data_for_engaged_consumer", default: "Access critical data for engaged consumers.")%></li>
           </ul>
         </div>
       </div>
@@ -67,7 +109,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div id="mainCallToActionWrapper">
-          <%= link_to t(:top_call_to_action, default: "Rate a firm"), firms_path, class: "btn btn-default btn-green-bg red-hover-btn" %>
+          <%= link_to t(:top_call_to_action, default: "Rate a firm"), firms_path, class: "btn btn-default red-hover-btn btn-on-a-clear-bg" %>
         </div>
       </div>
     </div>

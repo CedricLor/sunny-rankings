@@ -6,6 +6,11 @@ $btn-bg-color: rgba(122, 53, 53, 0);
 $btn-main-call-bg-color: rgba(105, 203, 77, 0.33);
 $btn-hover-color: rgba(140, 24, 24, 1);
 $btn-font-color: rgba(60, 2, 20, 0.5);
+$btn-strong-color: black;
+$btn-transparent-bg-color: $btn-bg-color;
+$btn-strong-border-color: black;
+$btn-clear-color: white;
+$btn-clear-border-color: white;
 
 .red-hover-btn, .navbar .nav li > a.red-hover-btn {
   border: 1px solid $btn-border-color;
@@ -35,4 +40,12 @@ $btn-font-color: rgba(60, 2, 20, 0.5);
 }
 .vote-btn-deactivated {
   opacity: 0.3 !important;
+}
+.btn-on-a-clear-bg {
+  color: $btn-strong-color;
+  border-color: $btn-strong-border-color;
+}
+.btn-on-a-dark-bg {
+  color: $btn-clear-color;
+  border-color: $btn-clear-border-color;
 }

@@ -58,6 +58,7 @@ $navbar-profile-border-width: 2px;
     // border-bottom: $navbar-border-bottom-width solid $navbar-border-bottom-color;
     // TODO -> Configure variables
     border-bottom: 1px solid $navbar-border-bottom-color;
+    border-radius: 0px;
     min-height: 0;
     transition: background 0.4s ease;
     margin-bottom: 5px;
@@ -187,7 +188,6 @@ $navbar-profile-border-width: 2px;
  * ------------------------------------- */
 @media screen and (min-width: 768px) {
   .navbar-wagon {
-    // border-radius: 0px;
     .navbar-brand {
       padding-top: 5px !important;
       margin-top: -5px !important;

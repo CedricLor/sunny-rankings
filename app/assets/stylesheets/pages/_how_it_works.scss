@@ -1,18 +1,43 @@
 #howItWorks {
+  margin-top: -40px;
   /* First section design */
   .bg-img-container {
     background-repeat: no-repeat;
     background-size: cover;
   }
   #mainLandingMotto {
-    background-image: image-url(image-path("bg-main-motto.jpg"));
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),image-url(image-path("bg-main-motto.jpg"));
     background-position-y: 75%;
     background-position-x: 50%;
     background-attachment: fixed;
   }
-  #motivationSection {
-    background-image: image-url(image-path("bg-main-motto.jpg"));
+  .motivation-section {
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), image-url(image-path("bg-main-motto.jpg"));
     background-position-y: 75%;
+    background-position-x: 50%;
+    background-attachment: fixed;
+  }
+  #peopleMotivationSection {
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), image-url(image-path("bg-ballot-box.jpg"));
+    background-position-y: 50%;
+    background-position-x: 50%;
+    background-attachment: fixed;
+  }
+  #firmMotivationSection {
+    background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), image-url(image-path("bg-disrupted-skyscrappers.jpg"));
+    background-position-y: 50%;
     background-position-x: 50%;
     background-attachment: fixed;
   }
@@ -27,15 +52,6 @@
       padding-left: 10px;
     }
   }
-  .hiw-top-division {
-    img {
-      max-height: 200px;
-    }
-    .brand-text {
-      font-size: 80px;
-      font-weight: bold;
-    }
-  }
   .vertically-aligned-content-block {
     margin-top: -200px;
     vertical-align:middle;
@@ -43,10 +59,17 @@
     line-height:normal;
   }
   .motto-container-block {
-    background-color: rgba(255, 255, 255, 0.16);
-    .brand-text {
-      margin-right: 20px;
+    // background-color: rgba(255, 255, 255, 0.16);
+    .sub-motto {
+      font-size: 25px;
+      font-style: italic;
     }
+  }
+  .scrolling-arrow-container {
+    margin-top: -150px;
+  }
+  .white-scrolling-arrow {
+    color: white;
   }
   /* Boxes of feature presentation design */
   @media screen and (min-width: 970px) {
