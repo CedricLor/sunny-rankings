@@ -1,80 +1,152 @@
 #howItWorks {
   margin-top: -40px;
-  /* First section design */
+  /**************************/
+  /* image container design */
   .bg-img-container {
     background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
+    background-attachment: fixed;
+    /* fix iOS bug not rescalling image properly */
+    /* ipad */
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+      background-attachment: scroll;
+    }
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+      background-attachment: scroll;
+    }
+    /* iphone5 */
+    @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
+      background-attachment: scroll;
+    }
+    @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+      background-attachment: scroll;
+    }
+    /* iPhone 4 */
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+      background-attachment: scroll;
+    }
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+      background-attachment: scroll;
+    }
   }
   #mainLandingMotto {
     background-image: linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ),image-url(image-path("bg-main-motto.jpg"));
-    background-position-y: 75%;
-    background-position-x: 50%;
-    background-attachment: fixed;
+    background-position: 50% 75%;
   }
   .motivation-section {
-    background-image: linear-gradient(
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.5)
-    ), image-url(image-path("bg-main-motto.jpg"));
-    background-position-y: 75%;
+    background-position-y: 50%;
     background-position-x: 50%;
-    background-attachment: fixed;
   }
   #peopleMotivationSection {
     background-image: linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ), image-url(image-path("bg-ballot-box.jpg"));
-    background-position-y: 50%;
-    background-position-x: 50%;
-    background-attachment: fixed;
   }
   #firmMotivationSection {
     background-image: linear-gradient(
       rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0.5)
     ), image-url(image-path("bg-disrupted-skyscrappers.jpg"));
-    background-position-y: 50%;
-    background-position-x: 50%;
-    background-attachment: fixed;
   }
-  .hiw-division {
-    min-height: 100vh;
-    line-height: 100vh;
-    .main-text-line {
-      font-size: 28px;
-      line-height: 1.8em;
-      color: #FFFCFC;
-      padding-right: 10px;
-      padding-left: 10px;
+  /**************************/
+  /* height of main sections */
+  .full-height-block {
+    height: 100vh;
+  }
+  /* fix iOS bug not displaying 100vh correctly */
+  /* ipad */
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+    .full-height-block {
+      height: 768px;
     }
   }
-  .vertically-aligned-content-block {
-    margin-top: -200px;
-    vertical-align:middle;
-    display:inline-block;
-    line-height:normal;
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    .full-height-block {
+      height: 1024px;
+    }
   }
+  /* iphone5 */
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
+    .full-height-block {
+      height: 320px;
+    }
+  }
+  @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+    .full-height-block {
+      height: 568px;
+    }
+  }
+  /* iPhone 4 */
+  @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+    .full-height-block {
+      height: 320px;
+    }
+  }
+  @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+    .full-height-block {
+      // height: 480px;
+      height: 360px;
+    }
+  }
+  /**************************/
+  /* vertical alignement of content within image blocks */
+  .vertical-aligner-block {
+    padding: 5% 0;
+    .vertically-centered-content-block {
+      padding: 10% 0;
+      .main-text-line {
+        font-size: 28px;
+        line-height: 1.2em;
+        color: #FFFCFC;
+        padding-right: 10px;
+        padding-left: 10px;
+        margin-bottom: 2px;
+        margin-top: 2px;
+      }
+    }
+    .bottom-aligned-scrolling-arrow {
+      padding-bottom: 0;
+      padding-top: 10%;
+      // display:inline-block;
+      // display:table-cell;
+      // vertical-align:bottom;
+    }
+  }
+  #peopleMotivationSection .vertically-centered-content-block {
+    padding: 1% 0;
+    /* restauring the regular top padding on large screens */
+    @media only screen and (min-device-width : 1024px) {
+      padding: 10% 0;
+    }
+  }
+  /**************************/
+  /* vertical alignement of content within image blocks */
   .motto-container-block {
-    // background-color: rgba(255, 255, 255, 0.16);
     .sub-motto {
+      margin-top: 10px !important;
       font-size: 25px;
       font-style: italic;
     }
   }
+  /**************************/
+  /* general scrolling arrows formating */
   .scrolling-arrow-container {
     margin-top: -150px;
   }
   .white-scrolling-arrow {
     color: white;
   }
+  /**************************/
   /* Boxes of feature presentation design */
   @media screen and (min-width: 970px) {
-    .section {
-      height: 100vh;
+    .padded-section {
       padding-left: 20px;
       padding-right: 20px;
     }
@@ -107,23 +179,52 @@
     height: 75px;
     background-size: cover;
   }
-  #mainCallToActionWrapper {
+  .main-call-to-action-wrapper {
     width: 100%;
     text-align: center;
     .btn {
-      margin-top: 3vh;
       line-height: 30px;
       padding-left: 30px;
       padding-right: 30px;
       font-weight: normal;
       border-radius: 50px;
       font-family: "Open Sans", "Helvetica", "sans-serif";
+      @media only screen and (min-device-width : 1024px) {
+        margin-top: 3vh;
+      }
+    }
+  }
+  #firstMainCallToAction .btn {
+    /* set the call to action buttons higher on mobile devices */
+    /* ipad */
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+      margin-top: 10px;
+    }
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+      margin-top: 10px;
+    }
+    /* iphone5 */
+    @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
+      margin-top: 10px;
+    }
+    @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+      margin-top: 10px;
+    }
+    /* iPhone 4 */
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+      margin-top: 10px;
+    }
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+      margin-top: 10px;
     }
   }
   #scrollArrowWrapper {
     // Quick fix
     width: 100%;
     margin-top: 10px;
+  }
+  .top-spacer-for-features {
+    height: 100px;
   }
   #voteIcon {
     background-image: image-url(image-path("icon_vote.png"));

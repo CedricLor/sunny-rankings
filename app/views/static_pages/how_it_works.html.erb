@@ -1,76 +1,73 @@
 <% content_for(:title,  t(".title_for_how_it_works", default: "How does it work?") ) %>
 
 <div id="howItWorks">
-  <div id="mainLandingMotto" class="fluid-container text-center section bg-img-container">
+  <div id="mainLandingMotto" class="fluid-container text-center padded-section bg-img-container full-height-block">
     <div class="row">
       <div class="col-xs-12">
-        <div class="hiw-division hiw-top-division">
-          <div class="vertically-aligned-content-block motto-container-block">
+        <div class="vertical-aligner-block">
+          <div class="vertically-centered-content-block motto-container-block text-center">
             <%#= image_tag "logo-skanher.png", class: "vertical-align-inline-block", id: "mainLogoHiw" %>
             <%#<span class="brand-text vertical-align-inline-block">
               <span class='brandtext-first-part'>skan</span><span class='brandtext-second-part'>her</span>
             </span>%>
-            <div class="motto-line main-text-line"><%= t(".main_motto", default: "Digital democracy for actual equality") %></div>
-            <div class="motto-line main-text-line sub-motto"><%= t(".main_sub_motto", default: "Empowering people") %></div>
+            <div class="main-text-line top-motto"><%= t(".main_motto", default: "Digital democracy for actual equality") %></div>
+            <div class="main-text-line sub-motto"><%= t(".main_sub_motto", default: "Empowering people") %></div>
+          </div>
+          <div class="bottom-aligned-scrolling-arrow">
+            <a href="#peopleMotivationSection">
+              <i class="fa fa-angle-down fa-4x pulse scroll-arrow white-scrolling-arrow"></i>
+            </a>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="scrolling-arrow-container">
-          <a href="#peopleMotivationSection">
-            <i class="fa fa-angle-down fa-4x pulse scroll-arrow white-scrolling-arrow"></i>
-          </a>
-        </div>
-      </div>
-    </div>
   </div>
-  <div id="peopleMotivationSection" class="fluid-container text-center section bg-img-container motivation-section">
+  <div id="peopleMotivationSection" class="fluid-container text-center padded-section bg-img-container motivation-section full-height-block">
     <div class="row">
       <div class="col-xs-12">
-        <div class="hiw-division">
-          <div class="vertically-aligned-content-block motto-container-block">
+        <div class="vertical-aligner-block">
+          <div class="vertically-centered-content-block text-center">
             <div class="main-text-line">
               <%= t(".motivation_employees", default: "People, take the power: vote for a firm!") %>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="scrolling-arrow-container">
-          <a href="#firmMotivationSection">
-            <i class="fa fa-angle-down fa-4x pulse scroll-arrow white-scrolling-arrow"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="firmMotivationSection" class="fluid-container text-center section bg-img-container motivation-section">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="hiw-division">
-          <div class="vertically-aligned-content-block motto-container-block">
-            <div class="main-text-line">
-              <%= t(".motivation_employers", default: "Employers, are you ready to stand up the disruption and get a free reputation-premium?") %>
-            </div>
+          <div id="firstMainCallToAction" class="main-call-to-action-wrapper">
+            <%= link_to t(:top_call_to_action, default: "Rate a firm"), firms_path, class: "btn btn-default red-hover-btn btn-on-a-dark-bg" %>
+          </div>
+          <div class="bottom-aligned-scrolling-arrow">
+            <a href="#firmMotivationSection">
+              <i class="fa fa-angle-down fa-4x pulse scroll-arrow white-scrolling-arrow"></i>
+            </a>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div id="firmMotivationSection" class="fluid-container text-center padded-section bg-img-container motivation-section">
     <div class="row">
       <div class="col-xs-12">
-        <div class="scrolling-arrow-container">
-          <a href="#currentFeatures">
-            <i class="fa fa-angle-down fa-4x pulse scroll-arrow white-scrolling-arrow"></i>
-          </a>
+        <div class="vertical-aligner-block full-height-block">
+          <div class="vertically-centered-content-block text-center">
+            <div class="main-text-line">
+              <%= t(".motivation_employers", default: "Employers, are you ready to stand up the disruption and get a free reputation-premium?") %>
+            </div>
+          </div>
+          <div class="bottom-aligned-scrolling-arrow">
+            <a href="#currentFeatures">
+              <i class="fa fa-angle-down fa-4x pulse scroll-arrow white-scrolling-arrow"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div id="currentFeatures" class="fluid-container text-center section">
+  <div id="currentFeatures" class="fluid-container text-center full-height-block padded-section">
+    <div class="row">
+      <div class="col-md-1 hidden-xs hidden-sm">
+        <div class="top-spacer-for-features">
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="col-xs-12 col-md-4">
         <div class="card-block shadowed-box">
@@ -108,7 +105,7 @@
     <!-- Main call to action -->
     <div class="row">
       <div class="col-xs-12">
-        <div id="mainCallToActionWrapper">
+        <div class="main-call-to-action-wrapper">
           <%= link_to t(:top_call_to_action, default: "Rate a firm"), firms_path, class: "btn btn-default red-hover-btn btn-on-a-clear-bg" %>
         </div>
       </div>
@@ -125,60 +122,58 @@
     </div>
   </div>
 
-  <!-- END OF FIRST SECTION -->
-  <!-- BEGINNING OF SECOND SECTION -->
+  <!-- END OF CURRENT FEATURES SECTION -->
+  <!-- BEGINNING OF FUTURE FEATURES SECTION -->
 
-  <div id="futureFeatures" class="fluid-container text-center section">
+  <div id="futureFeatures" class="fluid-container text-center full-height-block padded-section ">
     <div class="row">
       <div class="col-xs-12">
-        <h1>Future Features</h1>
+        <h1><%= t(:upcoming_features_heading, default: "Upcoming Features") %></h1>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-md-3">
         <div class="card-block shadowed-box">
           <div id="feelingRepositoryIcon" class="icon"></div>
-          <h3>Feelings Repository</h3>
+          <h3><%= t(:further_assessments, default: "Further Assessments") %></h3>
           <ul>
-            <li>Vote again at any time, depending on your mood.</li>
-            <li>Pass additional tests, to better identify your issues.</li>
-            <li>Access your past reviews, tests and ratings, to follow up on your situation.</li>
+            <li><%= t(:additional_tests, default: "Pass additional tests, to better identify your issues.") %></li>
+            <li><%= t(:follow_up_your_situation, default: "Follow up on the evolution of your situation on graphical charts.")%></li>
           </ul>
         </div>
       </div>
       <div class="col-xs-12 col-md-3">
         <div class="card-block shadowed-box">
           <div id="advicesIcon" class="icon"></div>
-          <h3>Advices</h3>
+          <h3><%= t(:advices_section_header, default: "Advices")%></h3>
           <ul>
-            <li>Expose your situation in our private forums.</li>
-            <li>Receive free advices from other community members.</li>
-            <li>Share your advices to other community members.</li>
-            <li>Get in touch with one of our partners (lawyers, work psychologists, coaches).</li>
-            <li>Provide more data on yourself and get a discount.</li>
+            <li><%= t(:expose_your_situation, default: "Expose your situation in our private forums.") %></li>
+            <li><%= t(:receive_free_advices, default: "Receive free advices from other community members.") %></li>
+            <li><%= t(:share_your_advices, default: "Share your advices to other community members.") %></li>
+            <li><%= t(:get_in_touch_with_professionals, default: "Get in touch with one of our partners (lawyers, work psychologists, coaches)."%></li>
           </ul>
         </div>
       </div>
       <div class="col-xs-12 col-md-3">
         <div class="card-block shadowed-box">
           <div id="employersAdvisoryIcon" class="icon"></div>
-          <h3>Employers' Advisory Services</h3>
+          <h3><%= t(:employers_advisory_header, default: "Employers' Advisory Services"%></h3>
           <ul>
-            <li>Improve gender equality and parity in your firm.</li>
-            <li>Make an audit.</li>
-            <li>Receive training.</li>
-            <li>Get a reputation badge beside your ranking for your commitment to improvment.</li>
+            <li><%= t(:improve_gender_parity ,default: "Improve gender equality and parity in your firm.")%></li>
+            <li><%= t(:make_an_audit, default: "Make an audit.")%></li>
+            <li><%= t(:receive_training, default: "Receive training for your employees."%></li>
+            <li><%= t(:get_reputation_badge, default: "Get a reputation badge beside your ranking for your commitment to improvment."%></li>
           </ul>
         </div>
       </div>
       <div class="col-xs-12 col-md-3">
         <div class="card-block shadowed-box">
           <div id="adrIcon" class="icon"></div>
-          <h3>Alternative Dispute Resolution</h3>
+          <h3><%= t(:adr_heading, default: "Alternative Dispute Resolution") %></h3>
           <ul>
-            <li>Reduce cost and time uncertainties related to legal actions.</li>
-            <li>Access our alternative dispute resolution platform.</li>
-            <li>Get a reputation badge beside your ranking for accepting our alternative dispute resolution.</li>
+            <li><%= t(:reduce_costs, default: "Reduce cost and time uncertainties related to legal actions.")%></li>
+            <li><%= t(:access_adr, default: "Access our alternative dispute resolution platform.")%></li>
+            <li><%= t(:reputation_badge_for_adr, default: "Get a reputation badge beside your ranking for accepting our alternative dispute resolution.")%></li>
           </ul>
         </div>
       </div>
@@ -189,7 +184,7 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
   if (viewport().width > 768) {
-    $('#howItWorks .section').each(function(){
+    $('#howItWorks .padded-section').each(function(){
       setBoxHeight($(this).attr("id"));
     });
 //    <!-- window.load = setBoxHeight("#currentFeatures"); -->
