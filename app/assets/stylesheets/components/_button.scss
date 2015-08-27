@@ -11,6 +11,7 @@ $btn-transparent-bg-color: $btn-bg-color;
 $btn-strong-border-color: black;
 $btn-clear-color: white;
 $btn-clear-border-color: white;
+$btn-clear-bg-color: white;
 
 .red-hover-btn, .navbar .nav li > a.red-hover-btn {
   border: 1px solid $btn-border-color;
@@ -48,4 +49,6 @@ $btn-clear-border-color: white;
 .btn-on-a-dark-bg {
   color: $btn-clear-color;
   border-color: $btn-clear-border-color;
+  background-color: $btn-clear-bg-color;
+
 }

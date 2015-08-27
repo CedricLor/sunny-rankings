@@ -17,7 +17,7 @@ end
 class Review < ActiveRecord::Base
   CURRENT_PERIOD = 30.days
   PREVIOUS_PERIOD = 90.days
-  ANSWERS_REQUIRED_COUNT = 5
+  ANSWERS_REQUIRED_COUNT = 8
   ANSWERS_MINIMUM_COUNT = 1
 
   belongs_to :review_portfolio
@@ -27,7 +27,7 @@ class Review < ActiveRecord::Base
 
   has_many :answers, autosave: :true, dependent: :destroy
 
-  accepts_nested_attributes_for :answers, limit: 5, allow_destroy: true
+  accepts_nested_attributes_for :answers, limit: 8, allow_destroy: true
 
   validates :firm, presence: true
   validates :review_portfolio, presence: true, on: :update

@@ -60,35 +60,35 @@ end
 ##################################
 array_firm_addresses_belgium = [
     {name: "MyMicroInvest", url: "https://www.mymicroinvest.com/", country: "Belgium", headcount: "48", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-mymicroinvest.svg",
-  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Place Sainte-Gudule", number: "5", zip_code: "B-1000"}]},
+  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Place Sainte-Gudule", number: "5", zip_code: "B-1000"}], number_of_researches: 0, number_of_views: 0},
     {name: "Rabobank", url: "http://www.rabobank.be/‎", country: "Belgium", headcount: "56870", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-rabobank.png",
-  addresses_attributes:[{city: "Antwerp-Berchem", country: "Belgium", street: "Uitbreidingstraat", number: "86", zip_code: "B-2600"}]},
+  addresses_attributes:[{city: "Antwerp-Berchem", country: "Belgium", street: "Uitbreidingstraat", number: "86", zip_code: "B-2600"}], number_of_researches: 0, number_of_views: 0},
     {name: "ING Bank", url: "https://www.ing.be/", country: "Belgium", headcount: "84718", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-ing.svg",
-  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Rue Marche Aux Herbes", number: "90", zip_code: "B-1000"}]},
+  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Rue Marche Aux Herbes", number: "90", zip_code: "B-1000"}], number_of_researches: 0, number_of_views: 0},
     {name: "ABN AMRO", url: "https://www.abnamro.com/", country: "Belgium", headcount: "24225", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-abnamro.svg",
-  addresses_attributes:[{city: "Antwerp-Berchem", country: "Belgium", street: "Roderveldlaan", number: "5 b4", zip_code: "B-2600"}]},
+  addresses_attributes:[{city: "Antwerp-Berchem", country: "Belgium", street: "Roderveldlaan", number: "5 b4", zip_code: "B-2600"}], number_of_researches: 0, number_of_views: 0},
     {name: "KBC", url: "https://www.kbc.com/", country: "Belgium", headcount: "36187", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-kbc.png",
-  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Havenlaan", number: "2", zip_code: "B-1000"}]},
+  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Havenlaan", number: "2", zip_code: "B-1000"}], number_of_researches: 0, number_of_views: 0},
     {name: "BK CP", url: "https://www.bkcpbanque.be/", country: "Belgium", headcount: "380", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-bkcp.png",
-  addresses_attributes:[{city: "Knokke-Heist", country: "Belgium", street: "Lippenslaan", number: "115", zip_code: "B-8300"}]},
+  addresses_attributes:[{city: "Knokke-Heist", country: "Belgium", street: "Lippenslaan", number: "115", zip_code: "B-8300"}], number_of_researches: 0, number_of_views: 0},
     {name: "BNP Paribas Fortis", url: "https://www.bnpparibasfortis.be/", country: "Belgium", headcount: "200000", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-bnp-paribas.svg",
-  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Montagne du Parc", number: "3", zip_code: "B-1000"}]},
+  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Montagne du Parc", number: "3", zip_code: "B-1000"}], number_of_researches: 0, number_of_views: 0},
     {name: "bpost", url: "https://www.bpost.be/", country: "Belgium", headcount: "25683", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-bpost.svg",
-  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Centre Monnaie", number: "", zip_code: "B-1000"}]},
+  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Centre Monnaie", number: "", zip_code: "B-1000"}], number_of_researches: 0, number_of_views: 0},
     {name: "Belfius", url: "https://www.belfius.com/", country: "Belgium", headcount: "5742", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-belfius.svg.png",
-  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Boulevard Pacheco", number: "44", zip_code: "B-1000"}]},
+  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Boulevard Pacheco", number: "44", zip_code: "B-1000"}], number_of_researches: 0, number_of_views: 0},
     {name: "ageas", url: "http://www.ageas.be/", country: "Belgium", headcount: "13071", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-ageas.png",
-  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Rue du Marquis", number: "1", zip_code: "B-1000"}]},
+  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Rue du Marquis", number: "1", zip_code: "B-1000"}], number_of_researches: 0, number_of_views: 0},
     {name: "AXA Banque", url: "https://www.axa.be/", country: "Belgium", headcount: "0", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-axa.png",
-  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Boulevard du Souverain", number: "25", zip_code: "B-1170"}]},
+  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Boulevard du Souverain", number: "25", zip_code: "B-1170"}], number_of_researches: 0, number_of_views: 0},
     {name: "AB InBev", url: "http://www.ab-inbev.com/", country: "Belgium", headcount: "154029", business_description: "Lorem ipsum", industry: "agroalimentaire", icon_name: "logo-abinbev.png",
-  addresses_attributes:[{city: "Leuven", country: "Belgium", street: "Brouwerijplein", number: "1", zip_code: "B-3000"}]},
+  addresses_attributes:[{city: "Leuven", country: "Belgium", street: "Brouwerijplein", number: "1", zip_code: "B-3000"}], number_of_researches: 0, number_of_views: 0},
     {name: "Ackermans & van Haaren", url: "http://en.avh.be/home.aspx", country: "Belgium", headcount: "0", business_description: "Lorem ipsum", industry: "conglomerat", icon_name: "logo-ackermansvanhaaren.png",
-  addresses_attributes:[{city: "Antwerp", country: "Belgium", street: "Begijnenvest", number: "113", zip_code: "B-2000"}]},
+  addresses_attributes:[{city: "Antwerp", country: "Belgium", street: "Begijnenvest", number: "113", zip_code: "B-2000"}], number_of_researches: 0, number_of_views: 0},
     {name: "Belgacom", url: "http://www.proximus.com/", country: "Belgium", headcount: "15728", business_description: "Lorem ipsum", industry: "telecommunications", icon_name: "logo-belgacom.png",
-  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Boulevard du Roi Albert II", number: "27 B", zip_code: "B-1030"}]},
+  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Boulevard du Roi Albert II", number: "27 B", zip_code: "B-1030"}], number_of_researches: 0, number_of_views: 0},
     {name: "idweaver", url: "http://www.idweaver.com/", country: "Belgium", headcount: "0", business_description: "Lorem ipsum", industry: "professional services", icon_name: "logo-idweaver.svg",
-  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Place Sainte-Gudule", number: "5", zip_code: "B-1000"}]}
+  addresses_attributes:[{city: "Bruxelles", country: "Belgium", street: "Place Sainte-Gudule", number: "5", zip_code: "B-1000"}], number_of_researches: 0, number_of_views: 0}
 ]
 ##################################
 array_firm_addresses_belgium.each do | firm |
@@ -98,25 +98,25 @@ end
 ##################################
 array_firm_addresses_france = [
     {name: "BNP Paribas", url: "http://www.bnpparibas.com/", country: "France", headcount: "200000", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-bnp-paribas.svg", naf_code: "6419Z",
-  addresses_attributes: [{city: "Paris", country: "France", street: "Boulevard des Italiens", number: "16", zip_code: "F-75009"}]},
+  addresses_attributes: [{city: "Paris", country: "France", street: "Boulevard des Italiens", number: "16", zip_code: "F-75009"}], number_of_researches: 0, number_of_views: 0},
     {name: "Société Générale", url: "https://www.societegenerale.fr/‎", country: "France", headcount: "0", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-socgen.svg", naf_code: "6419Z",
-  addresses_attributes: [{city: "Paris", country: "France", street: "Boulevard Haussmann", number: "29", zip_code: "F-75009"}]},
+  addresses_attributes: [{city: "Paris", country: "France", street: "Boulevard Haussmann", number: "29", zip_code: "F-75009"}], number_of_researches: 0, number_of_views: 0},
     {name: "Crédit Mutuel", url: "https://www.creditmutuel.fr/", country: "France", headcount: "0", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-creditmutuel.svg", naf_code: "6419Z",
-  addresses_attributes: [{city: "Paris", country: "France", street: "Rue Cardinet", number: "88-90", zip_code: "F-75017"}]},
+  addresses_attributes: [{city: "Paris", country: "France", street: "Rue Cardinet", number: "88-90", zip_code: "F-75017"}], number_of_researches: 0, number_of_views: 0},
     {name: "Caisse d'Epargne", url: "https://www.caisse-epargne.fr/", country: "France", headcount: "0", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-caisseepargne.svg", naf_code: "6419Z",
-  addresses_attributes: [{city: "Paris", country: "France", street: "Avenue Pierre Mendès France", number: "50", zip_code: "75201 Cedex 13"}]},
+  addresses_attributes: [{city: "Paris", country: "France", street: "Avenue Pierre Mendès France", number: "50", zip_code: "75201 Cedex 13"}], number_of_researches: 0, number_of_views: 0},
     {name: "CIC", url: "https://www.cic.fr/", country: "France", headcount: "0", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-cic.svg", naf_code: "6419Z",
-  addresses_attributes: [{city: "Paris", country: "France", street: "Avenue de Provence", number: "6", zip_code: "F-75009"}]},
+  addresses_attributes: [{city: "Paris", country: "France", street: "Avenue de Provence", number: "6", zip_code: "F-75009"}], number_of_researches: 0, number_of_views: 0},
     {name: "Crédit Agricole", url: "http://www.credit-agricole.fr/", country: "France", headcount: "0", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-creditagricole.svg", naf_code: "6419Z",
-  addresses_attributes: [{city: "Montrouge", country: "France", street: "Place des États-Unis", number: "12", zip_code: "F-92127"}]},
+  addresses_attributes: [{city: "Montrouge", country: "France", street: "Place des États-Unis", number: "12", zip_code: "F-92127"}], number_of_researches: 0, number_of_views: 0},
     {name: "LCL", url: "https://www.lcl.com/", country: "France", headcount: "0", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-lcl.jpg", naf_code: "6419Z",
-  addresses_attributes: [{city: "Lyon", country: "France", street: "Rue de la République", number: "18", zip_code: "F-69002"}]},
+  addresses_attributes: [{city: "Lyon", country: "France", street: "Rue de la République", number: "18", zip_code: "F-69002"}], number_of_researches: 0, number_of_views: 0},
     {name: "Banque Populaire", url: "http://www.banquepopulaire.fr/", country: "France", headcount: "0", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-banquepopulaire.svg", naf_code: "6419Z",
-  addresses_attributes: [{city: "Paris", country: "France", street: "Avenue Pierre Mendès-France", number: "50", zip_code: "F-75013"}]},
+  addresses_attributes: [{city: "Paris", country: "France", street: "Avenue Pierre Mendès-France", number: "50", zip_code: "F-75013"}], number_of_researches: 0, number_of_views: 0},
     {name: "AXA", url: "https://www.axa.fr/", country: "France", headcount: "0", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-axa.png", naf_code: "6419Z",
-  addresses_attributes: [{city: "Paris", country: "France", street: "Avenue Matignon", number: "25", zip_code: "F-75008"}]},
+  addresses_attributes: [{city: "Paris", country: "France", street: "Avenue Matignon", number: "25", zip_code: "F-75008"}], number_of_researches: 0, number_of_views: 0},
     {name: "La Banque Postale", url: "https://www.labanquepostale.fr/", country: "France", headcount: "0", business_description: "Lorem ipsum", industry: "financial services", icon_name: "logo-labanquepostale.svg", naf_code: "6419Z",
-  addresses_attributes: [{city: "Paris", country: "France", street: "Boulevard du Montparnasse", number: "83", zip_code: "F-75006"}]}
+  addresses_attributes: [{city: "Paris", country: "France", street: "Boulevard du Montparnasse", number: "83", zip_code: "F-75006"}], number_of_researches: 0, number_of_views: 0}
 ]
 ##################################
 array_firm_addresses_france.each do | firm |
@@ -216,6 +216,9 @@ end
 ##################################
 Test.create(test_question: "Absence of sexists comments", test_long_question: "How frequent are sexists comments at this firm?", positive_negative_switch: "positive", select_options: "Very frequent; Fairly frequent; No more than anywhere else; Quite rare; Extremely rare")
 Test.create(test_question: "Absence of pregnancy related issues", test_long_question: "How is the pregnancy of an employee resented in this firm?", positive_negative_switch: "positive", select_options: "Very cumbersome; Cumbersome; Not worse than anywhere else; Quite easy; Really easy")
+Test.create(test_question: "Absence of post-pregnancy related issues", test_long_question: "Is an employee's carreer guaranteed continuity on return from pregnancy leave?", positive_negative_switch: "positive", select_options: "Not at all; Not really; It varies; Pretty much; Absolutely")
+Test.create(test_question: "Absence of maternity related issues", test_long_question: "Are employees who have children guaranteed continuity in their carreer progression?", positive_negative_switch: "positive", select_options: "Not at all; Not really; It varies; Pretty much; Absolutely")
+Test.create(test_question: "Equal access to professional training", test_long_question: "Are employees guaranteed an equal access to professional training, regardless of their gender, pregnancy or maternity/paternity status?", positive_negative_switch:"positive", select_options: "Not at all; Not really; It varies; Pretty much; Absolutely")
 Test.create(test_question: "Equal promotion opportunities", test_long_question: "Are female and male employees in the same position offered the same promotion opportunities in this firm?", positive_negative_switch: "positive", select_options: "Never; Sometimes; Quite often; Frequently; Always")
 Test.create(test_question: "Equal pay", test_long_question: "Are female and male employees in the same position offered the same wage at this firm?", positive_negative_switch: "positive", select_options: "Never; Sometimes; Quite often; Frequently; Always")
 Test.create(test_question: "Absence of harassment", test_long_question: "Are there any sexual harassment related issues at this firm?", positive_negative_switch: "positive", select_options: "Very frequently; Frequently; Now and then; Almost never; Never")

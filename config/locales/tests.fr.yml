@@ -5,13 +5,22 @@ fr:
       short_question: "Lutte contre les commentaires sexistes"
     question_2:
       long_question: "Comment est resssentie la grossesse d'un employé dans cette entreprise ?"
-      short_question: "Engagement contre les problèmes liés à la grossesse"
+      short_question: "Lutte contre les problèmes lors de la grossesse"
     question_3:
+      long_question: "La continuité de la carrière d'un employé est-elle garantie lors du retour de congé maternité dans cette entreprise ?"
+      short_question: "Continuité de carrière au retour de la grossesse"
+    question_4:
+      long_question: "Les employées qui ont des enfants voient-ils la continuité de leur carrière garantie dans cette entreprise ?"
+      short_question: "Continuité de carrière quel que soit le statut parental"
+    question_5:
+      long_question: "Les femmes et les hommes se voient-ils garantir un égal accès à la formation dans cette entreprise ?"
+      short_question: "Egalité d'accès à la formation professionnelle"
+    question_6:
       long_question: "Les femmes et les hommes occupant un poste équivalent se voient-ils offrir les mêmes opportunités de promotion dans cette entreprise ?"
       short_question: "Egalité en terme de promotion"
-    question_4:
+    question_7:
       long_question: "Les femmes et les hommes occupant un poste équivalent se voient-ils offrir un même niveau de rémunérations dans cette entreprise ?"
       short_question: "Egalité de rémunérations"
-    question_5:
+    question_8:
       long_question: "Y a-t-il des problèmes de harcèlement sexuel dans cette entreprise ?"
       short_question: "Lutte contre le harcèlement"

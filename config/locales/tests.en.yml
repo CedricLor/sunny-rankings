@@ -7,11 +7,20 @@ en:
       long_question: "How is the pregnancy of an employee resented in this firm?"
       short_question: "Committed to fighting pregnancy related issues"
     question_3:
+      long_question: "Is an employee's carreer guaranteed continuity on return from pregnancy leave?"
+      short_question: "Continuity of carreer upon return from pregnancy leave"
+    question_4:
+      long_question: "Are employees who have children guaranteed continuity in their carreer progression?"
+      short_question: "Continuity of carreer regardless of parental status"
+    question_5:
+      long_question: "Are employees guaranteed an equal access to professional training, regardless of their gender, pregnancy or maternity/paternity status?"
+      short_question: "Equal access to professional training, regardless of gender, pregnancy or parental status"
+    question_6:
       long_question: "Are female and male employees in the same position offered the same promotion opportunities in this firm?"
       short_question: "Proposing equal promotion opportunities"
-    question_4:
+    question_7:
       long_question: "Are female and male employees in the same position offered the same wage at this firm?"
-      short_question: "Equal pay"
-    question_5:
+      short_question: "Equal pay, regardles of gender, pregnancy or parental status"
+    question_8:
       long_question: "Are there any sexual harassment related issues at this firm?"
       short_question: "Fighting harassment"
