@@ -37,9 +37,9 @@ Rails.application.routes.draw do
 
     resources :profiles, only: [ :edit, :update, :show ]
 
-    root 'static_pages#how_it_works'
+    # root 'static_pages#how_it_works'
 
-    # root 'firms#index'
+    root 'firms#index'
   end
 
 
