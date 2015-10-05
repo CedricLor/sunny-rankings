@@ -59,7 +59,6 @@ class FirmsController < ApplicationController
     ################################
     # index helpers methods
     def get_location
-      puts request
       if request.location.country == "Reserved"
         @user_ip_country = "France"
         session[:geoloc_by_ip_has_failed] = true
@@ -70,6 +69,10 @@ class FirmsController < ApplicationController
     end
 
     def set_location
+      puts "*" * 40
+      p request
+      p request.location
+      p request.location.country
       if session[:user_ip_country].nil?
         get_location
         session[:user_ip_country] = @user_ip_country
