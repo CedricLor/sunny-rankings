@@ -69,10 +69,6 @@ class FirmsController < ApplicationController
     end
 
     def set_location
-      puts "*" * 40
-      p request
-      p request.location
-      p request.location.country
       if session[:user_ip_country].nil?
         get_location
         session[:user_ip_country] = @user_ip_country

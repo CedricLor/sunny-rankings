@@ -17,19 +17,28 @@ $(window).load( function() {
           1: "this is a serious matter. ",
           2: "these are serious matters. "
         }
+  /* this function parses the url to identify the language preferences of the user */
+  function get_language_preference() {
+    var url = window.location.href;
+  }
   /* this function generates the legal warning depending on which item have been selected */
   function legal_warning_builder(i, x) {
+    get_language_preference();
     legal_warning_sentence = "You are about to report " + num_of_issues[i] + type_of_issue[x] + "Please note that " + second_sentence[i] + "Please review our terms of use of service before doing so.";
-    return legal_warning_sentence;
   }
   /* set of variables to be used for generating the legal warning */
   var i = 0,
       x = 0;
+  /* set of variables to set the handlers on the correct reporting case (i.e. harassment or pay discrim.) */
+  const sexual_harassment = "7",
+        pay_discrimination = "6";
   /* condition checker for the generation of the legal warning */
   $('#review_form .collection_radio_buttons').on( "click", function() {
     setTimeout(function(){
-    serious_harassment = "#review_answers_attributes_4_user_rating_1";
-    serious_discrimination = $("#review_answers_attributes_3_user_rating_1");
+    serious_harassment = $("#review_answers_attributes_" + sexual_harassment + "_user_rating_1");
+    serious_discrimination = $("#review_answers_attributes_" + pay_discrimination + "_user_rating_1");
+    /* console.log(serious_harassment); */
+    /* console.log(serious_discrimination); */
 
     if ( $(serious_harassment).prop("checked") &&
          $(serious_discrimination).prop("checked") ) {
