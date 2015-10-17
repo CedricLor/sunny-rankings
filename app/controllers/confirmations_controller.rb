@@ -10,7 +10,10 @@ class ConfirmationsController < Devise::ConfirmationsController
     with_unconfirmed_confirmable do
       if @confirmable.has_no_password?
         @confirmable.attempt_set_password(params[:user])
-        if @confirmable.valid? and @confirmable.password_match?
+        # Following line commented out in order to modify the devise/confirmations/show.html.erb
+        # and get rid of the requirement to enter two passwords
+        # if @confirmable.valid? and @confirmable.password_match?
+        if @confirmable.valid?
           do_confirm
         else
           do_show

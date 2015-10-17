@@ -22,7 +22,7 @@
         <% if @requires_password %>
           <div class="form-inputs">
             <p><%= f.input :password, label: t('.choose_a_password', :default => 'Choose a Password:') %></p>
-            <p><%= f.input :password_confirmation, label: t('.password_confirmation', :default => 'Password Confirmation:') %></p>
+            <p><%#= f.input :password_confirmation, label: t('.password_confirmation', :default => 'Password Confirmation:') %></p>
           </div>
         <% end %>
         <%= hidden_field_tag :confirmation_token, @confirmation_token %>
