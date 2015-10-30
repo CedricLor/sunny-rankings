@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  ACCEPTED_LANGUAGES = "en fr"
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -35,8 +36,10 @@ class ApplicationController < ActionController::Base
 
   private
     def extract_locale_from_accept_language_header
-      accept_language = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first if request.env['HTTP_ACCEPT_LANGUAGE']
-      # QUICK FIX language settings
-      accept_language = "en" unless accept_language == "fr"
+      if request.env['HTTP_ACCEPT_LANGUAGE']
+        request.env['HTTP_ACCEPT_LANGUAGE'].scan(/[a-z]{2}/).each do | nav_language |
+          return nav_language if ACCEPTED_LANGUAGES.include? nav_language
+        end
+      end
     end
 end
