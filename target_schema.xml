@@ -93,7 +93,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="530" y="316" name="reviews">
+<table x="480" y="233" name="reviews">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -154,26 +154,29 @@
 <part>id</part>
 </key>
 </table>
-<table x="844" y="294" name="answers">
+<table x="750" y="92" name="answers">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="user_rating" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
-<row name="id_reviews" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="reviews" row="id" />
-</row>
 <row name="id_tests" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="tests" row="id" />
 </row>
+<row name="wording" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
+<row name="id_criteria" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="criteria" row="id" />
+</row>
+<row name="grade" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1015" y="167" name="tests">
+<table x="932" y="61" name="tests">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -189,6 +192,10 @@
 <row name="positive_negative_switch" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
+<row name="id_quizzes" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="quizzes" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -227,9 +234,6 @@
 </key>
 </table>
 <table x="1088" y="594" name="profiles">
-<row name="id" null="1" autoincrement="1">
-<datatype>TINYINT</datatype>
-<default>NULL</default></row>
 <row name="id_users" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="users" row="id" />
@@ -271,6 +275,9 @@
 <datatype>TINYINT</datatype>
 <default>NULL</default><relation table="email_addresses" row="id" />
 </row>
+<row name="id" null="1" autoincrement="1">
+<datatype>TINYINT</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -432,7 +439,7 @@
 <part>naf_code</part>
 </key>
 </table>
-<table x="431" y="53" name="criteria">
+<table x="780" y="316" name="criteria">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
@@ -443,29 +450,28 @@
 <part>id</part>
 </key>
 </table>
-<table x="174" y="54" name="firm_grades">
+<table x="970" y="263" name="quizzes">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="id_criteria" null="1" autoincrement="0">
+<row name="name" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
-<default>NULL</default><relation table="criteria" row="id" />
-</row>
-<row name="id_firms" null="1" autoincrement="0">
-<datatype>TINYINT</datatype>
-<default>NULL</default><relation table="firms" row="id" />
-</row>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="697" y="73" name="user_rating">
+<table x="479" y="92" name="user_answers">
 <row name="id" null="1" autoincrement="1">
 <datatype>TINYINT</datatype>
 <default>NULL</default></row>
-<row name="id_criteria" null="1" autoincrement="0">
+<row name="id_answers" null="1" autoincrement="0">
 <datatype>TINYINT</datatype>
-<default>NULL</default><relation table="criteria" row="id" />
+<default>NULL</default><relation table="answers" row="id" />
+</row>
+<row name="id_reviews" null="1" autoincrement="0">
+<datatype>TINYINT</datatype>
+<default>NULL</default><relation table="reviews" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>

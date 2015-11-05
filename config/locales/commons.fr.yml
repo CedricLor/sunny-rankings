@@ -25,5 +25,5 @@ fr:
         conditions_not_accepted: "Merci d'accepter les conditions d'utilisation de nos services !"
     firms:
       flash_message_selector:
-        firm_addition_request_success: 'Votre demande d`ajouter "%{firm_name}" à notre base de données a été reçue par nos services. Nous sommes en train de la traiter.'
-        firm_addition_request_failure: 'Votre demande d`ajouter "%{firm_name}" n`a pas pu être envoyée à nos services. Veuillez ré-essayer plus tard.'
+        firm_addition_request_success: "Votre demande d\x27ajouter \x22%{firm_name}\x22 à notre base de données a été reçue par nos services. Nous sommes en train de la traiter."
+        firm_addition_request_failure: "Votre demande d\x27ajouter \x22%{firm_name}\x22 n\x27a pas pu être envoyée à nos services. Veuillez ré-essayer plus tard."

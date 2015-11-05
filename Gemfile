@@ -76,8 +76,11 @@ gem 'email_validator'
 # Nested form handler
 gem 'cocoon', '~> 1.2.6'
 
-# Forest (DVerbustel's gem)
-gem 'forest_liana'
+# # Forest (DVerbustel's gem)
+# gem 'forest_liana'
+
+# React
+gem 'react-rails'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

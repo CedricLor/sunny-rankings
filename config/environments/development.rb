@@ -44,4 +44,7 @@ Rails.application.configure do
   # bullet N+1 and unused eager load finder
   # Bullet.enable = true
   # Bullet.alert = true
+
+  # React configuration
+  config.react.variant = :development
 end
